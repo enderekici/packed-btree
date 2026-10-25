@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-25",
+  "campaign_start_utc": "2026-10-25 14:03:16",
+  "campaign_duration": "00:05:34",
+  "host": "Apple M4 Pro",
+  "architecture": "arm64",
+  "os": "macOS 27.0",
+  "memory_bytes": 68719476736,
+  "java": "Zulu JDK 25.0.3+9-LTS",
+  "jmh": "1.37",
+  "mode": "AverageTime",
+  "threads": 1,
+  "forks": 2,
+  "warmup_iterations_per_fork": 2,
+  "measurement_iterations_per_fork": 3,
+  "iteration_time": "1s",
+  "heap": "-Xms1g -Xmx1g",
+  "gc": "G1",
+  "profiler": "gc",
+  "cases": 32,
+  "fork_runs": 64,
+  "measured_iterations": 192,
+  "completed": true,
+  "fixture_failures": 0,
+  "pre_campaign_verification": {
+    "jdk17_clean_verify": "passed; 5 library tests and 4 benchmark tests",
+    "jdk25_clean_verify": "passed; 5 library tests and 4 benchmark tests"
+  },
+  "base_commit": "91989190df5cf92e4da1965363e9e0650f47cca6",
+  "campaign_output": "jdk25-point.json"
+}

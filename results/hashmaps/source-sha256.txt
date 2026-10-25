@@ -1,0 +1,4 @@
+949288960454b2fbd0ba86bfae92db2558dd1b35c6e672757b569884fdcd7352  benchmarks/src/main/java/bench/HashMapAdapters.java
+0380fae34dbcd3279fd41fc786eac0bd7e1d076ffe01e4722d856543a7f2b173  benchmarks/src/main/java/bench/HashMapBenchmark.java
+01ee42ab479ece499fa523fa4fa7988b88699cacdb1d45a4d23113b247eb171d  benchmarks/src/test/java/bench/HashMapAdaptersTest.java
+370bee67f8c2764703feef603727b795251f8985724fb350514e96f42396890d  docs/hashmap-comparison.md
