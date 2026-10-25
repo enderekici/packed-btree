@@ -10,11 +10,11 @@
 
 ## Baseline
 
-- Initial integrated source: `57ea447d94078b2a0872569b09bb88986b71f886`.
-- Existing selected-map comparison source: `dcb5130afe5d8a162acd3de465026f93bfbd6933` (same library source; JMH harness only).
-- Exact pre-hook control: `bench.PreHookLongBTree`; current map: `LongBTree`; one selected map per JMH trial/fork.
-- Existing captured point-hit comparison: `results/default-search/selected-default-control.json` with interpretation in `results/default-search/README.md`. 4,096 mappings: current 25.603 ± 4.651 vs pre-hook 20.201 ± 4.678 ns/op (+26.7% point estimate); 262,144: 74.946 ± 11.731 vs 73.697 ± 5.792 (+1.7%). Intervals overlap at both sizes; it neither establishes a regression nor rules one out. This narrow result motivates a call-stack profile, not a performance claim.
-- Fresh paired baseline needed before candidate work: broad point/range/write screen and JFR profile under the campaign harness.
+- Initial integrated source: `57ea447d94078b2a0872569b09bb88986b71f886`. Every hill-climb candidate is compared against this source, not the historical pre-hook implementation.
+- The immutable A/B control will be a test-only renamed copy of `LongBTree.java` extracted from `57ea447` (`bench.CurrentBaselineLongBTree`); code differences must be limited to package/class/constructor identifiers. Candidate is the production `LongBTree`; each trial instantiates only one selected tree. `bench.PreHookLongBTree` remains a historical control only.
+- Existing selected-map comparison source: `dcb5130afe5d8a162acd3de465026f93bfbd6933` (same current library source; JMH harness only). The pre-hook comparison at `results/default-search/selected-default-control.json` is not the hill-climb A/B baseline. Its 4,096 point estimate was 26.7% higher and its 262,144 point estimate 1.7% higher; intervals overlap at both sizes.
+- Baseline JFR run at source `57ea447`: current default hit, size 262,144, two forks, 3x1s warmup/5x1s measure, exit 0. Recording: `/tmp/hillclimb-jfr-baseline,stackDepth=64/io.github.enderekici.packedbtree.simd.CurrentDefaultSearchRegressionBenchmark.currentDefault-AverageTime-size-262144/profile.jfr`; log `/tmp/hillclimb-jfr-baseline.log`. `jfr view hot-methods` found 374 execution samples: `LongBTree$Node.index(long)` was the top frame for 91.18%, `getOrDefault` 8.02%. Representative stacks include `Node.index(SearchStrategy,long)`, but sampling does not quantify dispatch overhead. Binary-search comparisons dominate samples; use this only to motivate a bounded dispatch experiment.
+- Fresh paired baseline needed before candidate work: broad point/range/write screen and JFR profile under the campaign harness. The Mac mini is a shared developer host (root observed unrelated kubectl/Codex CPU usage); alternate paired runs and record this noise limitation.
 
 ## Candidates and decisions
 
