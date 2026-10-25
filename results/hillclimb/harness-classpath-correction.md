@@ -22,3 +22,12 @@ The test-only search harness now checks, in each JMH fork's trial setup, the `Co
 - `javap -c -p` on the C1 candidate class shows `getOrDefault` branches on `searchStrategy`, invokes `Node.index(long)` in the default loop, and uses `Node.index(SearchStrategy,long)` only in the custom branch. The old shaded JAR bytecode invokes the strategy overload unconditionally.
 
 Every corrected timing run must use `-foe true`, provide expected fingerprint values to forked JVMs, and validate the expected number of finite JSON result rows. The C1 screen will run candidate then baseline separately; C2 will reverse that order. Raw invalid JSON is retained and not rewritten.
+
+## Corrected C2 screen receipt
+
+- Order: baseline first, candidate second; each JDK 25 arm used `library/target/classes:simd/target/test-classes:benchmarks/target/benchmarks.jar`, one fork, 1x250ms warmup/2x250ms measurement, and `-foe true`.
+- Baseline finished 15:40:52 UTC; candidate finished 15:41:19 UTC. Logs: `/tmp/hillclimb-c2-corrected-baseline.log`, `/tmp/hillclimb-c2-corrected-candidate.log`.
+- Each raw JSON has 20 finite rows. Each arm logged 40 expected fingerprint lines (tree and Node for each trial); no `<failure>` marker.
+- Linear candidate tree SHA-256: `735203836860d90afcfebeb8dbec729a8fbfe316b83cbe2a42444ca08aeede76`; Node: `6f183f62dab68d6454553cd591bcc6384db0c9569f8805b9b16135f88ab10b5b`. Baseline tree/Node hashes are above.
+- `javap -c -p 'io.github.enderekici.packedbtree.LongBTree$Node'` showed the candidate's `index(long)` uses `iinc` and loops across keys; baseline clone bytecode shows the binary lower-bound `middle=(low+high)>>>1` and low/high updates.
+- Candidate results are captured in `c2-corrected-summary.md`. This remains a short screen only; the large gains require replicated confirmation before any claim.
