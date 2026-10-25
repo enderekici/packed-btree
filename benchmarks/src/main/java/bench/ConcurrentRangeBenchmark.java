@@ -46,20 +46,33 @@ public class ConcurrentRangeBenchmark {
       if (btree == null) skiplist.put(key, key * 3);
       else btree.put(key, key * 3);
     }
+    if (size < 64) throw new IllegalArgumentException("Range benchmark needs at least 64 keys");
+    checkRange(0);
+    checkRange((size - 64) / 2);
+    checkRange(size - 64);
+  }
+
+  private void checkRange(int firstIndex) {
+    long from = 1024L + 2L * firstIndex;
+    long to = from + 128;
     long expected = 0;
-    for (int i = 0; i < 64; i++) expected += (1024L + 2L * i) * 3;
-    long observed;
+    for (int i = 0; i < 64; i++) expected += (from + 2L * i) * 3;
+    long observed = 0;
+    int count = 0;
     if (btree != null) {
-      Sum sum = new Sum();
-      btree.forEach(1024, 1152, sum);
-      observed = sum.value;
+      RangeProbe probe = new RangeProbe();
+      btree.forEach(from, to, probe);
+      observed = probe.value;
+      count = probe.count;
     } else {
-      observed = 0;
-      for (Map.Entry<Long, Long> entry : skiplist.subMap(1024L, true, 1152L, false).entrySet()) {
+      for (Map.Entry<Long, Long> entry : skiplist.subMap(from, true, to, false).entrySet()) {
         observed += entry.getValue();
+        count++;
       }
     }
-    if (observed != expected) throw new AssertionError("Concurrent range fixture");
+    if (count != 64 || observed != expected) {
+      throw new AssertionError("Concurrent range fixture at index " + firstIndex);
+    }
   }
 
   @Benchmark
@@ -106,5 +119,14 @@ public class ConcurrentRangeBenchmark {
   private static final class Sum implements ConcurrentLongBTree.EntryConsumer {
     long value;
     public void accept(long key, long value) { this.value += value; }
+  }
+
+  private static final class RangeProbe implements ConcurrentLongBTree.EntryConsumer {
+    long value;
+    int count;
+    public void accept(long key, long value) {
+      this.value += value;
+      count++;
+    }
   }
 }

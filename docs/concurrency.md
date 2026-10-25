@@ -53,7 +53,9 @@ point operations sample the full key set. In the
 mixed case, each JMH thread writes only its own striped subset of that same set;
 this avoids key-level write races while measuring serialized-writer contention.
 Each mixed invocation reads one thread-owned key and increments its value, so the
-write always changes the stored value without cross-thread same-key races. JMH
+write always changes the stored value without cross-thread same-key races. Range
+setup asserts exactly 64 entries and the correct sum at the first, middle, and last
+valid start positions. JMH
 thread state uses private xorshift cursors; no global atomic cursor is in the
 measured path. Results verify sampled point reads, range sums, full key presence,
 stable cardinality and B-tree structure outside measured iterations. Raw JSON
