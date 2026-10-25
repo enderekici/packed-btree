@@ -23,10 +23,21 @@
 | ID | Candidate / hypothesis | Source hash | Correctness gate | Benchmark / evidence | Decision and reason |
 | --- | --- | --- | --- | --- | --- |
 | C1 | Default `getOrDefault` traversal branches once on nullable strategy and calls virtual `Node.index(key)` in the default case; custom search still uses the strategy overload. | `936ca4653e43dd08d012a1a4be7618360a0c8bcd535138273b443d62df30d3ba` (temporary candidate; reverted) | JDK 25 `-Psimd`, `LongBTreeTest` 6 + `VectorSearchTest` 2 passed, 0 failures. | `results/hillclimb/c1-screen.md`, 40-row JSON `results/hillclimb/c1-screen.json`; command/settings match baseline screen; log `/tmp/hillclimb-c1-screen.log`. | Rejected at screening: large hit/miss changes were within about ±1%; ranges and writes were mixed, and small-tree results noisy. No confirmation run. Reverted before C2. |
-| C2 | Node degree/search thresholds: evaluate degree 8/16/32 (15/31/63 keys) and binary/linear/hybrid search only if baseline profile supports it. | pending | pending | pending | pending |
+| C2 | Search algorithm only, fixed degree 16: linear lower-bound scan vs current binary lower-bound. | `86a7e108eeccbe515a8e79249c2e82607720ea7c2d40d83a3b07b381d8dbf10e` (candidate; reverted) | JDK 25 `-Psimd`, `LongBTreeTest` 6 + `VectorSearchTest` 2 passed, 0 failures. | Screen and 2-fork confirm: `results/hillclimb/c2-linear-*.md` with raw JSON. | Rejected: confirmation showed large-tree hit/miss and overwrite ~1–2% slower, churn 3.6–4.4% slower; range neutral. Small-tree point/write estimates too uncertain and mixed. |
 | C3 | One evidence-led follow-up within scope (for example String compare duplication) only if remaining profile justifies it. | pending | pending | pending | pending |
 
 Limit: four meaningful candidates total, then final paired confirmation or reject all. Stop a line after two rejected changes. Keep source simple; no public tuning knobs without demonstrated need.
+
+### C2 — linear lower-bound at fixed degree 16
+
+- Hypothesis: nodes contain at most 31 keys; a linear lower-bound scan may reduce branch/search overhead for small packed nodes. JFR shows `Node.index(long)` dominates sampled execution but does not establish that linear search is faster.
+- Isolated variable: search algorithm only. Degree remains 16; no hybrid threshold or node-size changes in this candidate.
+- Correctness gate: `LongBTreeTest` and `VectorSearchTest` under JDK 25 `-Psimd`, then full paired screen with all five workloads, both sizes and key distributions. Reject if no broad signal; candidate may proceed to confirmation only if screen gives a coherent improvement without read/write/range regressions.
+- Candidate source hash: `86a7e108eeccbe515a8e79249c2e82607720ea7c2d40d83a3b07b381d8dbf10e`. Targeted correctness command passed on 2026-10-25 at 15:20 UTC, exit 0, 8 tests.
+- One-fork screen started 15:20:10 and completed 15:21:17 UTC, exit 0, 40 configurations. Raw JSON: `results/hillclimb/c2-linear-screen.json`; summary: `results/hillclimb/c2-linear-screen.md`; log: `/tmp/hillclimb-c2-linear-screen.log`. Command is the baseline screen command with `-rff results/hillclimb/c2-linear-screen.json`.
+- Screening deltas (candidate vs baseline, ns/op): at size 262,144 hit -1.8% dense/+1.9% fullWidth; miss -1.2%/+1.5%; range64 -0.6%/-5.9%; overwrite +0.6%/+0.0%; churn -1.4%/-2.8%. At size 4,096 hit +6.1%/-16.1%, miss -17.7%/-4.4%, range64 -2.6%/-0.3%, overwrite -13.5%/-3.3%, churn +0.4%/+1.0%. Weak small-tree improvement with mixed hit results merits one confirmation; no claim from this screen alone.
+- Confirmation: process start verified by `ps` as 2026-10-25 15:21:42 UTC; finished 15:32:50 UTC, exit 0, 40 configurations, two forks with 3x1s warmups and 5x1s measurements. Raw `results/hillclimb/c2-linear-confirm.json`; log `/tmp/hillclimb-c2-linear-confirm.log`; summary `results/hillclimb/c2-linear-confirm.md`. Exact command uses the paired selected-map screen regex with `-f 2 -wi 3 -w 1s -i 5 -r 1s`.
+- Confirmation deltas (candidate versus frozen binary-search source): at 262,144, hits +2.5% dense/+1.9% fullWidth, misses +2.2%/+1.1%, ranges -0.9%/-0.2%, overwrite +0.5%/+0.7%, churn +4.4%/+3.6%. At 4,096, hits -3.4%/+5.9%, misses +5.2%/-3.4%, range -0.1%/+0.3%, overwrite +9.6%/-6.5%, churn +5.8%/+3.1%. Small-case score errors are broad and overlap; direction varies. Reject and restore binary search. No memory difference: per-node fields/arrays are unchanged.
 
 ## Experiment records
 

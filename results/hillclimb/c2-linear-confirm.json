@@ -1,0 +1,2644 @@
+[
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 114.03124700134636,
+            "scoreError" : 3.1937421241939306,
+            "scoreConfidence" : [
+                110.83750487715243,
+                117.22498912554029
+            ],
+            "scorePercentiles" : {
+                "0.0" : 111.29770072652074,
+                "50.0" : 114.36701479405926,
+                "90.0" : 116.70230586022252,
+                "95.0" : 116.73741909609535,
+                "99.0" : 116.73741909609535,
+                "99.9" : 116.73741909609535,
+                "99.99" : 116.73741909609535,
+                "99.999" : 116.73741909609535,
+                "99.9999" : 116.73741909609535,
+                "100.0" : 116.73741909609535
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    116.73741909609535,
+                    115.68701218332612,
+                    115.62959423530373,
+                    116.38628673736712,
+                    115.15877849212997
+                ],
+                [
+                    113.57525109598855,
+                    111.88059633378626,
+                    112.02396437490947,
+                    111.29770072652074,
+                    111.93586673803642
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 195.69833154755727,
+            "scoreError" : 2.0275660347141997,
+            "scoreConfidence" : [
+                193.67076551284308,
+                197.72589758227147
+            ],
+            "scorePercentiles" : {
+                "0.0" : 193.6751889216744,
+                "50.0" : 195.44026353630215,
+                "90.0" : 197.56275066471397,
+                "95.0" : 197.5904285339521,
+                "99.0" : 197.5904285339521,
+                "99.9" : 197.5904285339521,
+                "99.99" : 197.5904285339521,
+                "99.999" : 197.5904285339521,
+                "99.9999" : 197.5904285339521,
+                "100.0" : 197.5904285339521
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    195.10708029167472,
+                    193.6751889216744,
+                    196.30694042617205,
+                    194.60317327590806,
+                    194.85665543758873
+                ],
+                [
+                    197.5904285339521,
+                    194.61217459113897,
+                    197.3136498415708,
+                    195.77344678092962,
+                    197.1445773749633
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 112.69156769985769,
+            "scoreError" : 1.5520555458282563,
+            "scoreConfidence" : [
+                111.13951215402943,
+                114.24362324568594
+            ],
+            "scorePercentiles" : {
+                "0.0" : 111.31040846452625,
+                "50.0" : 112.7692538490208,
+                "90.0" : 114.80440485025224,
+                "95.0" : 114.9926312346439,
+                "99.0" : 114.9926312346439,
+                "99.9" : 114.9926312346439,
+                "99.99" : 114.9926312346439,
+                "99.999" : 114.9926312346439,
+                "99.9999" : 114.9926312346439,
+                "100.0" : 114.9926312346439
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    111.7499850636686,
+                    111.67746582494463,
+                    113.04590954173906,
+                    111.31040846452625,
+                    112.68743660824839
+                ],
+                [
+                    112.61230848270236,
+                    112.85107108979322,
+                    113.11036739072738,
+                    112.87809329758329,
+                    114.9926312346439
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 198.53266863755087,
+            "scoreError" : 1.1899772270691267,
+            "scoreConfidence" : [
+                197.34269141048173,
+                199.72264586462
+            ],
+            "scorePercentiles" : {
+                "0.0" : 196.62097028200387,
+                "50.0" : 198.8190173272306,
+                "90.0" : 199.2069388960919,
+                "95.0" : 199.20982465026003,
+                "99.0" : 199.20982465026003,
+                "99.9" : 199.20982465026003,
+                "99.99" : 199.20982465026003,
+                "99.999" : 199.20982465026003,
+                "99.9999" : 199.20982465026003,
+                "100.0" : 199.20982465026003
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    196.62097028200387,
+                    198.35503936192964,
+                    198.905920566015,
+                    198.83434852518627,
+                    197.87029578649356
+                ],
+                [
+                    199.04926972518652,
+                    198.80368612927492,
+                    198.49636424058014,
+                    199.20982465026003,
+                    199.18096710857887
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 20.680503939416685,
+            "scoreError" : 2.5444988226926255,
+            "scoreConfidence" : [
+                18.13600511672406,
+                23.22500276210931
+            ],
+            "scorePercentiles" : {
+                "0.0" : 18.442765136263382,
+                "50.0" : 20.387108783617197,
+                "90.0" : 23.42871403746444,
+                "95.0" : 23.481639915752947,
+                "99.0" : 23.481639915752947,
+                "99.9" : 23.481639915752947,
+                "99.99" : 23.481639915752947,
+                "99.999" : 23.481639915752947,
+                "99.9999" : 23.481639915752947,
+                "100.0" : 23.481639915752947
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    21.64838253774179,
+                    23.481639915752947,
+                    19.615486869804386,
+                    20.669617429255535,
+                    21.479649907166234
+                ],
+                [
+                    22.952381132867895,
+                    18.442765136263382,
+                    19.00052672115685,
+                    20.10460013797886,
+                    19.409989606178986
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 97.12383180900312,
+            "scoreError" : 0.6914062771522247,
+            "scoreConfidence" : [
+                96.4324255318509,
+                97.81523808615535
+            ],
+            "scorePercentiles" : {
+                "0.0" : 96.455182586421,
+                "50.0" : 97.08765371585238,
+                "90.0" : 97.87030616957536,
+                "95.0" : 97.90435155330366,
+                "99.0" : 97.90435155330366,
+                "99.9" : 97.90435155330366,
+                "99.99" : 97.90435155330366,
+                "99.999" : 97.90435155330366,
+                "99.9999" : 97.90435155330366,
+                "100.0" : 97.90435155330366
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    97.90435155330366,
+                    96.9901566272519,
+                    97.48542263473233,
+                    96.90434231159819,
+                    97.56389771602072
+                ],
+                [
+                    96.80377130749909,
+                    96.455182586421,
+                    97.34975360579645,
+                    96.59628894295507,
+                    97.18515080445285
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 19.279337709772363,
+            "scoreError" : 4.342945409258544,
+            "scoreConfidence" : [
+                14.93639230051382,
+                23.622283119030907
+            ],
+            "scorePercentiles" : {
+                "0.0" : 15.388423475588171,
+                "50.0" : 20.099832275164598,
+                "90.0" : 24.085197966564014,
+                "95.0" : 24.428725310721656,
+                "99.0" : 24.428725310721656,
+                "99.9" : 24.428725310721656,
+                "99.99" : 24.428725310721656,
+                "99.999" : 24.428725310721656,
+                "99.9999" : 24.428725310721656,
+                "100.0" : 24.428725310721656
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    16.55347808592224,
+                    15.388423475588171,
+                    20.990618237268116,
+                    19.534812549180824,
+                    20.944070520224216
+                ],
+                [
+                    24.428725310721656,
+                    20.993451869145215,
+                    20.664852001148372,
+                    16.054232778507423,
+                    17.24071227001742
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 98.8659012828707,
+            "scoreError" : 2.679418349336161,
+            "scoreConfidence" : [
+                96.18648293353453,
+                101.54531963220685
+            ],
+            "scorePercentiles" : {
+                "0.0" : 96.40942106383446,
+                "50.0" : 98.6681915871941,
+                "90.0" : 101.42685863802012,
+                "95.0" : 101.51113735338606,
+                "99.0" : 101.51113735338606,
+                "99.9" : 101.51113735338606,
+                "99.99" : 101.51113735338606,
+                "99.999" : 101.51113735338606,
+                "99.9999" : 101.51113735338606,
+                "100.0" : 101.51113735338606
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    96.40942106383446,
+                    97.31912577709441,
+                    97.50408175282821,
+                    97.55691323427513,
+                    97.60581977211976
+                ],
+                [
+                    99.73056340226844,
+                    101.51113735338606,
+                    99.81960114250538,
+                    100.53399913066856,
+                    100.66835019972666
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 20.178799136039395,
+            "scoreError" : 4.27668043149637,
+            "scoreConfidence" : [
+                15.902118704543025,
+                24.455479567535765
+            ],
+            "scorePercentiles" : {
+                "0.0" : 15.552496132639476,
+                "50.0" : 20.370413607794845,
+                "90.0" : 23.35365719778656,
+                "95.0" : 23.35797074617867,
+                "99.0" : 23.35797074617867,
+                "99.9" : 23.35797074617867,
+                "99.99" : 23.35797074617867,
+                "99.999" : 23.35797074617867,
+                "99.9999" : 23.35797074617867,
+                "100.0" : 23.35797074617867
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    15.552496132639476,
+                    19.508508311567915,
+                    16.335529830325353,
+                    19.706831802258712,
+                    22.80556562596246
+                ],
+                [
+                    21.033995413330977,
+                    22.03307270719684,
+                    23.314835262257592,
+                    18.139185528675938,
+                    23.35797074617867
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 97.80281207772998,
+            "scoreError" : 0.5232175222749395,
+            "scoreConfidence" : [
+                97.27959455545505,
+                98.32602960000492
+            ],
+            "scorePercentiles" : {
+                "0.0" : 97.40227795381408,
+                "50.0" : 97.72811305078659,
+                "90.0" : 98.46801394522134,
+                "95.0" : 98.4893520092221,
+                "99.0" : 98.4893520092221,
+                "99.9" : 98.4893520092221,
+                "99.99" : 98.4893520092221,
+                "99.999" : 98.4893520092221,
+                "99.9999" : 98.4893520092221,
+                "100.0" : 98.4893520092221
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    97.66801874210957,
+                    98.4893520092221,
+                    97.7230415998517,
+                    97.57088269979087,
+                    97.87104189094404
+                ],
+                [
+                    98.27597136921449,
+                    97.43981051695276,
+                    97.40227795381408,
+                    97.85453949367881,
+                    97.73318450172148
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 20.565825902035932,
+            "scoreError" : 3.7488029787715864,
+            "scoreConfidence" : [
+                16.817022923264346,
+                24.31462888080752
+            ],
+            "scorePercentiles" : {
+                "0.0" : 16.874560612429423,
+                "50.0" : 20.124354086075368,
+                "90.0" : 24.227567743603846,
+                "95.0" : 24.22891142524546,
+                "99.0" : 24.22891142524546,
+                "99.9" : 24.22891142524546,
+                "99.99" : 24.22891142524546,
+                "99.999" : 24.22891142524546,
+                "99.9999" : 24.22891142524546,
+                "100.0" : 24.22891142524546
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    21.20166384277669,
+                    22.29131418268709,
+                    17.62977843609833,
+                    19.63319941591724,
+                    19.812214286021117
+                ],
+                [
+                    24.215474608829314,
+                    19.334648324225032,
+                    20.436493886129618,
+                    24.22891142524546,
+                    16.874560612429423
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 99.02364003587898,
+            "scoreError" : 0.5733771114460693,
+            "scoreConfidence" : [
+                98.45026292443292,
+                99.59701714732505
+            ],
+            "scorePercentiles" : {
+                "0.0" : 98.50499806315179,
+                "50.0" : 98.90744553614272,
+                "90.0" : 99.57050788969096,
+                "95.0" : 99.57740157286968,
+                "99.0" : 99.57740157286968,
+                "99.9" : 99.57740157286968,
+                "99.99" : 99.57740157286968,
+                "99.999" : 99.57740157286968,
+                "99.9999" : 99.57740157286968,
+                "100.0" : 99.57740157286968
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    99.28290400840982,
+                    98.65971215790535,
+                    99.57740157286968,
+                    98.79129969658412,
+                    98.50499806315179
+                ],
+                [
+                    98.7637354911535,
+                    99.0235913757013,
+                    99.50846474108256,
+                    99.34467371053735,
+                    98.77961954139437
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 21.2225269838943,
+            "scoreError" : 4.113555330507641,
+            "scoreConfidence" : [
+                17.10897165338666,
+                25.336082314401942
+            ],
+            "scorePercentiles" : {
+                "0.0" : 17.579310316259992,
+                "50.0" : 21.68057931980228,
+                "90.0" : 24.933162253918574,
+                "95.0" : 24.999896885641945,
+                "99.0" : 24.999896885641945,
+                "99.9" : 24.999896885641945,
+                "99.99" : 24.999896885641945,
+                "99.999" : 24.999896885641945,
+                "99.9999" : 24.999896885641945,
+                "100.0" : 24.999896885641945
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    21.450001629924003,
+                    17.579310316259992,
+                    24.33255056840823,
+                    21.911157009680558,
+                    22.170648074168906
+                ],
+                [
+                    19.55705096178292,
+                    23.83831207358804,
+                    24.999896885641945,
+                    18.095715992238834,
+                    18.29062632724957
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 103.09613751902188,
+            "scoreError" : 0.6946192147383716,
+            "scoreConfidence" : [
+                102.40151830428351,
+                103.79075673376025
+            ],
+            "scorePercentiles" : {
+                "0.0" : 102.39526283367452,
+                "50.0" : 103.00987108827027,
+                "90.0" : 103.77730970603096,
+                "95.0" : 103.78554766637252,
+                "99.0" : 103.78554766637252,
+                "99.9" : 103.78554766637252,
+                "99.99" : 103.78554766637252,
+                "99.999" : 103.78554766637252,
+                "99.9999" : 103.78554766637252,
+                "100.0" : 103.78554766637252
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    103.09845134211233,
+                    102.9212908344282,
+                    102.71744114965884,
+                    102.39526283367452,
+                    103.32914371320152
+                ],
+                [
+                    102.77076073711548,
+                    103.45892272377614,
+                    103.70316806295693,
+                    102.78138612692246,
+                    103.78554766637252
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 22.713012166419315,
+            "scoreError" : 4.9602655821471595,
+            "scoreConfidence" : [
+                17.752746584272156,
+                27.673277748566473
+            ],
+            "scorePercentiles" : {
+                "0.0" : 18.618230337337028,
+                "50.0" : 22.731428063106584,
+                "90.0" : 26.869378599324474,
+                "95.0" : 26.906700036362135,
+                "99.0" : 26.906700036362135,
+                "99.9" : 26.906700036362135,
+                "99.99" : 26.906700036362135,
+                "99.999" : 26.906700036362135,
+                "99.9999" : 26.906700036362135,
+                "100.0" : 26.906700036362135
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    23.052842629660386,
+                    24.867156640648094,
+                    18.618230337337028,
+                    22.41001349655278,
+                    26.53348566598552
+                ],
+                [
+                    20.52689934550059,
+                    26.906700036362135,
+                    19.369561196059912,
+                    18.751449428229115,
+                    26.093782887857614
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 104.01020808712607,
+            "scoreError" : 1.3849517061701093,
+            "scoreConfidence" : [
+                102.62525638095596,
+                105.39515979329619
+            ],
+            "scorePercentiles" : {
+                "0.0" : 102.68907863757524,
+                "50.0" : 104.16569608916053,
+                "90.0" : 105.44571358365764,
+                "95.0" : 105.50365337558551,
+                "99.0" : 105.50365337558551,
+                "99.9" : 105.50365337558551,
+                "99.99" : 105.50365337558551,
+                "99.999" : 105.50365337558551,
+                "99.9999" : 105.50365337558551,
+                "100.0" : 105.50365337558551
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    102.8819148748706,
+                    104.11518473182511,
+                    102.93771635501489,
+                    104.10201597098306,
+                    102.68907863757524
+                ],
+                [
+                    104.92425545630671,
+                    104.40386082362424,
+                    104.21620744649596,
+                    105.50365337558551,
+                    104.32819319897962
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 61.992306097804054,
+            "scoreError" : 2.783573101849423,
+            "scoreConfidence" : [
+                59.208732995954634,
+                64.77587919965347
+            ],
+            "scorePercentiles" : {
+                "0.0" : 59.268291653904065,
+                "50.0" : 61.94040055995015,
+                "90.0" : 65.36686051889762,
+                "95.0" : 65.5235049093311,
+                "99.0" : 65.5235049093311,
+                "99.9" : 65.5235049093311,
+                "99.99" : 65.5235049093311,
+                "99.999" : 65.5235049093311,
+                "99.9999" : 65.5235049093311,
+                "100.0" : 65.5235049093311
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    61.111649933850856,
+                    61.746805797184024,
+                    59.268291653904065,
+                    65.5235049093311,
+                    63.95706100499639
+                ],
+                [
+                    62.167742211860585,
+                    62.133995322716274,
+                    61.17780804365943,
+                    62.92632552833009,
+                    59.90987657220786
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 125.2395723255371,
+            "scoreError" : 6.163699504356999,
+            "scoreConfidence" : [
+                119.0758728211801,
+                131.4032718298941
+            ],
+            "scorePercentiles" : {
+                "0.0" : 119.4235669426174,
+                "50.0" : 125.08713340458313,
+                "90.0" : 131.1775926108617,
+                "95.0" : 131.403606049406,
+                "99.0" : 131.403606049406,
+                "99.9" : 131.403606049406,
+                "99.99" : 131.403606049406,
+                "99.999" : 131.403606049406,
+                "99.9999" : 131.403606049406,
+                "100.0" : 131.403606049406
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    127.72165651886075,
+                    131.403606049406,
+                    119.4235669426174,
+                    128.9577697175153,
+                    124.61944989064216
+                ],
+                [
+                    123.6508786068335,
+                    122.16649145033101,
+                    125.5548169185241,
+                    129.1434716639631,
+                    119.75401549667762
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 62.996729676627936,
+            "scoreError" : 3.9383437309225124,
+            "scoreConfidence" : [
+                59.058385945705425,
+                66.93507340755045
+            ],
+            "scorePercentiles" : {
+                "0.0" : 59.69796237108311,
+                "50.0" : 63.02562916215789,
+                "90.0" : 68.43402224338568,
+                "95.0" : 68.85492823038265,
+                "99.0" : 68.85492823038265,
+                "99.9" : 68.85492823038265,
+                "99.99" : 68.85492823038265,
+                "99.999" : 68.85492823038265,
+                "99.9999" : 68.85492823038265,
+                "100.0" : 68.85492823038265
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    64.1402258058922,
+                    64.64586836041298,
+                    59.69796237108311,
+                    63.24921541591488,
+                    60.462691848270374
+                ],
+                [
+                    63.312945955924526,
+                    61.65337584900722,
+                    62.8020429084009,
+                    68.85492823038265,
+                    61.14804002099052
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.BaselineSearchScreen.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 125.39592910305478,
+            "scoreError" : 9.83500996424029,
+            "scoreConfidence" : [
+                115.5609191388145,
+                135.23093906729508
+            ],
+            "scorePercentiles" : {
+                "0.0" : 115.50018782675825,
+                "50.0" : 126.07605893556452,
+                "90.0" : 135.640888847765,
+                "95.0" : 136.08905250338447,
+                "99.0" : 136.08905250338447,
+                "99.9" : 136.08905250338447,
+                "99.99" : 136.08905250338447,
+                "99.999" : 136.08905250338447,
+                "99.9999" : 136.08905250338447,
+                "100.0" : 136.08905250338447
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    126.89588726397943,
+                    126.95913844309776,
+                    116.42026039843302,
+                    125.2562306071496,
+                    115.50018782675825
+                ],
+                [
+                    130.44000188032894,
+                    136.08905250338447,
+                    123.19886308239992,
+                    131.60741594719,
+                    121.59225307782633
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 120.60155300202857,
+            "scoreError" : 1.9796650517973808,
+            "scoreConfidence" : [
+                118.62188795023118,
+                122.58121805382595
+            ],
+            "scorePercentiles" : {
+                "0.0" : 118.70782498342571,
+                "50.0" : 120.62150513361827,
+                "90.0" : 122.70690638503835,
+                "95.0" : 122.80556325148972,
+                "99.0" : 122.80556325148972,
+                "99.9" : 122.80556325148972,
+                "99.99" : 122.80556325148972,
+                "99.999" : 122.80556325148972,
+                "99.9999" : 122.80556325148972,
+                "100.0" : 122.80556325148972
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    122.80556325148972,
+                    120.07462961474415,
+                    121.79333394347992,
+                    119.02155773980171,
+                    120.98505211683296
+                ],
+                [
+                    121.81899458697606,
+                    119.5655635162989,
+                    120.8334209833083,
+                    118.70782498342571,
+                    120.40958928392824
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 204.30628457780466,
+            "scoreError" : 0.7631028468215073,
+            "scoreConfidence" : [
+                203.54318173098315,
+                205.06938742462617
+            ],
+            "scorePercentiles" : {
+                "0.0" : 203.65616029908128,
+                "50.0" : 204.3020638877686,
+                "90.0" : 204.8997019760374,
+                "95.0" : 204.903545636868,
+                "99.0" : 204.903545636868,
+                "99.9" : 204.903545636868,
+                "99.99" : 204.903545636868,
+                "99.999" : 204.903545636868,
+                "99.9999" : 204.903545636868,
+                "100.0" : 204.903545636868
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    204.86510902856213,
+                    203.81655717578917,
+                    203.65616029908128,
+                    204.67968588003063,
+                    204.59766129586038
+                ],
+                [
+                    204.903545636868,
+                    203.84661797139637,
+                    203.88032321001828,
+                    204.81071880076345,
+                    204.00646647967682
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 116.17592164421339,
+            "scoreError" : 0.6254721922531734,
+            "scoreConfidence" : [
+                115.55044945196022,
+                116.80139383646656
+            ],
+            "scorePercentiles" : {
+                "0.0" : 115.58948277259195,
+                "50.0" : 116.10548901374396,
+                "90.0" : 116.76841236922978,
+                "95.0" : 116.77983477098043,
+                "99.0" : 116.77983477098043,
+                "99.9" : 116.77983477098043,
+                "99.99" : 116.77983477098043,
+                "99.999" : 116.77983477098043,
+                "99.9999" : 116.77983477098043,
+                "100.0" : 116.77983477098043
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    116.33324570418547,
+                    116.16572365482224,
+                    115.58948277259195,
+                    116.66561075347386,
+                    116.0265059216799
+                ],
+                [
+                    116.77983477098043,
+                    116.04525437266568,
+                    116.5965311023564,
+                    115.91073078012836,
+                    115.64629660924965
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 205.63614051178033,
+            "scoreError" : 3.4362038866832254,
+            "scoreConfidence" : [
+                202.1999366250971,
+                209.07234439846354
+            ],
+            "scorePercentiles" : {
+                "0.0" : 202.70671447376105,
+                "50.0" : 206.03657560918137,
+                "90.0" : 208.72870794924938,
+                "95.0" : 208.80663200776974,
+                "99.0" : 208.80663200776974,
+                "99.9" : 208.80663200776974,
+                "99.99" : 208.80663200776974,
+                "99.999" : 208.80663200776974,
+                "99.9999" : 208.80663200776974,
+                "100.0" : 208.80663200776974
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    204.21358489162205,
+                    202.7307538359714,
+                    205.43758288059817,
+                    203.37688585082816,
+                    202.70671447376105
+                ],
+                [
+                    208.02739142256624,
+                    206.63556833776457,
+                    208.80663200776974,
+                    206.68442927292026,
+                    207.74186214400157
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 19.975394166417654,
+            "scoreError" : 4.431989206166797,
+            "scoreConfidence" : [
+                15.543404960250857,
+                24.40738337258445
+            ],
+            "scorePercentiles" : {
+                "0.0" : 15.268284527595178,
+                "50.0" : 20.555709642021284,
+                "90.0" : 23.541450728020475,
+                "95.0" : 23.624422420985194,
+                "99.0" : 23.624422420985194,
+                "99.9" : 23.624422420985194,
+                "99.99" : 23.624422420985194,
+                "99.999" : 23.624422420985194,
+                "99.9999" : 23.624422420985194,
+                "100.0" : 23.624422420985194
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    19.13682125534057,
+                    22.794705491338018,
+                    22.196922912319362,
+                    23.624422420985194,
+                    19.47153528124441
+                ],
+                [
+                    21.639884002798162,
+                    16.891491197927945,
+                    15.268284527595178,
+                    22.103836981098382,
+                    16.626037593529333
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 99.56760081591493,
+            "scoreError" : 0.8915285817598941,
+            "scoreConfidence" : [
+                98.67607223415503,
+                100.45912939767483
+            ],
+            "scorePercentiles" : {
+                "0.0" : 98.36293398314851,
+                "50.0" : 99.68805190803872,
+                "90.0" : 100.28885788025215,
+                "95.0" : 100.30321260540941,
+                "99.0" : 100.30321260540941,
+                "99.9" : 100.30321260540941,
+                "99.99" : 100.30321260540941,
+                "99.999" : 100.30321260540941,
+                "99.9999" : 100.30321260540941,
+                "100.0" : 100.30321260540941
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    99.91152473810561,
+                    99.75325734915783,
+                    100.15966535383684,
+                    98.96069008581604,
+                    100.30321260540941
+                ],
+                [
+                    99.92982173849799,
+                    99.22618534320792,
+                    99.62284646691958,
+                    99.4458704950495,
+                    98.36293398314851
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 20.416960610331568,
+            "scoreError" : 3.899497485564036,
+            "scoreConfidence" : [
+                16.51746312476753,
+                24.316458095895605
+            ],
+            "scorePercentiles" : {
+                "0.0" : 17.233979544927784,
+                "50.0" : 19.533740849061452,
+                "90.0" : 24.504072575571872,
+                "95.0" : 24.67172668689854,
+                "99.0" : 24.67172668689854,
+                "99.9" : 24.67172668689854,
+                "99.99" : 24.67172668689854,
+                "99.999" : 24.67172668689854,
+                "99.9999" : 24.67172668689854,
+                "100.0" : 24.67172668689854
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    19.733278403117918,
+                    19.33420329500499,
+                    22.188411311504876,
+                    22.93207189038307,
+                    17.473403867551404
+                ],
+                [
+                    22.995185573631833,
+                    18.90066080234093,
+                    18.706684727954332,
+                    24.67172668689854,
+                    17.233979544927784
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 100.76327111258539,
+            "scoreError" : 2.7863582409654515,
+            "scoreConfidence" : [
+                97.97691287161993,
+                103.54962935355084
+            ],
+            "scorePercentiles" : {
+                "0.0" : 98.7320160966487,
+                "50.0" : 100.8166047376092,
+                "90.0" : 102.77317037571218,
+                "95.0" : 102.79326784781205,
+                "99.0" : 102.79326784781205,
+                "99.9" : 102.79326784781205,
+                "99.99" : 102.79326784781205,
+                "99.999" : 102.79326784781205,
+                "99.9999" : 102.79326784781205,
+                "100.0" : 102.79326784781205
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    98.94968635774995,
+                    98.95310524375985,
+                    99.65653455751327,
+                    98.90948189839695,
+                    98.7320160966487
+                ],
+                [
+                    102.56129321880279,
+                    101.97667491770511,
+                    102.50835786065154,
+                    102.59229312681344,
+                    102.79326784781205
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 21.218033272848015,
+            "scoreError" : 3.620588639399624,
+            "scoreConfidence" : [
+                17.59744463344839,
+                24.83862191224764
+            ],
+            "scorePercentiles" : {
+                "0.0" : 16.59423425198448,
+                "50.0" : 21.340087044933078,
+                "90.0" : 24.618248575464868,
+                "95.0" : 24.704338061904302,
+                "99.0" : 24.704338061904302,
+                "99.9" : 24.704338061904302,
+                "99.99" : 24.704338061904302,
+                "99.999" : 24.704338061904302,
+                "99.9999" : 24.704338061904302,
+                "100.0" : 24.704338061904302
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    19.159266423492447,
+                    20.994638668358935,
+                    23.84344319750994,
+                    21.57381218450403,
+                    22.84391455283288
+                ],
+                [
+                    21.106361905362128,
+                    24.704338061904302,
+                    19.349897760916367,
+                    16.59423425198448,
+                    22.010425721614617
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 99.96250376577106,
+            "scoreError" : 1.392415193113866,
+            "scoreConfidence" : [
+                98.5700885726572,
+                101.35491895888492
+            ],
+            "scorePercentiles" : {
+                "0.0" : 98.77304762708678,
+                "50.0" : 99.9931208542212,
+                "90.0" : 101.61654033077305,
+                "95.0" : 101.70737415601725,
+                "99.0" : 101.70737415601725,
+                "99.9" : 101.70737415601725,
+                "99.99" : 101.70737415601725,
+                "99.999" : 101.70737415601725,
+                "99.9999" : 101.70737415601725,
+                "100.0" : 101.70737415601725
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    99.35559419874716,
+                    100.79903590357519,
+                    99.9017686912545,
+                    99.27168153691454,
+                    100.0844730171879
+                ],
+                [
+                    98.88575649350489,
+                    100.30690896097599,
+                    98.77304762708678,
+                    101.70737415601725,
+                    100.5393970724465
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 19.87296866625552,
+            "scoreError" : 5.781072989805173,
+            "scoreConfidence" : [
+                14.091895676450347,
+                25.65404165606069
+            ],
+            "scorePercentiles" : {
+                "0.0" : 16.414365846309646,
+                "50.0" : 18.576175252394528,
+                "90.0" : 26.929158653757348,
+                "95.0" : 27.01873047638131,
+                "99.0" : 27.01873047638131,
+                "99.9" : 27.01873047638131,
+                "99.99" : 27.01873047638131,
+                "99.999" : 27.01873047638131,
+                "99.9999" : 27.01873047638131,
+                "100.0" : 27.01873047638131
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    19.038562196208094,
+                    18.46207075639296,
+                    17.851905761867222,
+                    21.498939587849716,
+                    26.12301225014168
+                ],
+                [
+                    16.84996267278756,
+                    18.69027974839609,
+                    16.414365846309646,
+                    16.781857366220954,
+                    27.01873047638131
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 100.1422006462362,
+            "scoreError" : 1.5588028261976639,
+            "scoreConfidence" : [
+                98.58339782003854,
+                101.70100347243387
+            ],
+            "scorePercentiles" : {
+                "0.0" : 98.49985093340955,
+                "50.0" : 100.37116928253039,
+                "90.0" : 101.57473710128664,
+                "95.0" : 101.60893736053231,
+                "99.0" : 101.60893736053231,
+                "99.9" : 101.60893736053231,
+                "99.99" : 101.60893736053231,
+                "99.999" : 101.60893736053231,
+                "99.9999" : 101.60893736053231,
+                "100.0" : 101.60893736053231
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    98.49985093340955,
+                    100.63440968740585,
+                    98.94722714190563,
+                    99.73607558513844,
+                    99.146711477832
+                ],
+                [
+                    101.60893736053231,
+                    100.23575653363393,
+                    100.50658203142686,
+                    101.26693476807567,
+                    100.83952094300179
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 23.26944093585474,
+            "scoreError" : 5.3784611180009065,
+            "scoreConfidence" : [
+                17.890979817853832,
+                28.647902053855645
+            ],
+            "scorePercentiles" : {
+                "0.0" : 19.703929402515193,
+                "50.0" : 21.654043160159127,
+                "90.0" : 28.257776333156,
+                "95.0" : 28.28000769240027,
+                "99.0" : 28.28000769240027,
+                "99.9" : 28.28000769240027,
+                "99.99" : 28.28000769240027,
+                "99.999" : 28.28000769240027,
+                "99.9999" : 28.28000769240027,
+                "100.0" : 28.28000769240027
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    27.109715430198417,
+                    28.057694099957533,
+                    20.360018149098625,
+                    22.523285827725253,
+                    19.703929402515193
+                ],
+                [
+                    19.99631966812013,
+                    28.28000769240027,
+                    20.784800492592996,
+                    20.461060258510376,
+                    25.41757833742861
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 103.60673319824609,
+            "scoreError" : 2.0807175775536786,
+            "scoreConfidence" : [
+                101.5260156206924,
+                105.68745077579977
+            ],
+            "scorePercentiles" : {
+                "0.0" : 102.14827239079706,
+                "50.0" : 103.42345335032627,
+                "90.0" : 105.46649807041834,
+                "95.0" : 105.4887964941524,
+                "99.0" : 105.4887964941524,
+                "99.9" : 105.4887964941524,
+                "99.99" : 105.4887964941524,
+                "99.999" : 105.4887964941524,
+                "99.9999" : 105.4887964941524,
+                "100.0" : 105.4887964941524
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    102.14827239079706,
+                    102.5494584486852,
+                    102.24051882579718,
+                    102.57846526018491,
+                    102.21793191975388
+                ],
+                [
+                    105.4887964941524,
+                    104.75446938936157,
+                    104.55516555644935,
+                    105.26581225681188,
+                    104.26844144046763
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 21.243115617920253,
+            "scoreError" : 5.111519919128013,
+            "scoreConfidence" : [
+                16.13159569879224,
+                26.354635537048267
+            ],
+            "scorePercentiles" : {
+                "0.0" : 16.994012179460444,
+                "50.0" : 21.302845046137158,
+                "90.0" : 27.53188306022509,
+                "95.0" : 27.773396756097107,
+                "99.0" : 27.773396756097107,
+                "99.9" : 27.773396756097107,
+                "99.99" : 27.773396756097107,
+                "99.999" : 27.773396756097107,
+                "99.9999" : 27.773396756097107,
+                "100.0" : 27.773396756097107
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    27.773396756097107,
+                    25.35825979737693,
+                    21.403153896251375,
+                    21.44129146561019,
+                    17.92980916557794
+                ],
+                [
+                    22.555004788617506,
+                    21.202536196022944,
+                    16.994012179460444,
+                    19.715756032666324,
+                    18.057935901521777
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 104.6929448754554,
+            "scoreError" : 0.8362943786372873,
+            "scoreConfidence" : [
+                103.8566504968181,
+                105.52923925409269
+            ],
+            "scorePercentiles" : {
+                "0.0" : 103.7755179440237,
+                "50.0" : 104.84926590319823,
+                "90.0" : 105.3731726626655,
+                "95.0" : 105.38459747074441,
+                "99.0" : 105.38459747074441,
+                "99.9" : 105.38459747074441,
+                "99.99" : 105.38459747074441,
+                "99.999" : 105.38459747074441,
+                "99.9999" : 105.38459747074441,
+                "100.0" : 105.38459747074441
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    105.06413939850925,
+                    104.3622594400485,
+                    105.2703493899553,
+                    104.73745976606247,
+                    104.96107204033399
+                ],
+                [
+                    105.38459747074441,
+                    103.7755179440237,
+                    105.04825153973579,
+                    103.94930783757776,
+                    104.37649392756269
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 61.9417948109357,
+            "scoreError" : 3.219518915885956,
+            "scoreConfidence" : [
+                58.72227589504974,
+                65.16131372682165
+            ],
+            "scorePercentiles" : {
+                "0.0" : 59.17900599255264,
+                "50.0" : 61.99038939679288,
+                "90.0" : 66.18241597132396,
+                "95.0" : 66.4874173454871,
+                "99.0" : 66.4874173454871,
+                "99.9" : 66.4874173454871,
+                "99.99" : 66.4874173454871,
+                "99.999" : 66.4874173454871,
+                "99.9999" : 66.4874173454871,
+                "100.0" : 66.4874173454871
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    66.4874173454871,
+                    62.3821656676444,
+                    62.747133944370056,
+                    62.556370835191885,
+                    61.59861312594136
+                ],
+                [
+                    63.4374036038557,
+                    59.17900599255264,
+                    60.46892158804334,
+                    61.072122707838226,
+                    59.488793298432235
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "dense",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 124.16583697655695,
+            "scoreError" : 4.589497677812195,
+            "scoreConfidence" : [
+                119.57633929874476,
+                128.75533465436914
+            ],
+            "scorePercentiles" : {
+                "0.0" : 119.5287277238623,
+                "50.0" : 123.74780971540244,
+                "90.0" : 128.93983487279533,
+                "95.0" : 129.1572045851737,
+                "99.0" : 129.1572045851737,
+                "99.9" : 129.1572045851737,
+                "99.99" : 129.1572045851737,
+                "99.999" : 129.1572045851737,
+                "99.9999" : 129.1572045851737,
+                "100.0" : 129.1572045851737
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    124.18325196702712,
+                    122.47212673469016,
+                    122.47932412427619,
+                    126.98350746138995,
+                    119.5287277238623
+                ],
+                [
+                    129.1572045851737,
+                    123.31236746377778,
+                    126.10847092170181,
+                    126.7135906100259,
+                    120.71979817364445
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "4096"
+        },
+        "primaryMetric" : {
+            "score" : 63.18238638204341,
+            "scoreError" : 3.580268374241651,
+            "scoreConfidence" : [
+                59.602118007801764,
+                66.76265475628506
+            ],
+            "scorePercentiles" : {
+                "0.0" : 60.28598961108445,
+                "50.0" : 62.50398823003457,
+                "90.0" : 68.32030679618465,
+                "95.0" : 68.64006277934874,
+                "99.0" : 68.64006277934874,
+                "99.9" : 68.64006277934874,
+                "99.99" : 68.64006277934874,
+                "99.999" : 68.64006277934874,
+                "99.9999" : 68.64006277934874,
+                "100.0" : 68.64006277934874
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    63.24656565033086,
+                    62.45439011209165,
+                    65.44250294770788,
+                    62.55358634797749,
+                    63.46836612282776
+                ],
+                [
+                    62.42193438356415,
+                    62.33888259165469,
+                    68.64006277934874,
+                    60.971583273846306,
+                    60.28598961108445
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.CandidateSearchScreen.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "--add-modules=jdk.incubator.vector",
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "distribution" : "fullWidth",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 125.1547717399385,
+            "scoreError" : 6.465775523085968,
+            "scoreConfidence" : [
+                118.68899621685253,
+                131.62054726302446
+            ],
+            "scorePercentiles" : {
+                "0.0" : 119.24323808515153,
+                "50.0" : 126.80835973481379,
+                "90.0" : 129.7950471805641,
+                "95.0" : 129.8392616207322,
+                "99.0" : 129.8392616207322,
+                "99.9" : 129.8392616207322,
+                "99.99" : 129.8392616207322,
+                "99.999" : 129.8392616207322,
+                "99.9999" : 129.8392616207322,
+                "100.0" : 129.8392616207322
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    120.24880540049338,
+                    122.31759385874557,
+                    129.39711721905107,
+                    119.86871439228672,
+                    127.46344591651807
+                ],
+                [
+                    129.15872462160988,
+                    129.8392616207322,
+                    126.15327355310951,
+                    119.24323808515153,
+                    127.85754273168703
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    }
+]
+
+
