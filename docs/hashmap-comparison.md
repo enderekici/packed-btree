@@ -11,7 +11,9 @@ Each trial builds the same shuffled, dense even-key fixture from a fixed seed.
 Keys start at 4096, outside the usual `Long` boxing cache; values use the same
 deterministic key-derived mapping. The 16,384- and 1,048,576-entry fixtures are
 created in `@Setup(Level.Trial)`. Hash maps are sized for the expected mapping
-count before insertion. Timed methods cover successful lookup, an absent key,
+count before insertion. `HashMap` is boxed and not thread-safe;
+`ConcurrentHashMap` is boxed and thread-safe, though both are measured with one
+thread. Timed methods cover successful lookup, an absent key,
 overwrite, and churn (one remove plus one insert while keeping cardinality
 constant). Hit keys are even values from the fixture. Misses cycle through the
 contiguous interval `[2 * size + 4096, 3 * size + 4095]`, which is above the
