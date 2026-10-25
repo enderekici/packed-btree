@@ -262,21 +262,50 @@ public final class StringBTree<V> {
     Objects.requireNonNull(fromInclusive, "fromInclusive");
     Objects.requireNonNull(toExclusive, "toExclusive");
     Objects.requireNonNull(visitor, "visitor");
-    if (fromInclusive.compareTo(toExclusive) < 0) visit(root, fromInclusive, toExclusive, visitor);
+    if (fromInclusive.compareTo(toExclusive) < 0)
+      visit(root, fromInclusive, toExclusive, false, false, visitor);
   }
 
   @SuppressWarnings("unchecked")
-  private static <V> void visit(Node node, String from, String to, EntryConsumer<? super V> visitor) {
-    int i = node.index(from);
-    if (i < 0) i = ~i;
-    int end = node.index(to);
-    if (end < 0) end = ~end;
-    if (node.children != null) visit(node.children[i], from, to, visitor);
+  private static <V> void visit(Node node, String from, String to, boolean fromCovered,
+      boolean toCovered, EntryConsumer<? super V> visitor) {
+    if (fromCovered && toCovered) {
+      visitAll(node, visitor);
+      return;
+    }
+    int i = fromCovered ? 0 : lowerBound(node, from);
+    int end = toCovered ? node.count : lowerBound(node, to);
+    if (node.children != null) {
+      boolean childToCovered = toCovered || belowUpperBound(node, i, end, to);
+      visit(node.children[i], from, to, fromCovered, childToCovered, visitor);
+    }
     while (i < end) {
       visitor.accept(node.keys[i], (V) node.values[i]);
       i++;
-      if (node.children != null) visit(node.children[i], from, to, visitor);
+      if (node.children != null) {
+        boolean childToCovered = toCovered || belowUpperBound(node, i, end, to);
+        visit(node.children[i], from, to, true, childToCovered, visitor);
+      }
     }
+  }
+
+  private static int lowerBound(Node node, String key) {
+    int index = node.index(key);
+    return index < 0 ? ~index : index;
+  }
+
+  private static boolean belowUpperBound(Node node, int childIndex, int end, String to) {
+    if (childIndex < end) return true;
+    return childIndex < node.count && node.keys[childIndex].compareTo(to) <= 0;
+  }
+
+  @SuppressWarnings("unchecked")
+  private static <V> void visitAll(Node node, EntryConsumer<? super V> visitor) {
+    for (int i = 0; i < node.count; i++) {
+      if (node.children != null) visitAll(node.children[i], visitor);
+      visitor.accept(node.keys[i], (V) node.values[i]);
+    }
+    if (node.children != null) visitAll(node.children[node.count], visitor);
   }
 
   /** Checks ordering, occupancy, child references, equal leaf depth and cardinality. */

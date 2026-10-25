@@ -1,0 +1,611 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.churn
+# Parameters: (implementation = candidate, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 0.00% complete, ETA 00:02:40
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+280.357 ns/op
+# Warmup Iteration   2: 278.553 ns/op
+# Warmup Iteration   3: 278.283 ns/op
+Iteration   1: 279.391 ns/op
+Iteration   2: 278.663 ns/op
+Iteration   3: 277.457 ns/op
+Iteration   4: 267.779 ns/op
+Iteration   5: 264.216 ns/op
+
+# Run progress: 5.00% complete, ETA 00:02:36
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+281.420 ns/op
+# Warmup Iteration   2: 279.699 ns/op
+# Warmup Iteration   3: 280.413 ns/op
+Iteration   1: 278.580 ns/op
+Iteration   2: 279.481 ns/op
+Iteration   3: 279.488 ns/op
+Iteration   4: 269.548 ns/op
+Iteration   5: 264.866 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.churn":
+  273.947 ±(99.9%) 9.844 ns/op [Average]
+  (min, avg, max) = (264.216, 273.947, 279.488), stdev = 6.511
+  CI (99.9%): [264.103, 283.791] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.churn
+# Parameters: (implementation = baseline, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 10.00% complete, ETA 00:02:27
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+275.658 ns/op
+# Warmup Iteration   2: 275.306 ns/op
+# Warmup Iteration   3: 274.638 ns/op
+Iteration   1: 274.939 ns/op
+Iteration   2: 274.045 ns/op
+Iteration   3: 278.944 ns/op
+Iteration   4: 261.932 ns/op
+Iteration   5: 263.691 ns/op
+
+# Run progress: 15.00% complete, ETA 00:02:19
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+278.518 ns/op
+# Warmup Iteration   2: 283.436 ns/op
+# Warmup Iteration   3: 281.565 ns/op
+Iteration   1: 280.584 ns/op
+Iteration   2: 279.432 ns/op
+Iteration   3: 286.388 ns/op
+Iteration   4: 269.670 ns/op
+Iteration   5: 268.826 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.churn":
+  273.845 ±(99.9%) 11.806 ns/op [Average]
+  (min, avg, max) = (261.932, 273.845, 286.388), stdev = 7.809
+  CI (99.9%): [262.039, 285.651] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.hit
+# Parameters: (implementation = candidate, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 20.00% complete, ETA 00:02:11
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+102.252 ns/op
+# Warmup Iteration   2: 100.821 ns/op
+# Warmup Iteration   3: 101.358 ns/op
+Iteration   1: 100.246 ns/op
+Iteration   2: 100.619 ns/op
+Iteration   3: 96.549 ns/op
+Iteration   4: 101.358 ns/op
+Iteration   5: 101.410 ns/op
+
+# Run progress: 25.00% complete, ETA 00:02:03
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+106.857 ns/op
+# Warmup Iteration   2: 100.066 ns/op
+# Warmup Iteration   3: 99.658 ns/op
+Iteration   1: 101.179 ns/op
+Iteration   2: 103.787 ns/op
+Iteration   3: 100.526 ns/op
+Iteration   4: 101.871 ns/op
+Iteration   5: 101.732 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.hit":
+  100.928 ±(99.9%) 2.764 ns/op [Average]
+  (min, avg, max) = (96.549, 100.928, 103.787), stdev = 1.828
+  CI (99.9%): [98.163, 103.692] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.hit
+# Parameters: (implementation = baseline, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 30.00% complete, ETA 00:01:54
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+105.313 ns/op
+# Warmup Iteration   2: 98.698 ns/op
+# Warmup Iteration   3: 102.652 ns/op
+Iteration   1: 106.488 ns/op
+Iteration   2: 96.885 ns/op
+Iteration   3: 102.522 ns/op
+Iteration   4: 101.991 ns/op
+Iteration   5: 101.294 ns/op
+
+# Run progress: 35.00% complete, ETA 00:01:46
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+104.905 ns/op
+# Warmup Iteration   2: 96.452 ns/op
+# Warmup Iteration   3: 104.083 ns/op
+Iteration   1: 99.541 ns/op
+Iteration   2: 100.091 ns/op
+Iteration   3: 98.492 ns/op
+Iteration   4: 101.121 ns/op
+Iteration   5: 99.569 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.hit":
+  100.799 ±(99.9%) 3.947 ns/op [Average]
+  (min, avg, max) = (96.885, 100.799, 106.488), stdev = 2.611
+  CI (99.9%): [96.852, 104.746] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.miss
+# Parameters: (implementation = candidate, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 40.00% complete, ETA 00:01:38
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+112.697 ns/op
+# Warmup Iteration   2: 108.254 ns/op
+# Warmup Iteration   3: 107.214 ns/op
+Iteration   1: 110.143 ns/op
+Iteration   2: 106.523 ns/op
+Iteration   3: 106.536 ns/op
+Iteration   4: 108.465 ns/op
+Iteration   5: 110.455 ns/op
+
+# Run progress: 45.00% complete, ETA 00:01:30
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+115.121 ns/op
+# Warmup Iteration   2: 108.731 ns/op
+# Warmup Iteration   3: 112.239 ns/op
+Iteration   1: 109.892 ns/op
+Iteration   2: 106.715 ns/op
+Iteration   3: 109.431 ns/op
+Iteration   4: 109.996 ns/op
+Iteration   5: 105.407 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.miss":
+  108.356 ±(99.9%) 2.845 ns/op [Average]
+  (min, avg, max) = (105.407, 108.356, 110.455), stdev = 1.882
+  CI (99.9%): [105.511, 111.202] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.miss
+# Parameters: (implementation = baseline, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 50.00% complete, ETA 00:01:22
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+112.747 ns/op
+# Warmup Iteration   2: 110.328 ns/op
+# Warmup Iteration   3: 113.481 ns/op
+Iteration   1: 107.434 ns/op
+Iteration   2: 112.673 ns/op
+Iteration   3: 109.004 ns/op
+Iteration   4: 105.425 ns/op
+Iteration   5: 108.943 ns/op
+
+# Run progress: 55.00% complete, ETA 00:01:13
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+113.430 ns/op
+# Warmup Iteration   2: 115.455 ns/op
+# Warmup Iteration   3: 112.911 ns/op
+Iteration   1: 108.226 ns/op
+Iteration   2: 108.909 ns/op
+Iteration   3: 109.397 ns/op
+Iteration   4: 110.364 ns/op
+Iteration   5: 110.006 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.miss":
+  109.038 ±(99.9%) 2.866 ns/op [Average]
+  (min, avg, max) = (105.425, 109.038, 112.673), stdev = 1.896
+  CI (99.9%): [106.172, 111.904] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.overwrite
+# Parameters: (implementation = candidate, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 60.00% complete, ETA 00:01:05
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+124.287 ns/op
+# Warmup Iteration   2: 126.136 ns/op
+# Warmup Iteration   3: 124.529 ns/op
+Iteration   1: 122.288 ns/op
+Iteration   2: 121.116 ns/op
+Iteration   3: 122.273 ns/op
+Iteration   4: 122.610 ns/op
+Iteration   5: 120.399 ns/op
+
+# Run progress: 65.00% complete, ETA 00:00:57
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+121.017 ns/op
+# Warmup Iteration   2: 121.271 ns/op
+# Warmup Iteration   3: 121.551 ns/op
+Iteration   1: 119.986 ns/op
+Iteration   2: 118.307 ns/op
+Iteration   3: 120.796 ns/op
+Iteration   4: 121.032 ns/op
+Iteration   5: 120.182 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.overwrite":
+  120.899 ±(99.9%) 1.960 ns/op [Average]
+  (min, avg, max) = (118.307, 120.899, 122.610), stdev = 1.297
+  CI (99.9%): [118.939, 122.859] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.overwrite
+# Parameters: (implementation = baseline, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 70.00% complete, ETA 00:00:49
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+123.594 ns/op
+# Warmup Iteration   2: 123.700 ns/op
+# Warmup Iteration   3: 125.269 ns/op
+Iteration   1: 120.865 ns/op
+Iteration   2: 120.180 ns/op
+Iteration   3: 122.771 ns/op
+Iteration   4: 120.145 ns/op
+Iteration   5: 120.597 ns/op
+
+# Run progress: 75.00% complete, ETA 00:00:41
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+125.995 ns/op
+# Warmup Iteration   2: 125.372 ns/op
+# Warmup Iteration   3: 121.343 ns/op
+Iteration   1: 119.818 ns/op
+Iteration   2: 119.833 ns/op
+Iteration   3: 122.563 ns/op
+Iteration   4: 122.051 ns/op
+Iteration   5: 121.627 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.overwrite":
+  121.045 ±(99.9%) 1.702 ns/op [Average]
+  (min, avg, max) = (119.818, 121.045, 122.771), stdev = 1.126
+  CI (99.9%): [119.343, 122.747] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.range
+# Parameters: (implementation = candidate, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 80.00% complete, ETA 00:00:32
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+324.109 ns/op
+# Warmup Iteration   2: 327.503 ns/op
+# Warmup Iteration   3: 325.471 ns/op
+Iteration   1: 323.387 ns/op
+Iteration   2: 324.488 ns/op
+Iteration   3: 329.158 ns/op
+Iteration   4: 321.489 ns/op
+Iteration   5: 325.116 ns/op
+
+# Run progress: 85.00% complete, ETA 00:00:24
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+327.505 ns/op
+# Warmup Iteration   2: 326.667 ns/op
+# Warmup Iteration   3: 327.867 ns/op
+Iteration   1: 332.785 ns/op
+Iteration   2: 326.766 ns/op
+Iteration   3: 326.090 ns/op
+Iteration   4: 323.079 ns/op
+Iteration   5: 327.274 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.range":
+  325.963 ±(99.9%) 4.963 ns/op [Average]
+  (min, avg, max) = (321.489, 325.963, 332.785), stdev = 3.283
+  CI (99.9%): [321.000, 330.926] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.range
+# Parameters: (implementation = baseline, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 90.00% complete, ETA 00:00:16
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+394.209 ns/op
+# Warmup Iteration   2: 384.284 ns/op
+# Warmup Iteration   3: 387.857 ns/op
+Iteration   1: 392.290 ns/op
+Iteration   2: 389.733 ns/op
+Iteration   3: 380.362 ns/op
+Iteration   4: 381.875 ns/op
+Iteration   5: 383.307 ns/op
+
+# Run progress: 95.00% complete, ETA 00:00:08
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+string-class candidate node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+string-class baseline tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e
+string-class baseline node source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes module=null sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938
+390.937 ns/op
+# Warmup Iteration   2: 383.065 ns/op
+# Warmup Iteration   3: 381.477 ns/op
+Iteration   1: 380.486 ns/op
+Iteration   2: 387.114 ns/op
+Iteration   3: 381.936 ns/op
+Iteration   4: 380.179 ns/op
+Iteration   5: 384.242 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.range":
+  384.152 ±(99.9%) 6.386 ns/op [Average]
+  (min, avg, max) = (380.179, 384.152, 392.290), stdev = 4.224
+  CI (99.9%): [377.767, 390.538] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:02:44
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                              (implementation)  (rangeWidth)  (shape)  (size)  (valueType)  Mode  Cnt    Score    Error  Units
+StringCoveredRangeBenchmark.churn             candidate            64    short   16384       string  avgt   10  273.947 ±  9.844  ns/op
+StringCoveredRangeBenchmark.churn              baseline            64    short   16384       string  avgt   10  273.845 ± 11.806  ns/op
+StringCoveredRangeBenchmark.hit               candidate            64    short   16384       string  avgt   10  100.928 ±  2.764  ns/op
+StringCoveredRangeBenchmark.hit                baseline            64    short   16384       string  avgt   10  100.799 ±  3.947  ns/op
+StringCoveredRangeBenchmark.miss              candidate            64    short   16384       string  avgt   10  108.356 ±  2.845  ns/op
+StringCoveredRangeBenchmark.miss               baseline            64    short   16384       string  avgt   10  109.038 ±  2.866  ns/op
+StringCoveredRangeBenchmark.overwrite         candidate            64    short   16384       string  avgt   10  120.899 ±  1.960  ns/op
+StringCoveredRangeBenchmark.overwrite          baseline            64    short   16384       string  avgt   10  121.045 ±  1.702  ns/op
+StringCoveredRangeBenchmark.range             candidate            64    short   16384       string  avgt   10  325.963 ±  4.963  ns/op
+StringCoveredRangeBenchmark.range              baseline            64    short   16384       string  avgt   10  384.152 ±  6.386  ns/op
+
+Benchmark result is saved to /tmp/string-covered-confirm-short16.json

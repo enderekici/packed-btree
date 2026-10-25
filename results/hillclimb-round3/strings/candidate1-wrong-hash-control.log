@@ -1,0 +1,80 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.tree.sha256=0000000000000000000000000000000000000000000000000000000000000000 -Dcovered.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes -Dcovered.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dcovered.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.tree.sha256=c2983747a4670371bdc94ca0cda888879dfd1027cc95442e5e21eb5d384a434e -Dcovered.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/simd/target/test-classes -Dcovered.expected.baseline.node.sha256=9e94dd030a7ba75328e9340be2daf6a7fedb8579af9eac0177cf99ec56daa938 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: <none>
+# Measurement: 1 iterations, 100 ms each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.hit
+# Parameters: (implementation = candidate, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 0.00% complete, ETA 00:00:00
+# Fork: 1 of 1
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+Iteration   1: string-class candidate tree source=/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes module=null sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+<failure>
+
+java.lang.IllegalStateException: Cannot verify covered.expected.candidate.tree
+	at bench.StringCoveredRangeBenchmark.verify(StringCoveredRangeBenchmark.java:274)
+	at bench.StringCoveredRangeBenchmark.verifyProductionClasses(StringCoveredRangeBenchmark.java:246)
+	at bench.StringCoveredRangeBenchmark.setup(StringCoveredRangeBenchmark.java:64)
+	at bench.jmh_generated.StringCoveredRangeBenchmark_hit_jmhTest._jmh_tryInit_f_stringcoveredrangebenchmark0_0(StringCoveredRangeBenchmark_hit_jmhTest.java:360)
+	at bench.jmh_generated.StringCoveredRangeBenchmark_hit_jmhTest.hit_AverageTime(StringCoveredRangeBenchmark_hit_jmhTest.java:141)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:527)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:504)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: java.lang.IllegalStateException: Unexpected loaded class for covered.expected.candidate.tree: /Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+	at bench.StringCoveredRangeBenchmark.verify(StringCoveredRangeBenchmark.java:272)
+	... 14 more
+
+
+Benchmark had encountered error, and fail on error was requested
+ERROR: org.openjdk.jmh.runner.RunnerException: Benchmark caught the exception
+	at org.openjdk.jmh.runner.Runner.runBenchmarks(Runner.java:572)
+	at org.openjdk.jmh.runner.Runner.internalRun(Runner.java:309)
+	at org.openjdk.jmh.runner.Runner.run(Runner.java:208)
+	at org.openjdk.jmh.Main.main(Main.java:71)
+Caused by: org.openjdk.jmh.runner.BenchmarkException: Benchmark error during the run
+	at org.openjdk.jmh.runner.BenchmarkHandler.runIteration(BenchmarkHandler.java:440)
+	at org.openjdk.jmh.runner.BaseRunner.runBenchmark(BaseRunner.java:283)
+	at org.openjdk.jmh.runner.BaseRunner.runBenchmark(BaseRunner.java:233)
+	at org.openjdk.jmh.runner.BaseRunner.doSingle(BaseRunner.java:138)
+	at org.openjdk.jmh.runner.BaseRunner.runBenchmarksForked(BaseRunner.java:75)
+	at org.openjdk.jmh.runner.ForkedRunner.run(ForkedRunner.java:72)
+	at org.openjdk.jmh.runner.ForkedMain.main(ForkedMain.java:86)
+	Suppressed: java.lang.IllegalStateException: Cannot verify covered.expected.candidate.tree
+		at bench.StringCoveredRangeBenchmark.verify(StringCoveredRangeBenchmark.java:274)
+		at bench.StringCoveredRangeBenchmark.verifyProductionClasses(StringCoveredRangeBenchmark.java:246)
+		at bench.StringCoveredRangeBenchmark.setup(StringCoveredRangeBenchmark.java:64)
+		at bench.jmh_generated.StringCoveredRangeBenchmark_hit_jmhTest._jmh_tryInit_f_stringcoveredrangebenchmark0_0(StringCoveredRangeBenchmark_hit_jmhTest.java:360)
+		at bench.jmh_generated.StringCoveredRangeBenchmark_hit_jmhTest.hit_AverageTime(StringCoveredRangeBenchmark_hit_jmhTest.java:141)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:527)
+		at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:504)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+		at java.base/java.lang.Thread.run(Thread.java:1474)
+	Caused by: java.lang.IllegalStateException: Unexpected loaded class for covered.expected.candidate.tree: /Users/ender/code/evamcep/.packed-btree-worktrees/string-covered/library/target/classes b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+		at bench.StringCoveredRangeBenchmark.verify(StringCoveredRangeBenchmark.java:272)
+		... 14 more
