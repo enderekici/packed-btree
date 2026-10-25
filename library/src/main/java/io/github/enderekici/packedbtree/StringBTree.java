@@ -12,9 +12,11 @@ import java.util.Objects;
  * @param <V> value type
  */
 public final class StringBTree<V> {
-  /** Receives a key/value pair during an ordered range traversal. */
+  /**
+   * Receives a key/value pair during an ordered range traversal.
+   * @param <V> value type
+   */
   @FunctionalInterface
-  /** @param <V> value type */
   public interface EntryConsumer<V> {
     /** Receives an entry. Do not mutate the tree from this callback.
      * @param key entry key

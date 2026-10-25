@@ -27,6 +27,7 @@ public class OrderedStringRangeBenchmark {
   private String[] keys;
   private Object[] values;
   private long[] expectedChecksums;
+  private int[] rangeStarts;
   private int cursor;
   private final Accumulator accumulator = new Accumulator();
 
@@ -50,6 +51,7 @@ public class OrderedStringRangeBenchmark {
           for (Map.Entry<String, Object> entry : jdk.subMap(from, true, to, false).entrySet())
             visitor.accept(entry.getKey(), entry.getValue());
         };
+    rangeStarts = permutation(size - 64, 50117);
     for (int start = 0; start < size - 64; start++) {
       expectedChecksums[start] = checksum(oracle.subMap(keys[start], true, keys[start + 64], false));
       accumulator.reset(); range.run(keys[start], keys[start + 64], accumulator);
@@ -71,11 +73,18 @@ public class OrderedStringRangeBenchmark {
   private static int mix(int value) { value ^= value >>> 16; value *= 0x7feb352d; value ^= value >>> 15; value *= 0x846ca68b; return value ^ (value >>> 16); }
   private Object value(int i) { return valueType.equals("string") ? "v" + Integer.toString(i, 36) : Long.valueOf(i * 31L); }
   private static long payload(Object value) { return value instanceof String s ? s.hashCode() : ((Long) value).longValue(); }
+  private static int[] permutation(int length, long seed) {
+    int[] ranks = new int[length]; for (int i = 0; i < length; i++) ranks[i] = i;
+    java.util.Random random = new java.util.Random(seed);
+    for (int i = length - 1; i > 0; i--) { int j = random.nextInt(i + 1); int t = ranks[i]; ranks[i] = ranks[j]; ranks[j] = t; }
+    return ranks;
+  }
   private static long checksum(Map<String, Object> values) { long sum = 0; for (Object value : values.values()) sum += payload(value); return sum; }
 
   @Benchmark
   public long range64() {
-    int start = cursor++ % (size - 64);
+    int start = rangeStarts[cursor++];
+    if (cursor == rangeStarts.length) cursor = 0;
     accumulator.reset();
     range.run(keys[start], keys[start + 64], accumulator);
     return accumulator.checksum;
@@ -84,6 +93,7 @@ public class OrderedStringRangeBenchmark {
   @TearDown(Level.Trial)
   public void check() {
     btree.validate();
+    rangeStarts = permutation(size - 64, 50117);
     for (int start = 0; start < size - 64; start++) {
       accumulator.reset(); range.run(keys[start], keys[start + 64], accumulator);
       if (accumulator.count != 64 || accumulator.checksum != expectedChecksums[start])
