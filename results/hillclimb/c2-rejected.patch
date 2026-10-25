@@ -1,0 +1,22 @@
+diff --git a/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java b/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
+index 609d577..3802734 100644
+--- a/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
++++ b/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
+@@ -79,14 +79,9 @@ public class LongBTree {
+     void validateRoutes() {}
+ 
+     int index(long key) {
+-      int low = 0;
+-      int high = count;
+-      while (low < high) {
+-        int middle = (low + high) >>> 1;
+-        if (keys[middle] < key) low = middle + 1;
+-        else high = middle;
+-      }
+-      return low;
++      int index = 0;
++      while (index < count && keys[index] < key) index++;
++      return index;
+     }
+ 
+     int index(SearchStrategy strategy, long key) {

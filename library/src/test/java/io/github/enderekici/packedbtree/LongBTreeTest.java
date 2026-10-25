@@ -32,6 +32,49 @@ public final class LongBTreeTest {
   }
 
   @Test
+  void compressedRoutingPreservesPrefixAndFullWidthSemantics() {
+    LongBTree actual = new CompressedLongBTree();
+    TreeMap<Long, Long> expected = new TreeMap<>();
+    long[] prefixes = {Long.MIN_VALUE, -0x100000000L, -65536, 0, 65536, 0x100000000L,
+        Long.MAX_VALUE & ~0xffffL};
+    for (long prefix : prefixes) {
+      for (int suffix = 0; suffix < 65536; suffix++) {
+        long key = prefix | suffix;
+        actual.put(key, ~key);
+        expected.put(key, ~key);
+      }
+    }
+    compare(actual, expected);
+    for (long prefix : prefixes) {
+      for (int suffix = 0; suffix < 65536; suffix += 3) {
+        long key = prefix | suffix;
+        actual.put(key, key ^ 0x55aa55aa55aa55aaL);
+        expected.put(key, key ^ 0x55aa55aa55aa55aaL);
+      }
+      for (int suffix = 0; suffix < 65536; suffix += 2) {
+        long key = prefix | suffix;
+        if (actual.remove(key) != (expected.remove(key) != null)) {
+          throw new AssertionError("Compressed deletion at " + key);
+        }
+      }
+      compare(actual, expected);
+    }
+    Random random = new Random(77219);
+    for (int i = 0; i < 100000; i++) {
+      long key = random.nextLong();
+      if (random.nextBoolean()) {
+        long value = random.nextLong();
+        actual.put(key, value);
+        expected.put(key, value);
+      } else if (actual.remove(key) != (expected.remove(key) != null)) {
+        throw new AssertionError("Compressed full-width deletion");
+      }
+      if (i % 1000 == 0) compare(actual, expected);
+    }
+    compare(actual, expected);
+  }
+
+  @Test
   void oracleDetectsKnownMismatch() {
     positiveControl();
   }

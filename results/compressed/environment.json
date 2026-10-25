@@ -1,0 +1,37 @@
+{
+  "startedUtc": "2026-10-25T14:42:21Z",
+  "elapsed": "00:01:42",
+  "commit": "48c4f75aa70e577a0081e5499343eb04820b23c2",
+  "jdk": "Zulu OpenJDK 25.0.3+9-LTS",
+  "host": "Apple M4 Pro",
+  "os": "Darwin 27.0.0 arm64",
+  "heap": {
+    "initial": "1g",
+    "maximum": "1g",
+    "collector": "G1"
+  },
+  "jmh": {
+    "version": "1.37",
+    "threads": 1,
+    "forks": 2,
+    "warmupIterations": 3,
+    "warmupSeconds": 1,
+    "measurementIterations": 5,
+    "measurementSeconds": 1,
+    "operation": "bench.RoutingBenchmark.hit",
+    "size": 1048576,
+    "distributions": ["sequential", "fullWidth", "commonPrefix"],
+    "searchModes": ["scalar", "compressed"]
+  },
+  "fixture": {
+    "seed": 62419,
+    "keyGenerator": "RoutingKeys.create",
+    "buildOrder": "shuffled",
+    "lookupOrder": "shuffled"
+  },
+  "sourceSha256": {
+    "benchmarks/src/main/java/bench/RoutingBenchmark.java": "cfbb6bdbf3f9ad43cdf43e9fcd3091a9e5aca7787476a05922bb6224758b59a3",
+    "benchmarks/src/main/java/bench/RoutingKeys.java": "c05de77d9560b2909a1fd529c6cd38906557173759d7f7eb25b5e2c768eaeac2"
+  },
+  "command": "java -jar benchmarks/target/benchmarks.jar bench.RoutingBenchmark.hit -p size=1048576 -wi 3 -i 5 -w 1s -r 1s -f 2 -t 1 -rf json -rff results/compressed/routing-jmh.json"
+}

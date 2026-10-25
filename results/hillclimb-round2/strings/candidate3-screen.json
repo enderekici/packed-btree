@@ -1,0 +1,3722 @@
+[
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 288.47620395848037,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 285.9032770554106,
+                "50.0" : 288.47620395848037,
+                "90.0" : 291.04913086155005,
+                "95.0" : 291.04913086155005,
+                "99.0" : 291.04913086155005,
+                "99.9" : 291.04913086155005,
+                "99.99" : 291.04913086155005,
+                "99.999" : 291.04913086155005,
+                "99.9999" : 291.04913086155005,
+                "100.0" : 291.04913086155005
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    285.9032770554106,
+                    291.04913086155005
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 604.3809932377121,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 589.9590907544152,
+                "50.0" : 604.3809932377121,
+                "90.0" : 618.8028957210089,
+                "95.0" : 618.8028957210089,
+                "99.0" : 618.8028957210089,
+                "99.9" : 618.8028957210089,
+                "99.99" : 618.8028957210089,
+                "99.999" : 618.8028957210089,
+                "99.9999" : 618.8028957210089,
+                "100.0" : 618.8028957210089
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    618.8028957210089,
+                    589.9590907544152
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 307.15523468910385,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 304.1500621667238,
+                "50.0" : 307.15523468910385,
+                "90.0" : 310.16040721148397,
+                "95.0" : 310.16040721148397,
+                "99.0" : 310.16040721148397,
+                "99.9" : 310.16040721148397,
+                "99.99" : 310.16040721148397,
+                "99.999" : 310.16040721148397,
+                "99.9999" : 310.16040721148397,
+                "100.0" : 310.16040721148397
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    310.16040721148397,
+                    304.1500621667238
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 616.6493922915148,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 604.9267185232052,
+                "50.0" : 616.6493922915148,
+                "90.0" : 628.3720660598244,
+                "95.0" : 628.3720660598244,
+                "99.0" : 628.3720660598244,
+                "99.9" : 628.3720660598244,
+                "99.99" : 628.3720660598244,
+                "99.999" : 628.3720660598244,
+                "99.9999" : 628.3720660598244,
+                "100.0" : 628.3720660598244
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    628.3720660598244,
+                    604.9267185232052
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 329.2205660270065,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 328.86481762533515,
+                "50.0" : 329.2205660270065,
+                "90.0" : 329.5763144286779,
+                "95.0" : 329.5763144286779,
+                "99.0" : 329.5763144286779,
+                "99.9" : 329.5763144286779,
+                "99.99" : 329.5763144286779,
+                "99.999" : 329.5763144286779,
+                "99.9999" : 329.5763144286779,
+                "100.0" : 329.5763144286779
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    329.5763144286779,
+                    328.86481762533515
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 806.420555034291,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 788.0718389759628,
+                "50.0" : 806.420555034291,
+                "90.0" : 824.7692710926193,
+                "95.0" : 824.7692710926193,
+                "99.0" : 824.7692710926193,
+                "99.9" : 824.7692710926193,
+                "99.99" : 824.7692710926193,
+                "99.999" : 824.7692710926193,
+                "99.9999" : 824.7692710926193,
+                "100.0" : 824.7692710926193
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    788.0718389759628,
+                    824.7692710926193
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 265.0322827031432,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 264.61140671851695,
+                "50.0" : 265.0322827031432,
+                "90.0" : 265.45315868776953,
+                "95.0" : 265.45315868776953,
+                "99.0" : 265.45315868776953,
+                "99.9" : 265.45315868776953,
+                "99.99" : 265.45315868776953,
+                "99.999" : 265.45315868776953,
+                "99.9999" : 265.45315868776953,
+                "100.0" : 265.45315868776953
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    265.45315868776953,
+                    264.61140671851695
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 557.4005233937078,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 549.6417704644775,
+                "50.0" : 557.4005233937078,
+                "90.0" : 565.1592763229381,
+                "95.0" : 565.1592763229381,
+                "99.0" : 565.1592763229381,
+                "99.9" : 565.1592763229381,
+                "99.99" : 565.1592763229381,
+                "99.999" : 565.1592763229381,
+                "99.9999" : 565.1592763229381,
+                "100.0" : 565.1592763229381
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    565.1592763229381,
+                    549.6417704644775
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 290.30608664578705,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 290.1685167310167,
+                "50.0" : 290.30608664578705,
+                "90.0" : 290.4436565605574,
+                "95.0" : 290.4436565605574,
+                "99.0" : 290.4436565605574,
+                "99.9" : 290.4436565605574,
+                "99.99" : 290.4436565605574,
+                "99.999" : 290.4436565605574,
+                "99.9999" : 290.4436565605574,
+                "100.0" : 290.4436565605574
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    290.4436565605574,
+                    290.1685167310167
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 557.343820752579,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 547.9585748570875,
+                "50.0" : 557.343820752579,
+                "90.0" : 566.7290666480703,
+                "95.0" : 566.7290666480703,
+                "99.0" : 566.7290666480703,
+                "99.9" : 566.7290666480703,
+                "99.99" : 566.7290666480703,
+                "99.999" : 566.7290666480703,
+                "99.9999" : 566.7290666480703,
+                "100.0" : 566.7290666480703
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    566.7290666480703,
+                    547.9585748570875
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 314.7461108569062,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 314.43018272923376,
+                "50.0" : 314.7461108569062,
+                "90.0" : 315.0620389845787,
+                "95.0" : 315.0620389845787,
+                "99.0" : 315.0620389845787,
+                "99.9" : 315.0620389845787,
+                "99.99" : 315.0620389845787,
+                "99.999" : 315.0620389845787,
+                "99.9999" : 315.0620389845787,
+                "100.0" : 315.0620389845787
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    315.0620389845787,
+                    314.43018272923376
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.churn",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 754.4971435458439,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 741.4316896890904,
+                "50.0" : 754.4971435458439,
+                "90.0" : 767.5625974025974,
+                "95.0" : 767.5625974025974,
+                "99.0" : 767.5625974025974,
+                "99.9" : 767.5625974025974,
+                "99.99" : 767.5625974025974,
+                "99.999" : 767.5625974025974,
+                "99.9999" : 767.5625974025974,
+                "100.0" : 767.5625974025974
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    741.4316896890904,
+                    767.5625974025974
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 118.12779940265057,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 114.5249883392595,
+                "50.0" : 118.12779940265057,
+                "90.0" : 121.73061046604164,
+                "95.0" : 121.73061046604164,
+                "99.0" : 121.73061046604164,
+                "99.9" : 121.73061046604164,
+                "99.99" : 121.73061046604164,
+                "99.999" : 121.73061046604164,
+                "99.9999" : 121.73061046604164,
+                "100.0" : 121.73061046604164
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    121.73061046604164,
+                    114.5249883392595
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 351.97413158162647,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 346.36271698434876,
+                "50.0" : 351.97413158162647,
+                "90.0" : 357.5855461789042,
+                "95.0" : 357.5855461789042,
+                "99.0" : 357.5855461789042,
+                "99.9" : 357.5855461789042,
+                "99.99" : 357.5855461789042,
+                "99.999" : 357.5855461789042,
+                "99.9999" : 357.5855461789042,
+                "100.0" : 357.5855461789042
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    346.36271698434876,
+                    357.5855461789042
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 114.83832259631035,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 113.60046169298204,
+                "50.0" : 114.83832259631035,
+                "90.0" : 116.07618349963865,
+                "95.0" : 116.07618349963865,
+                "99.0" : 116.07618349963865,
+                "99.9" : 116.07618349963865,
+                "99.99" : 116.07618349963865,
+                "99.999" : 116.07618349963865,
+                "99.9999" : 116.07618349963865,
+                "100.0" : 116.07618349963865
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    116.07618349963865,
+                    113.60046169298204
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 321.305340424297,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 321.1674088948827,
+                "50.0" : 321.305340424297,
+                "90.0" : 321.44327195371125,
+                "95.0" : 321.44327195371125,
+                "99.0" : 321.44327195371125,
+                "99.9" : 321.44327195371125,
+                "99.99" : 321.44327195371125,
+                "99.999" : 321.44327195371125,
+                "99.9999" : 321.44327195371125,
+                "100.0" : 321.44327195371125
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    321.44327195371125,
+                    321.1674088948827
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 159.20278340118745,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 152.93465139352608,
+                "50.0" : 159.20278340118745,
+                "90.0" : 165.47091540884884,
+                "95.0" : 165.47091540884884,
+                "99.0" : 165.47091540884884,
+                "99.9" : 165.47091540884884,
+                "99.99" : 165.47091540884884,
+                "99.999" : 165.47091540884884,
+                "99.9999" : 165.47091540884884,
+                "100.0" : 165.47091540884884
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    165.47091540884884,
+                    152.93465139352608
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 450.4620245300391,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 449.1338084966383,
+                "50.0" : 450.4620245300391,
+                "90.0" : 451.79024056343997,
+                "95.0" : 451.79024056343997,
+                "99.0" : 451.79024056343997,
+                "99.9" : 451.79024056343997,
+                "99.99" : 451.79024056343997,
+                "99.999" : 451.79024056343997,
+                "99.9999" : 451.79024056343997,
+                "100.0" : 451.79024056343997
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    449.1338084966383,
+                    451.79024056343997
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 96.18737673651438,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 94.63088931595922,
+                "50.0" : 96.18737673651438,
+                "90.0" : 97.74386415706955,
+                "95.0" : 97.74386415706955,
+                "99.0" : 97.74386415706955,
+                "99.9" : 97.74386415706955,
+                "99.99" : 97.74386415706955,
+                "99.999" : 97.74386415706955,
+                "99.9999" : 97.74386415706955,
+                "100.0" : 97.74386415706955
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    94.63088931595922,
+                    97.74386415706955
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 312.5416043701774,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 310.8932399360614,
+                "50.0" : 312.5416043701774,
+                "90.0" : 314.18996880429347,
+                "95.0" : 314.18996880429347,
+                "99.0" : 314.18996880429347,
+                "99.9" : 314.18996880429347,
+                "99.99" : 314.18996880429347,
+                "99.999" : 314.18996880429347,
+                "99.9999" : 314.18996880429347,
+                "100.0" : 314.18996880429347
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    314.18996880429347,
+                    310.8932399360614
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 94.76016686619104,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 93.62872899889607,
+                "50.0" : 94.76016686619104,
+                "90.0" : 95.89160473348603,
+                "95.0" : 95.89160473348603,
+                "99.0" : 95.89160473348603,
+                "99.9" : 95.89160473348603,
+                "99.99" : 95.89160473348603,
+                "99.999" : 95.89160473348603,
+                "99.9999" : 95.89160473348603,
+                "100.0" : 95.89160473348603
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    93.62872899889607,
+                    95.89160473348603
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 303.16149117837,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 296.87726074117404,
+                "50.0" : 303.16149117837,
+                "90.0" : 309.44572161556596,
+                "95.0" : 309.44572161556596,
+                "99.0" : 309.44572161556596,
+                "99.9" : 309.44572161556596,
+                "99.99" : 309.44572161556596,
+                "99.999" : 309.44572161556596,
+                "99.9999" : 309.44572161556596,
+                "100.0" : 309.44572161556596
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    309.44572161556596,
+                    296.87726074117404
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 136.49519561150507,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 134.9241377986399,
+                "50.0" : 136.49519561150507,
+                "90.0" : 138.06625342437025,
+                "95.0" : 138.06625342437025,
+                "99.0" : 138.06625342437025,
+                "99.9" : 138.06625342437025,
+                "99.99" : 138.06625342437025,
+                "99.999" : 138.06625342437025,
+                "99.9999" : 138.06625342437025,
+                "100.0" : 138.06625342437025
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    138.06625342437025,
+                    134.9241377986399
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.hit",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 442.0104917574597,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 438.97847580110164,
+                "50.0" : 442.0104917574597,
+                "90.0" : 445.04250771381777,
+                "95.0" : 445.04250771381777,
+                "99.0" : 445.04250771381777,
+                "99.9" : 445.04250771381777,
+                "99.99" : 445.04250771381777,
+                "99.999" : 445.04250771381777,
+                "99.9999" : 445.04250771381777,
+                "100.0" : 445.04250771381777
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    438.97847580110164,
+                    445.04250771381777
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 115.04388277612777,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 113.31817803495613,
+                "50.0" : 115.04388277612777,
+                "90.0" : 116.76958751729941,
+                "95.0" : 116.76958751729941,
+                "99.0" : 116.76958751729941,
+                "99.9" : 116.76958751729941,
+                "99.99" : 116.76958751729941,
+                "99.999" : 116.76958751729941,
+                "99.9999" : 116.76958751729941,
+                "100.0" : 116.76958751729941
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    116.76958751729941,
+                    113.31817803495613
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 330.1912988088194,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 328.3064988768634,
+                "50.0" : 330.1912988088194,
+                "90.0" : 332.0760987407755,
+                "95.0" : 332.0760987407755,
+                "99.0" : 332.0760987407755,
+                "99.9" : 332.0760987407755,
+                "99.99" : 332.0760987407755,
+                "99.999" : 332.0760987407755,
+                "99.9999" : 332.0760987407755,
+                "100.0" : 332.0760987407755
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    332.0760987407755,
+                    328.3064988768634
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 116.03266662973105,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 115.06667854758928,
+                "50.0" : 116.03266662973105,
+                "90.0" : 116.99865471187283,
+                "95.0" : 116.99865471187283,
+                "99.0" : 116.99865471187283,
+                "99.9" : 116.99865471187283,
+                "99.99" : 116.99865471187283,
+                "99.999" : 116.99865471187283,
+                "99.9999" : 116.99865471187283,
+                "100.0" : 116.99865471187283
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    116.99865471187283,
+                    115.06667854758928
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 320.26444071703924,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 318.8129482467346,
+                "50.0" : 320.26444071703924,
+                "90.0" : 321.71593318734386,
+                "95.0" : 321.71593318734386,
+                "99.0" : 321.71593318734386,
+                "99.9" : 321.71593318734386,
+                "99.99" : 321.71593318734386,
+                "99.999" : 321.71593318734386,
+                "99.9999" : 321.71593318734386,
+                "100.0" : 321.71593318734386
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    321.71593318734386,
+                    318.8129482467346
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 157.4668551179402,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 157.33109849346425,
+                "50.0" : 157.4668551179402,
+                "90.0" : 157.6026117424162,
+                "95.0" : 157.6026117424162,
+                "99.0" : 157.6026117424162,
+                "99.9" : 157.6026117424162,
+                "99.99" : 157.6026117424162,
+                "99.999" : 157.6026117424162,
+                "99.9999" : 157.6026117424162,
+                "100.0" : 157.6026117424162
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    157.33109849346425,
+                    157.6026117424162
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 415.4337048947575,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 412.22341020808335,
+                "50.0" : 415.4337048947575,
+                "90.0" : 418.6439995814317,
+                "95.0" : 418.6439995814317,
+                "99.0" : 418.6439995814317,
+                "99.9" : 418.6439995814317,
+                "99.99" : 418.6439995814317,
+                "99.999" : 418.6439995814317,
+                "99.9999" : 418.6439995814317,
+                "100.0" : 418.6439995814317
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    412.22341020808335,
+                    418.6439995814317
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 104.10604717525906,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 102.69811045036313,
+                "50.0" : 104.10604717525906,
+                "90.0" : 105.513983900155,
+                "95.0" : 105.513983900155,
+                "99.0" : 105.513983900155,
+                "99.9" : 105.513983900155,
+                "99.99" : 105.513983900155,
+                "99.999" : 105.513983900155,
+                "99.9999" : 105.513983900155,
+                "100.0" : 105.513983900155
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    105.513983900155,
+                    102.69811045036313
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 331.8148870047965,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 328.7142423445919,
+                "50.0" : 331.8148870047965,
+                "90.0" : 334.9155316650011,
+                "95.0" : 334.9155316650011,
+                "99.0" : 334.9155316650011,
+                "99.9" : 334.9155316650011,
+                "99.99" : 334.9155316650011,
+                "99.999" : 334.9155316650011,
+                "99.9999" : 334.9155316650011,
+                "100.0" : 334.9155316650011
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    328.7142423445919,
+                    334.9155316650011
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 105.30541772217335,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 104.95272679868135,
+                "50.0" : 105.30541772217335,
+                "90.0" : 105.65810864566534,
+                "95.0" : 105.65810864566534,
+                "99.0" : 105.65810864566534,
+                "99.9" : 105.65810864566534,
+                "99.99" : 105.65810864566534,
+                "99.999" : 105.65810864566534,
+                "99.9999" : 105.65810864566534,
+                "100.0" : 105.65810864566534
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    104.95272679868135,
+                    105.65810864566534
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 305.6290047511504,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 303.102167023894,
+                "50.0" : 305.6290047511504,
+                "90.0" : 308.1558424784067,
+                "95.0" : 308.1558424784067,
+                "99.0" : 308.1558424784067,
+                "99.9" : 308.1558424784067,
+                "99.99" : 308.1558424784067,
+                "99.999" : 308.1558424784067,
+                "99.9999" : 308.1558424784067,
+                "100.0" : 308.1558424784067
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    308.1558424784067,
+                    303.102167023894
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 144.15870405700196,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 142.297183876251,
+                "50.0" : 144.15870405700196,
+                "90.0" : 146.02022423775287,
+                "95.0" : 146.02022423775287,
+                "99.0" : 146.02022423775287,
+                "99.9" : 146.02022423775287,
+                "99.99" : 146.02022423775287,
+                "99.999" : 146.02022423775287,
+                "99.9999" : 146.02022423775287,
+                "100.0" : 146.02022423775287
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    146.02022423775287,
+                    142.297183876251
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.miss",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 398.380899112578,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 397.73275256901036,
+                "50.0" : 398.380899112578,
+                "90.0" : 399.0290456561456,
+                "95.0" : 399.0290456561456,
+                "99.0" : 399.0290456561456,
+                "99.9" : 399.0290456561456,
+                "99.99" : 399.0290456561456,
+                "99.999" : 399.0290456561456,
+                "99.9999" : 399.0290456561456,
+                "100.0" : 399.0290456561456
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    399.0290456561456,
+                    397.73275256901036
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 136.65123212521272,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 133.64459973646723,
+                "50.0" : 136.65123212521272,
+                "90.0" : 139.6578645139582,
+                "95.0" : 139.6578645139582,
+                "99.0" : 139.6578645139582,
+                "99.9" : 139.6578645139582,
+                "99.99" : 139.6578645139582,
+                "99.999" : 139.6578645139582,
+                "99.9999" : 139.6578645139582,
+                "100.0" : 139.6578645139582
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    133.64459973646723,
+                    139.6578645139582
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 352.0950468170646,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 351.57360349130556,
+                "50.0" : 352.0950468170646,
+                "90.0" : 352.61649014282364,
+                "95.0" : 352.61649014282364,
+                "99.0" : 352.61649014282364,
+                "99.9" : 352.61649014282364,
+                "99.99" : 352.61649014282364,
+                "99.999" : 352.61649014282364,
+                "99.9999" : 352.61649014282364,
+                "100.0" : 352.61649014282364
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    352.61649014282364,
+                    351.57360349130556
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 135.40456043008075,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 134.22250342784122,
+                "50.0" : 135.40456043008075,
+                "90.0" : 136.58661743232028,
+                "95.0" : 136.58661743232028,
+                "99.0" : 136.58661743232028,
+                "99.9" : 136.58661743232028,
+                "99.99" : 136.58661743232028,
+                "99.999" : 136.58661743232028,
+                "99.9999" : 136.58661743232028,
+                "100.0" : 136.58661743232028
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    136.58661743232028,
+                    134.22250342784122
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 348.1121201016085,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 343.23052820526357,
+                "50.0" : 348.1121201016085,
+                "90.0" : 352.9937119979535,
+                "95.0" : 352.9937119979535,
+                "99.0" : 352.9937119979535,
+                "99.9" : 352.9937119979535,
+                "99.99" : 352.9937119979535,
+                "99.999" : 352.9937119979535,
+                "99.9999" : 352.9937119979535,
+                "100.0" : 352.9937119979535
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    352.9937119979535,
+                    343.23052820526357
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 172.72315435811794,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 171.20128317389674,
+                "50.0" : 172.72315435811794,
+                "90.0" : 174.24502554233916,
+                "95.0" : 174.24502554233916,
+                "99.0" : 174.24502554233916,
+                "99.9" : 174.24502554233916,
+                "99.99" : 174.24502554233916,
+                "99.999" : 174.24502554233916,
+                "99.9999" : 174.24502554233916,
+                "100.0" : 174.24502554233916
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    171.20128317389674,
+                    174.24502554233916
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 484.7814849913406,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 465.17863537897097,
+                "50.0" : 484.7814849913406,
+                "90.0" : 504.3843346037103,
+                "95.0" : 504.3843346037103,
+                "99.0" : 504.3843346037103,
+                "99.9" : 504.3843346037103,
+                "99.99" : 504.3843346037103,
+                "99.999" : 504.3843346037103,
+                "99.9999" : 504.3843346037103,
+                "100.0" : 504.3843346037103
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    465.17863537897097,
+                    504.3843346037103
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 119.53836640716165,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 118.67162325091932,
+                "50.0" : 119.53836640716165,
+                "90.0" : 120.40510956340398,
+                "95.0" : 120.40510956340398,
+                "99.0" : 120.40510956340398,
+                "99.9" : 120.40510956340398,
+                "99.99" : 120.40510956340398,
+                "99.999" : 120.40510956340398,
+                "99.9999" : 120.40510956340398,
+                "100.0" : 120.40510956340398
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    120.40510956340398,
+                    118.67162325091932
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 336.5662293457791,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 332.21200693191105,
+                "50.0" : 336.5662293457791,
+                "90.0" : 340.9204517596471,
+                "95.0" : 340.9204517596471,
+                "99.0" : 340.9204517596471,
+                "99.9" : 340.9204517596471,
+                "99.99" : 340.9204517596471,
+                "99.999" : 340.9204517596471,
+                "99.9999" : 340.9204517596471,
+                "100.0" : 340.9204517596471
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    332.21200693191105,
+                    340.9204517596471
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 149.9158939920303,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 149.2993681147705,
+                "50.0" : 149.9158939920303,
+                "90.0" : 150.53241986929012,
+                "95.0" : 150.53241986929012,
+                "99.0" : 150.53241986929012,
+                "99.9" : 150.53241986929012,
+                "99.99" : 150.53241986929012,
+                "99.999" : 150.53241986929012,
+                "99.9999" : 150.53241986929012,
+                "100.0" : 150.53241986929012
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    150.53241986929012,
+                    149.2993681147705
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 328.2126039671266,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 315.88161013892517,
+                "50.0" : 328.2126039671266,
+                "90.0" : 340.54359779532797,
+                "95.0" : 340.54359779532797,
+                "99.0" : 340.54359779532797,
+                "99.9" : 340.54359779532797,
+                "99.99" : 340.54359779532797,
+                "99.999" : 340.54359779532797,
+                "99.9999" : 340.54359779532797,
+                "100.0" : 340.54359779532797
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    340.54359779532797,
+                    315.88161013892517
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 156.29394384408056,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 154.4526594638901,
+                "50.0" : 156.29394384408056,
+                "90.0" : 158.135228224271,
+                "95.0" : 158.135228224271,
+                "99.0" : 158.135228224271,
+                "99.9" : 158.135228224271,
+                "99.99" : 158.135228224271,
+                "99.999" : 158.135228224271,
+                "99.9999" : 158.135228224271,
+                "100.0" : 158.135228224271
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    158.135228224271,
+                    154.4526594638901
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.overwrite",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 438.7367707887281,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 435.66024383072704,
+                "50.0" : 438.7367707887281,
+                "90.0" : 441.8132977467292,
+                "95.0" : 441.8132977467292,
+                "99.0" : 441.8132977467292,
+                "99.9" : 441.8132977467292,
+                "99.99" : 441.8132977467292,
+                "99.999" : 441.8132977467292,
+                "99.9999" : 441.8132977467292,
+                "100.0" : 441.8132977467292
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    441.8132977467292,
+                    435.66024383072704
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 427.5918719910235,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 424.43329922029676,
+                "50.0" : 427.5918719910235,
+                "90.0" : 430.75044476175015,
+                "95.0" : 430.75044476175015,
+                "99.0" : 430.75044476175015,
+                "99.9" : 430.75044476175015,
+                "99.99" : 430.75044476175015,
+                "99.999" : 430.75044476175015,
+                "99.9999" : 430.75044476175015,
+                "100.0" : 430.75044476175015
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    430.75044476175015,
+                    424.43329922029676
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 1164.9481067038091,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 1113.8897469834621,
+                "50.0" : 1164.9481067038091,
+                "90.0" : 1216.0064664241563,
+                "95.0" : 1216.0064664241563,
+                "99.0" : 1216.0064664241563,
+                "99.9" : 1216.0064664241563,
+                "99.99" : 1216.0064664241563,
+                "99.999" : 1216.0064664241563,
+                "99.9999" : 1216.0064664241563,
+                "100.0" : 1216.0064664241563
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    1216.0064664241563,
+                    1113.8897469834621
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 418.22115030562435,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 414.1751834467117,
+                "50.0" : 418.22115030562435,
+                "90.0" : 422.267117164537,
+                "95.0" : 422.267117164537,
+                "99.0" : 422.267117164537,
+                "99.9" : 422.267117164537,
+                "99.99" : 422.267117164537,
+                "99.999" : 422.267117164537,
+                "99.9999" : 422.267117164537,
+                "100.0" : 422.267117164537
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    422.267117164537,
+                    414.1751834467117
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 936.4248306599459,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 929.67282997283,
+                "50.0" : 936.4248306599459,
+                "90.0" : 943.1768313470619,
+                "95.0" : 943.1768313470619,
+                "99.0" : 943.1768313470619,
+                "99.9" : 943.1768313470619,
+                "99.99" : 943.1768313470619,
+                "99.999" : 943.1768313470619,
+                "99.9999" : 943.1768313470619,
+                "100.0" : 943.1768313470619
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    943.1768313470619,
+                    929.67282997283
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 530.8514104821561,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 525.8866891271553,
+                "50.0" : 530.8514104821561,
+                "90.0" : 535.8161318371568,
+                "95.0" : 535.8161318371568,
+                "99.0" : 535.8161318371568,
+                "99.9" : 535.8161318371568,
+                "99.99" : 535.8161318371568,
+                "99.999" : 535.8161318371568,
+                "99.9999" : 535.8161318371568,
+                "100.0" : 535.8161318371568
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    535.8161318371568,
+                    525.8866891271553
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 1540.1847462807546,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 1539.4733427262286,
+                "50.0" : 1540.1847462807546,
+                "90.0" : 1540.8961498352808,
+                "95.0" : 1540.8961498352808,
+                "99.0" : 1540.8961498352808,
+                "99.9" : 1540.8961498352808,
+                "99.99" : 1540.8961498352808,
+                "99.999" : 1540.8961498352808,
+                "99.9999" : 1540.8961498352808,
+                "100.0" : 1540.8961498352808
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    1539.4733427262286,
+                    1540.8961498352808
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 380.90350622047526,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 375.8041149658507,
+                "50.0" : 380.90350622047526,
+                "90.0" : 386.0028974750998,
+                "95.0" : 386.0028974750998,
+                "99.0" : 386.0028974750998,
+                "99.9" : 386.0028974750998,
+                "99.99" : 386.0028974750998,
+                "99.999" : 386.0028974750998,
+                "99.9999" : 386.0028974750998,
+                "100.0" : 386.0028974750998
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    375.8041149658507,
+                    386.0028974750998
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "short",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 849.275987767143,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 846.8853077759758,
+                "50.0" : 849.275987767143,
+                "90.0" : 851.6666677583102,
+                "95.0" : 851.6666677583102,
+                "99.0" : 851.6666677583102,
+                "99.9" : 851.6666677583102,
+                "99.99" : 851.6666677583102,
+                "99.999" : 851.6666677583102,
+                "99.9999" : 851.6666677583102,
+                "100.0" : 851.6666677583102
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    851.6666677583102,
+                    846.8853077759758
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 362.95982122147393,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 359.93846902144435,
+                "50.0" : 362.95982122147393,
+                "90.0" : 365.98117342150357,
+                "95.0" : 365.98117342150357,
+                "99.0" : 365.98117342150357,
+                "99.9" : 365.98117342150357,
+                "99.99" : 365.98117342150357,
+                "99.999" : 365.98117342150357,
+                "99.9999" : 365.98117342150357,
+                "100.0" : 365.98117342150357
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    365.98117342150357,
+                    359.93846902144435
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "random",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 836.1739603773433,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 795.4674758202162,
+                "50.0" : 836.1739603773433,
+                "90.0" : 876.8804449344702,
+                "95.0" : 876.8804449344702,
+                "99.0" : 876.8804449344702,
+                "99.9" : 876.8804449344702,
+                "99.99" : 876.8804449344702,
+                "99.999" : 876.8804449344702,
+                "99.9999" : 876.8804449344702,
+                "100.0" : 876.8804449344702
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    876.8804449344702,
+                    795.4674758202162
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "16384",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 431.2101576881762,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 426.03916194133654,
+                "50.0" : 431.2101576881762,
+                "90.0" : 436.38115343501585,
+                "95.0" : 436.38115343501585,
+                "99.0" : 436.38115343501585,
+                "99.9" : 436.38115343501585,
+                "99.99" : 436.38115343501585,
+                "99.999" : 436.38115343501585,
+                "99.9999" : 436.38115343501585,
+                "100.0" : 436.38115343501585
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    436.38115343501585,
+                    426.03916194133654
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.StringTreeHillclimbBenchmark.range64",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dstring.expected.candidate.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.tree.sha256=a2bbd446d6ea76d2ef3d3c88a7ea7407a2d6f5ca7d51d8258eabf2d4768dbfe8",
+            "-Dstring.expected.candidate.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/library/target/classes",
+            "-Dstring.expected.candidate.node.sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dstring.expected.baseline.tree.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.tree.sha256=dc021d2cc18f322bd792e3140b2711b9af8744b696979158df3f2ed1929f60b2",
+            "-Dstring.expected.baseline.node.location=/Users/ender/code/evamcep/.packed-btree-worktrees/strings/simd/target/test-classes",
+            "-Dstring.expected.baseline.node.sha256=33867d8c3f6097e93ef9b5c65415f9292ebc5d41ae01a14badf12223f9331ae8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 1,
+        "warmupTime" : "250 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 2,
+        "measurementTime" : "250 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "shape" : "prefix",
+            "size" : "262144",
+            "valueType" : "string"
+        },
+        "primaryMetric" : {
+            "score" : 1099.2932219314798,
+            "scoreError" : "NaN",
+            "scoreConfidence" : [
+                "NaN",
+                "NaN"
+            ],
+            "scorePercentiles" : {
+                "0.0" : 1043.3859844092901,
+                "50.0" : 1099.2932219314798,
+                "90.0" : 1155.2004594536695,
+                "95.0" : 1155.2004594536695,
+                "99.0" : 1155.2004594536695,
+                "99.9" : 1155.2004594536695,
+                "99.99" : 1155.2004594536695,
+                "99.999" : 1155.2004594536695,
+                "99.9999" : 1155.2004594536695,
+                "100.0" : 1155.2004594536695
+            },
+            "scoreUnit" : "ns/op",
+            "rawData" : [
+                [
+                    1043.3859844092901,
+                    1155.2004594536695
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    }
+]

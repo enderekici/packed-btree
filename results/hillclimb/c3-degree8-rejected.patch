@@ -1,0 +1,13 @@
+diff --git a/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java b/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
+index 609d577..bf60198 100644
+--- a/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
++++ b/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
+@@ -34,7 +34,7 @@ public class LongBTree {
+     int lowerBound(long[] keys, int count, long key);
+   }
+ 
+-  private static final int DEGREE = 16;
++  private static final int DEGREE = 8;
+   private static final int MAX = 2 * DEGREE - 1;
+   private final SearchStrategy searchStrategy;
+   private Node root;

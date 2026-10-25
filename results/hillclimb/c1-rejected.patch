@@ -1,0 +1,30 @@
+diff --git a/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java b/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
+index 609d577..9d83ec4 100644
+--- a/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
++++ b/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
+@@ -180,11 +180,20 @@ public class LongBTree {
+    */
+   public long getOrDefault(long key, long fallback) {
+     Node node = root;
+-    while (true) {
+-      int i = node.index(searchStrategy, key);
+-      if (i < node.count && node.keys[i] == key) return node.values[i];
+-      if (node.children == null) return fallback;
+-      node = node.children[i];
++    if (searchStrategy == null) {
++      while (true) {
++        int i = node.index(key);
++        if (i < node.count && node.keys[i] == key) return node.values[i];
++        if (node.children == null) return fallback;
++        node = node.children[i];
++      }
++    } else {
++      while (true) {
++        int i = node.index(searchStrategy, key);
++        if (i < node.count && node.keys[i] == key) return node.values[i];
++        if (node.children == null) return fallback;
++        node = node.children[i];
++      }
+     }
+   }
+ 

@@ -1,0 +1,614 @@
+{
+  "source": "jdk25-point.json",
+  "rule": "Use the first two of three measured gc.alloc.rate.norm samples in each fork; omit the last measured sample in each fork because trial teardown follows and can contaminate GC profiler totals.",
+  "cases": [
+    {
+      "benchmark": "bench.HashMapBenchmark.churn",
+      "params": {
+        "implementation": "btree",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        2.8693196472100997,
+        0.2814058787107238,
+        2.8998719938097306,
+        0.2825664784098969
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 1.5832909995351125,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        1.432101882995971,
+        1.405280954110406
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.churn",
+      "params": {
+        "implementation": "btree",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        0.14864722041771913,
+        0.11234126528857015,
+        0.14968577321060678,
+        0.11257360418590981
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 0.13081196577570148,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        0.09924036917978195,
+        0.09966862953230449
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.churn",
+      "params": {
+        "implementation": "hashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        104.00009668100337,
+        104.00009694166707,
+        104.00009780841204,
+        104.00009710261904
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 104.00009713342538,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        104.00552424390017,
+        104.00556076062547
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.churn",
+      "params": {
+        "implementation": "hashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        104.00021670657104,
+        104.00021509111608,
+        104.00021500445176,
+        104.00021585441456
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 104.00021566413835,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        104.77770730699245,
+        104.73731049719977
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.churn",
+      "params": {
+        "implementation": "concurrentHashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        104.0001218164906,
+        104.00012202853397,
+        104.0001248157861,
+        104.00012695468233
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 104.00012390387325,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        104.00690796576788,
+        104.00717499966522
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.churn",
+      "params": {
+        "implementation": "concurrentHashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        104.0002645083827,
+        104.00025475863487,
+        104.0002590667842,
+        104.00025756685687
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 104.00025897516467,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        104.90309586201798,
+        104.92513875878875
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.churn",
+      "params": {
+        "implementation": "fastutilOpenHashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        0.00017006287200948173,
+        0.0001734320657307529,
+        0.00016716120912383073,
+        0.00015785932294271697
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 0.00016712886745169557,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        0.00017089862525483733,
+        0.0001663430699873021
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.churn",
+      "params": {
+        "implementation": "fastutilOpenHashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        0.0003453055196643354,
+        0.00034000578419713816,
+        0.00034489435639510505,
+        0.00033926581617250095
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 0.0003423678691072699,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        0.0003488693841000087,
+        0.00036733648200171936
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.hit",
+      "params": {
+        "implementation": "btree",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        0.00042641606072944436,
+        0.00041708608644907565,
+        0.000424721973962116,
+        0.00042430473274954254
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 0.00042313221347254465,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        0.0004348573717518639,
+        0.0004218540400690226
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.hit",
+      "params": {
+        "implementation": "btree",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        0.0009370475399021615,
+        0.0009386848381747569,
+        0.0009242257661732577,
+        0.0009290177362757537
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 0.0009322439701314824,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        0.0009417025578659406,
+        0.0009508984564065358
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.hit",
+      "params": {
+        "implementation": "hashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        24.000030405734133,
+        24.000030712700458,
+        24.000030494833243,
+        24.00003032064658
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 24.000030483478604,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        24.00174988932138,
+        24.001746426248097
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.hit",
+      "params": {
+        "implementation": "hashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        24.000148677056774,
+        24.00014007408491,
+        24.00014489620448,
+        24.000140261769516
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 24.000143477278918,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        24.507305818220022,
+        24.51427813305103
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.hit",
+      "params": {
+        "implementation": "concurrentHashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        24.00003868851508,
+        24.00003864669529,
+        24.00003872800108,
+        24.00003817296619
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 24.00003855904441,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        24.002182186904907,
+        24.002170741970225
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.hit",
+      "params": {
+        "implementation": "concurrentHashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        24.00019232507933,
+        24.000188349565747,
+        24.000187463866368,
+        24.00019267776753
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 24.000190204069742,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        24.6698054825026,
+        24.661043244038428
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.hit",
+      "params": {
+        "implementation": "fastutilOpenHashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        1.8145514709760002e-05,
+        1.8053686433040995e-05,
+        1.8198938088322758e-05,
+        1.8168622523639784e-05
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 1.8141690438690885e-05,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        1.8046394568319854e-05,
+        1.8097761834281586e-05
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.hit",
+      "params": {
+        "implementation": "fastutilOpenHashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        8.687717535792962e-05,
+        8.721376225194506e-05,
+        8.70700535176084e-05,
+        8.566660403214104e-05
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 8.670689878990603e-05,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        8.443489102519349e-05,
+        8.669308138804689e-05
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.miss",
+      "params": {
+        "implementation": "btree",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        8.653099489197653e-05,
+        8.538309063027187e-05,
+        8.591435081480354e-05,
+        8.480716474189133e-05
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 8.565890026973583e-05,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        8.473121171624462e-05,
+        8.512205475106499e-05
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.miss",
+      "params": {
+        "implementation": "btree",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        0.0001224238502743661,
+        0.00012083969087167645,
+        0.00012189870113451121,
+        0.00012339279779155095
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 0.00012213876001802618,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        0.00012460910346758476,
+        0.0001229901066582504
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.miss",
+      "params": {
+        "implementation": "hashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        24.000016667958807,
+        24.00001658490001,
+        24.000016443076643,
+        24.00001660102008
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 24.000016574238884,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        24.000953897288895,
+        24.000947491172678
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.miss",
+      "params": {
+        "implementation": "hashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        24.000017096788753,
+        24.000017319920357,
+        24.00001721902111,
+        24.00001717188492
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 24.000017201903784,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        24.062548730682717,
+        24.061730192411815
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.miss",
+      "params": {
+        "implementation": "concurrentHashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        24.000020010060297,
+        24.000020167793167,
+        24.00002024504383,
+        24.000020393303142
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 24.00002020405011,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        24.001132452465416,
+        24.001161240130184
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.miss",
+      "params": {
+        "implementation": "concurrentHashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        24.000020014139203,
+        24.000019867499393,
+        24.000019981130006,
+        24.000019532964483
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 24.000019848933274,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        24.07057860370088,
+        24.0710698057081
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.miss",
+      "params": {
+        "implementation": "fastutilOpenHashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        1.8659303705424506e-05,
+        1.8256517782886333e-05,
+        1.9267975373611685e-05,
+        1.9076911840412365e-05
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 1.8815177175583722e-05,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        1.836496800078793e-05,
+        1.8334168454706447e-05
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.miss",
+      "params": {
+        "implementation": "fastutilOpenHashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        9.39069835497905e-05,
+        9.20684963307416e-05,
+        9.214325891567314e-05,
+        9.40735769873023e-05
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 9.304807894587689e-05,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        9.103508346460593e-05,
+        9.177824278754124e-05
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.overwrite",
+      "params": {
+        "implementation": "btree",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        0.0004668002960314106,
+        0.0004545768911940988,
+        0.000457433613149831,
+        0.0004631683867196655
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 0.0004604947967737515,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        0.00044205948440834093,
+        0.0004538010440276476
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.overwrite",
+      "params": {
+        "implementation": "btree",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        0.000971771158442845,
+        0.0009987603956689184,
+        0.0009699750406824348,
+        0.0010023186494128489
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 0.0009857063110517619,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        0.0009680016007980758,
+        0.0009691426368903591
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.overwrite",
+      "params": {
+        "implementation": "hashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        48.00005306682906,
+        48.00005331999038,
+        48.00005298042577,
+        48.00005330611726
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 48.000053168340614,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        48.00299613719584,
+        48.00308184049818
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.overwrite",
+      "params": {
+        "implementation": "hashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        48.00028415342991,
+        48.000279653392234,
+        48.00027510550182,
+        48.00028526905758
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 48.00028104534538,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        49.01334015848264,
+        48.982296930257704
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.overwrite",
+      "params": {
+        "implementation": "concurrentHashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        48.0000847015087,
+        48.000084723015746,
+        48.00008556444387,
+        48.000084112969994
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 48.00008477548458,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        48.004875261446614,
+        48.00483814890566
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.overwrite",
+      "params": {
+        "implementation": "concurrentHashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        48.00031523591643,
+        48.00031042452764,
+        48.000317887172685,
+        48.00030903933907
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 48.00031314673896,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        49.11824783769907,
+        49.15301171106588
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.overwrite",
+      "params": {
+        "implementation": "fastutilOpenHashMap",
+        "size": "16384"
+      },
+      "included_samples_b_per_op": [
+        2.5546343551077624e-05,
+        2.517288883899702e-05,
+        2.5229673284813646e-05,
+        2.497957674035889e-05
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 2.5232120603811794e-05,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        2.61098131819368e-05,
+        2.4364696202607208e-05
+      ]
+    },
+    {
+      "benchmark": "bench.HashMapBenchmark.overwrite",
+      "params": {
+        "implementation": "fastutilOpenHashMap",
+        "size": "1048576"
+      },
+      "included_samples_b_per_op": [
+        7.780091058185745e-05,
+        7.600255980964442e-05,
+        7.841931047289443e-05,
+        7.70644667047108e-05
+      ],
+      "included_sample_count": 4,
+      "mean_b_per_op": 7.732181189227678e-05,
+      "excluded_last_iteration_per_fork_b_per_op": [
+        7.62557569283693e-05,
+        8.221609762637713e-05
+      ]
+    }
+  ]
+}

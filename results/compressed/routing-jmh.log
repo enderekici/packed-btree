@@ -1,0 +1,327 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.RoutingBenchmark.hit
+# Parameters: (distribution = sequential, search = scalar, size = 1048576)
+
+# Run progress: 0.00% complete, ETA 00:01:36
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 139.552 ns/op
+# Warmup Iteration   2: 140.367 ns/op
+# Warmup Iteration   3: 137.088 ns/op
+Iteration   1: 144.126 ns/op
+Iteration   2: 138.419 ns/op
+Iteration   3: 145.590 ns/op
+Iteration   4: 141.052 ns/op
+Iteration   5: 139.612 ns/op
+
+# Run progress: 8.33% complete, ETA 00:01:33
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 140.757 ns/op
+# Warmup Iteration   2: 140.247 ns/op
+# Warmup Iteration   3: 136.721 ns/op
+Iteration   1: 139.915 ns/op
+Iteration   2: 137.111 ns/op
+Iteration   3: 142.020 ns/op
+Iteration   4: 138.876 ns/op
+Iteration   5: 138.007 ns/op
+
+
+Result "bench.RoutingBenchmark.hit":
+  140.473 ±(99.9%) 4.139 ns/op [Average]
+  (min, avg, max) = (137.111, 140.473, 145.590), stdev = 2.738
+  CI (99.9%): [136.333, 144.612] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.RoutingBenchmark.hit
+# Parameters: (distribution = sequential, search = compressed, size = 1048576)
+
+# Run progress: 16.67% complete, ETA 00:01:25
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 149.728 ns/op
+# Warmup Iteration   2: 143.903 ns/op
+# Warmup Iteration   3: 144.705 ns/op
+Iteration   1: 143.291 ns/op
+Iteration   2: 146.285 ns/op
+Iteration   3: 142.151 ns/op
+Iteration   4: 150.645 ns/op
+Iteration   5: 143.945 ns/op
+
+# Run progress: 25.00% complete, ETA 00:01:16
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 149.250 ns/op
+# Warmup Iteration   2: 144.444 ns/op
+# Warmup Iteration   3: 143.552 ns/op
+Iteration   1: 146.941 ns/op
+Iteration   2: 142.975 ns/op
+Iteration   3: 146.266 ns/op
+Iteration   4: 142.592 ns/op
+Iteration   5: 145.023 ns/op
+
+
+Result "bench.RoutingBenchmark.hit":
+  145.011 ±(99.9%) 3.934 ns/op [Average]
+  (min, avg, max) = (142.151, 145.011, 150.645), stdev = 2.602
+  CI (99.9%): [141.077, 148.945] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.RoutingBenchmark.hit
+# Parameters: (distribution = fullWidth, search = scalar, size = 1048576)
+
+# Run progress: 33.33% complete, ETA 00:01:08
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 141.623 ns/op
+# Warmup Iteration   2: 141.462 ns/op
+# Warmup Iteration   3: 141.537 ns/op
+Iteration   1: 141.199 ns/op
+Iteration   2: 137.796 ns/op
+Iteration   3: 140.984 ns/op
+Iteration   4: 140.867 ns/op
+Iteration   5: 138.354 ns/op
+
+# Run progress: 41.67% complete, ETA 00:00:59
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 141.286 ns/op
+# Warmup Iteration   2: 139.814 ns/op
+# Warmup Iteration   3: 142.048 ns/op
+Iteration   1: 137.774 ns/op
+Iteration   2: 140.334 ns/op
+Iteration   3: 141.620 ns/op
+Iteration   4: 137.799 ns/op
+Iteration   5: 142.902 ns/op
+
+
+Result "bench.RoutingBenchmark.hit":
+  139.963 ±(99.9%) 2.836 ns/op [Average]
+  (min, avg, max) = (137.774, 139.963, 142.902), stdev = 1.876
+  CI (99.9%): [137.127, 142.799] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.RoutingBenchmark.hit
+# Parameters: (distribution = fullWidth, search = compressed, size = 1048576)
+
+# Run progress: 50.00% complete, ETA 00:00:51
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 143.141 ns/op
+# Warmup Iteration   2: 143.387 ns/op
+# Warmup Iteration   3: 147.075 ns/op
+Iteration   1: 142.469 ns/op
+Iteration   2: 146.405 ns/op
+Iteration   3: 142.764 ns/op
+Iteration   4: 146.371 ns/op
+Iteration   5: 147.277 ns/op
+
+# Run progress: 58.33% complete, ETA 00:00:42
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 142.107 ns/op
+# Warmup Iteration   2: 145.576 ns/op
+# Warmup Iteration   3: 146.125 ns/op
+Iteration   1: 149.647 ns/op
+Iteration   2: 147.475 ns/op
+Iteration   3: 144.018 ns/op
+Iteration   4: 142.390 ns/op
+Iteration   5: 147.061 ns/op
+
+
+Result "bench.RoutingBenchmark.hit":
+  145.588 ±(99.9%) 3.796 ns/op [Average]
+  (min, avg, max) = (142.390, 145.588, 149.647), stdev = 2.511
+  CI (99.9%): [141.792, 149.384] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.RoutingBenchmark.hit
+# Parameters: (distribution = commonPrefix, search = scalar, size = 1048576)
+
+# Run progress: 66.67% complete, ETA 00:00:34
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 140.351 ns/op
+# Warmup Iteration   2: 144.499 ns/op
+# Warmup Iteration   3: 137.668 ns/op
+Iteration   1: 137.252 ns/op
+Iteration   2: 139.098 ns/op
+Iteration   3: 138.404 ns/op
+Iteration   4: 139.166 ns/op
+Iteration   5: 140.499 ns/op
+
+# Run progress: 75.00% complete, ETA 00:00:25
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 139.324 ns/op
+# Warmup Iteration   2: 143.833 ns/op
+# Warmup Iteration   3: 137.238 ns/op
+Iteration   1: 138.123 ns/op
+Iteration   2: 140.289 ns/op
+Iteration   3: 182.052 ns/op
+Iteration   4: 186.320 ns/op
+Iteration   5: 182.918 ns/op
+
+
+Result "bench.RoutingBenchmark.hit":
+  152.412 ±(99.9%) 32.779 ns/op [Average]
+  (min, avg, max) = (137.252, 152.412, 186.320), stdev = 21.681
+  CI (99.9%): [119.633, 185.191] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.RoutingBenchmark.hit
+# Parameters: (distribution = commonPrefix, search = compressed, size = 1048576)
+
+# Run progress: 83.33% complete, ETA 00:00:17
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 173.636 ns/op
+# Warmup Iteration   2: 193.946 ns/op
+# Warmup Iteration   3: 178.777 ns/op
+Iteration   1: 150.695 ns/op
+Iteration   2: 145.301 ns/op
+Iteration   3: 149.816 ns/op
+Iteration   4: 148.375 ns/op
+Iteration   5: 144.493 ns/op
+
+# Run progress: 91.67% complete, ETA 00:00:08
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/compressed/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 149.132 ns/op
+# Warmup Iteration   2: 146.744 ns/op
+# Warmup Iteration   3: 145.204 ns/op
+Iteration   1: 144.026 ns/op
+Iteration   2: 143.751 ns/op
+Iteration   3: 146.824 ns/op
+Iteration   4: 143.031 ns/op
+Iteration   5: 162.198 ns/op
+
+
+Result "bench.RoutingBenchmark.hit":
+  147.851 ±(99.9%) 8.605 ns/op [Average]
+  (min, avg, max) = (143.031, 147.851, 162.198), stdev = 5.692
+  CI (99.9%): [139.246, 156.456] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:01:42
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark             (distribution)    (search)   (size)  Mode  Cnt    Score    Error  Units
+RoutingBenchmark.hit      sequential      scalar  1048576  avgt   10  140.473 ±  4.139  ns/op
+RoutingBenchmark.hit      sequential  compressed  1048576  avgt   10  145.011 ±  3.934  ns/op
+RoutingBenchmark.hit       fullWidth      scalar  1048576  avgt   10  139.963 ±  2.836  ns/op
+RoutingBenchmark.hit       fullWidth  compressed  1048576  avgt   10  145.588 ±  3.796  ns/op
+RoutingBenchmark.hit    commonPrefix      scalar  1048576  avgt   10  152.412 ± 32.779  ns/op
+RoutingBenchmark.hit    commonPrefix  compressed  1048576  avgt   10  147.851 ±  8.605  ns/op
+
+Benchmark result is saved to results/compressed/routing-jmh.json

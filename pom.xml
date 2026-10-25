@@ -26,6 +26,14 @@
     <module>library</module>
     <module>benchmarks</module>
   </modules>
+  <profiles>
+    <profile>
+      <id>simd</id>
+      <modules>
+        <module>simd</module>
+      </modules>
+    </profile>
+  </profiles>
   <dependencyManagement>
     <dependencies>
       <dependency>

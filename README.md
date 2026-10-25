@@ -7,11 +7,17 @@ lookup, insert, overwrite, deletion with rebalancing, and ascending range
 traversal, without boxing keys or values. The library has **no runtime
 dependencies**.
 
-**Experimental and single-threaded.** It is inspired by
+**Experimental.** `LongBTree` is single-threaded and inspired by
 [BBTree](https://github.com/XiangpengHao/bbtree), but is not a port of its
-concurrent implementation. SIMD, compressed routing keys, concurrent access and
-generic object keys/values are not implemented. It does not implement `Map` or
-`NavigableMap`.
+concurrent implementation. `ConcurrentLongBTree` is a separate primitive API
+with serialized writers and immutable root snapshots. `StringBTree<V>` provides
+string keys and generic, nullable values. `CompressedLongBTree` is an opt-in
+variant with 16-bit routing suffixes and higher memory use. Optional SIMD search
+is a separate JDK 25 artifact; the default library remains dependency-free and
+usable on JDK 17. Long-key trees accept a custom lower-bound strategy, and the
+compressed variant uses it on nodes whose keys do not share the same signed high
+48 bits. These APIs do not implement `Map` or `NavigableMap`; concurrency does
+not use BBTree-style versioned nodes.
 
 ## Build
 
@@ -23,13 +29,25 @@ Requires JDK 17 or later; Maven 3.9.16 is provided by the wrapper.
 
 On Windows, use `mvnw.cmd`. The build runs differential/contract tests, generates
 the library, source and Javadoc JARs, and packages the separate runnable JMH
-benchmark JAR. CI runs the build on JDK 17 and JDK 25.
+benchmark JAR. CI runs the default build on JDK 17 and also builds/tests the optional SIMD profile on JDK 25.
 
 To build only the library:
 
 ```bash
 ./mvnw -pl library -am clean verify
 ```
+
+To build and test the optional Vector API module on JDK 25:
+
+```bash
+./mvnw -Psimd clean verify
+```
+
+The resulting `packed-btree-simd` artifact provides `VectorSearch`; opt in with
+`new LongBTree(new VectorSearch())`. Applications using it must run with
+`--add-modules jdk.incubator.vector`. It uses signed comparisons and masks the
+partial final vector. `CompressedLongBTree` also accepts `VectorSearch` as its
+fallback for noncompact nodes; compact nodes use suffix routing.
 
 ## Use
 
@@ -65,13 +83,42 @@ boolean removed = map.remove(20L); // true
 int size = map.size(); // 1
 ```
 
+`StringBTree` orders keys by `String.compareTo`; keys cannot be null, but values
+can:
+
+```java
+import io.github.enderekici.packedbtree.StringBTree;
+
+StringBTree<String> byName = new StringBTree<>();
+byName.put("alice", "Alice Example");
+String name = byName.getOrDefault("alice", "unknown"); // "Alice Example"
+byName.put("unknown", null);
+String nullable = byName.getOrDefault("unknown", "fallback"); // null
+byName.forEach("a", "z", (key, value) -> System.out.println(key + "=" + value));
+```
+
+For opt-in compact routing suffixes, use `CompressedLongBTree` with the same API.
+It retains full keys and adds short routing arrays to its nodes, so the variant
+uses more memory. The JDK 25 point-hit run found no compelling general speedup:
+compressed routing was 3–4% slower on sequential and full-width random keys, and
+the common-prefix result was inconclusive; retained memory was about 17% higher.
+Keep it experimental; see [the routing report](docs/compressed-routing.md) for
+fixture details and evidence.
+
 Every signed `long` is a valid key and value; the library reserves no sentinel.
 Keys use signed ascending order. A missing lookup returns the caller's fallback.
 Range bounds are half-open: `[fromInclusive, toExclusive)`. Equal or reversed
 bounds yield no visits. Because a half-open range cannot include
-`Long.MAX_VALUE`, use a point lookup for that key. Do not mutate the tree from a
-range callback. Access from multiple threads requires external synchronization
-covering every operation and traversal.
+`Long.MAX_VALUE`, use a point lookup for that key.
+
+`LongBTree` requires external synchronization across every access.
+`ConcurrentLongBTree` is a separate primitive API: its writers serialize, while
+point reads and snapshot range traversals do not take the writer lock. It path-copies
+packed B-tree nodes and publishes root plus size in one volatile state.
+Each call is linearizable; separate calls do not share an atomic snapshot. A range keeps the root it
+captured when traversal began, so its callback may re-enter or mutate the tree. A long-running callback
+retains the old root and reachable nodes until traversal ends. This design does not use BBTree-style
+per-node version validation. See [the concurrency report](docs/concurrency.md).
 
 `validate()` is an optional full structural diagnostic. It checks ordering,
 occupancy, child references, equal leaf depth and cardinality; keep it out of
@@ -100,13 +147,64 @@ application. The primitive AVL control uses fastutil `Long2LongAVLTreeMap`.
 Memory is the retained map object graph, not process RSS. Sampled p99 is a
 separate run with timer overhead.
 
+A separate, guarded hill-climb of the current default search path replaced the
+binary lower-bound loop with a linear scan over the at-most-31 keys in a node.
+The confirmation covered point hits and misses, ranges, overwrites and churn at
+4,096 and 262,144 entries, plus a JDK 17 runtime subset. See the
+[search confirmation](results/hillclimb/c2-confirm/README.md) for paired
+measurements, class fingerprints and limitations, and the [hill-climb ledger](HILLCLIMB.md)
+for candidate decisions and the [final verification receipt](results/hillclimb/final-verification.md).
+
+A fresh one-million-entry comparison of the exact original prototype, this
+optimized default and `TreeMap` is documented in the [three-way results](results/three-way-1m/README.md). It uses matched keys, operations and per-fork class fingerprints, scoped to this JDK 25/M4 Pro fixture.
+
 See [the full report](RESULTS.md) for confidence intervals, allocation-profiler
 handling, limitations and raw evidence. The benchmark module contains all
 third-party benchmark dependencies; none enters the library's runtime graph.
 
+The point-operation comparison also shows that all tested hash maps beat
+`LongBTree` on its tested hit, miss, overwrite and churn workloads at both
+fixture sizes. Those measurements use positive dense keys and above-maximum
+misses; they do not cover full-width or collision-heavy hash distributions. See
+[the hash-map report](results/hashmaps/report.md) and [workload notes](docs/hashmap-comparison.md). String-key benchmark scope and results are in [the string-key report](results/string-benchmarks/REPORT.md).
+
+The separate StringBTree round-two C3 confirmation combined exact-match
+search termination and a per-node exclusive range bound. Against the frozen
+StringBTree baseline, its 16 JDK 25 String-to-String point/write/churn/range
+point estimates were all lower; 15 of 16 99.9% confidence intervals were
+separated (the 262K prefix miss was inconclusive). The JDK 17 hit subset also
+favored C3 with separated intervals, while JDK 17 churn/range intervals
+overlapped. These results use prebuilt strings on one M4 Pro and do not cover
+String-to-Long performance. See the [C3 confirmation](results/hillclimb-round2/strings/candidate3-confirmation.md)
+and [StringBTree ledger](HILLCLIMB-STRINGS.md).
+
 ## Run the benchmarks
 
-After `./mvnw clean verify`:
+After `./mvnw clean verify`, compare the concurrent API at one, two, four and
+eight threads. The point benchmark covers read-only and one-read/one-increment
+mixed operations for the concurrent B-tree, `ConcurrentSkipListMap` and
+`ConcurrentHashMap`. Read-only probes sample the full shuffled key set; each
+mixed-workload thread increments only its own striped partition. Ordered ranges
+compare only the B-tree and skip list. The hash map has no ordered range.
+
+```bash
+for threads in 1 2 4 8; do
+  java -jar benchmarks/target/benchmarks.jar bench.ConcurrentMapBenchmark \
+    -p size=1048576 -t "$threads" -wi 2 -i 3 -w 1s -r 1s -f 2 \
+    -rf json -rff "results/concurrent/point-${threads}t.json"
+  java -jar benchmarks/target/benchmarks.jar bench.ConcurrentRangeBenchmark \
+    -p size=1048576 -t "$threads" -wi 2 -i 3 -w 1s -r 1s -f 2 \
+    -rf json -rff "results/concurrent/range-${threads}t.json"
+done
+```
+
+Each run validates point/range observations, full key presence and stable size
+outside measured iterations. The point workload writes are real overwrites that
+increment values; JMH thread state assigns disjoint key partitions without a
+shared cursor. Run each timed matrix when other machine benchmarks are idle. See
+the concurrency report for the recorded machine/JDK and complete result set.
+
+After `./mvnw clean verify` for the original single-threaded suite:
 
 ```bash
 java -jar benchmarks/target/benchmarks.jar -l

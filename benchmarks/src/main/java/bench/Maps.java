@@ -1,5 +1,6 @@
 package bench;
 
+import io.github.enderekici.packedbtree.CompressedLongBTree;
 import io.github.enderekici.packedbtree.LongBTree;
 import it.unimi.dsi.fastutil.longs.Long2LongAVLTreeMap;
 import java.util.Map;
@@ -21,6 +22,7 @@ public final class Maps {
   public static LongMap create(String name) {
     return switch (name) {
       case "btree" -> new BTree();
+      case "btreeCompressed" -> new BTree(true);
       case "tree" -> new JdkTree(new TreeMap<>());
       case "skiplist" -> new JdkTree(new ConcurrentSkipListMap<>());
       case "primitiveAvl" -> new PrimitiveAvl();
@@ -29,8 +31,12 @@ public final class Maps {
   }
 
   private static final class BTree implements LongMap, LongBTree.EntryConsumer {
-    final LongBTree map = new LongBTree();
+    final LongBTree map;
     long sum;
+    BTree() { this(false); }
+    BTree(boolean compressedRouting) {
+      map = compressedRouting ? new CompressedLongBTree() : new LongBTree();
+    }
     public long get(long key) { return map.getOrDefault(key, -1); }
     public void put(long key, long value) { map.put(key, value); }
     public void remove(long key) { map.remove(key); }
