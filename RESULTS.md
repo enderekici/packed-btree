@@ -118,6 +118,11 @@ in [`results/hillclimb/c2-confirm/README.md`](results/hillclimb/c2-confirm/READM
 and tracked in [`HILLCLIMB.md`](HILLCLIMB.md). Those fixture-specific results
 are separate from the historical prototype tables above.
 
+A separate matched comparison now measures the original prototype, optimized
+default and `TreeMap` at 1,048,576 entries using the same five operations. See
+[`results/three-way-1m/README.md`](results/three-way-1m/README.md) for the table,
+per-fork provenance checks, raw JSON and fixture limits.
+
 ## Evidence
 
 - `results/average.json`: all average-time data, confidence intervals and raw fork samples.

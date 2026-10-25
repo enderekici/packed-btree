@@ -155,6 +155,9 @@ The confirmation covered point hits and misses, ranges, overwrites and churn at
 measurements, class fingerprints and limitations, and the [hill-climb ledger](HILLCLIMB.md)
 for candidate decisions and the [final verification receipt](results/hillclimb/final-verification.md).
 
+A fresh one-million-entry comparison of the exact original prototype, this
+optimized default and `TreeMap` is documented in the [three-way results](results/three-way-1m/README.md). It uses matched keys, operations and per-fork class fingerprints, scoped to this JDK 25/M4 Pro fixture.
+
 See [the full report](RESULTS.md) for confidence intervals, allocation-profiler
 handling, limitations and raw evidence. The benchmark module contains all
 third-party benchmark dependencies; none enters the library's runtime graph.

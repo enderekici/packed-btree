@@ -1,0 +1,18 @@
+cd /Users/ender/code/evamcep/.packed-btree-worktrees/integration
+JAVA=/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+CP="$PWD/library/target/classes:$PWD/simd/target/test-classes:$PWD/benchmarks/target/benchmarks.jar"
+JVMARGS="-Xms1g -Xmx1g -XX:+UseG1GC \
+-Dthreeway.expected.original.tree.location=$PWD/simd/target/test-classes \
+-Dthreeway.expected.original.tree.sha256=d0be3c41374602b234b17336d448efbdd586db2df1ad9f4417d2abb86605aedd \
+-Dthreeway.expected.original.node.location=$PWD/simd/target/test-classes \
+-Dthreeway.expected.original.node.sha256=c5c3facb3ca584f3aea4fc23c4e839e7ff57c22437fd4874820c262230960aab \
+-Dthreeway.expected.optimized.tree.location=$PWD/library/target/classes \
+-Dthreeway.expected.optimized.tree.sha256=deee482d00087b4f62b71934407cb27369ba69b6e8191bf6693742d56c51a289 \
+-Dthreeway.expected.optimized.node.location=$PWD/library/target/classes \
+-Dthreeway.expected.optimized.node.sha256=b98364082623221d2f89ce381b176ab473663d4dbf860b64310dc8161cfee26f \
+-Dthreeway.expected.treemap.tree.sha256=a1c71d7c95d71e6a6ca1cc58c49a9521b6c5b634f4bc2b3fc7d7118cb339c429 \
+-Dthreeway.expected.treemap.node.sha256=ab8a5fa04c2a8f76f3adb1397f9aab1776157713a1adbdab3c35a450707c1183"
+$JAVA -cp "$CP" org.openjdk.jmh.Main 'bench.ThreeWaySearchBenchmark.*' \
+  -p implementation=original,optimized,treemap -wi 3 -w 1s -i 5 -r 1s \
+  -f 2 -foe true -jvmArgsAppend "$JVMARGS" -rf json \
+  -rff results/three-way-1m/initial-full-jdk25-m4pro.json
