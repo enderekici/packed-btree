@@ -89,16 +89,21 @@ can:
 ```java
 import io.github.enderekici.packedbtree.StringBTree;
 
-StringBTree<Long> byName = new StringBTree<>();
-byName.put("alice", null);
-Long value = byName.getOrDefault("alice", 42L); // null
-byName.forEach("a", "z", (key, entryValue) -> System.out.println(key));
+StringBTree<String> byName = new StringBTree<>();
+byName.put("alice", "Alice Example");
+String name = byName.getOrDefault("alice", "unknown"); // "Alice Example"
+byName.put("unknown", null);
+String nullable = byName.getOrDefault("unknown", "fallback"); // null
+byName.forEach("a", "z", (key, value) -> System.out.println(key + "=" + value));
 ```
 
 For opt-in compact routing suffixes, use `CompressedLongBTree` with the same API.
 It retains full keys and adds short routing arrays to its nodes, so the variant
-uses more memory; see [the routing notes](docs/compressed-routing.md) for the
-design and measured tradeoff.
+uses more memory. The JDK 25 point-hit run found no compelling general speedup:
+compressed routing was 3–4% slower on sequential and full-width random keys, and
+the common-prefix result was inconclusive; retained memory was about 17% higher.
+Keep it experimental; see [the routing report](docs/compressed-routing.md) for
+fixture details and evidence.
 
 Every signed `long` is a valid key and value; the library reserves no sentinel.
 Keys use signed ascending order. A missing lookup returns the caller's fallback.
