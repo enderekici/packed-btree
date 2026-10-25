@@ -36,6 +36,7 @@ public class BaselineSearchScreen {
   private long[][] rangeBounds;
   private int cursor;
   private int rangeCursor;
+  private long writeCounter;
   private final Probe probe = new Probe();
 
   @Setup(Level.Trial)
@@ -56,15 +57,24 @@ public class BaselineSearchScreen {
         throw new AssertionError("Fixture miss");
       }
     }
-    long from = rangeBounds[0][0];
-    long to = rangeBounds[1][0];
-    tree.forEach(from, to, probe);
-    if (probe.count != 64 || probe.sum != rangeSum(from, to)) {
-      throw new AssertionError("Fixture range");
-    }
+    checkRangeControl(0);
+    checkRangeControl(SearchScreenFixture.QUERY_COUNT / 2);
+    checkRangeControl(SearchScreenFixture.QUERY_COUNT - 1);
     cursor = 0;
     rangeCursor = 0;
+    writeCounter = 0;
     tree.validate();
+  }
+
+  private void checkRangeControl(int index) {
+    long from = rangeBounds[0][index];
+    long to = rangeBounds[1][index];
+    probe.sum = 0;
+    probe.count = 0;
+    tree.forEach(from, to, probe);
+    if (probe.count != 64 || probe.sum != rangeSum(from, to)) {
+      throw new AssertionError("Fixture range at control " + index);
+    }
   }
 
   private long rangeSum(long from, long to) {
@@ -75,14 +85,14 @@ public class BaselineSearchScreen {
 
   @Benchmark
   public long hit() {
-    long key = keys[cursor++ & (SearchScreenFixture.QUERY_COUNT - 1)];
-    return tree.getOrDefault(key, Long.MIN_VALUE);
+    long key = keys[cursor++ & (size - 1)];
+    return tree.getOrDefault(key, key);
   }
 
   @Benchmark
   public long miss() {
-    long key = misses[cursor++ & (SearchScreenFixture.QUERY_COUNT - 1)];
-    return tree.getOrDefault(key, Long.MIN_VALUE);
+    long key = misses[cursor++ & (size - 1)];
+    return tree.getOrDefault(key, ~key);
   }
 
   @Benchmark
@@ -96,13 +106,13 @@ public class BaselineSearchScreen {
 
   @Benchmark
   public void overwrite() {
-    long key = keys[cursor++ & (SearchScreenFixture.QUERY_COUNT - 1)];
-    tree.put(key, key + 2);
+    long key = keys[cursor++ & (size - 1)];
+    tree.put(key, key + (++writeCounter));
   }
 
   @Benchmark
   public long churn() {
-    int index = cursor++ & (SearchScreenFixture.QUERY_COUNT - 1);
+    int index = cursor++ & (size - 1);
     long oldKey = keys[index];
     long newKey = replacements[index];
     if (!tree.remove(oldKey)) throw new AssertionError("Churn remove");
