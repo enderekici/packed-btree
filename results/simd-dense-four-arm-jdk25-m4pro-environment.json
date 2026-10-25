@@ -1,0 +1,20 @@
+{
+  "host": "ender-mini.local",
+  "os": "macOS Darwin 27.0.0",
+  "architecture": "arm64",
+  "cpu": "Apple M4 Pro",
+  "java": "Zulu OpenJDK 25.0.3+9-LTS",
+  "jmh": "1.37",
+  "workload": "dense signed long keys (key = 3*i - size); deterministic query stream with one-third expected hits",
+  "sizes": [4096, 262144],
+  "threads": 1,
+  "forks": 2,
+  "warmup": "2 iterations x 1 second",
+  "measurement": "3 iterations x 1 second",
+  "mode": "AverageTime, nanoseconds per operation",
+  "heap": "1 GiB fixed, G1",
+  "controls": ["pre-hook source commit 91989190", "current default", "scalar strategy hook", "Vector API"],
+  "jvm_flags_parent_and_forks": ["--add-modules=jdk.incubator.vector"],
+  "pre_hook_control_commit": "91989190df5cf92e4da1965363e9e0650f47cca6",
+  "limitations": ["single host", "ARM64 only", "no Windows run", "native SIMD instruction lowering not yet confirmed"]
+}
