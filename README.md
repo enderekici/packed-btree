@@ -1,129 +1,145 @@
-# Java packed-tree experiment
+# packed-btree
 
-A BBTree-inspired **single-threaded primitive `long -> long` B-tree**, plus a
-repeatable comparison with JDK `TreeMap`, JDK `ConcurrentSkipListMap` and fastutil
-`Long2LongAVLTreeMap`. This is a standalone experiment; no SaaS service uses it.
+A compact, primitive `long → long` ordered map for Java 17+.
 
-The implementation tests the benefit of storing many primitive keys and values
-in each node instead of allocating a tree entry per mapping. It is **not a full
-port of Rust BBTree**: it does not implement compressed routing keys, SIMD,
-optimistic concurrency, off-heap storage, Rust's API or its verification proofs.
-It is not thread-safe and cannot replace a concurrent map without additional work.
+`LongBTree` stores up to 31 mappings per node in primitive arrays. It supports
+lookup, insert, overwrite, deletion with rebalancing, and ascending range
+traversal, without boxing keys or values. The library has **no runtime
+dependencies**.
 
-Upstream design: <https://bbtree.xiangpeng.systems/post/>.
-Upstream implementation: <https://github.com/XiangpengHao/bbtree>.
+**Experimental and single-threaded.** It is inspired by
+[BBTree](https://github.com/XiangpengHao/bbtree), but is not a port of its
+concurrent implementation. SIMD, compressed routing keys, concurrent access and
+generic object keys/values are not implemented. It does not implement `Map` or
+`NavigableMap`.
 
-## Implementation
+## Build
 
-`LongBTree` stores up to 31 mappings per node, with separate primitive key/value
-arrays. Leaves allocate no child array. Insertion splits full nodes; deletion
-borrows from siblings or merges underfull nodes and contracts an empty root.
-Removed nodes become eligible for ordinary Java garbage collection.
-
-Public operations:
-
-- `getOrDefault(long key, long fallback)`; every signed long key/value is valid.
-- `put(long key, long value)`; overwrites retain cardinality.
-- `remove(long key)`; returns whether the key existed.
-- `size()`.
-- `forEach(fromInclusive, toExclusive, visitor)`; ascending half-open range,
-  empty when the lower bound is greater than or equal to the upper bound.
-  Do not mutate the tree from the visitor. To access `Long.MAX_VALUE` itself,
-  use `getOrDefault`; a half-open range cannot include that endpoint.
-- `validate()`; exhaustive ordering, occupancy, child-reference, leaf-depth and
-  cardinality checks for qualification, excluded from timed workloads.
-
-## Build and qualify
-
-Requires JDK 25, Bash and curl. Production tree code has no dependencies. JMH,
-fastutil and JOL are benchmark dependencies, pinned in `build.sh`.
+Requires JDK 17 or later; Maven 3.9.16 is provided by the wrapper.
 
 ```bash
-bash build.sh
+./mvnw clean verify
 ```
 
-The script selects installed JDK 25 on macOS. On another host set
-`BBTREE_JAVA_HOME` to a JDK 25 installation. It downloads dependencies from Maven
-Central into `.deps`, compiles, builds `build/bbtree-java.jar` and executes the
-contract/differential tests. Dependency hashes are recorded in
-`build/dependencies.sha256`.
+On Windows, use `mvnw.cmd`. The build runs differential/contract tests, generates
+the library, source and Javadoc JARs, and packages the separate runnable JMH
+benchmark JAR. CI runs the build on JDK 17 and JDK 25.
 
-Tests compare complete ordered contents, individual lookups, range results,
-overwrite behavior, deletion results and size with `TreeMap`. They cover empty
-trees, extreme keys and values, ascending/reverse/random insertion, complete
-drain and refill, dense randomized mixed operations, and random full-width keys.
-The structural validator runs repeatedly during those tests. A deliberately
-wrong reference value confirms the comparison detects a positive mismatch.
-All four benchmark adapters also undergo direct update/delete/range checks.
-
-## Reproduce the comparison
-
-Run from this directory after building:
+To build only the library:
 
 ```bash
-JAVA_HOME="${BBTREE_JAVA_HOME:-$(/usr/libexec/java_home -v 25)}"
-"$JAVA_HOME/bin/java" -cp 'build/classes:.deps/*' org.openjdk.jmh.Main \
-  bench.MapBenchmark -wi 2 -i 3 -w 1s -r 1s -f 2 -t 1 -prof gc \
-  -rf json -rff results/average.json > results/average.log 2>&1
+./mvnw -pl library -am clean verify
 ```
 
-Each case uses two isolated JVM forks, two one-second warmups and three
-one-second measured iterations per fork. The fork heap is fixed at 1 GiB with
-G1 GC. Each measured operation uses one thread. JMH records average time,
-confidence intervals and allocation. Setup/teardown run once per trial, outside
-the timed operations. Setup allocations are outside the measured iterations.
-JMH's GC profiler still includes trial teardown in the final iteration: the
-reported allocation comparison therefore uses only the first two measured
-iterations of each fork, for every implementation and operation. All six
-iterations remain in the timing means, and the unadjusted profiler values are
-preserved in the raw JSON. Teardown performs a complete key scan and structural
-validation; its allocations are not workload allocations.
+## Use
 
-Fixtures use 16,384 and 1,048,576 mappings. Even keys start at 1024 (outside the
-usual `Long` cache); values are three times their keys. A fixed seeded shuffle
-controls both insertion order and a repeating random traversal of **all** keys.
-This measures dense integer keys in shuffled order, not uniformly random
-64-bit key spacing, strings, UUIDs or a captured Evam workload.
-
-Operations are lookup hit, lookup miss (odd keys), overwrite, churn (one remove
-and one insert toggling key parity at constant cardinality), and an ordered
-64-entry range sum. One churn operation is **two map mutations**. Every range
-contains exactly 64 mappings, including at the top of the key space. Returned
-results are consumed by JMH. Each trial checks fixture size, surviving
-keys and, for the prototype, all structural invariants.
-
-The JDK adapters include the boxing needed for their generic map API. The
-fastutil primitive AVL baseline helps distinguish avoiding boxing from changing
-tree layout. `ConcurrentSkipListMap` is measured with a single thread: these
-results say nothing about multi-thread scaling or equivalence of guarantees.
-
-For retained object-graph size, run each implementation in a fresh JVM:
+The artifact is not yet published to Maven Central. Install it locally:
 
 ```bash
-"$JAVA_HOME/bin/java" -Xmx4g -Djdk.attach.allowAttachSelf=true \
-  -XX:+EnableDynamicAgentLoading -cp 'build/classes:.deps/*' \
-  bench.MemoryFootprint btree 1048576
+./mvnw -pl library -am clean install
 ```
 
-Repeat with `tree`, `skiplist` and `primitiveAvl`. JOL counts the reachable map
-graph, including boxed entries/keys/values, node arrays and unused array slots.
-It excludes the workload key array, JVM overhead, transient allocations and GC
-headroom. This is not process RSS or production pod memory.
+Then add:
 
-Lookup tail latency is measured separately, using the same fixtures and fork
-settings:
+```xml
+<dependency>
+  <groupId>io.github.enderekici</groupId>
+  <artifactId>packed-btree</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+</dependency>
+```
+
+```java
+import io.github.enderekici.packedbtree.LongBTree;
+
+LongBTree map = new LongBTree();
+map.put(10L, 100L);
+map.put(20L, 200L);
+map.put(10L, 150L);
+
+long value = map.getOrDefault(10L, -1L); // 150
+map.forEach(10L, 20L, (key, entryValue) -> {
+  System.out.println(key + "=" + entryValue); // 10=150
+});
+boolean removed = map.remove(20L); // true
+int size = map.size(); // 1
+```
+
+Every signed `long` is a valid key and value; the library reserves no sentinel.
+Keys use signed ascending order. A missing lookup returns the caller's fallback.
+Range bounds are half-open: `[fromInclusive, toExclusive)`. Equal or reversed
+bounds yield no visits. Because a half-open range cannot include
+`Long.MAX_VALUE`, use a point lookup for that key. Do not mutate the tree from a
+range callback. Access from multiple threads requires external synchronization
+covering every operation and traversal.
+
+`validate()` is an optional full structural diagnostic. It checks ordering,
+occupancy, child references, equal leaf depth and cardinality; keep it out of
+hot paths.
+
+## Measurements
+
+Historical prototype measurements at 1,048,576 mappings, JDK 25.0.3, Apple M4
+Pro, one thread:
+
+| Measurement | Primitive B-tree | TreeMap | ConcurrentSkipListMap | Primitive AVL |
+|---|---:|---:|---:|---:|
+| Lookup, ns | 133 | 269 | 596 | 184 |
+| Overwrite, ns | 136 | 331 | 678 | 210 |
+| Delete + insert, ns | 259 | 972 | 1,386 | 507 |
+| Scan 64 entries, ns | 273 | 3,189 | 2,622 | 600 |
+| Sampled lookup p99, ns | 333 | 666 | 1,374 | 417 |
+| Retained map memory, MiB | 26.5 | 88.0 | 84.0 | 40.0 |
+
+These results belong to prototype commit
+[`dcb5176`](https://github.com/enderekici/packed-btree/commit/dcb51764891551745b1efd9825a9b55e031a5248),
+before the Maven/package reorganization. They measure shuffled dense integer
+keys and fixed-size `long` values on a shared developer machine. They do not
+establish gains for strings, UUIDs, other hardware, concurrent workloads or an
+application. The primitive AVL control uses fastutil `Long2LongAVLTreeMap`.
+Memory is the retained map object graph, not process RSS. Sampled p99 is a
+separate run with timer overhead.
+
+See [the full report](RESULTS.md) for confidence intervals, allocation-profiler
+handling, limitations and raw evidence. The benchmark module contains all
+third-party benchmark dependencies; none enters the library's runtime graph.
+
+## Run the benchmarks
+
+After `./mvnw clean verify`:
 
 ```bash
-"$JAVA_HOME/bin/java" -cp 'build/classes:.deps/*' org.openjdk.jmh.Main \
-  bench.MapBenchmark.hit -p size=1048576 -bm sample \
-  -wi 2 -i 3 -w 1s -r 1s -f 2 -t 1 \
-  -rf json -rff results/lookup-sample.json > results/lookup-sample.log 2>&1
+java -jar benchmarks/target/benchmarks.jar -l
+
+java -jar benchmarks/target/benchmarks.jar bench.MapBenchmark \
+  -wi 2 -i 3 -w 1s -r 1s -f 2 -t 1 -prof gc \
+  -rf json -rff results/average-new.json
+
+java -jar benchmarks/target/benchmarks.jar bench.MapBenchmark.hit \
+  -p size=1048576 -bm sample -wi 2 -i 3 -w 1s -r 1s -f 2 -t 1 \
+  -rf json -rff results/lookup-sample-new.json
+
+java -Xmx4g -Djdk.attach.allowAttachSelf=true -XX:+EnableDynamicAgentLoading \
+  -cp benchmarks/target/benchmarks.jar bench.MemoryFootprint btree 1048576
 ```
 
-Sampling adds timer overhead, so sampled p99 and average-mode means come from
-different runs and should not be subtracted to infer a latency distribution.
+For memory measurements, repeat in a fresh JVM with `tree`, `skiplist` and
+`primitiveAvl`. Use JDK 25 when comparing against the historical results. JMH
+overrides the fork heap to `-Xms1g -Xmx1g` with G1. One churn operation is a
+remove plus an insert at constant cardinality; each range sums 64 entries.
+Fixture setup occurs once per trial. Trial teardown validates all keys and tree
+structure. The GC profiler includes that teardown in the last measured
+iteration; use the same exclusion rule documented in the report when comparing
+workload allocations.
 
-Measured results and limitations are in `RESULTS.md`; raw JMH output is kept in
-`results/`. Performance findings apply only to the tested JVM, CPU, fixtures and
-single-threaded operations. Upstream BBTree's Rust benchmark numbers are not a
-baseline in this experiment.
+To reproduce the original source layout and dependency hashes exactly, check
+out `dcb5176` in a separate worktree and run its `build.sh`. The committed
+`results/source-sha256.json` describes that historical source, not the current
+Maven module paths.
+
+## Layout
+
+- `library/`: dependency-free implementation and JUnit differential tests.
+- `benchmarks/`: JMH fixtures, adapters, memory probe and adapter contract tests.
+- `results/`: historical machine-readable benchmark evidence.
+- `RESULTS.md`: measured results and qualification scope.

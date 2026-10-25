@@ -1,24 +1,39 @@
-package bench;
+package io.github.enderekici.packedbtree;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.TreeMap;
+import org.junit.jupiter.api.Test;
 
-/** Contract/differential tests; run with assertions enabled. */
+/** Contract and differential tests against the JDK ordered map. */
 public final class LongBTreeTest {
   private static long operations;
 
-  public static void main(String[] args) {
+  @Test
+  void boundaryValues() {
     boundaries();
+  }
+
+  @Test
+  void orderedInsertionDrainAndRefill() {
     for (int order = 0; order < 3; order++) ordered(order);
+  }
+
+  @Test
+  void randomizedDenseKeys() {
     for (int seed = 0; seed < 12; seed++) differential(seed);
+  }
+
+  @Test
+  void randomizedFullWidthKeys() {
     wideKeys();
-    adapterContracts();
+  }
+
+  @Test
+  void oracleDetectsKnownMismatch() {
     positiveControl();
-    System.out.println("PASS: " + operations + " operations; boundaries, ordered/random insertion, "
-        + "overwrite, missing deletion, draining, refill, ranges and structural checks");
   }
 
   private static void boundaries() {
@@ -166,22 +181,4 @@ public final class LongBTreeTest {
     }
   }
 
-  private static void adapterContracts() {
-    for (String name : List.of("btree", "tree", "skiplist", "primitiveAvl")) {
-      Maps.LongMap map = Maps.create(name);
-      if (map.get(1024) != -1 || map.size() != 0) throw new AssertionError(name);
-      map.put(1024, 3);
-      map.put(1026, 5);
-      map.put(1024, 7);
-      if (map.get(1024) != 7 || map.rangeSum(1024, 1026) != 7
-          || map.rangeSum(1024, 1027) != 12 || map.size() != 2) {
-        throw new AssertionError("Adapter update/range " + name);
-      }
-      map.remove(1024);
-      map.remove(1024);
-      if (map.get(1024) != -1 || map.get(1026) != 5 || map.size() != 1) {
-        throw new AssertionError("Adapter removal " + name);
-      }
-    }
-  }
 }

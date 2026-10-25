@@ -1,5 +1,6 @@
 package bench;
 
+import io.github.enderekici.packedbtree.LongBTree;
 import it.unimi.dsi.fastutil.longs.Long2LongAVLTreeMap;
 import java.util.Map;
 import java.util.NavigableMap;

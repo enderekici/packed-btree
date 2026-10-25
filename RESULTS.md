@@ -1,13 +1,18 @@
 # Measured Java packed-tree results
 
+Historical prototype source: commit `dcb51764891551745b1efd9825a9b55e031a5248`.
+These measurements precede the Maven module/package reorganization. The source
+hash manifest below refers to that commit. Current build and benchmark commands
+are in `README.md`; historical timings are not a fresh run of the Maven layout.
+
 Run: 2026-10-25, Apple M4 Pro (arm64), macOS, 64 GiB RAM, Zulu JDK 25.0.3, JMH 1.37.
 Two JVM forks, two 1-second warmups and three 1-second measurements per fork, one thread, fixed 1 GiB G1 heap. Shared developer host; not an isolated performance machine. All 40 average-time cases and four sampled-lookup cases completed without failed trial checks.
 
 ## Scope and verdict
 
-The primitive-array B-tree is faster and smaller than the tested JDK ordered maps for these fixtures. It also improves on the primitive AVL baseline, so the observed benefit is not solely removal of boxing. This establishes a useful single-threaded ordered-map prototype, not a production-ready BBTree port or an Evam service speedup.
+The primitive-array B-tree is faster and smaller than the tested JDK ordered maps for these fixtures. It also improves on the primitive AVL baseline, so the observed benefit is not solely removal of boxing. This establishes a useful single-threaded ordered-map prototype, not a production-ready BBTree port or an application speedup.
 
-The implementation includes complete insertion, overwrite, deletion with rebalancing, point lookup and ascending ranges. It excludes compressed routing keys, SIMD, optimistic concurrency, off-heap storage, generic object keys/values and upstream formal proofs. No SaaS code, runtime configuration or deployment was changed.
+The implementation includes complete insertion, overwrite, deletion with rebalancing, point lookup and ascending ranges. It excludes compressed routing keys, SIMD, optimistic concurrency, off-heap storage, generic object keys/values and upstream formal proofs. No application code, runtime configuration or deployment was changed.
 
 ## Average time
 
@@ -96,9 +101,9 @@ The initially interrupted run rebuilt fixtures at every iteration and contaminat
 - Every benchmark fork validated cardinality and all surviving keys after its trial; prototype trials also checked ordering, occupancy, equal leaf depth and child references.
 - Solo source/benchmark review found no remaining defect in the implemented scope. The setup/profiler issues and their treatment are documented above. No external reviewer or concurrent correctness qualification was run.
 
-## Evam consequence
+## Application consequence
 
-This is worth considering where profiling identifies a large, local, primitive-key ordered index. It does not justify replacing hash maps, Redis state, or the journey catalogue snapshot protocol. The measured fixture uses shuffled dense positive integer keys and fixed-size long values; correctness also covers full-width random keys, but their performance, strings, UUIDs, growing maps, multiple readers/writers, x86, SIMD and an actual SaaS caller are untested.
+This is worth considering where profiling identifies a large, local, primitive-key ordered index. It does not justify replacing hash maps, distributed state, or application snapshot protocols. The measured fixture uses shuffled dense positive integer keys and fixed-size long values; correctness also covers full-width random keys, but their performance, strings, UUIDs, growing maps, multiple readers/writers, x86, SIMD and an actual application caller are untested.
 
 Before adoption, identify the real ordered-index caller, benchmark its data and operation mix, and qualify the required concurrency/iteration semantics. The current prototype remains standalone.
 

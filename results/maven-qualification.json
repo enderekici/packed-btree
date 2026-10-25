@@ -1,0 +1,20 @@
+{
+  "artifact": "io.github.enderekici:packed-btree:0.1.0-SNAPSHOT",
+  "release": 17,
+  "full_clean_verify_jdks": [
+    "17.0.19",
+    "25.0.3"
+  ],
+  "library_tests_per_build": 5,
+  "benchmark_adapter_tests_per_build": 1,
+  "tests_failed": 0,
+  "runtime_dependencies": [
+    "java.base"
+  ],
+  "consumer": "External Maven project resolved the locally installed artifact, compiled on JDK 17, and exercised packaged lookup/range/deletion on JDK 17 and 25",
+  "benchmark_jar_smoke_cases": 4,
+  "benchmark_smoke_is_performance_evidence": false,
+  "historical_benchmark_commit": "dcb51764891551745b1efd9825a9b55e031a5248",
+  "maven_central_published": false,
+  "library_jar_sha256": "f76db78b4f364571520b6d350bb2adf6fa6868db82ec0e314970e5fb344c4a0b"
+}

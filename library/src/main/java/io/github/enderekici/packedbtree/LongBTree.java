@@ -1,9 +1,21 @@
-package bench;
+package io.github.enderekici.packedbtree;
 
-/** A single-threaded, primitive long-to-long B-tree. Not safe for concurrent access. */
+/**
+ * A compact, mutable, primitive long-to-long B-tree with signed key ordering.
+ *
+ * <p>This class is not thread-safe. Every signed {@code long} is a valid key and value;
+ * no value is reserved as a missing-key sentinel. It does not implement {@link java.util.Map}.
+ */
 public final class LongBTree {
+  /** Receives a primitive key/value pair during an ordered range traversal. */
   @FunctionalInterface
   public interface EntryConsumer {
+    /**
+     * Receives an entry. Do not mutate the tree from this callback.
+     *
+     * @param key entry key
+     * @param value entry value
+     */
     void accept(long key, long value);
   }
   private static final int DEGREE = 16;
@@ -33,10 +45,22 @@ public final class LongBTree {
     }
   }
 
+  /**
+   * Returns the number of mappings.
+   *
+   * @return number of distinct keys
+   */
   public int size() {
     return size;
   }
 
+  /**
+   * Looks up a key without boxing.
+   *
+   * @param key key to find
+   * @param fallback value returned if the key is absent
+   * @return stored value or {@code fallback}
+   */
   public long getOrDefault(long key, long fallback) {
     Node node = root;
     while (true) {
@@ -47,6 +71,12 @@ public final class LongBTree {
     }
   }
 
+  /**
+   * Adds a mapping or replaces the value of an existing key.
+   *
+   * @param key key to store
+   * @param value value to associate with the key
+   */
   public void put(long key, long value) {
     if (root.count == MAX) {
       Node parent = new Node(false);
@@ -102,6 +132,12 @@ public final class LongBTree {
     parent.count++;
   }
 
+  /**
+   * Removes a mapping, rebalancing the tree as needed.
+   *
+   * @param key key to remove
+   * @return whether the key existed
+   */
   public boolean remove(long key) {
     boolean removed = delete(root, key);
     if (root.count == 0 && root.children != null) root = root.children[0];
@@ -206,7 +242,17 @@ public final class LongBTree {
     child.count++;
   }
 
-  /** Visits entries in ascending order in [fromInclusive, toExclusive). */
+  /**
+   * Visits entries in ascending order in {@code [fromInclusive, toExclusive)}.
+   *
+   * <p>Equal or reversed bounds produce no visits. A half-open range cannot include
+   * {@link Long#MAX_VALUE}; use {@link #getOrDefault(long, long)} for that key.
+   * The callback must not mutate this tree.
+   *
+   * @param fromInclusive lower bound, included
+   * @param toExclusive upper bound, excluded
+   * @param visitor callback for each matching entry
+   */
   public void forEach(long fromInclusive, long toExclusive, EntryConsumer visitor) {
     if (fromInclusive < toExclusive) visit(root, fromInclusive, toExclusive, visitor);
   }
@@ -221,7 +267,13 @@ public final class LongBTree {
     }
   }
 
-  /** Exhaustive structural check for qualification; not used on the benchmark path. */
+  /**
+   * Checks ordering, occupancy, child references, equal leaf depth and cardinality.
+   *
+   * <p>This diagnostic traverses the entire tree and is not intended for hot paths.
+   *
+   * @throws AssertionError if an invariant is violated
+   */
   public void validate() {
     int[] leafDepth = {-1};
     int actual = validate(root, true, null, null, 0, leafDepth);
