@@ -158,3 +158,10 @@ and rejected search experiments, original-versus-optimized and JDK-map
 comparisons, String ranges, and concurrent workloads. It links raw data,
 verification receipts, and each report's limits. See also the
 [benchmark guide](docs/benchmarks.md).
+
+## License and releases
+
+This project is distributed under the [Apache License 2.0](LICENSE). The
+release process and its Central Portal manual-publish step are documented in
+[docs/releasing.md](docs/releasing.md). The current `0.1.0-SNAPSHOT` version is
+not published to Maven Central.
