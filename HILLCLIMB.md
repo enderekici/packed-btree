@@ -87,10 +87,12 @@ decisive JDK 17 subset if retention remains plausible. Do not treat overlapping 
 proof of equivalence.
 
 **Accepted for the 4.2% measured retained-footprint reduction.** The 20-cell JDK 25
-confirmation and three-cell JDK 17 subset found no >5% latency regression, while every
-candidate/baseline interval overlapped. This does not demonstrate latency equivalence or a
-speedup. Full correctness/build status remains pending after final integration with String
-round two. Evidence and raw JSON links are in
+confirmation and three-cell JDK 17 subset found no >5% latency regression. Three JDK 25
+intervals were separated in the candidate's favor; 17 overlapped, and none favored baseline.
+All three JDK 17 intervals overlapped. This does not demonstrate broad latency improvement
+or equivalence. Final JDK 17 and JDK 25 SIMD full verifies passed, and packaged JDK 17/JDK 25
+consumers passed; see [`results/final-integration-verification.md`](results/final-integration-verification.md).
+Evidence and raw JSON links are in
 [`results/hillclimb-round3/long/README.md`](results/hillclimb-round3/long/README.md).
 
 ## Experiment records

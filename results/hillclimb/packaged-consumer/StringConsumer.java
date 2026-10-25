@@ -24,6 +24,25 @@ public final class StringConsumer {
     }
     tree.validate();
     if (tree.size() != 2) throw new AssertionError("size");
+
+    StringBTree<String> covered = new StringBTree<>();
+    for (int i = 0; i < 512; i++) {
+      String key = "covered-" + String.format("%04d", i);
+      covered.put(key, new String(("value-" + i).toCharArray()));
+    }
+    List<String> coveredKeys = new ArrayList<>();
+    covered.forEach("covered-0000", "covered-0512", (key, value) -> {
+      if (!value.equals("value-" + coveredKeys.size())) throw new AssertionError("covered value");
+      coveredKeys.add(key);
+    });
+    if (coveredKeys.size() != 512) throw new AssertionError("covered range size");
+    List<String> narrow = new ArrayList<>();
+    covered.forEach("covered-0255", "covered-0256", (key, value) -> narrow.add(key));
+    if (!narrow.equals(List.of("covered-0255"))) throw new AssertionError("narrow range");
+    if (!covered.remove("covered-0255") || covered.size() != 511) {
+      throw new AssertionError("covered delete");
+    }
+    covered.validate();
     System.out.println("StringBTree packaged consumer passed");
   }
 }

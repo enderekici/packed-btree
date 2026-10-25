@@ -28,7 +28,7 @@ before integer overflow, including width 0. After benchmark source freeze, tests
 reference checks, equal-but-distinct query-bound checks, overwrite key-identity coverage, and a
 stronger callback exception fixture; measured production and benchmark sources were unchanged.
 
-## Guarded screening run (provisional)
+## Guarded screening run (exploratory)
 
 All commands used the newly created worktree at `/Users/ender/code/evamcep/.packed-btree-worktrees/string-covered`, branch `feature/string-covered-ranges`, base `603b6f5b0ebcdddf5a5dab15b9a3f0f71c704340`.
 
@@ -55,7 +55,7 @@ A negative control intentionally set the expected candidate outer-class SHA to 6
 
 The primary screen selected `hit|miss|overwrite|churn|range`, `implementation=candidate,baseline`, sizes 16384/262144, shapes short/random/prefix, String values, width 64: 60 rows. The width screen selected `range`, the same sizes/shapes/arms, and widths 0/1/8/64/1024: 60 rows. Both used `-wi 1 -w 250ms -i 2 -r 250ms -f 1 -foe true -rf json`; these are short one-fork screens, not significance tests. Raw data: `candidate1-primary-screen.json` and `candidate1-range-width-screen.json`. Launch logs: `/tmp/string-covered-primary.log` and `/tmp/string-covered-widths.log`.
 
-For width 64, screen point estimates favored C1 over baseline in all six range cells: 13.1–20.3% lower in the primary screen (11–18% in the independent width screen). Width 1024 estimates were 14–40% lower in all six cells. Width 8 was mixed (-2% to +9%); width 1 was mixed and 9% slower on 262K prefix; width 0 was approximately flat (-4% to +2%). Point/write/churn estimates stayed within roughly ±4% but were mixed. No causal or significance claims follow from these short screens. The prefix/262K width-1 cell was included as a confirmation guardrail.
+For width 64, screen point estimates favored C1 over baseline in all six range cells: 10.9–20.3% lower in the primary screen (7.9–17.5% in the independent width screen). Width 1024 estimates were 14–40% lower in all six cells. Widths 0/1/8 were mixed; width 1 was 9% slower on 262K prefix in the short screen. Point/write/churn estimates stayed within roughly ±4% but were mixed. No causal or significance claims follow from these short screens. The prefix/262K width-1 cell was included as a confirmation guardrail.
 
 ## Confirmation results
 
@@ -72,7 +72,7 @@ nested-node code source and SHA-256. The three all-operation groups alternated a
 Point, miss, overwrite and churn means stayed within approximately 2% for these fixtures. The
 262K-prefix width guard was 0/1/8/1024 entries: width 0 was flat (6.820 vs 6.806 ns/op), width 1
 was 0.8% slower (390.679 vs 393.796), width 8 was modestly faster (454.419 vs 438.779), and width
-1024 was 32.5% faster (8403.565 vs 5670.477). The short-screen width-1 regression did not reproduce.
+1024 was 32.5% faster (8403.565 vs 5670.477). The short-screen width-1 regression did not reproduce: its confirmation point was 0.8% slower, with overlapping intervals. Widths 0/1/8 remain inconclusive; do not interpret the overlapping intervals as proof of equivalence.
 
 JDK17 ran a decisive range64 subset using `javac --release 17`, separate candidate and baseline
 output directories, and the same JMH 1.37 launcher. It covered 16K short, 262K random, and 262K
@@ -81,8 +81,9 @@ prefix with two forks, three 1s warmups and three 1s measurements. Means were 37
 not a full operation matrix. Its intentional wrong-hash control exited 1 with `Unexpected loaded
 class`; all valid forks verified both class fingerprints.
 
-Raw JSON and logs are `confirmation-jdk25-*.json`, `confirmation-jdk17-*.json`, and matching
-`confirmation-*.log` files in this directory. The JDK17 negative guard receipt is
+Raw JSON is `confirmation-jdk25-*.json` and `confirmation-jdk17-*.json` in this directory.
+Committed logs are `string-covered-confirm-*.log` and `string-covered-jdk17-*.log`; the JDK25
+width confirmation log is `string-covered-confirm-widths-prefix262.log`. The JDK17 negative guard receipt is
 `jdk17-wrong-hash-control.log`. JDK17 runtime class hashes (Zulu 17.0.19) were candidate outer/Node
 `19f004f10cf337285720c45ff43d2ac21970a04e037fca801e87e335ee66aa4b` /
 `19b4fd06c5b39149233a7eaeb762c4df2489ca50af768ceb2b32771d7f53a96b`, baseline outer/Node
@@ -92,6 +93,6 @@ from `/tmp/string-covered-jdk17-candidate`, baseline classes from `/tmp/string-c
 
 The final JDK17 focused test passed 9/9 with:
 `./mvnw --settings /tmp/packed-btree-maven-settings.xml -pl library test -Dtest=StringBTreeTest`.
-JDK25 library/SIMD compilation and JDK17 launcher package results are recorded above. Full clean
-verify and packaged consumer probe remain for the combined integration run; this branch did not
-run a full build.
+This isolated String branch did not run full clean verify or a packaged consumer probe. The
+combined Long/String integration run did both JDK 17 and JDK 25 full verifies and fresh packaged
+consumer probes; see [`results/final-integration-verification.md`](../../final-integration-verification.md).

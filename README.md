@@ -2,7 +2,8 @@
 
 A compact, primitive `long → long` ordered map for Java 17+.
 
-`LongBTree` stores up to 31 mappings per node in primitive arrays. It supports
+`LongBTree` stores up to 31 mappings per node in one `long[62]` array, with key
+slots first and value slots starting at offset 31. It supports
 lookup, insert, overwrite, deletion with rebalancing, and ascending range
 traversal, without boxing keys or values. The library has **no runtime
 dependencies**.
@@ -155,6 +156,15 @@ The confirmation covered point hits and misses, ranges, overwrites and churn at
 measurements, class fingerprints and limitations, and the [hill-climb ledger](HILLCLIMB.md)
 for candidate decisions and the [final verification receipt](results/hillclimb/final-verification.md).
 
+A later long-map layout check retained the one-array-per-node key/value layout:
+paired JOL fixtures measured 4.2% fewer retained bytes. Across 20 JDK 25
+point/range/write/churn cells, no candidate mean was more than 5% slower. Three
+cells had separated intervals favoring the candidate; the other 17 overlapped,
+and none favored baseline. Three JDK 17 checks also had overlapping intervals.
+This finite grid does not establish broad latency improvement or equivalence.
+See the [round-three long report](results/hillclimb-round3/long/README.md) for
+the exact measurements and limits.
+
 A fresh one-million-entry comparison of the exact original prototype, this
 optimized default and `TreeMap` is documented in the [three-way results](results/three-way-1m/README.md). It uses matched keys, operations and per-fork class fingerprints, scoped to this JDK 25/M4 Pro fixture.
 
@@ -177,6 +187,17 @@ favored C3 with separated intervals, while JDK 17 churn/range intervals
 overlapped. These results use prebuilt strings on one M4 Pro and do not cover
 String-to-Long performance. See the [C3 confirmation](results/hillclimb-round2/strings/candidate3-confirmation.md)
 and [StringBTree ledger](HILLCLIMB-STRINGS.md).
+
+StringBTree round three adds a covered-subtree range traversal, while preserving
+bounded traversal at range edges. The JDK 25 confirmation measured range64
+means 15.1% lower for 16K short keys, 11.3% lower for 262K random keys and
+15.7% lower for 262K common-prefix keys. The separate width guard found a
+32.5% lower width-1024 mean; widths 0/1/8 remain inconclusive. The width-one
+prefix range was 0.8% slower in confirmation, with overlapping intervals. The exploratory width-64 screens measured 10.9–20.3% lower in
+the primary screen and 7.9–17.5% lower in the independent width screen. On JDK
+17, range64 means were 14.9–20.6% lower for the decisive fixtures. See the
+[round-three String report](results/hillclimb-round3/strings/README.md) for raw
+data, commands and scope.
 
 ## Run the benchmarks
 
