@@ -51,11 +51,23 @@ above.
 
 ### Candidate 1: terminate node search on equality
 
-`Node.index` now returns `~position` immediately when a binary-search comparison equals the query;
+`Node.index` returns `~position` immediately when a binary-search comparison equals the query;
 otherwise it returns the usual nonnegative lower bound. Lookup, overwrite and deletion decode
 negative hits, and inclusive range traversal decodes a matching lower-bound key. The child-split
-path retains its explicit promoted-key comparison. This is a point-search hypothesis motivated
-by the hot-comparison profile; it has not yet been compiled, tested, or timed. Do not infer a
-performance gain until runtime-guarded results exist. Before candidate timing, run the targeted
-String tree tests, then guarded fixture smoke for all five operations against both candidate and
-frozen baseline.
+path retains its explicit promoted-key comparison. Commit `9ad847d` contains this isolated source
+candidate and its provisional screen evidence. JDK 25 compiled the SIMD test/benchmark sources;
+JDK 17 StringBTreeTest passed 5/5. A wrong-hash launch failed as required, and all five operations
+passed guarded smoke on both baseline and candidate. The short screen has one fork and two 250ms
+measurements; it is provisional, String values only, and does not establish significance.
+
+### Candidate 2: bound each visited node once
+
+For this isolated candidate, production `StringBTree.java` has been restored byte-for-byte to
+baseline source `94adfd0` before editing. `visit` computes the local exclusive upper-bound index
+once per node and loops while the lower-bound cursor is below it, instead of calling
+`compareTo(to)` on each emitted separator. Child traversal order is unchanged. C2 compiled and
+passed StringBTreeTest 5/5; all five operations passed guarded candidate/baseline smoke. Its
+60-cell short screen estimated range64 faster in all six cells (7.5–34.9%). This is provisional
+one-fork/two-iteration evidence; raw results and command are in
+`results/hillclimb-round2/strings/candidate2-screen.md` and the adjacent JSON. The current
+worktree contains C2 without C1, while C1 source remains preserved in commit `9ad847d`.

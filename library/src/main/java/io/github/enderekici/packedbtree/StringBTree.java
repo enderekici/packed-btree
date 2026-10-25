@@ -46,9 +46,7 @@ public final class StringBTree<V> {
       int high = count;
       while (low < high) {
         int middle = (low + high) >>> 1;
-        int order = keys[middle].compareTo(key);
-        if (order == 0) return ~middle;
-        if (order < 0) low = middle + 1;
+        if (keys[middle].compareTo(key) < 0) low = middle + 1;
         else high = middle;
       }
       return low;
@@ -71,7 +69,7 @@ public final class StringBTree<V> {
     Node node = root;
     while (true) {
       int i = node.index(key);
-      if (i < 0) return (V) node.values[~i];
+      if (i < node.count && node.keys[i].compareTo(key) == 0) return (V) node.values[i];
       if (node.children == null) return fallback;
       node = node.children[i];
     }
@@ -92,8 +90,8 @@ public final class StringBTree<V> {
     Node node = root;
     while (true) {
       int i = node.index(key);
-      if (i < 0) {
-        node.values[~i] = value;
+      if (i < node.count && node.keys[i].compareTo(key) == 0) {
+        node.values[i] = value;
         return;
       }
       if (node.children == null) {
@@ -151,8 +149,7 @@ public final class StringBTree<V> {
 
   private static boolean delete(Node node, String key) {
     int i = node.index(key);
-    if (i < 0) {
-      i = ~i;
+    if (i < node.count && node.keys[i].compareTo(key) == 0) {
       if (node.children == null) erase(node, i);
       else if (node.children[i].count >= DEGREE) {
         Node predecessor = node.children[i];
@@ -267,9 +264,9 @@ public final class StringBTree<V> {
   @SuppressWarnings("unchecked")
   private static <V> void visit(Node node, String from, String to, EntryConsumer<? super V> visitor) {
     int i = node.index(from);
-    if (i < 0) i = ~i;
+    int end = node.index(to);
     if (node.children != null) visit(node.children[i], from, to, visitor);
-    while (i < node.count && node.keys[i].compareTo(to) < 0) {
+    while (i < end) {
       visitor.accept(node.keys[i], (V) node.values[i]);
       i++;
       if (node.children != null) visit(node.children[i], from, to, visitor);
