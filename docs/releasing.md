@@ -5,6 +5,8 @@ The published artifacts in the first release are the parent POM
 `io.github.enderekici:packed-btree`. The benchmark and optional SIMD modules
 are not selected by the release workflow. The project uses the Apache License
 2.0; see [`LICENSE`](../LICENSE).
+The local packaging and build evidence is in the
+[release validation receipt](release-validation.md).
 
 ## One-time setup
 
