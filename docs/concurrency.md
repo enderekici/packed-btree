@@ -48,7 +48,8 @@ read plus one overwrite using `ConcurrentLongBTree`, `ConcurrentSkipListMap`, an
 skip list. Run at 1, 2, 4, and 8 threads, using the same shuffled 1,048,576-key
 fixture and two forks, with two 1-second warmups and three 1-second measurements.
 That is 24 point combinations and 8 ordered-range combinations (32 total), or
-320 seconds of measured iterations before fixture setup and validation. Read-only
+192 seconds measured plus 128 seconds of warmup iterations (320 seconds total)
+before fixture setup and validation. Read-only
 point operations sample the full key set. In the
 mixed case, each JMH thread writes only its own striped subset of that same set;
 this avoids key-level write races while measuring serialized-writer contention.
@@ -61,6 +62,20 @@ measured path. Results verify sampled point reads, range sums, full key presence
 stable cardinality and B-tree structure outside measured iterations. Raw JSON
 goes in `results/concurrent/`.
 
-Timing results will be appended after the scheduled exclusive run. The setup
-builds and tests the benchmark source but does not substitute for measured
-results.
+The exclusive run completed 2026-10-25 14:45:55–14:52:56 UTC on an Apple M4 Pro
+(14 logical CPUs), macOS 27.0, Azul OpenJDK 25.0.3. JMH exited 0 for all 32
+configurations. The table reports average time in ns/op (lower is faster); raw
+JMH JSON is retained under `results/concurrent/`.
+
+| Threads | B-tree read | Skip-list read | Hash read | B-tree mixed | Skip-list mixed | Hash mixed | B-tree range64 | Skip-list range64 |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1 | 202.630 | 794.888 | 42.442 | 722.911 | 1241.567 | 198.558 | 373.526 | 2671.278 |
+| 2 | 215.540 | 1174.482 | 51.105 | 848.119 | 1045.193 | 165.090 | 403.996 | 2985.651 |
+| 4 | 277.714 | 1022.285 | 46.771 | 2461.959 | 1168.665 | 148.584 | 361.370 | 1400.557 |
+| 8 | 193.082 | 820.800 | 49.008 | 3570.974 | 1007.872 | 165.071 | 375.764 | 1360.553 |
+
+The snapshot B-tree's ordered range workload was faster than the skip list in
+this run. Its point reads were slower than `ConcurrentHashMap`, and mixed point
+cost rose sharply at 4 and 8 threads because writers serialize. These results
+describe this implementation and machine only; they do not establish BBTree
+node-version scalability or predict other hardware/workloads.
