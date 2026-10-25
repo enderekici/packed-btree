@@ -9,10 +9,12 @@ dependencies**.
 
 **Experimental and single-threaded.** It is inspired by
 [BBTree](https://github.com/XiangpengHao/bbtree), but is not a port of its
-concurrent implementation. Compressed routing keys, concurrent access and
-generic object keys/values are not implemented. It does not implement `Map` or
-`NavigableMap`. Optional SIMD node search is available as a separate JDK 25
-artifact; the default library remains a dependency-free JDK 17 artifact.
+concurrent implementation. `ConcurrentLongBTree` adds concurrent access through
+immutable root snapshots. `StringBTree` provides generic values with string keys.
+Optional SIMD node search is available as a separate JDK 25 artifact; the default
+library remains a dependency-free JDK 17 artifact. Compressed routing keys and
+BBTree-style versioned nodes are not implemented. These classes do not implement
+`Map` or `NavigableMap`.
 
 ## Build
 
@@ -82,9 +84,16 @@ Every signed `long` is a valid key and value; the library reserves no sentinel.
 Keys use signed ascending order. A missing lookup returns the caller's fallback.
 Range bounds are half-open: `[fromInclusive, toExclusive)`. Equal or reversed
 bounds yield no visits. Because a half-open range cannot include
-`Long.MAX_VALUE`, use a point lookup for that key. Do not mutate the tree from a
-range callback. Access from multiple threads requires external synchronization
-covering every operation and traversal.
+`Long.MAX_VALUE`, use a point lookup for that key.
+
+`LongBTree` requires external synchronization across every access.
+`ConcurrentLongBTree` is a separate primitive API: its writers serialize, while
+point reads and snapshot range traversals do not take the writer lock. It path-copies
+packed B-tree nodes and publishes root plus size in one volatile state.
+Each call is linearizable; separate calls do not share an atomic snapshot. A range keeps the root it
+captured when traversal began, so its callback may re-enter or mutate the tree. A long-running callback
+retains the old root and reachable nodes until traversal ends. This design does not use BBTree-style
+per-node version validation. See [the concurrency report](docs/concurrency.md).
 
 `validate()` is an optional full structural diagnostic. It checks ordering,
 occupancy, child references, equal leaf depth and cardinality; keep it out of
@@ -119,7 +128,26 @@ third-party benchmark dependencies; none enters the library's runtime graph.
 
 ## Run the benchmarks
 
-After `./mvnw clean verify`:
+After `./mvnw clean verify`, compare the concurrent API at one, two, four and
+eight threads. The point benchmark covers read-only and one-read/one-overwrite
+mixed operations for the concurrent B-tree, `ConcurrentSkipListMap` and
+`ConcurrentHashMap`. Ordered ranges compare only the B-tree and skip list.
+The hash map is excluded from range measurements because it has no ordered range operation.
+
+```bash
+java -jar benchmarks/target/benchmarks.jar bench.ConcurrentMapBenchmark \
+  -p size=1048576 -t 1 -wi 3 -i 5 -w 1s -r 1s -f 2 \
+  -rf json -rff results/concurrent/point-1t.json
+java -jar benchmarks/target/benchmarks.jar bench.ConcurrentRangeBenchmark \
+  -p size=1048576 -t 1 -wi 3 -i 5 -w 1s -r 1s -f 2 \
+  -rf json -rff results/concurrent/range-1t.json
+```
+
+Repeat with `-t 2`, `-t 4` and `-t 8`, changing output names. Run each timed
+slot only when other machine benchmarks are idle. See the concurrency report for
+the recorded machine/JDK and complete result set.
+
+After `./mvnw clean verify` for the original single-threaded suite:
 
 ```bash
 java -jar benchmarks/target/benchmarks.jar -l
