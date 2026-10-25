@@ -168,6 +168,16 @@ fixture sizes. Those measurements use positive dense keys and above-maximum
 misses; they do not cover full-width or collision-heavy hash distributions. See
 [the hash-map report](results/hashmaps/report.md) and [workload notes](docs/hashmap-comparison.md). String-key benchmark scope and results are in [the string-key report](results/string-benchmarks/REPORT.md).
 
+The separate StringBTree round-two C3 confirmation combined exact-match
+search termination and a per-node exclusive range bound. Against the frozen
+StringBTree baseline, its 16 JDK 25 String-to-String point/write/churn/range
+point estimates were all lower; 15 of 16 99.9% confidence intervals were
+separated (the 262K prefix miss was inconclusive). The JDK 17 hit subset also
+favored C3 with separated intervals, while JDK 17 churn/range intervals
+overlapped. These results use prebuilt strings on one M4 Pro and do not cover
+String-to-Long performance. See the [C3 confirmation](results/hillclimb-round2/strings/candidate3-confirmation.md)
+and [StringBTree ledger](HILLCLIMB-STRINGS.md).
+
 ## Run the benchmarks
 
 After `./mvnw clean verify`, compare the concurrent API at one, two, four and

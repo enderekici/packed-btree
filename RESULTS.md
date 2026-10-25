@@ -123,6 +123,33 @@ default and `TreeMap` at 1,048,576 entries using the same five operations. See
 [`results/three-way-1m/README.md`](results/three-way-1m/README.md) for the table,
 per-fork provenance checks, raw JSON and fixture limits.
 
+## StringBTree optimization
+
+StringBTree round two retained the combined C3 change: exact-match search can
+return immediately, and each visited node computes its exclusive range bound
+once. In a guarded JDK 25 String-to-String confirmation, all 16 point/write/
+churn/range point estimates were lower than the frozen baseline and 15 of 16
+99.9% confidence intervals were separated; the remaining interval was the
+262K common-prefix miss. A stationary matched range repeat measured 796.4 ±
+16.8 ns/op for C3, 950.6 ± 17.1 for the frozen baseline, and 989.4 ± 35.6 for
+TreeMap. JDK 17's random-hit subset had separated intervals, while churn and
+range were inconclusive. No String-to-Long performance timing was run. These
+single-host results are fixture-specific; full commands, provenance, controls
+and raw JSON are in the [C3 confirmation report](results/hillclimb-round2/strings/candidate3-confirmation.md)
+and [StringBTree ledger](HILLCLIMB-STRINGS.md). The broader pre-optimization
+String/Long value comparison remains in
+[the baseline string report](results/string-benchmarks/REPORT.md).
+
+The final integrated JDK 17 and JDK 25 verification receipts and fresh packaged
+consumer probes are recorded in
+[`results/final-integration-verification.md`](results/final-integration-verification.md).
+
+The long-map round-two campaign accepted no additional change: unrolled
+degree-16 search, degree 8, and degree 32 were screened against the current
+linear degree-16 default and rejected. Details and raw screens are in the
+[round-two long ledger](results/hillclimb-round2/long/README.md) and
+[overall hill-climb ledger](HILLCLIMB.md).
+
 ## Evidence
 
 - `results/average.json`: all average-time data, confidence intervals and raw fork samples.

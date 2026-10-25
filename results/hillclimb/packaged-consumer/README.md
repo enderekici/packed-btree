@@ -13,6 +13,8 @@ $JDK17/bin/java -cp "/tmp/packed-btree-consumer:library/target/packed-btree-0.1.
 
 The probe exercises point lookups, a half-open range, deletion, cardinality and structural validation. It prints `default packaged consumer passed`. `jdeps --print-module-deps library/target/packed-btree-0.1.0-SNAPSHOT.jar` reports `java.base`.
 
+The JDK 17 `StringConsumer.java` probe checks nullable values, fallback behavior, reference identity, UTF-16 ordering for a supplementary character versus a BMP private-use character, half-open range traversal, deletion, size and validation. Compile and run it beside `DefaultConsumer.java` using the same commands above; it prints `StringBTree packaged consumer passed`.
+
 JDK 25 optional SIMD/compressed compile and run:
 
 ```bash
@@ -26,4 +28,4 @@ $JDK25/bin/java --add-modules jdk.incubator.vector \
 
 This exercises `VectorSearch` as the fallback for both `LongBTree` and `CompressedLongBTree`, including compact routing and a noncompact-key fallback. It prints `vector and compressed fallback consumer passed`.
 
-Final packaged JAR SHA-256: library `495d0f1ae7ea8c90235b7d2758db7a5b862de47d54d5dbec15ee2bda13d6aae9`; optional SIMD `70625a1903e4f36b0f2c4a75d2f0ae88d5b60cf9ed2fc3070e4bb65ed8494c54`.
+Final packaged JAR SHA-256: library `07fa61d13555bffbe90f4837f82a1ff71713904fb75c68e43eee6b3216949eba`; optional SIMD `70625a1903e4f36b0f2c4a75d2f0ae88d5b60cf9ed2fc3070e4bb65ed8494c54`. The packaged `LongBTree.class` and `StringBTree.class` hashes match the classes from the final clean verify output.

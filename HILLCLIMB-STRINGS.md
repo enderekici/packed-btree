@@ -70,8 +70,8 @@ once per node and loops while the lower-bound cursor is below it, instead of cal
 passed StringBTreeTest 5/5; all five operations passed guarded candidate/baseline smoke. Its
 60-cell short screen estimated range64 faster in all six cells (7.5–34.9%). This is provisional
 one-fork/two-iteration evidence; raw results and command are in
-`results/hillclimb-round2/strings/candidate2-screen.md` and the adjacent JSON. The current
-worktree contains C2 without C1, while C1 source remains preserved in commit `9ad847d`.
+`results/hillclimb-round2/strings/candidate2-screen.md` and the adjacent JSON. This is an
+intermediate historical candidate; final C3 combines C1 and C2, as recorded below.
 
 ### Candidate 3: combine point search and range bound changes
 
