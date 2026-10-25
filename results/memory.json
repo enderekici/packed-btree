@@ -1,0 +1,58 @@
+[
+  {
+    "implementation": "btree",
+    "size": 1048576,
+    "retained_bytes": 27817656,
+    "bytes_per_entry": 26.53,
+    "objects": 149531
+  },
+  {
+    "implementation": "btree",
+    "size": 16384,
+    "retained_bytes": 444664,
+    "bytes_per_entry": 27.14,
+    "objects": 2391
+  },
+  {
+    "implementation": "primitiveAvl",
+    "size": 1048576,
+    "retained_bytes": 41943168,
+    "bytes_per_entry": 40.0,
+    "objects": 1048578
+  },
+  {
+    "implementation": "primitiveAvl",
+    "size": 16384,
+    "retained_bytes": 655488,
+    "bytes_per_entry": 40.01,
+    "objects": 16386
+  },
+  {
+    "implementation": "skiplist",
+    "size": 1048576,
+    "retained_bytes": 88072232,
+    "bytes_per_entry": 83.99,
+    "objects": 3669675
+  },
+  {
+    "implementation": "skiplist",
+    "size": 16384,
+    "retained_bytes": 1378304,
+    "bytes_per_entry": 84.13,
+    "objects": 57428
+  },
+  {
+    "implementation": "tree",
+    "size": 1048576,
+    "retained_bytes": 92274736,
+    "bytes_per_entry": 88.0,
+    "objects": 3145729
+  },
+  {
+    "implementation": "tree",
+    "size": 16384,
+    "retained_bytes": 1441840,
+    "bytes_per_entry": 88.0,
+    "objects": 49153
+  }
+]

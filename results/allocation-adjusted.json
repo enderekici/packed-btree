@@ -1,0 +1,522 @@
+[
+  {
+    "operation": "churn",
+    "implementation": "btree",
+    "size": "16384",
+    "bytes_per_operation": 0.4665480874650929,
+    "samples": [
+      0.536120626270782,
+      0.39451989507761703,
+      0.5346779472600396,
+      0.400873881251933
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "churn",
+    "implementation": "btree",
+    "size": "1048576",
+    "bytes_per_operation": 5.291965786922032,
+    "samples": [
+      7.222354942439743,
+      3.3933550809632953,
+      7.217181686675512,
+      3.3349714376095774
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "churn",
+    "implementation": "tree",
+    "size": "16384",
+    "bytes_per_operation": 88.00162538041033,
+    "samples": [
+      88.0016668276383,
+      88.00159795769632,
+      88.00163553659641,
+      88.00160119971032
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "churn",
+    "implementation": "tree",
+    "size": "1048576",
+    "bytes_per_operation": 88.00683263429653,
+    "samples": [
+      88.00723826935048,
+      88.00654305289682,
+      88.00709620322715,
+      88.0064530117117
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "churn",
+    "implementation": "skiplist",
+    "size": "16384",
+    "bytes_per_operation": 132.01087715490053,
+    "samples": [
+      131.9930946726295,
+      132.04534494725092,
+      131.99921764250763,
+      132.00585135721403
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "churn",
+    "implementation": "skiplist",
+    "size": "1048576",
+    "bytes_per_operation": 132.01899887424474,
+    "samples": [
+      132.07123164765775,
+      132.0005009245789,
+      131.96791297006592,
+      132.03634995467638
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "churn",
+    "implementation": "primitiveAvl",
+    "size": "16384",
+    "bytes_per_operation": 40.0013333414891,
+    "samples": [
+      40.00134144771696,
+      40.00133144293797,
+      40.00133737745308,
+      40.00132309784838
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "churn",
+    "implementation": "primitiveAvl",
+    "size": "1048576",
+    "bytes_per_operation": 40.00340263348091,
+    "samples": [
+      40.0034426404462,
+      40.00335627688321,
+      40.00337784040187,
+      40.00343377619235
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "hit",
+    "implementation": "btree",
+    "size": "16384",
+    "bytes_per_operation": 0.00041055197900679045,
+    "samples": [
+      0.0004180785527792817,
+      0.0004016053658148693,
+      0.00042216101691593165,
+      0.00040036298051707907
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "hit",
+    "implementation": "btree",
+    "size": "1048576",
+    "bytes_per_operation": 0.0009229774872956633,
+    "samples": [
+      0.0009269003974019247,
+      0.0009172364452108465,
+      0.000942422939759114,
+      0.0009053501668107682
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "hit",
+    "implementation": "tree",
+    "size": "16384",
+    "bytes_per_operation": 0.000466760608948363,
+    "samples": [
+      0.00047907558669820627,
+      0.00046093237596814485,
+      0.0004758277142045517,
+      0.0004512067589225492
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "hit",
+    "implementation": "tree",
+    "size": "1048576",
+    "bytes_per_operation": 0.0018529530542975067,
+    "samples": [
+      0.0018695143108649762,
+      0.0018349523292491663,
+      0.001865691034634955,
+      0.0018416545424409288
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "hit",
+    "implementation": "skiplist",
+    "size": "16384",
+    "bytes_per_operation": 0.0007872926266419925,
+    "samples": [
+      0.0008654454628388176,
+      0.000851971321671631,
+      0.000734888153697448,
+      0.0006968655683600733
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "hit",
+    "implementation": "skiplist",
+    "size": "1048576",
+    "bytes_per_operation": 0.004157835996457896,
+    "samples": [
+      0.004145060538609167,
+      0.004074408003068611,
+      0.004109126663829413,
+      0.0043027487803243905
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "hit",
+    "implementation": "primitiveAvl",
+    "size": "16384",
+    "bytes_per_operation": 0.00042571585424657654,
+    "samples": [
+      0.0004532987064927139,
+      0.00042714313150718204,
+      0.0004113032719997894,
+      0.00041111830698662083
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "hit",
+    "implementation": "primitiveAvl",
+    "size": "1048576",
+    "bytes_per_operation": 0.0012878403473978513,
+    "samples": [
+      0.0012577929255975953,
+      0.001330474713377733,
+      0.0012910677111527408,
+      0.001272026039463336
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "miss",
+    "implementation": "btree",
+    "size": "16384",
+    "bytes_per_operation": 0.000390891046485804,
+    "samples": [
+      0.00039982814244071777,
+      0.00038677860334135827,
+      0.00038528817821934007,
+      0.00039166926194179994
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "miss",
+    "implementation": "btree",
+    "size": "1048576",
+    "bytes_per_operation": 0.0008556592608701154,
+    "samples": [
+      0.0008481009928354851,
+      0.0008566664806476594,
+      0.0008682015477801078,
+      0.0008496680222172092
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "miss",
+    "implementation": "tree",
+    "size": "16384",
+    "bytes_per_operation": 0.0010501375310930266,
+    "samples": [
+      0.001061508020754605,
+      0.0010219157123920418,
+      0.001069604513731048,
+      0.0010475218774944114
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "miss",
+    "implementation": "tree",
+    "size": "1048576",
+    "bytes_per_operation": 0.003297074776683547,
+    "samples": [
+      0.0033293998851832668,
+      0.003265431027565836,
+      0.003234950777913235,
+      0.0033585174160718494
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "miss",
+    "implementation": "skiplist",
+    "size": "16384",
+    "bytes_per_operation": 0.0008777337874877466,
+    "samples": [
+      0.0009505331676327704,
+      0.0009501614527914318,
+      0.0008009861741776475,
+      0.0008092543553491366
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "miss",
+    "implementation": "skiplist",
+    "size": "1048576",
+    "bytes_per_operation": 0.00448421589671838,
+    "samples": [
+      0.004617188870727946,
+      0.00447296634987415,
+      0.004441111496007441,
+      0.004405596870263984
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "miss",
+    "implementation": "primitiveAvl",
+    "size": "16384",
+    "bytes_per_operation": 0.0005556685745082738,
+    "samples": [
+      0.0005606304625930136,
+      0.0005504006169519144,
+      0.0005580349580202259,
+      0.0005536082604679413
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "miss",
+    "implementation": "primitiveAvl",
+    "size": "1048576",
+    "bytes_per_operation": 0.001740719338695595,
+    "samples": [
+      0.0017085864278681185,
+      0.0017821241239268748,
+      0.0017045029803234612,
+      0.0017676638226639249
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "overwrite",
+    "implementation": "btree",
+    "size": "16384",
+    "bytes_per_operation": 0.00043575745990620735,
+    "samples": [
+      0.000438602262310469,
+      0.00044091466361234583,
+      0.00042635307869862664,
+      0.000437159835003388
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "overwrite",
+    "implementation": "btree",
+    "size": "1048576",
+    "bytes_per_operation": 0.0009442626482330469,
+    "samples": [
+      0.0009276028502850325,
+      0.0009581407470431777,
+      0.0009343888189432116,
+      0.0009569181766607656
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "overwrite",
+    "implementation": "tree",
+    "size": "16384",
+    "bytes_per_operation": 48.00056860919369,
+    "samples": [
+      48.00057480374306,
+      48.000571416810246,
+      48.00056577765309,
+      48.00056243856836
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "overwrite",
+    "implementation": "tree",
+    "size": "1048576",
+    "bytes_per_operation": 48.002298977264715,
+    "samples": [
+      48.00231304631888,
+      48.00227017848143,
+      48.00232209784879,
+      48.00229058640976
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "overwrite",
+    "implementation": "skiplist",
+    "size": "16384",
+    "bytes_per_operation": 48.00081602738886,
+    "samples": [
+      48.00078355699401,
+      48.00083948304864,
+      48.00080408609445,
+      48.00083698341834
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "overwrite",
+    "implementation": "skiplist",
+    "size": "1048576",
+    "bytes_per_operation": 48.00470016994511,
+    "samples": [
+      48.004804600336186,
+      48.00466508053928,
+      48.004703248533765,
+      48.00462775037121
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "overwrite",
+    "implementation": "primitiveAvl",
+    "size": "16384",
+    "bytes_per_operation": 0.0004898233597217059,
+    "samples": [
+      0.0004944382408141675,
+      0.00048365287818373146,
+      0.0004928459537452808,
+      0.0004883563661436436
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "overwrite",
+    "implementation": "primitiveAvl",
+    "size": "1048576",
+    "bytes_per_operation": 0.001443908401223918,
+    "samples": [
+      0.0014349337491088036,
+      0.0014117044415246811,
+      0.0014222201995090496,
+      0.0015067752147531375
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "range64",
+    "implementation": "btree",
+    "size": "16384",
+    "bytes_per_operation": 0.0008955137333851422,
+    "samples": [
+      0.0008914011119082784,
+      0.0008903009344344236,
+      0.0008933578434074986,
+      0.0009069950437903685
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "range64",
+    "implementation": "btree",
+    "size": "1048576",
+    "bytes_per_operation": 0.0018930617446382284,
+    "samples": [
+      0.0018951689976342877,
+      0.0018927057553666995,
+      0.0018772725019451646,
+      0.0019070997236067615
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "range64",
+    "implementation": "tree",
+    "size": "16384",
+    "bytes_per_operation": 128.00331129057304,
+    "samples": [
+      128.00326994912996,
+      128.003350492843,
+      128.00329947444087,
+      128.00332524587836
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "range64",
+    "implementation": "tree",
+    "size": "1048576",
+    "bytes_per_operation": 128.02211953879873,
+    "samples": [
+      128.02205829060853,
+      128.02188676413573,
+      128.02225408441927,
+      128.02227901603135
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "range64",
+    "implementation": "skiplist",
+    "size": "16384",
+    "bytes_per_operation": 112.00214340099302,
+    "samples": [
+      112.00214786969795,
+      112.00215559844617,
+      112.00215413603934,
+      112.00211599978864
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "range64",
+    "implementation": "skiplist",
+    "size": "1048576",
+    "bytes_per_operation": 112.01815212382698,
+    "samples": [
+      112.01787848758211,
+      112.0181983621474,
+      112.01864717415395,
+      112.01788447142445
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "range64",
+    "implementation": "primitiveAvl",
+    "size": "16384",
+    "bytes_per_operation": 72.00194755173584,
+    "samples": [
+      72.00196673573389,
+      72.00194157738184,
+      72.00194135740793,
+      72.00194053641971
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  },
+  {
+    "operation": "range64",
+    "implementation": "primitiveAvl",
+    "size": "1048576",
+    "bytes_per_operation": 72.00418141144641,
+    "samples": [
+      72.00414494518014,
+      72.00417073408245,
+      72.00417084992984,
+      72.00423911659321
+    ],
+    "rule": "Exclude final measured iteration in every fork: trial teardown allocations; retain all six timing samples"
+  }
+]
