@@ -31,3 +31,10 @@ Every corrected timing run must use `-foe true`, provide expected fingerprint va
 - Linear candidate tree SHA-256: `735203836860d90afcfebeb8dbec729a8fbfe316b83cbe2a42444ca08aeede76`; Node: `6f183f62dab68d6454553cd591bcc6384db0c9569f8805b9b16135f88ab10b5b`. Baseline tree/Node hashes are above.
 - `javap -c -p 'io.github.enderekici.packedbtree.LongBTree$Node'` showed the candidate's `index(long)` uses `iinc` and loops across keys; baseline clone bytecode shows the binary lower-bound `middle=(low+high)>>>1` and low/high updates.
 - Candidate results are captured in `c2-corrected-summary.md`. This remains a short screen only; the large gains require replicated confirmation before any claim.
+
+## Corrected C3 degree-8 screen receipt
+
+- Candidate ran first, baseline second. Both arms used the corrected classpath, one fork, 1x250ms warmup/2x250ms measurement and `-foe true`.
+- Each arm produced 20 finite rows and 40 matching fingerprint lines. Candidate log `/tmp/hillclimb-c3-degree8-candidate.log` completed 15:43:49 UTC; baseline log `/tmp/hillclimb-c3-degree8-baseline.log` completed 15:44:18 UTC.
+- Candidate source SHA-256: `36bb5e688f92a93754bd8bd01af03e2838888138de08d2f65f89b4491874f960`; tree fingerprint `f2b91268716491a03d67b747a2f4da42d5e82e11a25c5fbea92747874ddf5724`; Node `824ddb5017dbe75850016a2740323e50f50c98fcb6700d704f785782f19b7459`.
+- Raw JSON: `c3-degree8-candidate.json`, `c3-degree8-baseline.json`; summary `c3-degree8-summary.md`. JOL node/occupancy comparison pending.
