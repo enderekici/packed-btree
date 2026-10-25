@@ -22,8 +22,9 @@ public class LongBTree {
   @FunctionalInterface
   public interface SearchStrategy {
     /**
-     * Returns the lower-bound index in {@code keys[0..count)} using signed long ordering.
-     * The supplied array is internal tree state and must not be modified.
+     * Returns the lower-bound index in {@code keys[0..count)} using signed long ordering. The
+     * supplied array is internal tree state: do not modify or retain it, and do not re-enter or
+     * mutate the tree from this strategy.
      *
      * @param keys sorted key array
      * @param count number of active keys

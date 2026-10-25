@@ -1,15 +1,18 @@
 # Compressed routing keys
 
-`CompressedLongBTree` is an opt-in variant. `LongBTree` retains its current node
-layout and scalar signed-long lower-bound search.
+`CompressedLongBTree` is an opt-in variant. `LongBTree` keeps scalar signed-long
+lower-bound search by default.
 
 Each compressed node retains canonical `long[]` keys and has a `short[]` routing
 array. When the node's first and last keys share their signed high 48 bits, the
 node records that prefix and copies each low 16-bit suffix into the routing
 array. A lookup compares the signed prefix first, then uses unsigned suffix
-comparisons. If the node spans prefixes, it falls back to scalar `long[]`
-search. Since keys in a node are sorted, matching endpoint prefixes proves all
-keys in that node share the same prefix.
+comparisons. If the node spans prefixes, it uses scalar `long[]` search by
+default. Since keys in a node are sorted, matching endpoint prefixes proves all
+keys in that node share the same prefix. `CompressedLongBTree(SearchStrategy)`
+accepts a fallback for noncompact nodes; compact nodes continue to use their
+suffix arrays. `LongBTree(SearchStrategy)` applies a custom lower bound to every
+node.
 
 The short values alone are not keys: full keys remain authoritative for
 collision checks, values, ranges, splits, deletes, and validation. Route metadata
@@ -25,20 +28,24 @@ will be recorded under `results/compressed/` after an isolated timing run.
 
 ## Measurement
 
-The JOL retained-object-graph measurement at 1,048,576 mappings showed identical
-pre-change and current scalar size. The compressed variant retained roughly
-4.7 MB more and added about 49,000 objects (the per-node route arrays):
+A fresh integrated JOL comparison at 1,048,576 mappings measured the current
+branch against the exact pre-hook scalar control and the compressed variant.
+The current scalar and pre-hook control had equal retained size for all tested
+distributions. Compression retained about 4.7 MB more and about 49,000 more
+objects in these fixtures:
 
-| Keys | Pre-change scalar | Current scalar | Compressed |
+| Keys | Pre-hook control | Integrated scalar | Integrated compressed |
 | --- | ---: | ---: | ---: |
-| Sequential | 27,843,544 B (26.55 B/map) | 27,843,544 B | 32,561,176 B (31.05 B/map) |
-| Full-width random | 27,777,192 B (26.49 B/map) | 27,777,192 B | 32,484,264 B (30.98 B/map) |
-| Common prefix | 27,843,544 B (26.55 B/map) | 27,843,544 B | 32,561,176 B (31.05 B/map) |
+| Sequential | 27,843,544 B (26.55 B/map) | 27,843,544 B (26.55 B/map) | 32,561,176 B (31.05 B/map) |
+| Full-width random | 27,777,192 B (26.49 B/map) | 27,777,192 B (26.49 B/map) | 32,484,264 B (30.98 B/map) |
+| Common prefix | 27,843,544 B (26.55 B/map) | 27,843,544 B (26.55 B/map) | 32,561,176 B (31.05 B/map) |
 
-The run used JDK 25.0.3 on an Apple M4 Pro, 1 GiB initial / 4 GiB maximum
-heap, and fresh JVMs for each measurement. `GraphLayout` reported retained bytes
-and object counts; its Serviceability Agent attach warning did not prevent the
-JOL graph measurements. Raw rows are in `results/compressed/memory.csv`.
+The measurements used JDK 25.0.3 on an Apple M4 Pro, 1 GiB initial / 4 GiB
+maximum heap, one fresh JVM per tree and distribution, and `GraphLayout` retained
+object graphs. Object counts and all raw rows, including the earlier track-level
+measurements, are in `results/compressed/memory.csv`. The JOL attach warning did
+not prevent graph measurement. These results quantify retained memory only;
+they do not establish lookup performance.
 
 Timed lookup measurements are pending the exclusive JMH window. The fixture is
 `bench.RoutingBenchmark`; run `hit` for both search modes and all three

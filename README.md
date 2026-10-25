@@ -29,7 +29,7 @@ Requires JDK 17 or later; Maven 3.9.16 is provided by the wrapper.
 
 On Windows, use `mvnw.cmd`. The build runs differential/contract tests, generates
 the library, source and Javadoc JARs, and packages the separate runnable JMH
-benchmark JAR. CI runs the build on JDK 17 and JDK 25.
+benchmark JAR. CI runs the default build on JDK 17 and also builds/tests the optional SIMD profile on JDK 25.
 
 To build only the library:
 

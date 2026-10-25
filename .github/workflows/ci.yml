@@ -12,7 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: ['17', '25']
+        include:
+          - java: '17'
+            profile: ''
+          - java: '25'
+            profile: '-Psimd'
     steps:
       - uses: actions/checkout@v7.0.1
       - uses: actions/setup-java@v6.1.0
@@ -20,6 +24,6 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java }}
           cache: maven
-      - run: ./mvnw --batch-mode --no-transfer-progress clean verify
+      - run: ./mvnw --batch-mode --no-transfer-progress ${{ matrix.profile }} clean verify
       - name: Verify runnable benchmark JAR
         run: java -jar benchmarks/target/benchmarks.jar -l

@@ -1,11 +1,15 @@
 # Compressed routing measurements
 
-This directory holds the JMH JSON and retained-memory CSV for the scalar versus
-compressed routing comparison. `memory.csv` records the three-way JOL results.
-Run `bench.RoutingBenchmark` on the reserved
-measurement host/slot with both `search` values and all `distribution` values.
-Measure `btree` and `btreeCompressed` separately with `bench.MemoryFootprint`
-for each distribution. Use fresh JVMs for memory runs and record the JDK, host,
-heap, and exact commands in `docs/compressed-routing.md`.
+`memory.csv` preserves historical track measurements and adds an integrated
+comparison at 1,048,576 mappings. The integrated rows compare the exact pre-hook
+scalar control, current default scalar tree, and compressed tree, each in a fresh
+JDK 25 JVM using the same `RoutingKeys` fixture and `GraphLayout` probe. The
+current default retained the same measured bytes as the pre-hook control in all
+three tested distributions; compressed routing retained more because it adds
+per-node suffix arrays and metadata. See `docs/compressed-routing.md` for the
+values and environment.
 
-Timed lookup results are pending the exclusive JMH slot.
+Timed lookup results are pending the exclusive JMH slot. Use
+`bench.RoutingBenchmark` with both search modes and all three distributions.
+Measure `btree` and `btreeCompressed` separately with `bench.MemoryFootprint`
+for each distribution, and record exact commands and host details.
