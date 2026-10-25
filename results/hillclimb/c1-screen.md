@@ -1,3 +1,5 @@
+> **INVALID TIMING RUN:** The runtime classpath omitted `library/target/classes`, so the candidate production class was not loaded. Do not use these results for a candidate decision. See [harness-classpath-correction.md](harness-classpath-correction.md).
+
 # C1 screening results
 
 Raw JMH JSON: `c1-screen.json`. Single-fork screening only; scores are ns/op and deltas are candidate versus frozen 57ea447 baseline. They are not significance estimates.

@@ -41,6 +41,7 @@ public class BaselineSearchScreen {
 
   @Setup(Level.Trial)
   public void setup() {
+    SearchScreenFixture.verifyBaselineClasses(CurrentBaselineLongBTree.class);
     tree = new CurrentBaselineLongBTree();
     keys = SearchScreenFixture.keys(distribution, size);
     misses = SearchScreenFixture.absentAlternates(keys);

@@ -1,3 +1,5 @@
+> **INVALID TIMING RUN:** The runtime classpath omitted `library/target/classes`, so the candidate production class was not loaded. Do not use these results for a candidate decision. See [harness-classpath-correction.md](harness-classpath-correction.md).
+
 # C2 linear-search screening results
 
 Raw JMH JSON: `c2-linear-screen.json`. Scores are ns/op; deltas compare linear candidate against the frozen 57ea447 binary baseline. Single-fork screen; results are exploratory and not significance estimates.

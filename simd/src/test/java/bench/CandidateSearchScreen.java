@@ -41,6 +41,7 @@ public class CandidateSearchScreen {
 
   @Setup(Level.Trial)
   public void setup() {
+    SearchScreenFixture.verifyCandidateClasses(io.github.enderekici.packedbtree.LongBTree.class);
     tree = new io.github.enderekici.packedbtree.LongBTree();
     keys = SearchScreenFixture.keys(distribution, size);
     misses = SearchScreenFixture.absentAlternates(keys);

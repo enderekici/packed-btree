@@ -1,3 +1,5 @@
+> **BASELINE-ONLY DIAGNOSTIC:** This screen predates runtime class fingerprints. The production arm resolved from the shaded benchmark jar; treat its scores as baseline context/noise only, not as proof of exact runtime-source provenance or any candidate comparison.
+
 # Fresh paired baseline screen
 
 - Source: production library exactly `57ea447d94078b2a0872569b09bb88986b71f886`; frozen control is a test-only rename of that source (`CurrentBaselineLongBTree`), verified by reversing package/class/constructor names and byte-comparing with `git show 57ea447:.../LongBTree.java`. Frozen file SHA-256: `46e49ff5ffa3151e238d2867c3e4098c56f778db53226728b0acfa56f2027297`.
