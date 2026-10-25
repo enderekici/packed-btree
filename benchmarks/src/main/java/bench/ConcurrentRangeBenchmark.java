@@ -64,7 +64,8 @@ public class ConcurrentRangeBenchmark {
 
   @Benchmark
   public long range64(ThreadState thread) {
-    long from = keys[thread.next(size - 1)];
+    int firstIndex = thread.next(size - 1) % (size - 63);
+    long from = 1024L + 2L * firstIndex;
     long to = from + 128;
     if (btree != null) {
       thread.sum.value = 0;
