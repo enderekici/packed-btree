@@ -1,6 +1,7 @@
 package io.github.enderekici.packedbtree.simd;
 
 import io.github.enderekici.packedbtree.LongBTree;
+import bench.PreHookLongBTree;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import org.openjdk.jmh.annotations.Benchmark;
@@ -38,7 +39,8 @@ public class SearchBenchmark {
   @Param({"4096", "262144"})
   public int size;
 
-  private LongBTree baseline;
+  private PreHookLongBTree preHook;
+  private LongBTree currentDefault;
   private LongBTree scalarHook;
   private LongBTree vector;
   private long[] queries;
@@ -46,12 +48,14 @@ public class SearchBenchmark {
 
   @Setup(Level.Trial)
   public void setup() {
-    baseline = new LongBTree();
+    preHook = new PreHookLongBTree();
+    currentDefault = new LongBTree();
     scalarHook = new LongBTree(SCALAR_HOOK);
     vector = new LongBTree(new VectorSearch());
     for (int i = 0; i < size; i++) {
       long key = (long) i * 3 - size;
-      baseline.put(key, key);
+      preHook.put(key, key);
+      currentDefault.put(key, key);
       scalarHook.put(key, key);
       vector.put(key, key);
     }
@@ -60,6 +64,14 @@ public class SearchBenchmark {
     for (int i = 0; i < queries.length; i++) {
       queries[i] = random.nextLong(-size, 2L * size);
     }
+    if (preHook.size() != size || currentDefault.size() != size
+        || scalarHook.size() != size || vector.size() != size
+        || preHook.getOrDefault(-size, Long.MIN_VALUE) != -size
+        || currentDefault.getOrDefault(-size, Long.MIN_VALUE) != -size
+        || scalarHook.getOrDefault(-size, Long.MIN_VALUE) != -size
+        || vector.getOrDefault(-size, Long.MIN_VALUE) != -size) {
+      throw new AssertionError("Benchmark tree fixture");
+    }
   }
 
   private long query() {
@@ -67,8 +79,13 @@ public class SearchBenchmark {
   }
 
   @Benchmark
-  public long scalarBaseline() {
-    return baseline.getOrDefault(query(), -1);
+  public long preHookBaseline() {
+    return preHook.getOrDefault(query(), -1);
+  }
+
+  @Benchmark
+  public long currentDefault() {
+    return currentDefault.getOrDefault(query(), -1);
   }
 
   @Benchmark
