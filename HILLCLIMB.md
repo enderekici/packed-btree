@@ -66,3 +66,32 @@ Append one section per baseline or candidate: source commit/hash; exact correctn
 - Correctness: `JAVA_HOME=.../azul-25/Contents/Home ./mvnw --settings /tmp/packed-btree-maven-settings.xml -Psimd -pl simd -am -Dtest=LongBTreeTest,VectorSearchTest -Dsurefire.failIfNoSpecifiedTests=false test`; exit 0, 8 tests, no failures. This was targeted test coverage, not full verification.
 - The first JMH run is invalid and retained only for audit (see `results/hillclimb/harness-classpath-correction.md`). Corrected screen used `library/target/classes:simd/target/test-classes:benchmarks/target/benchmarks.jar`, `-foe true`, per-fork class+Node path/hash guard and finite-row validation. Candidate arm ran first (log `/tmp/hillclimb-c1-corrected-candidate.log`, completed 15:38:31 UTC); frozen baseline ran second (log `/tmp/hillclimb-c1-corrected-baseline.log`, completed 15:39:03 UTC). Each emitted 20/20 finite rows; all per-trial tree/Node fingerprints matched. Raw JSON: `c1-corrected-candidate.json` and `c1-corrected-baseline.json`; paired summary: `c1-corrected-summary.md`.
 - Corrected screen deltas (candidate vs baseline): at 262,144, hit -1.0% dense/-0.2% fullWidth; miss -0.8%/+2.6%; range64 -0.4%/-10.5%; overwrite +0.4%/+1.3%; churn -0.4%/-2.2%. At 4,096, hit -3.4%/+5.1%, miss +24.5%/-1.8%, range -0.1%/+0.7%, overwrite +32.4%/+3.7%, churn -0.1%/+1.7%. One fork/two short measurements are coarse, but no broad win appears and dense small miss/write are notably slower. Reject C1 without long confirmation; revert the production edit. No memory impact was measured; C1 changes traversal code only.
+
+## Round 2 — linear-search LongBTree
+
+The preceding C2 campaign has already changed the default to degree-16 linear
+lower-bound search. Round 2 therefore uses feature commit `94adfd0e37a1168e80635a9124fac6f82bd8d1e5` as its current baseline, not the historical degree-16 binary-search source from `57ea447`. The frozen baseline clone, guarded selected-map screen, value-aware mutation checks, and candidate ledger are in [`results/hillclimb-round2/long/README.md`](results/hillclimb-round2/long/README.md).
+
+At most three result-driven candidates are allowed: first a modest unrolled scan at fixed degree 16; then degree 8 or 32 with linear search only if evidence warrants the geometry interaction. No public tuning knobs or concurrency redesign are in scope. Candidate outcome, exact provenance, correctness and build receipts will be recorded in the round-two ledger.
+
+C5, four-at-a-time linear scan at degree 16, was rejected after a guarded JDK 25
+screen: 4,096-entry hit/miss/overwrite regressed 11–20% and range64 6.7–6.8%;
+262,144-entry point/range results were mixed and near neutral. The 40-row
+one-fork/two-measurement screen is exploratory, not confirmation. Targeted
+correctness passed 9 tests; positive runtime fingerprints passed and a wrong
+hash failed closed. The production source is restored and the rejected diff,
+raw artifacts, hashes and precise limitations are recorded in the linked
+round-two ledger.
+
+C6, degree 8 with the same linear search, was also rejected. Its guarded JDK 25
+screen regressed across every workload, including 24–29% slower point reads and
+67–68% slower range64 at 262,144 entries. The exploratory screen is not
+confirmation; its complete evidence and limitations are in the round-two
+ledger. Production source has been restored to degree 16.
+
+C7, degree 32 with linear search, improved 262,144-entry reads/ranges by
+6–23% but regressed churn 89–93%; 4,096-entry point operations regressed
+26–30% while range64 improved 14–17%. It is rejected as a mixed-workload
+tradeoff. The 40-row exploratory screen and prior-round footprint limits are
+documented in the round-two ledger. No round-two production optimization was
+accepted; the default remains the 94adfd0 degree-16 linear implementation.

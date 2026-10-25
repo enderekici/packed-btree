@@ -1,0 +1,8 @@
+--- a/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
++++ b/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
+@@ -37 +37 @@
+-  private static final int DEGREE = 16;
++  private static final int DEGREE = 32;
+@@ -82 +82 @@
+-      // A node has at most 31 keys, so scan the small fixed-capacity array directly.
++      // A node has at most 63 keys, so scan the small fixed-capacity array directly.

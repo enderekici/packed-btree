@@ -1,0 +1,10 @@
+--- a/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
++++ b/library/src/main/java/io/github/enderekici/packedbtree/LongBTree.java
+@@ -83,0 +84,7 @@
++      while (index + 3 < count) {
++        if (keys[index] >= key) return index;
++        if (keys[index + 1] >= key) return index + 1;
++        if (keys[index + 2] >= key) return index + 2;
++        if (keys[index + 3] >= key) return index + 3;
++        index += 4;
++      }
