@@ -1,65 +1,129 @@
 # packed-btree
 
-A compact, primitive `long → long` ordered map for Java 17+.
+A Java library for ordered maps backed by compact B-tree nodes. It is inspired
+by [BBTree](https://bbtree.xiangpeng.systems/post/), but is an independent
+implementation, not a port of BBTree's version-validated concurrent protocol.
+The core targets Java 17 and has no runtime dependencies.
 
-`LongBTree` stores up to 31 mappings per node in one `long[62]` array, with key
-slots first and value slots starting at offset 31. It supports
-lookup, insert, overwrite, deletion with rebalancing, and ascending range
-traversal, without boxing keys or values. The library has **no runtime
-dependencies**.
+## Choose an implementation
 
-**Experimental.** `LongBTree` is single-threaded and inspired by
-[BBTree](https://github.com/XiangpengHao/bbtree), but is not a port of its
-concurrent implementation. `ConcurrentLongBTree` is a separate primitive API
-with serialized writers and immutable root snapshots. `ConcurrentStringBTree<V>`
-provides the same concurrency contract for String keys and generic, nullable values;
-`StringBTree<V>` remains single-threaded. `CompressedLongBTree` is an opt-in
-variant with 16-bit routing suffixes and higher memory use. Optional SIMD search
-is a separate JDK 25 artifact; the default library remains dependency-free and
-usable on JDK 17. Long-key trees accept a custom lower-bound strategy, and the
-compressed variant uses it on nodes whose keys do not share the same signed high
-48 bits. These APIs do not implement `Map` or `NavigableMap`; concurrency does
-not use BBTree-style versioned nodes.
+| Type | Key/value | Threading contract | Good fit |
+| --- | --- | --- | --- |
+| `LongBTree` | primitive `long` → `long` | Mutable; externally synchronize accesses if shared | Ordered primitive keys and ranges with compact storage. |
+| `StringBTree<V>` | non-null `String` → `V` | Mutable; externally synchronize accesses if shared | String ordering with arbitrary reference values, including null. |
+| `ConcurrentLongBTree` | primitive `long` → `long` | Writers serialize; reads use immutable published roots | Concurrent readers with ordered ranges and serialized updates. |
+| `ConcurrentStringBTree<V>` | non-null `String` → `V` | Writers serialize; reads use immutable published roots | Concurrent String-key access with reference values. |
 
-## Build
+The types do not implement `Map` or `NavigableMap`. Long keys use signed
+ascending order. Every `long` is a valid key or value; there is no reserved
+sentinel, and `getOrDefault` returns the supplied fallback only for an absent
+key. Ranges are half-open `[fromInclusive, toExclusive)`, so a range cannot
+include `Long.MAX_VALUE`; use a point lookup for it.
 
-Requires JDK 17 or later; Maven 3.9.16 is provided by the wrapper.
+Mutable `LongBTree` nodes have degree 16 and hold up to 31 mappings in one
+`long[62]`: keys occupy the first 31 slots and values start at offset 31. Its
+default node search is a scalar linear lower-bound scan. `ConcurrentLongBTree`
+uses separate key and value arrays. String keys use
+`String.compareTo` ordering (lexicographic UTF-16 code units). Empty strings are
+valid; null keys are rejected. Values are held by reference. Updating a key
+that compares equal keeps the originally stored String key object.
 
-```bash
-./mvnw clean verify
+## Example
+
+```java
+import io.github.enderekici.packedbtree.LongBTree;
+import io.github.enderekici.packedbtree.StringBTree;
+
+LongBTree scores = new LongBTree();
+scores.put(Long.MIN_VALUE, 10);
+scores.put(7, 20);
+long score = scores.getOrDefault(7, -1); // 20
+scores.forEach(Long.MIN_VALUE, 8,
+    (key, value) -> System.out.println(key + ": " + value));
+
+StringBTree<String> names = new StringBTree<>();
+names.put("ada", "Ada Lovelace");
+names.put("unknown", null);
+String name = names.getOrDefault("ada", "fallback"); // "Ada Lovelace"
+String nullable = names.getOrDefault("unknown", "fallback"); // null
+names.forEach("a", "z",
+    (key, value) -> System.out.println(key + ": " + value));
 ```
 
-On Windows, use `mvnw.cmd`. The build runs differential/contract tests, generates
-the library, source and Javadoc JARs, and packages the separate runnable JMH
-benchmark JAR. CI runs the default build on JDK 17 and also builds/tests the optional SIMD profile on JDK 25.
+The mutable maps are not thread-safe; guard every access with the same external
+lock if sharing one. Do not modify a mutable map from its range callback.
 
-To build only the library:
+The concurrent maps path-copy changed nodes and publish a new root and size as
+one state. Writers use a monitor, while point reads and `size()` read the
+published state without taking that monitor. Each call is linearizable, but
+separate calls do not share an atomic snapshot. Each range traversal captures
+one root and keeps it for the callback sequence; a callback may re-enter or
+mutate the live map, and a slow callback retains the captured nodes until it
+returns. These are shallow snapshots: the maps share value references and do
+not deep-copy values, so callers must synchronize later mutations to values.
+See
+[concurrency semantics](docs/concurrency.md).
 
-```bash
-./mvnw -pl library -am clean verify
+```java
+import io.github.enderekici.packedbtree.ConcurrentLongBTree;
+import io.github.enderekici.packedbtree.ConcurrentStringBTree;
+
+ConcurrentLongBTree counters = new ConcurrentLongBTree();
+counters.put(1, 10);
+counters.forEach(0, 3, (key, value) -> counters.put(2, 20));
+// The range keeps its starting root; a later lookup sees key 2.
+
+ConcurrentStringBTree<String> labels = new ConcurrentStringBTree<>();
+labels.put("a", "first");
+labels.forEach("a", "z", (key, value) -> labels.put("b", "second"));
 ```
 
-To build and test the optional Vector API module on JDK 25:
+## Optional Long search variants
 
-```bash
-./mvnw -Psimd clean verify
+`CompressedLongBTree` keeps full keys and adds 16-bit routing suffixes for nodes
+whose keys share a signed high-48-bit prefix. Other nodes fall back to scalar or
+custom search. In an earlier pre-packed 1M fixture, compressed routing retained
+about 17% more memory and had 3–4% slower point hits on sequential and
+full-width random keys; the common-prefix result was inconclusive. Treat it as experimental. Details and source
+scope are in [compressed routing](docs/compressed-routing.md).
+
+The separate `packed-btree-simd` artifact provides `VectorSearch` via the Java
+Vector API, available on JDK 25. Add `--add-modules jdk.incubator.vector` when
+compiling and running consumers. It plugs into `LongBTree(SearchStrategy)` and
+is also a fallback for noncompact compressed nodes. Its benchmark compares an
+earlier binary-search snapshot, so it does not establish a portable benefit for
+the current scalar default. Install the optional artifact locally with
+`./mvnw -Psimd clean install`; add it to a consumer alongside the core dependency:
+
+```xml
+<dependency>
+  <groupId>io.github.enderekici</groupId>
+  <artifactId>packed-btree-simd</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+</dependency>
 ```
 
-The resulting `packed-btree-simd` artifact provides `VectorSearch`; opt in with
-`new LongBTree(new VectorSearch())`. Applications using it must run with
-`--add-modules jdk.incubator.vector`. It uses signed comparisons and masks the
-partial final vector. `CompressedLongBTree` also accepts `VectorSearch` as its
-fallback for noncompact nodes; compact nodes use suffix routing.
+Construct it with:
 
-## Use
+```java
+import io.github.enderekici.packedbtree.LongBTree;
+import io.github.enderekici.packedbtree.simd.VectorSearch;
 
-The artifact is not yet published to Maven Central. Install it locally:
+LongBTree vectorTree = new LongBTree(new VectorSearch());
+```
+
+See the [SIMD report](results/SIMD-BENCHMARK.md).
+
+## Build and install locally
+
+The library version is `0.1.0-SNAPSHOT`; it is **not published to Maven
+Central**. Install the core artifact to your local Maven repository:
 
 ```bash
 ./mvnw -pl library -am clean install
 ```
 
-Then add:
+Then use the local artifact in a consumer:
 
 ```xml
 <dependency>
@@ -69,215 +133,28 @@ Then add:
 </dependency>
 ```
 
-```java
-import io.github.enderekici.packedbtree.LongBTree;
+Run the core build and tests with JDK 17 or later:
 
-LongBTree map = new LongBTree();
-map.put(10L, 100L);
-map.put(20L, 200L);
-map.put(10L, 150L);
-
-long value = map.getOrDefault(10L, -1L); // 150
-map.forEach(10L, 20L, (key, entryValue) -> {
-  System.out.println(key + "=" + entryValue); // 10=150
-});
-boolean removed = map.remove(20L); // true
-int size = map.size(); // 1
+```bash
+./mvnw clean verify
 ```
 
-`StringBTree` orders keys by `String.compareTo`; keys cannot be null, but values
-can:
+Build the optional Vector API module with JDK 25:
 
-```java
-import io.github.enderekici.packedbtree.StringBTree;
-
-StringBTree<String> byName = new StringBTree<>();
-byName.put("alice", "Alice Example");
-String name = byName.getOrDefault("alice", "unknown"); // "Alice Example"
-byName.put("unknown", null);
-String nullable = byName.getOrDefault("unknown", "fallback"); // null
-byName.forEach("a", "z", (key, value) -> System.out.println(key + "=" + value));
+```bash
+./mvnw -Psimd clean verify
 ```
 
-For opt-in compact routing suffixes, use `CompressedLongBTree` with the same API.
-It retains full keys and adds short routing arrays to its nodes, so the variant
-uses more memory. The JDK 25 point-hit run found no compelling general speedup:
-compressed routing was 3–4% slower on sequential and full-width random keys, and
-the common-prefix result was inconclusive; retained memory was about 17% higher.
-Keep it experimental; see [the routing report](docs/compressed-routing.md) for
-fixture details and evidence.
-
-Every signed `long` is a valid key and value; the library reserves no sentinel.
-Keys use signed ascending order. A missing lookup returns the caller's fallback.
-Range bounds are half-open: `[fromInclusive, toExclusive)`. Equal or reversed
-bounds yield no visits. Because a half-open range cannot include
-`Long.MAX_VALUE`, use a point lookup for that key.
-
-`LongBTree` requires external synchronization across every access.
-`ConcurrentLongBTree` is a separate primitive API: its writers serialize, while
-point reads and snapshot range traversals do not take the writer lock. It path-copies
-B-tree nodes and publishes root plus size in one volatile state.
-Each call is linearizable; separate calls do not share an atomic snapshot. A range keeps the root it
-captured when traversal began, so its callback may re-enter or mutate the tree. A long-running callback
-retains the old root and reachable nodes until traversal ends. This design does not use BBTree-style
-per-node version validation. See [the concurrency report](docs/concurrency.md).
-
-`ConcurrentStringBTree<V>` orders non-null keys with `String.compareTo`. Values may be null;
-`getOrDefault` returns the fallback only for an absent key, and `remove` reports key presence even
-when the stored value is null. Replacing a key that compares equal retains the original key object.
-Its range callback sees one stable snapshot and may re-enter or mutate the live tree. Values are
-stored by reference; snapshots do not deep-copy values, and callers must synchronize mutations to
-mutable value objects themselves.
-
-The concurrent Long C1 confirmation measured 41% more single-thread and 41% more eight-thread
-read throughput than the frozen original in its guarded fixture, with 13–19% higher range throughput
-and no material disjoint-write penalty. The unpaced 7-reader/1-writer result had 49% lower aggregate
-throughput, while the paced writer test matched the 500k puts/s target and read faster. These are
-separate outcomes from one Apple M4 Pro/JDK 25 fixture. A packed key/value-node experiment showed
-about 3.5% fewer allocated bytes per put but no coherent throughput gain; its unpaced writer comparison
-was inconclusive, so the packed layout was not adopted. See the [raw concurrent report](results/concurrency-next/report.md).
-
-`validate()` is an optional full structural diagnostic. It checks ordering,
-occupancy, child references, equal leaf depth and cardinality; keep it out of
-hot paths.
+`validate()` performs a full structural diagnostic; use it in tests and
+operational checks, not on hot paths. Choose this library when ordered traversal
+and primitive Long storage matter, then benchmark the actual application
+workload against its alternatives.
 
 ## Measurements
 
-Historical prototype measurements at 1,048,576 mappings, JDK 25.0.3, Apple M4
-Pro, one thread:
-
-| Measurement | Primitive B-tree | TreeMap | ConcurrentSkipListMap | Primitive AVL |
-|---|---:|---:|---:|---:|
-| Lookup, ns | 133 | 269 | 596 | 184 |
-| Overwrite, ns | 136 | 331 | 678 | 210 |
-| Delete + insert, ns | 259 | 972 | 1,386 | 507 |
-| Scan 64 entries, ns | 273 | 3,189 | 2,622 | 600 |
-| Sampled lookup p99, ns | 333 | 666 | 1,374 | 417 |
-| Retained map memory, MiB | 26.5 | 88.0 | 84.0 | 40.0 |
-
-These results belong to prototype commit
-[`dcb5176`](https://github.com/enderekici/packed-btree/commit/dcb51764891551745b1efd9825a9b55e031a5248),
-before the Maven/package reorganization. They measure shuffled dense integer
-keys and fixed-size `long` values on a shared developer machine. They do not
-establish gains for strings, UUIDs, other hardware, concurrent workloads or an
-application. The primitive AVL control uses fastutil `Long2LongAVLTreeMap`.
-Memory is the retained map object graph, not process RSS. Sampled p99 is a
-separate run with timer overhead.
-
-A separate, guarded hill-climb of the current default search path replaced the
-binary lower-bound loop with a linear scan over the at-most-31 keys in a node.
-The confirmation covered point hits and misses, ranges, overwrites and churn at
-4,096 and 262,144 entries, plus a JDK 17 runtime subset. See the
-[search confirmation](results/hillclimb/c2-confirm/README.md) for paired
-measurements, class fingerprints and limitations, and the [hill-climb ledger](HILLCLIMB.md)
-for candidate decisions and the [final verification receipt](results/hillclimb/final-verification.md).
-
-A later long-map layout check retained the one-array-per-node key/value layout:
-paired JOL fixtures measured 4.2% fewer retained bytes. Across 20 JDK 25
-point/range/write/churn cells, no candidate mean was more than 5% slower. Three
-cells had separated intervals favoring the candidate; the other 17 overlapped,
-and none favored baseline. Three JDK 17 checks also had overlapping intervals.
-This finite grid does not establish broad latency improvement or equivalence.
-See the [round-three long report](results/hillclimb-round3/long/README.md) for
-the exact measurements and limits.
-
-A fresh one-million-entry comparison of the exact original prototype, this
-optimized default and `TreeMap` is documented in the [three-way results](results/three-way-1m/README.md). It uses matched keys, operations and per-fork class fingerprints, scoped to this JDK 25/M4 Pro fixture.
-
-See [the full report](RESULTS.md) for confidence intervals, allocation-profiler
-handling, limitations and raw evidence. The benchmark module contains all
-third-party benchmark dependencies; none enters the library's runtime graph.
-
-The point-operation comparison also shows that all tested hash maps beat
-`LongBTree` on its tested hit, miss, overwrite and churn workloads at both
-fixture sizes. Those measurements use positive dense keys and above-maximum
-misses; they do not cover full-width or collision-heavy hash distributions. See
-[the hash-map report](results/hashmaps/report.md) and [workload notes](docs/hashmap-comparison.md). String-key benchmark scope and results are in [the string-key report](results/string-benchmarks/REPORT.md).
-
-The separate StringBTree round-two C3 confirmation combined exact-match
-search termination and a per-node exclusive range bound. Against the frozen
-StringBTree baseline, its 16 JDK 25 String-to-String point/write/churn/range
-point estimates were all lower; 15 of 16 99.9% confidence intervals were
-separated (the 262K prefix miss was inconclusive). The JDK 17 hit subset also
-favored C3 with separated intervals, while JDK 17 churn/range intervals
-overlapped. These results use prebuilt strings on one M4 Pro and do not cover
-String-to-Long performance. See the [C3 confirmation](results/hillclimb-round2/strings/candidate3-confirmation.md)
-and [StringBTree ledger](HILLCLIMB-STRINGS.md).
-
-StringBTree round three adds a covered-subtree range traversal, while preserving
-bounded traversal at range edges. The JDK 25 confirmation measured range64
-means 15.1% lower for 16K short keys, 11.3% lower for 262K random keys and
-15.7% lower for 262K common-prefix keys. The separate width guard found a
-32.5% lower width-1024 mean; widths 0/1/8 remain inconclusive. The width-one
-prefix range was 0.8% slower in confirmation, with overlapping intervals. The exploratory width-64 screens measured 10.9–20.3% lower in
-the primary screen and 7.9–17.5% lower in the independent width screen. On JDK
-17, range64 means were 14.9–20.6% lower for the decisive fixtures. See the
-[round-three String report](results/hillclimb-round3/strings/README.md) for raw
-data, commands and scope.
-
-## Run the benchmarks
-
-After `./mvnw clean verify`, compare the concurrent API at one, two, four and
-eight threads. The point benchmark covers read-only and one-read/one-increment
-mixed operations for the concurrent B-tree, `ConcurrentSkipListMap` and
-`ConcurrentHashMap`. Read-only probes sample the full shuffled key set; each
-mixed-workload thread increments only its own striped partition. Ordered ranges
-compare only the B-tree and skip list. The hash map has no ordered range.
-
-```bash
-for threads in 1 2 4 8; do
-  java -jar benchmarks/target/benchmarks.jar bench.ConcurrentMapBenchmark \
-    -p size=1048576 -t "$threads" -wi 2 -i 3 -w 1s -r 1s -f 2 \
-    -rf json -rff "results/concurrent/point-${threads}t.json"
-  java -jar benchmarks/target/benchmarks.jar bench.ConcurrentRangeBenchmark \
-    -p size=1048576 -t "$threads" -wi 2 -i 3 -w 1s -r 1s -f 2 \
-    -rf json -rff "results/concurrent/range-${threads}t.json"
-done
-```
-
-Each run validates point/range observations, full key presence and stable size
-outside measured iterations. The point workload writes are real overwrites that
-increment values; JMH thread state assigns disjoint key partitions without a
-shared cursor. Run each timed matrix when other machine benchmarks are idle. See
-the concurrency report for the recorded machine/JDK and complete result set.
-The one-thread comparison against the corresponding mutable Long and String
-implementations, including runtime-dependent results and raw evidence, is in
-[the mutable-versus-concurrent report](results/single-vs-concurrent/README.md).
-
-After `./mvnw clean verify` for the original single-threaded suite:
-
-```bash
-java -jar benchmarks/target/benchmarks.jar -l
-
-java -jar benchmarks/target/benchmarks.jar bench.MapBenchmark \
-  -wi 2 -i 3 -w 1s -r 1s -f 2 -t 1 -prof gc \
-  -rf json -rff results/average-new.json
-
-java -jar benchmarks/target/benchmarks.jar bench.MapBenchmark.hit \
-  -p size=1048576 -bm sample -wi 2 -i 3 -w 1s -r 1s -f 2 -t 1 \
-  -rf json -rff results/lookup-sample-new.json
-
-java -Xmx4g -Djdk.attach.allowAttachSelf=true -XX:+EnableDynamicAgentLoading \
-  -cp benchmarks/target/benchmarks.jar bench.MemoryFootprint btree 1048576
-```
-
-For memory measurements, repeat in a fresh JVM with `tree`, `skiplist` and
-`primitiveAvl`. Use JDK 25 when comparing against the historical results. JMH
-overrides the fork heap to `-Xms1g -Xmx1g` with G1. One churn operation is a
-remove plus an insert at constant cardinality; each range sums 64 entries.
-Fixture setup occurs once per trial. Trial teardown validates all keys and tree
-structure. The GC profiler includes that teardown in the last measured
-iteration; use the same exclusion rule documented in the report when comparing
-workload allocations.
-
-To reproduce the original source layout and dependency hashes exactly, check
-out `dcb5176` in a separate worktree and run its `build.sh`. The committed
-`results/source-sha256.json` describes that historical source, not the current
-Maven module paths.
-
-## Layout
-
-- `library/`: dependency-free implementation and JUnit differential tests.
-- `benchmarks/`: JMH fixtures, adapters, memory probe and adapter contract tests.
-- `results/`: historical machine-readable benchmark evidence.
-- `RESULTS.md`: measured results and qualification scope.
+Benchmark results are fixture-specific and come from distinct source snapshots
+and workload shapes. The [results index](results/README.md) summarizes accepted
+and rejected search experiments, original-versus-optimized and JDK-map
+comparisons, String ranges, and concurrent workloads. It links raw data,
+verification receipts, and each report's limits. See also the
+[benchmark guide](docs/benchmarks.md).

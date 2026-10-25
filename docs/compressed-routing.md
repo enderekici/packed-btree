@@ -22,15 +22,17 @@ that each compact flag, prefix, and suffix still matches the full keys.
 
 This representation does not reduce total memory. It retains the full-key
 arrays and adds one short array per node, plus a prefix and compact flag. The
-benchmark compares lookup latency and retained object-graph size against the
-scalar tree for sequential, full-width random, and common-prefix keys. Results
-will be recorded under `results/compressed/` after an isolated timing run.
+benchmark compares lookup latency and retained object-graph size against a
+scalar tree for sequential, full-width random, and common-prefix keys. The runs
+below use the integrated scalar source at commit `48c4f75`, before the later
+mutable `LongBTree` packed-array change. Their memory comparison is not a direct
+measurement of the current packed mutable default against the compressed tree.
 
 ## Measurement
 
-A fresh integrated JOL comparison at 1,048,576 mappings measured the current
-branch against the exact pre-hook scalar control and the compressed variant.
-The current scalar and pre-hook control had equal retained size for all tested
+A JOL comparison at 1,048,576 mappings measured that earlier integrated scalar
+source against the exact pre-hook scalar control and the compressed variant.
+The scalar and pre-hook control had equal retained size for all tested
 distributions. Compression retained about 4.7 MB more and about 49,000 more
 objects in these fixtures:
 

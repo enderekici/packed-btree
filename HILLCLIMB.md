@@ -90,8 +90,10 @@ proof of equivalence.
 confirmation and three-cell JDK 17 subset found no >5% latency regression. Three JDK 25
 intervals were separated in the candidate's favor; 17 overlapped, and none favored baseline.
 All three JDK 17 intervals overlapped. This does not demonstrate broad latency improvement
-or equivalence. Final JDK 17 and JDK 25 SIMD full verifies passed, and packaged JDK 17/JDK 25
-consumers passed; see [`results/final-integration-verification.md`](results/final-integration-verification.md).
+or equivalence. The original PR2 full verifies and consumers are recorded in
+[`results/final-integration-verification.md`](results/final-integration-verification.md).
+Combined PR2 + PR3 JDK 17/JDK 25 SIMD verifies and packaged consumers are in the
+[current integration receipt](results/final-integration/README.md).
 Evidence and raw JSON links are in
 [`results/hillclimb-round3/long/README.md`](results/hillclimb-round3/long/README.md).
 

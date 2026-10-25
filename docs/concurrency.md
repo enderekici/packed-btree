@@ -1,7 +1,10 @@
 # Concurrent B-tree
 
 `ConcurrentLongBTree` and `ConcurrentStringBTree<V>` are separate concurrent APIs.
-The existing `LongBTree` and `StringBTree<V>` remain single-threaded and unchanged.
+`LongBTree` and `StringBTree<V>` are mutable and not thread-safe; externally
+synchronize all accesses if a mutable instance is shared. Mutable range callbacks
+must not change their tree. The mutable and concurrent variants are independent
+implementations and may have different storage layouts.
 The concurrent Long API stores primitive long keys and values. The concurrent String
 API orders non-null keys with `String.compareTo`, permits null values, and retains the
 original stored key object when a compare-equal key is overwritten. Its `remove`
@@ -29,10 +32,11 @@ mutation work is O(log n) tree levels with O(31) array copies per touched node;
 it does not copy the entire tree per operation.
 
 `ConcurrentStringBTree` follows the same ownership and publication protocol.
-The snapshot is shallow: generic values are retained by reference, so later
-mutations of a value object can be observed through an older tree snapshot.
-Each range traversal retains one root for its full callback sequence. Callbacks
-may perform nested reads or writes; long callbacks keep old reachable nodes alive.
+The snapshot is shallow: generic values are shared by reference and are not
+deep-copied. Callers must synchronize later mutations to shared value objects;
+the tree does not make those object mutations thread-safe. Each range traversal
+retains one root for its full callback sequence. Callbacks may perform nested
+reads or writes; long callbacks keep old reachable nodes alive.
 
 ## Verification
 
@@ -72,7 +76,8 @@ measured path. Results verify sampled point reads, range sums, full key presence
 stable cardinality and B-tree structure outside measured iterations. Raw JSON
 goes in `results/concurrent/`.
 
-The exclusive run completed 2026-10-25 14:45:55–14:52:56 UTC on an Apple M4 Pro
+This is a historical pre-C1 concurrent-map implementation run. It completed
+2026-10-25 14:45:55–14:52:56 UTC on an Apple M4 Pro
 (14 logical CPUs), macOS 27.0, Azul OpenJDK 25.0.3. JMH exited 0 for all 32
 configurations. The table reports average time in ns/op (lower is faster); raw
 JMH JSON is retained under `results/concurrent/`.

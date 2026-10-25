@@ -1,4 +1,6 @@
-# Final integrated verification
+# PR2 Long/String verification (historical)
+
+This receipt predates PR3 concurrent Long/String integration. The combined PR2 + PR3 result is in [the current final-integration receipt](final-integration/README.md).
 
 Both full builds ran after LongBTree round-three and StringBTree round-three source changes were present. This standalone Maven library's release-17 / optional-release-25 profile setup is not expressible through the EVAM application build wrapper, so these use the documented direct Maven exception.
 
