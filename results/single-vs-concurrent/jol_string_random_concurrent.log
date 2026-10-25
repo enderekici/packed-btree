@@ -1,0 +1,33 @@
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree codeSource=file:/private/tmp/svc-concurrent-classes/ sha256=e5061e793d31ee8109e2dd5c94cb2d4d84d639a7db5d59ad5045eceaace1a8f1
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree$Node codeSource=file:/private/tmp/svc-concurrent-classes/ sha256=30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree$State codeSource=file:/private/tmp/svc-concurrent-classes/ sha256=88818f76c09a8cf87bd415588b567812520c42d29d2896fb41b5546004247c10
+# WARNING: Unable to get Instrumentation. Dynamic Attach failed. You may add this JAR as -javaagent manually, or supply -Djdk.attach.allowAttachSelf
+# WARNING: Unable to attach Serviceability Agent. You can try again with escalated privileges. Two options: a) use -Djol.tryWithSudo=true to try with sudo; b) echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by org.openjdk.jol.vm.HotspotUnsafe (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jol.vm.HotspotUnsafe
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+VM # VM mode: 64 bits
+# Compressed references (oops): 3-bit shift
+# Compressed class pointers: 3-bit shift
+# WARNING | Compressed references base/shifts are guessed by the experiment!
+# WARNING | Therefore, computed addresses are just guesses, and ARE NOT RELIABLE.
+# WARNING | Make sure to attach Serviceability Agent to get the reliable addresses.
+# Object alignment: 8 bytes
+#                       ref, bool, byte, char, shrt,  int,  flt,  lng,  dbl
+# Field sizes:            4,    1,    1,    2,    2,    4,    4,    8,    8
+# Array element sizes:    4,    1,    1,    2,    2,    4,    4,    8,    8
+# Array base offsets:    16,   16,   16,   16,   16,   16,   16,   16,   16
+
+GRAPH arm=concurrent type=string shape=random size=262144 bytes=31270856 objects=1085959 bytesPerMapping=119.28884887695312 activeSnapshots=0
+io.github.enderekici.packedbtree.ConcurrentStringBTree@1a6c5a9ed footprint:
+     COUNT       AVG       SUM   DESCRIPTION
+    524288        28  14680064   [B
+       550       144     79200   [Lio.github.enderekici.packedbtree.ConcurrentStringBTree$Node;
+     12277       144   1767888   [Ljava.lang.Object;
+     12277       144   1767888   [Ljava.lang.String;
+         1        16        16   io.github.enderekici.packedbtree.ConcurrentStringBTree
+     12277        32    392864   io.github.enderekici.packedbtree.ConcurrentStringBTree$Node
+         1        24        24   io.github.enderekici.packedbtree.ConcurrentStringBTree$State
+    524288        24  12582912   java.lang.String
+   1085959            31270856   (total)

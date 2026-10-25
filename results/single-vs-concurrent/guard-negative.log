@@ -1,0 +1,72 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dtree.guard.mutable.location=/tmp/svc-mutable-classes -Dtree.guard.mutable.long.outer=0000000000000000000000000000000000000000000000000000000000000000 -Dtree.guard.mutable.long.node=d631e8eff38b377cf6f9ffbc1035bb51df9cd5b61b27285cff78ab44d46140b2
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: <none>
+# Measurement: 1 iterations, 50 ms each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: bench.singleconcurrent.LongTreeComparison.hit
+# Parameters: (arm = mutable, size = 262144)
+
+# Run progress: 0.00% complete, ETA 00:00:00
+# Fork: 1 of 1
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+Iteration   1: CLASS-GUARD io.github.enderekici.packedbtree.LongBTree codeSource=file:/private/tmp/svc-mutable-classes/ sha256=6849766a3c2d7aca27d256a7b372ff0df88f05cb623ab09d78ca06a47779295e
+<failure>
+
+java.lang.IllegalStateException: class guard mismatch io.github.enderekici.packedbtree.LongBTree
+	at bench.singleconcurrent.LongTreeComparison.guard(LongTreeComparison.java:174)
+	at bench.singleconcurrent.LongTreeComparison.setup(LongTreeComparison.java:58)
+	at bench.singleconcurrent.jmh_generated.LongTreeComparison_hit_jmhTest._jmh_tryInit_f_longtreecomparison0_0(LongTreeComparison_hit_jmhTest.java:351)
+	at bench.singleconcurrent.jmh_generated.LongTreeComparison_hit_jmhTest.hit_Throughput(LongTreeComparison_hit_jmhTest.java:71)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:527)
+	at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:504)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+
+
+Benchmark had encountered error, and fail on error was requested
+ERROR: org.openjdk.jmh.runner.RunnerException: Benchmark caught the exception
+	at org.openjdk.jmh.runner.Runner.runBenchmarks(Runner.java:572)
+	at org.openjdk.jmh.runner.Runner.internalRun(Runner.java:309)
+	at org.openjdk.jmh.runner.Runner.run(Runner.java:208)
+	at org.openjdk.jmh.Main.main(Main.java:71)
+Caused by: org.openjdk.jmh.runner.BenchmarkException: Benchmark error during the run
+	at org.openjdk.jmh.runner.BenchmarkHandler.runIteration(BenchmarkHandler.java:440)
+	at org.openjdk.jmh.runner.BaseRunner.runBenchmark(BaseRunner.java:283)
+	at org.openjdk.jmh.runner.BaseRunner.runBenchmark(BaseRunner.java:233)
+	at org.openjdk.jmh.runner.BaseRunner.doSingle(BaseRunner.java:138)
+	at org.openjdk.jmh.runner.BaseRunner.runBenchmarksForked(BaseRunner.java:75)
+	at org.openjdk.jmh.runner.ForkedRunner.run(ForkedRunner.java:72)
+	at org.openjdk.jmh.runner.ForkedMain.main(ForkedMain.java:86)
+	Suppressed: java.lang.IllegalStateException: class guard mismatch io.github.enderekici.packedbtree.LongBTree
+		at bench.singleconcurrent.LongTreeComparison.guard(LongTreeComparison.java:174)
+		at bench.singleconcurrent.LongTreeComparison.setup(LongTreeComparison.java:58)
+		at bench.singleconcurrent.jmh_generated.LongTreeComparison_hit_jmhTest._jmh_tryInit_f_longtreecomparison0_0(LongTreeComparison_hit_jmhTest.java:351)
+		at bench.singleconcurrent.jmh_generated.LongTreeComparison_hit_jmhTest.hit_Throughput(LongTreeComparison_hit_jmhTest.java:71)
+		at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+		at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+		at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:527)
+		at org.openjdk.jmh.runner.BenchmarkHandler$BenchmarkTask.call(BenchmarkHandler.java:504)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+		at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+		at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+		at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+		at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+		at java.base/java.lang.Thread.run(Thread.java:1474)

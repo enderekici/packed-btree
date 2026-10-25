@@ -1,0 +1,7 @@
+CLASS-GUARD io.github.enderekici.packedbtree.LongBTree source=file:/private/tmp/svc-mutable-classes/ sha256=6849766a3c2d7aca27d256a7b372ff0df88f05cb623ab09d78ca06a47779295e
+CLASS-GUARD io.github.enderekici.packedbtree.LongBTree$Node source=file:/private/tmp/svc-mutable-classes/ sha256=d631e8eff38b377cf6f9ffbc1035bb51df9cd5b61b27285cff78ab44d46140b2
+ALLOC arm=mutable type=long operation=hit operations=100000 bytes=0 bytesPerOp=0.0000 sink=26192512902
+ALLOC arm=mutable type=long operation=miss_above_max operations=100000 bytes=0 bytesPerOp=0.0000 sink=0
+ALLOC arm=mutable type=long operation=range64 operations=100000 bytes=0 bytesPerOp=0.0000 sink=1676600178560
+ALLOC arm=mutable type=long operation=overwrite operations=100000 bytes=0 bytesPerOp=0.0000 sink=100000
+ALLOC arm=mutable type=long operation=churn operations=100000 bytes=119746400 bytesPerOp=1197.4640 sink=100000

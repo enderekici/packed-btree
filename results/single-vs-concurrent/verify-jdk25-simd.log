@@ -1,0 +1,183 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO]
+[INFO] Packed B-tree                                                      [pom]
+[INFO] Packed B-tree library                                              [jar]
+[INFO] Packed B-tree benchmarks                                           [jar]
+[INFO] Optional Vector API node search                                    [jar]
+[INFO]
+[INFO] --------------< io.github.enderekici:packed-btree-parent >--------------
+[INFO] Building Packed B-tree 0.1.0-SNAPSHOT                              [1/4]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ packed-btree-parent ---
+[INFO]
+[INFO] -----------------< io.github.enderekici:packed-btree >------------------
+[INFO] Building Packed B-tree library 0.1.0-SNAPSHOT                      [2/4]
+[INFO]   from library/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ packed-btree ---
+[INFO] Deleting /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/target
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ packed-btree ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/src/main/resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ packed-btree ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 5 source files with javac [debug release 17] to target/classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ packed-btree ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/src/test/resources
+[INFO]
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ packed-btree ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug release 17] to target/test-classes
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ packed-btree ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running io.github.enderekici.packedbtree.ConcurrentStringBTreeTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.023 s -- in io.github.enderekici.packedbtree.ConcurrentStringBTreeTest
+[INFO] Running io.github.enderekici.packedbtree.StringBTreeTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.381 s -- in io.github.enderekici.packedbtree.StringBTreeTest
+[INFO] Running io.github.enderekici.packedbtree.LongBTreeTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.679 s -- in io.github.enderekici.packedbtree.LongBTreeTest
+[INFO] Running io.github.enderekici.packedbtree.ConcurrentLongBTreeTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.076 s -- in io.github.enderekici.packedbtree.ConcurrentLongBTreeTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 20, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jar:3.4.2:jar (default-jar) @ packed-btree ---
+[INFO] Building jar: /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/target/packed-btree-0.1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- source:3.4.0:jar-no-fork (sources) @ packed-btree ---
+[INFO] Building jar: /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/target/packed-btree-0.1.0-SNAPSHOT-sources.jar
+[INFO]
+[INFO] --- javadoc:3.12.0:jar (javadoc) @ packed-btree ---
+[WARNING] Javadoc Warnings
+[WARNING] /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/src/main/java/io/github/enderekici/packedbtree/ConcurrentStringBTree.java:21: warning: no @param for <V>
+[WARNING] public interface EntryConsumer<V> {
+[WARNING] ^
+[WARNING] /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/src/main/java/io/github/enderekici/packedbtree/ConcurrentStringBTree.java:66: warning: no @return
+[WARNING] public int size() {
+[WARNING] ^
+[WARNING] 2 warnings
+[INFO] Building jar: /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/target/packed-btree-0.1.0-SNAPSHOT-javadoc.jar
+[INFO]
+[INFO] ------------< io.github.enderekici:packed-btree-benchmarks >------------
+[INFO] Building Packed B-tree benchmarks 0.1.0-SNAPSHOT                   [3/4]
+[INFO]   from benchmarks/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ packed-btree-benchmarks ---
+[INFO] Deleting /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ packed-btree-benchmarks ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/src/main/resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ packed-btree-benchmarks ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 21 source files with javac [debug release 17] to target/classes
+[INFO] /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/src/main/java/bench/singleconcurrent/TreeAllocationProbe.java: /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/src/main/java/bench/singleconcurrent/TreeAllocationProbe.java uses unchecked or unsafe operations.
+[INFO] /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/src/main/java/bench/singleconcurrent/TreeAllocationProbe.java: Recompile with -Xlint:unchecked for details.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ packed-btree-benchmarks ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/src/test/resources
+[INFO]
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ packed-btree-benchmarks ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug release 17] to target/test-classes
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ packed-btree-benchmarks ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running bench.MapsTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in bench.MapsTest
+[INFO] Running bench.HashMapAdaptersTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in bench.HashMapAdaptersTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jar:3.4.2:jar (default-jar) @ packed-btree-benchmarks ---
+[INFO] Building jar: /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/packed-btree-benchmarks-0.1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- shade:3.6.2:shade (default) @ packed-btree-benchmarks ---
+[WARNING] commons-math3-3.6.1.jar, fastutil-8.5.15.jar, jmh-core-1.37.jar, jol-core-0.17.jar, jopt-simple-5.0.4.jar, packed-btree-0.1.0-SNAPSHOT.jar, packed-btree-benchmarks-0.1.0-SNAPSHOT.jar define 1 overlapping resource:
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO]
+[INFO] ---------------< io.github.enderekici:packed-btree-simd >---------------
+[INFO] Building Optional Vector API node search 0.1.0-SNAPSHOT            [4/4]
+[INFO]   from simd/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ packed-btree-simd ---
+[INFO] Deleting /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/simd/target
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ packed-btree-simd ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/simd/src/main/resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ packed-btree-simd ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug release 25] to target/classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ packed-btree-simd ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/simd/src/test/resources
+[INFO]
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ packed-btree-simd ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 18 source files with javac [debug release 25] to target/test-classes
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ packed-btree-simd ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+WARNING: Using incubator modules: jdk.incubator.vector
+[INFO] Running bench.Round2LongBTreeDifferentialTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in bench.Round2LongBTreeDifferentialTest
+[INFO] Running io.github.enderekici.packedbtree.simd.VectorSearchTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 s -- in io.github.enderekici.packedbtree.simd.VectorSearchTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jar:3.4.2:jar (default-jar) @ packed-btree-simd ---
+[INFO] Building jar: /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/simd/target/packed-btree-simd-0.1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Packed B-tree 0.1.0-SNAPSHOT:
+[INFO]
+[INFO] Packed B-tree ...................................... SUCCESS [  0.043 s]
+[INFO] Packed B-tree library .............................. SUCCESS [ 13.877 s]
+[INFO] Packed B-tree benchmarks ........................... SUCCESS [  2.111 s]
+[INFO] Optional Vector API node search .................... SUCCESS [  0.729 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  16.799 s
+[INFO] Finished at: 2026-10-25T21:36:42Z
+[INFO] ------------------------------------------------------------------------

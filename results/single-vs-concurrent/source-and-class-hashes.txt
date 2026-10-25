@@ -1,0 +1,31 @@
+Source revisions (direct `git show`, no cherry-pick or checkout merge):
+PR2 mutable source commit: 3022634d48a4c70a78ab8ff62ccd16a635d5252d
+PR3 concurrent source commit: 443451135a51165986b0727115b12cd14a20d2af
+
+Javac: Azul Zulu 17.0.19, `javac --release 17 -g`
+Mutable class output: /tmp/svc-mutable-classes
+Concurrent class output: /tmp/svc-concurrent-classes
+
+Source SHA-256:
+  PR2 LongBTree.java: f2edc91f72eac1f266fff4072dd6c3572c29ba857e87e70bfe0d03ca5a58be5c
+  PR2 StringBTree.java: 0b9782f57b7d67e07de3bc8ee1293927cb9c42a2f98463ce52d23c93a438190e
+  PR3 ConcurrentLongBTree.java: 30ce404d7db054daea03d3ae830e57f176f9114f38fe1aa160755cb7991a7f22
+  PR3 ConcurrentStringBTree.java: 7d3637d7c5f8d755a0e167be57616fe9ecc38a5937664db39e493580fc66d21d
+
+Compiled class SHA-256 (JDK17 bytecode, used by every JDK25 JMH fork):
+c1b2cfb03b735e127dd54f7ecf7e4c037af5bf7b24120cf97958e475f568a0cb  /tmp/svc-concurrent-classes/io/github/enderekici/packedbtree/ConcurrentLongBTree$EntryConsumer.class
+24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad  /tmp/svc-concurrent-classes/io/github/enderekici/packedbtree/ConcurrentLongBTree$Node.class
+7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8  /tmp/svc-concurrent-classes/io/github/enderekici/packedbtree/ConcurrentLongBTree$State.class
+1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be  /tmp/svc-concurrent-classes/io/github/enderekici/packedbtree/ConcurrentLongBTree.class
+56f639425242f77b5031257b57f6c4bd3b3d5408de66d083141988c14accbb36  /tmp/svc-concurrent-classes/io/github/enderekici/packedbtree/ConcurrentStringBTree$EntryConsumer.class
+30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0  /tmp/svc-concurrent-classes/io/github/enderekici/packedbtree/ConcurrentStringBTree$Node.class
+88818f76c09a8cf87bd415588b567812520c42d29d2896fb41b5546004247c10  /tmp/svc-concurrent-classes/io/github/enderekici/packedbtree/ConcurrentStringBTree$State.class
+e5061e793d31ee8109e2dd5c94cb2d4d84d639a7db5d59ad5045eceaace1a8f1  /tmp/svc-concurrent-classes/io/github/enderekici/packedbtree/ConcurrentStringBTree.class
+9fdb83d830390a73f7d58313e51424e4ba2d7492b872eddafd5f1b74f3c3ee17  /tmp/svc-mutable-classes/io/github/enderekici/packedbtree/LongBTree$CompressedNode.class
+20f6e1c4ef3b3735ecb29d341e6c08f28bbcfe6b7ffa4ab5bd07202bdab3e9ab  /tmp/svc-mutable-classes/io/github/enderekici/packedbtree/LongBTree$EntryConsumer.class
+d631e8eff38b377cf6f9ffbc1035bb51df9cd5b61b27285cff78ab44d46140b2  /tmp/svc-mutable-classes/io/github/enderekici/packedbtree/LongBTree$Node.class
+8b810c5018030e5bdc011c07b1a515322d49aa7b1a93022b27d4dc2fe5bd95c2  /tmp/svc-mutable-classes/io/github/enderekici/packedbtree/LongBTree$SearchStrategy.class
+6849766a3c2d7aca27d256a7b372ff0df88f05cb623ab09d78ca06a47779295e  /tmp/svc-mutable-classes/io/github/enderekici/packedbtree/LongBTree.class
+739c87227cf975bea69375102069f14f9f66ffe0ce5ed9636f560b823cb0beae  /tmp/svc-mutable-classes/io/github/enderekici/packedbtree/StringBTree$EntryConsumer.class
+da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b  /tmp/svc-mutable-classes/io/github/enderekici/packedbtree/StringBTree$Node.class
+b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320  /tmp/svc-mutable-classes/io/github/enderekici/packedbtree/StringBTree.class

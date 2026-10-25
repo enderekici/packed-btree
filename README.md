@@ -219,6 +219,9 @@ outside measured iterations. The point workload writes are real overwrites that
 increment values; JMH thread state assigns disjoint key partitions without a
 shared cursor. Run each timed matrix when other machine benchmarks are idle. See
 the concurrency report for the recorded machine/JDK and complete result set.
+The one-thread comparison against the corresponding mutable Long and String
+implementations, including runtime-dependent results and raw evidence, is in
+[the mutable-versus-concurrent report](results/single-vs-concurrent/README.md).
 
 After `./mvnw clean verify` for the original single-threaded suite:
 
