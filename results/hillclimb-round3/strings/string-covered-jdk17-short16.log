@@ -1,0 +1,111 @@
+# JMH version: 1.37
+# VM version: JDK 17.0.19, OpenJDK 64-Bit Server VM, 17.0.19+10-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-17.0.19/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/tmp/string-covered-jdk17-candidate -Dcovered.expected.candidate.tree.sha256=19f004f10cf337285720c45ff43d2ac21970a04e037fca801e87e335ee66aa4b -Dcovered.expected.candidate.node.location=/tmp/string-covered-jdk17-candidate -Dcovered.expected.candidate.node.sha256=19b4fd06c5b39149233a7eaeb762c4df2489ca50af768ceb2b32771d7f53a96b -Dcovered.expected.baseline.tree.location=/tmp/string-covered-jdk17-harness -Dcovered.expected.baseline.tree.sha256=92de6aea753dc619c8480617528d3d37709043b4dd9a946ae7d5d52ba0cf3fd5 -Dcovered.expected.baseline.node.location=/tmp/string-covered-jdk17-harness -Dcovered.expected.baseline.node.sha256=c455ebdb7dad53bf0c1ffede42c0d57488e5f8b9dab9079596db39f13009fcf1 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.range
+# Parameters: (implementation = candidate, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 0.00% complete, ETA 00:00:24
+# Fork: 1 of 2
+# Warmup Iteration   1: string-class candidate tree source=/private/tmp/string-covered-jdk17-candidate module=null sha256=19f004f10cf337285720c45ff43d2ac21970a04e037fca801e87e335ee66aa4b
+string-class candidate node source=/private/tmp/string-covered-jdk17-candidate module=null sha256=19b4fd06c5b39149233a7eaeb762c4df2489ca50af768ceb2b32771d7f53a96b
+string-class baseline tree source=/private/tmp/string-covered-jdk17-harness module=null sha256=92de6aea753dc619c8480617528d3d37709043b4dd9a946ae7d5d52ba0cf3fd5
+string-class baseline node source=/private/tmp/string-covered-jdk17-harness module=null sha256=c455ebdb7dad53bf0c1ffede42c0d57488e5f8b9dab9079596db39f13009fcf1
+305.466 ns/op
+# Warmup Iteration   2: 300.553 ns/op
+# Warmup Iteration   3: 297.282 ns/op
+Iteration   1: 301.765 ns/op
+Iteration   2: 297.834 ns/op
+Iteration   3: 300.454 ns/op
+
+# Run progress: 25.00% complete, ETA 00:00:18
+# Fork: 2 of 2
+# Warmup Iteration   1: string-class candidate tree source=/private/tmp/string-covered-jdk17-candidate module=null sha256=19f004f10cf337285720c45ff43d2ac21970a04e037fca801e87e335ee66aa4b
+string-class candidate node source=/private/tmp/string-covered-jdk17-candidate module=null sha256=19b4fd06c5b39149233a7eaeb762c4df2489ca50af768ceb2b32771d7f53a96b
+string-class baseline tree source=/private/tmp/string-covered-jdk17-harness module=null sha256=92de6aea753dc619c8480617528d3d37709043b4dd9a946ae7d5d52ba0cf3fd5
+string-class baseline node source=/private/tmp/string-covered-jdk17-harness module=null sha256=c455ebdb7dad53bf0c1ffede42c0d57488e5f8b9dab9079596db39f13009fcf1
+308.244 ns/op
+# Warmup Iteration   2: 300.185 ns/op
+# Warmup Iteration   3: 305.527 ns/op
+Iteration   1: 299.999 ns/op
+Iteration   2: 299.649 ns/op
+Iteration   3: 302.690 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.range":
+  300.399 ±(99.9%) 4.762 ns/op [Average]
+  (min, avg, max) = (297.834, 300.399, 302.690), stdev = 1.698
+  CI (99.9%): [295.637, 305.160] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.19, OpenJDK 64-Bit Server VM, 17.0.19+10-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-17.0.19/Contents/Home/bin/java
+# VM options: -Dcovered.expected.candidate.tree.location=/tmp/string-covered-jdk17-candidate -Dcovered.expected.candidate.tree.sha256=19f004f10cf337285720c45ff43d2ac21970a04e037fca801e87e335ee66aa4b -Dcovered.expected.candidate.node.location=/tmp/string-covered-jdk17-candidate -Dcovered.expected.candidate.node.sha256=19b4fd06c5b39149233a7eaeb762c4df2489ca50af768ceb2b32771d7f53a96b -Dcovered.expected.baseline.tree.location=/tmp/string-covered-jdk17-harness -Dcovered.expected.baseline.tree.sha256=92de6aea753dc619c8480617528d3d37709043b4dd9a946ae7d5d52ba0cf3fd5 -Dcovered.expected.baseline.node.location=/tmp/string-covered-jdk17-harness -Dcovered.expected.baseline.node.sha256=c455ebdb7dad53bf0c1ffede42c0d57488e5f8b9dab9079596db39f13009fcf1 -Xms1g -Xmx1g -XX:+UseG1GC
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: bench.StringCoveredRangeBenchmark.range
+# Parameters: (implementation = baseline, rangeWidth = 64, shape = short, size = 16384, valueType = string)
+
+# Run progress: 50.00% complete, ETA 00:00:12
+# Fork: 1 of 2
+# Warmup Iteration   1: string-class candidate tree source=/private/tmp/string-covered-jdk17-candidate module=null sha256=19f004f10cf337285720c45ff43d2ac21970a04e037fca801e87e335ee66aa4b
+string-class candidate node source=/private/tmp/string-covered-jdk17-candidate module=null sha256=19b4fd06c5b39149233a7eaeb762c4df2489ca50af768ceb2b32771d7f53a96b
+string-class baseline tree source=/private/tmp/string-covered-jdk17-harness module=null sha256=92de6aea753dc619c8480617528d3d37709043b4dd9a946ae7d5d52ba0cf3fd5
+string-class baseline node source=/private/tmp/string-covered-jdk17-harness module=null sha256=c455ebdb7dad53bf0c1ffede42c0d57488e5f8b9dab9079596db39f13009fcf1
+382.306 ns/op
+# Warmup Iteration   2: 377.091 ns/op
+# Warmup Iteration   3: 378.968 ns/op
+Iteration   1: 373.711 ns/op
+Iteration   2: 379.303 ns/op
+Iteration   3: 376.870 ns/op
+
+# Run progress: 75.00% complete, ETA 00:00:06
+# Fork: 2 of 2
+# Warmup Iteration   1: string-class candidate tree source=/private/tmp/string-covered-jdk17-candidate module=null sha256=19f004f10cf337285720c45ff43d2ac21970a04e037fca801e87e335ee66aa4b
+string-class candidate node source=/private/tmp/string-covered-jdk17-candidate module=null sha256=19b4fd06c5b39149233a7eaeb762c4df2489ca50af768ceb2b32771d7f53a96b
+string-class baseline tree source=/private/tmp/string-covered-jdk17-harness module=null sha256=92de6aea753dc619c8480617528d3d37709043b4dd9a946ae7d5d52ba0cf3fd5
+string-class baseline node source=/private/tmp/string-covered-jdk17-harness module=null sha256=c455ebdb7dad53bf0c1ffede42c0d57488e5f8b9dab9079596db39f13009fcf1
+387.490 ns/op
+# Warmup Iteration   2: 382.356 ns/op
+# Warmup Iteration   3: 378.027 ns/op
+Iteration   1: 378.445 ns/op
+Iteration   2: 384.893 ns/op
+Iteration   3: 376.858 ns/op
+
+
+Result "bench.StringCoveredRangeBenchmark.range":
+  378.347 ±(99.9%) 10.467 ns/op [Average]
+  (min, avg, max) = (373.711, 378.347, 384.893), stdev = 3.733
+  CI (99.9%): [367.880, 388.813] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:24
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                          (implementation)  (rangeWidth)  (shape)  (size)  (valueType)  Mode  Cnt    Score    Error  Units
+StringCoveredRangeBenchmark.range         candidate            64    short   16384       string  avgt    6  300.399 ±  4.762  ns/op
+StringCoveredRangeBenchmark.range          baseline            64    short   16384       string  avgt    6  378.347 ± 10.467  ns/op
+
+Benchmark result is saved to /tmp/string-covered-jdk17-short16.json

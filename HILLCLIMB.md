@@ -56,6 +56,45 @@ Limit: four meaningful candidates total, then final paired confirmation or rejec
 - Corrected JDK 25 confirmation and JDK 17 decisive subset are in `results/hillclimb/c2-confirm/README.md`; raw JSONs are adjacent. JDK 25 alternated order by size×distribution block (C/B, B/C, C/B, B/C), with 2 forks, 3×1s warmup and 5×1s measure. Every arm produced five finite rows and 20 expected runtime class receipts. All 20 JMH 99.9% confidence intervals favored linear scan and did not overlap. At 262,144, gains ranged from 23.1–31.9% across all five workloads; at 4,096, gains ranged from 22.6–57.6%. JDK 17 hit/range/churn at 262,144 favored the candidate by 26.7–35.6% on both key distributions. JOL retained bytes, object counts and node counts matched exactly for both distributions. JOL sizes are HotspotUnsafe estimates because Instrumentation attach was unavailable. Accept C2; no change to degree or public API.
 - Campaign conclusion: keep C2 linear search only. C1 dispatch split, C3 degree 8, and C4 degree 32 were rejected. Do not describe the hill-climb results as improvements to other workloads or concurrent maps.
 
+## Round three — packed long key/value node storage
+
+One candidate is authorized: retain degree 16 and linear search, but place keys in
+`long[0..MAX)` and values in `long[MAX..2*MAX)` of one `long[2*MAX]` allocation per node.
+The hypothesis is fewer per-node arrays/headers and potentially improved access locality;
+co-location does not establish a cache-miss reduction, and the value slot remains 248 bytes
+after its key slot. No other node geometry, search algorithm, API, StringBTree, or
+ConcurrentLongBTree change is in scope.
+
+The frozen control is the `LongBTree` source from merged `origin/main` commit
+`603b6f5b0ebcdddf5a5dab15b9a3f0f71c704340`, SHA-256
+`9f7dac57003bd771dbbca65fa2c22c0584dee9dbc52836cec1470a8dd6fb5503`. The existing
+`Round2BaselineLongBTree` is the renamed independent test class; its reverse-normalized
+source must match that checksum before timing. Strategy callers are limited to
+`keys[0..count)`; trailing array positions are unspecified storage. `VectorSearch` uses
+`count`, not array length. Compressed nodes inherit the base storage and need the same
+value-offset treatment while preserving their suffix/prefix metadata and fallback behavior.
+
+Astra's reviewed guidance: distinguish the allocation-count hypothesis from any unmeasured
+latency mechanism; include compressed and custom/vector strategies in correctness checks;
+verify keys-first active-prefix ordering, full-width updates/removals/ranges, and both
+borrow directions, splits, merges and root collapse. A candidate proceeds only after
+targeted tests, positive/negative per-fork runtime hash guards, a finite 40-row screen
+(2 sizes × 2 key shapes × 5 operations × 2 implementations), and paired JOL data showing
+lower retained bytes for identical fixtures. The screen was near-neutral, but the confirmed
+4.2% footprint reduction justified a paired check: alternate arms, compare the same 20
+size/key-shape/operation cells, and reject for observed material latency regressions. Run a
+decisive JDK 17 subset if retention remains plausible. Do not treat overlapping intervals as
+proof of equivalence.
+
+**Accepted for the 4.2% measured retained-footprint reduction.** The 20-cell JDK 25
+confirmation and three-cell JDK 17 subset found no >5% latency regression. Three JDK 25
+intervals were separated in the candidate's favor; 17 overlapped, and none favored baseline.
+All three JDK 17 intervals overlapped. This does not demonstrate broad latency improvement
+or equivalence. Final JDK 17 and JDK 25 SIMD full verifies passed, and packaged JDK 17/JDK 25
+consumers passed; see [`results/final-integration-verification.md`](results/final-integration-verification.md).
+Evidence and raw JSON links are in
+[`results/hillclimb-round3/long/README.md`](results/hillclimb-round3/long/README.md).
+
 ## Experiment records
 
 Append one section per baseline or candidate: source commit/hash; exact correctness command/result; exact JMH/JFR command, JDK/host/start time and raw/log paths; per-workload measurements and confidence intervals; memory/write/range effects; accept/reject/revert decision and rationale. Logs/JFR stay in `/tmp`; summarized JSON/CSV and this ledger stay tracked under `results/hillclimb/`.

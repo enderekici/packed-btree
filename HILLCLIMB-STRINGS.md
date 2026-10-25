@@ -84,3 +84,32 @@ confirmation, matched TreeMap control, JDK17 subset, and JOL estimate are record
 point estimates versus the frozen baseline; 15 comparisons had non-overlapping 99.9% intervals,
 with only the 262K prefix miss overlapping. The JDK17 hit intervals were disjoint; range and churn
 intervals overlapped. Retain the scope limits in the evidence report.
+
+# StringBTree hill-climb round three: covered subtrees
+
+This round starts from merged `origin/main` commit `603b6f5b0ebcdddf5a5dab15b9a3f0f71c704340`.
+The frozen baseline is the current C3 `StringBTree` copied to
+`simd/src/test/java/io/github/enderekici/packedbtree/CoveredBaselineStringBTree.java`; only outer
+class/constructor names change. The exact baseline production source SHA-256 is
+`94853ac9b62ff038696271a4b5de80c6110887e4ecf639f400f38767a60ab94e`; frozen-copy source SHA is
+`44566719000b19bb3d21fa4b991d338ae831c7268e4f9a3474a7b4d2cb01f005`.
+
+Candidate 1 passes inherited lower/upper coverage flags during range traversal. When parent
+separators establish that a child's entire key interval lies within `[fromInclusive,toExclusive)`,
+`visitAll` walks that subtree in order without repeating either bound search. Boundary subtrees
+still use the normal lower-bound searches. No node metadata or public API changes. Correctness
+coverage has been added for sizes 0, 1, 31, 32, 33, 127, and 512, including NUL, supplementary
+and unpaired surrogate code units, `\uFFFF`, common prefixes, exact/equal/reversed/absent bounds,
+nullable values with reference-identity checks, and randomized mutations checked against
+`TreeMap`.
+
+The guarded JDK25 confirmation completed 38/38 rows (76 forks) with two forks, three 1s warmups,
+and five 1s measurements. Range64 improved 15.1%, 11.3%, and 15.7% on 16K-short, 262K-random,
+and 262K-prefix respectively. Point/write/churn guardrails were within about 2%. Prefix width 1
+was 0.8% slower (390.68 to 393.80 ns/op); width 0 was flat, width 8 was modestly faster, and width
+1024 improved 32.5%. The one-fork short screen's apparent width-1 regression did not reproduce.
+JDK17 confirmed the three range64 fixtures in six rows (two forks, three 1s warmups and three 1s
+measurements): candidate was 20.6%, 14.9%, and 17.5% faster. The JDK17 focused StringBTreeTest
+passed 9/9 after adding stored-key reference checks and tightening the callback-exception fixture.
+See `results/hillclimb-round3/strings/README.md` for source/runtime hashes, exact commands, raw
+JSON and the limits of these measurements. Full clean verify remains for the integration run.

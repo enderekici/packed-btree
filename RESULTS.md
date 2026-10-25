@@ -140,6 +140,38 @@ and [StringBTree ledger](HILLCLIMB-STRINGS.md). The broader pre-optimization
 String/Long value comparison remains in
 [the baseline string report](results/string-benchmarks/REPORT.md).
 
+### String covered-subtree range traversal
+
+String round three adds an inorder walk for subtrees fully covered by a requested
+range; edge subtrees retain lower/upper-bound traversal. The guarded JDK 25
+confirmation included three key shapes and a separate width guard. Range64 means
+were 15.1% lower for 16K short keys, 11.3% lower for 262K random keys and 15.7%
+lower for 262K common-prefix keys. The width-1024 mean was 32.5% lower.
+Exploratory width-64 screens ranged from 10.9–20.3% lower in the primary screen
+and 7.9–17.5% lower in the independent width screen. JDK 17's decisive range64
+subset was 14.9–20.6% lower. Widths 0/1/8 remain inconclusive with overlapping
+intervals; the width-one prefix range was 0.8% slower in confirmation with
+overlapping intervals. These results support
+the measured wide-range workload only and do not establish equivalence for
+small widths. Full evidence and raw JSON are in
+[`results/hillclimb-round3/strings/README.md`](results/hillclimb-round3/strings/README.md).
+
+### Long packed key/value nodes
+
+Round three stores the 31 key slots and 31 value slots in one `long[62]` per
+node, preserving the degree-16 linear search and public API. Matched JOL
+fixtures measured 4.2% fewer retained bytes at 4,096 and 262,144 entries for
+dense and full-width keys. In the paired 20-cell JDK 25 confirmation, candidate
+means ranged from 6.49% faster to 3.02% slower; the largest point increases
+were dense 262K miss (+3.02%) and overwrite (+2.40%). Three intervals were
+separated in the candidate's favor; the other 17 overlapped, and none favored
+baseline. The finite grid does not prove broad latency improvement or equivalence. Three
+JDK 17 full-width cells ranged from 0.90% faster to 0.64% slower, also with
+overlapping intervals. The layout is retained for the footprint reduction,
+with no cache-locality claim. See
+[`results/hillclimb-round3/long/README.md`](results/hillclimb-round3/long/README.md)
+for complete measurements, runtime fingerprints and raw JSON.
+
 The final integrated JDK 17 and JDK 25 verification receipts and fresh packaged
 consumer probes are recorded in
 [`results/final-integration-verification.md`](results/final-integration-verification.md).

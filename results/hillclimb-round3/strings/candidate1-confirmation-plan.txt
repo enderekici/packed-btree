@@ -1,0 +1,7 @@
+Wait for explicit CPU lease. Frozen source/class SHA values currently recorded in results/hillclimb-round3/strings/README.md. Use per-fork `-foe true` and the exact manifest from the README.
+
+JDK25 Zulu 25.0.3, JMH 1.37, 2 forks, 3x1s warmup, 5x1s measurement, 1g heap/G1. Three independent paired 10-row runs (five operations x candidate/baseline), alternating arm order:
+1. 16K short, rangeWidth=64, implementation=candidate,baseline.
+2. 262K random, rangeWidth=64, implementation=baseline,candidate.
+3. 262K prefix, rangeWidth=64, implementation=candidate,baseline.
+Then one 8-row range run on 262K prefix, widths 0,1,8,1024, implementation=baseline,candidate. Total 38 rows / 76 forks. Keep logs and JSON in /tmp first; copy only valid complete JSON into results after validating row count, exit code, class hashes, all setup/teardown checks.
