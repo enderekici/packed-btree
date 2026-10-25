@@ -1,0 +1,4 @@
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree.class sha256=b299fed92ca7dd031543667cc9ea12f30f0beb8fe4fb0f04f6fcbfe431dc3f0e source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$State.class sha256=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$Node.class sha256=a8eca036438e5d451cebbb120e8727a0294336a83a5a103ad71ddbd71de8373d source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+bytecode guard passed: candidate
