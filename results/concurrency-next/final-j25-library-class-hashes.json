@@ -1,0 +1,12 @@
+{
+  "jar": "library/target/packed-btree-0.1.0-SNAPSHOT.jar",
+  "sha256": "bc00dda114f76c1ba208a94f359c4f7da3fa88ee7f493e414c4d5c7956d777f1",
+  "classes": {
+    "io/github/enderekici/packedbtree/ConcurrentLongBTree.class": "c9ff1cf1f8b521f62c80e0018c3e34672a03fa53984d83f094b3954e3c7d9fb1",
+    "io/github/enderekici/packedbtree/ConcurrentLongBTree$Node.class": "24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad",
+    "io/github/enderekici/packedbtree/ConcurrentLongBTree$State.class": "5b8e51c2c0cc738c721c0f254c945d2268f99bbb645483cc657ba84c85cd0f96",
+    "io/github/enderekici/packedbtree/ConcurrentStringBTree.class": "c2d9e17d24a888078b68f363445f4119f9d3def9ddca7490ba13ef1e1bc6de92",
+    "io/github/enderekici/packedbtree/ConcurrentStringBTree$Node.class": "30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0",
+    "io/github/enderekici/packedbtree/ConcurrentStringBTree$State.class": "78fd5b840cbf10f433d35e0cbc7355c2e250649c6119e227692beb1f238f8d14"
+  }
+}

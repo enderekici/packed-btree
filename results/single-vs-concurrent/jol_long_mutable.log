@@ -1,0 +1,28 @@
+CLASS-GUARD io.github.enderekici.packedbtree.LongBTree codeSource=file:/private/tmp/svc-mutable-classes/ sha256=6849766a3c2d7aca27d256a7b372ff0df88f05cb623ab09d78ca06a47779295e
+CLASS-GUARD io.github.enderekici.packedbtree.LongBTree$Node codeSource=file:/private/tmp/svc-mutable-classes/ sha256=d631e8eff38b377cf6f9ffbc1035bb51df9cd5b61b27285cff78ab44d46140b2
+# WARNING: Unable to get Instrumentation. Dynamic Attach failed. You may add this JAR as -javaagent manually, or supply -Djdk.attach.allowAttachSelf
+# WARNING: Unable to attach Serviceability Agent. You can try again with escalated privileges. Two options: a) use -Djol.tryWithSudo=true to try with sudo; b) echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by org.openjdk.jol.vm.HotspotUnsafe (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jol.vm.HotspotUnsafe
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+VM # VM mode: 64 bits
+# Compressed references (oops): 3-bit shift
+# Compressed class pointers: 3-bit shift
+# WARNING | Compressed references base/shifts are guessed by the experiment!
+# WARNING | Therefore, computed addresses are just guesses, and ARE NOT RELIABLE.
+# WARNING | Make sure to attach Serviceability Agent to get the reliable addresses.
+# Object alignment: 8 bytes
+#                       ref, bool, byte, char, shrt,  int,  flt,  lng,  dbl
+# Field sizes:            4,    1,    1,    2,    2,    4,    4,    8,    8
+# Array element sizes:    4,    1,    1,    2,    2,    4,    4,    8,    8
+# Array base offsets:    16,   16,   16,   16,   16,   16,   16,   16,   16
+
+GRAPH arm=mutable type=long shape=na size=262144 bytes=6659696 objects=25105 bytesPerMapping=25.40472412109375 activeSnapshots=0
+io.github.enderekici.packedbtree.LongBTree@c4437c4d footprint:
+     COUNT       AVG       SUM   DESCRIPTION
+     12277       512   6285824   [J
+       550       144     79200   [Lio.github.enderekici.packedbtree.LongBTree$Node;
+         1        24        24   io.github.enderekici.packedbtree.LongBTree
+     12277        24    294648   io.github.enderekici.packedbtree.LongBTree$Node
+     25105             6659696   (total)

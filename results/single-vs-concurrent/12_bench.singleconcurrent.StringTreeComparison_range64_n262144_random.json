@@ -1,0 +1,158 @@
+[
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.singleconcurrent.StringTreeComparison.range64",
+        "mode" : "thrpt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC",
+            "-Dtree.guard.mutable.location=/tmp/svc-mutable-classes",
+            "-Dtree.guard.concurrent.location=/tmp/svc-concurrent-classes",
+            "-Dtree.guard.mutable.long.outer=6849766a3c2d7aca27d256a7b372ff0df88f05cb623ab09d78ca06a47779295e",
+            "-Dtree.guard.mutable.long.node=d631e8eff38b377cf6f9ffbc1035bb51df9cd5b61b27285cff78ab44d46140b2",
+            "-Dtree.guard.concurrent.long.outer=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be",
+            "-Dtree.guard.concurrent.long.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad",
+            "-Dtree.guard.concurrent.long.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8",
+            "-Dtree.guard.mutable.string.outer=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320",
+            "-Dtree.guard.mutable.string.node=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dtree.guard.concurrent.string.outer=e5061e793d31ee8109e2dd5c94cb2d4d84d639a7db5d59ad5045eceaace1a8f1",
+            "-Dtree.guard.concurrent.string.node=30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0",
+            "-Dtree.guard.concurrent.string.state=88818f76c09a8cf87bd415588b567812520c42d29d2896fb41b5546004247c10"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "arm" : "mutable",
+            "shape" : "random",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 739707.9880390884,
+            "scoreError" : 10481.32579457353,
+            "scoreConfidence" : [
+                729226.6622445149,
+                750189.313833662
+            ],
+            "scorePercentiles" : {
+                "0.0" : 727953.1588487143,
+                "50.0" : 740427.0162323869,
+                "90.0" : 750082.2991103041,
+                "95.0" : 750385.3232583118,
+                "99.0" : 750385.3232583118,
+                "99.9" : 750385.3232583118,
+                "99.99" : 750385.3232583118,
+                "99.999" : 750385.3232583118,
+                "99.9999" : 750385.3232583118,
+                "100.0" : 750385.3232583118
+            },
+            "scoreUnit" : "ops/s",
+            "rawData" : [
+                [
+                    732085.2268962553,
+                    735070.3060482842,
+                    740656.7890477808,
+                    737186.8458035642,
+                    740614.5469247593
+                ],
+                [
+                    747355.081778234,
+                    750385.3232583118,
+                    740239.4855400147,
+                    727953.1588487143,
+                    745533.1162449662
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.singleconcurrent.StringTreeComparison.range64",
+        "mode" : "thrpt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Xms1g",
+            "-Xmx1g",
+            "-XX:+UseG1GC",
+            "-Dtree.guard.mutable.location=/tmp/svc-mutable-classes",
+            "-Dtree.guard.concurrent.location=/tmp/svc-concurrent-classes",
+            "-Dtree.guard.mutable.long.outer=6849766a3c2d7aca27d256a7b372ff0df88f05cb623ab09d78ca06a47779295e",
+            "-Dtree.guard.mutable.long.node=d631e8eff38b377cf6f9ffbc1035bb51df9cd5b61b27285cff78ab44d46140b2",
+            "-Dtree.guard.concurrent.long.outer=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be",
+            "-Dtree.guard.concurrent.long.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad",
+            "-Dtree.guard.concurrent.long.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8",
+            "-Dtree.guard.mutable.string.outer=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320",
+            "-Dtree.guard.mutable.string.node=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b",
+            "-Dtree.guard.concurrent.string.outer=e5061e793d31ee8109e2dd5c94cb2d4d84d639a7db5d59ad5045eceaace1a8f1",
+            "-Dtree.guard.concurrent.string.node=30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0",
+            "-Dtree.guard.concurrent.string.state=88818f76c09a8cf87bd415588b567812520c42d29d2896fb41b5546004247c10"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "arm" : "concurrent",
+            "shape" : "random",
+            "size" : "262144"
+        },
+        "primaryMetric" : {
+            "score" : 1390429.3088972392,
+            "scoreError" : 38058.220322187546,
+            "scoreConfidence" : [
+                1352371.0885750516,
+                1428487.5292194267
+            ],
+            "scorePercentiles" : {
+                "0.0" : 1331932.221151161,
+                "50.0" : 1398471.3576313157,
+                "90.0" : 1415505.2405004522,
+                "95.0" : 1415796.4332630613,
+                "99.0" : 1415796.4332630613,
+                "99.9" : 1415796.4332630613,
+                "99.99" : 1415796.4332630613,
+                "99.999" : 1415796.4332630613,
+                "99.9999" : 1415796.4332630613,
+                "100.0" : 1415796.4332630613
+            },
+            "scoreUnit" : "ops/s",
+            "rawData" : [
+                [
+                    1405034.1555946702,
+                    1412884.5056369696,
+                    1331932.221151161,
+                    1365493.4220666566,
+                    1398005.5018675139
+                ],
+                [
+                    1383005.8463314027,
+                    1398937.2133951175,
+                    1400924.017716053,
+                    1415796.4332630613,
+                    1392279.7719497872
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    }
+]

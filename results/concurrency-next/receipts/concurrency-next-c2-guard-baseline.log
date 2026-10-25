@@ -1,0 +1,4 @@
+guard baseline io/github/enderekici/packedbtree/ConcurrentLongBTreeC1Baseline.class sha256=b6d104ec7304b7986fc27af0ab6d37b9c1d50c51cb42953c6fb93066a952498d source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline io/github/enderekici/packedbtree/ConcurrentLongBTreeC1Baseline$State.class sha256=5dc499151acb5a9b35cbb5883cdf0b3899822c01c2a1a6d8925eebb8cc8bc840 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline io/github/enderekici/packedbtree/ConcurrentLongBTreeC1Baseline$Node.class sha256=3be35f8d848d59ceebf4378b98108d0e7f0374de15a38fd0fe550c681d3ccbe5 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+bytecode guard passed: baseline

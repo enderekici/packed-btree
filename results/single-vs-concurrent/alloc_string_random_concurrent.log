@@ -1,0 +1,8 @@
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree source=file:/private/tmp/svc-concurrent-classes/ sha256=e5061e793d31ee8109e2dd5c94cb2d4d84d639a7db5d59ad5045eceaace1a8f1
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree$Node source=file:/private/tmp/svc-concurrent-classes/ sha256=30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree$State source=file:/private/tmp/svc-concurrent-classes/ sha256=88818f76c09a8cf87bd415588b567812520c42d29d2896fb41b5546004247c10
+ALLOC arm=concurrent type=string_random operation=hit operations=100000 bytes=0 bytesPerOp=0.0000 sink=1357723
+ALLOC arm=concurrent type=string_random operation=miss_suffix operations=100000 bytes=0 bytesPerOp=0.0000 sink=0
+ALLOC arm=concurrent type=string_random operation=range64 operations=100000 bytes=0 bytesPerOp=0.0000 sink=86895939
+ALLOC arm=concurrent type=string_random operation=overwrite operations=100000 bytes=218413680 bytesPerOp=2184.1368 sink=100000
+ALLOC arm=concurrent type=string_random operation=churn operations=100000 bytes=553622608 bytesPerOp=5536.2261 sink=100000

@@ -1,0 +1,87 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO]
+[INFO] Packed B-tree                                                      [pom]
+[INFO] Packed B-tree library                                              [jar]
+[INFO] Packed B-tree benchmarks                                           [jar]
+[INFO]
+[INFO] --------------< io.github.enderekici:packed-btree-parent >--------------
+[INFO] Building Packed B-tree 0.1.0-SNAPSHOT                              [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] -----------------< io.github.enderekici:packed-btree >------------------
+[INFO] Building Packed B-tree library 0.1.0-SNAPSHOT                      [2/3]
+[INFO]   from library/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ packed-btree ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/src/main/resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ packed-btree ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ packed-btree ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/src/test/resources
+[INFO]
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ packed-btree ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ packed-btree ---
+[INFO] Tests are skipped.
+[INFO]
+[INFO] --- jar:3.4.2:jar (default-jar) @ packed-btree ---
+[INFO]
+[INFO] --- source:3.4.0:jar-no-fork (sources) @ packed-btree ---
+[INFO]
+[INFO] --- javadoc:3.12.0:jar (javadoc) @ packed-btree ---
+[INFO] Building jar: /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/library/target/packed-btree-0.1.0-SNAPSHOT-javadoc.jar
+[INFO]
+[INFO] ------------< io.github.enderekici:packed-btree-benchmarks >------------
+[INFO] Building Packed B-tree benchmarks 0.1.0-SNAPSHOT                   [3/3]
+[INFO]   from benchmarks/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ packed-btree-benchmarks ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/src/main/resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ packed-btree-benchmarks ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 13 source files with javac [debug release 17] to target/classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ packed-btree-benchmarks ---
+[INFO] skip non existing resourceDirectory /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/src/test/resources
+[INFO]
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ packed-btree-benchmarks ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug release 17] to target/test-classes
+[INFO]
+[INFO] --- surefire:3.5.6:test (default-test) @ packed-btree-benchmarks ---
+[INFO] Tests are skipped.
+[INFO]
+[INFO] --- jar:3.4.2:jar (default-jar) @ packed-btree-benchmarks ---
+[INFO] Building jar: /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/packed-btree-benchmarks-0.1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- shade:3.6.2:shade (default) @ packed-btree-benchmarks ---
+[WARNING] commons-math3-3.6.1.jar, fastutil-8.5.15.jar, jmh-core-1.37.jar, jol-core-0.17.jar, jopt-simple-5.0.4.jar, packed-btree-0.1.0-SNAPSHOT.jar, packed-btree-benchmarks-0.1.0-SNAPSHOT.jar define 1 overlapping resource:
+[WARNING]   - META-INF/MANIFEST.MF
+[WARNING] maven-shade-plugin has detected that some files are
+[WARNING] present in two or more JARs. When this happens, only one
+[WARNING] single version of the file is copied to the uber jar.
+[WARNING] Usually this is not harmful and you can skip these warnings,
+[WARNING] otherwise try to manually exclude artifacts based on
+[WARNING] mvn dependency:tree -Ddetail=true and the above output.
+[WARNING] See https://maven.apache.org/plugins/maven-shade-plugin/
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Packed B-tree 0.1.0-SNAPSHOT:
+[INFO]
+[INFO] Packed B-tree ...................................... SUCCESS [  0.001 s]
+[INFO] Packed B-tree library .............................. SUCCESS [  0.596 s]
+[INFO] Packed B-tree benchmarks ........................... SUCCESS [  2.004 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.639 s
+[INFO] Finished at: 2026-10-25T20:28:17Z
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,348 @@
+package io.github.enderekici.packedbtree;
+
+/**
+ * A concurrent primitive long-to-long B-tree with signed key ordering.
+ *
+ * <p>Writers are serialized; point readers capture a volatile immutable-root snapshot and do not
+ * acquire the writer lock. Each operation is linearizable. Separate calls such as {@link #size()}
+ * followed by {@link #getOrDefault(long, long)} do not share one atomic snapshot. Range traversal
+ * retains one root snapshot and permits callback re-entry; a slow callback can retain that old tree
+ * until traversal completes. Every signed {@code long} is a valid key and value; no value is
+ * reserved as a missing-key sentinel. This class does not implement {@link java.util.Map}.
+ */
+public final class ConcurrentLongBTreeC2Rejected {
+  /** Receives a primitive key/value pair during an ordered range traversal. */
+  @FunctionalInterface
+  public interface EntryConsumer {
+    /**
+     * Receives an entry. The traversal uses a stable snapshot; the callback may mutate the tree.
+     *
+     * @param key entry key
+     * @param value entry value
+     */
+    void accept(long key, long value);
+  }
+  private static final int DEGREE = 16;
+  private static final int MAX = 2 * DEGREE - 1;
+  private volatile State state = new State(new Node(true), 0);
+
+  private record State(Node root, int size) {}
+
+  /** Creates an empty concurrent B-tree. */
+  public ConcurrentLongBTreeC2Rejected() {}
+
+  private static final class Node {
+    final long[] entries = new long[MAX * 2];
+    final Node[] children;
+    int count;
+
+    Node(boolean leaf) {
+      children = leaf ? null : new Node[MAX + 1];
+    }
+
+    int index(long key) {
+      int i = 0;
+      while (i < count && key(i) < key) i++;
+      return i;
+    }
+
+    long key(int index) { return entries[index]; }
+
+    long value(int index) { return entries[MAX + index]; }
+
+    void set(int index, long key, long value) {
+      entries[index] = key;
+      entries[MAX + index] = value;
+    }
+  }
+
+  /**
+   * Returns the number of mappings.
+   *
+   * @return number of distinct keys
+   */
+  public int size() {
+    return state.size;
+  }
+
+  /**
+   * Looks up a key without boxing.
+   *
+   * @param key key to find
+   * @param fallback value returned if the key is absent
+   * @return stored value or {@code fallback}
+   */
+  public long getOrDefault(long key, long fallback) {
+    Node node = state.root;
+    while (true) {
+      int i = node.index(key);
+      if (i < node.count && node.key(i) == key) return node.value(i);
+      if (node.children == null) return fallback;
+      node = node.children[i];
+    }
+  }
+
+  /**
+   * Adds a mapping or replaces the value of an existing key.
+   *
+   * @param key key to store
+   * @param value value to associate with the key
+   */
+  public synchronized void put(long key, long value) {
+    State before = state;
+    Node root = copy(before.root);
+    if (root.count == MAX) {
+      Node parent = new Node(false);
+      parent.children[0] = root;
+      split(parent, 0);
+      root = parent;
+    }
+    Node node = root;
+    while (true) {
+      int i = node.index(key);
+      if (i < node.count && node.key(i) == key) {
+        node.set(i, key, value);
+        state = new State(root, before.size);
+        return;
+      }
+      if (node.children == null) {
+        System.arraycopy(node.entries, i, node.entries, i + 1, node.count - i);
+        System.arraycopy(node.entries, MAX + i, node.entries, MAX + i + 1,
+            node.count - i);
+        node.set(i, key, value);
+        node.count++;
+        state = new State(root, before.size + 1);
+        return;
+      }
+      node.children[i] = copy(node.children[i]);
+      if (node.children[i].count == MAX) {
+        split(node, i);
+        if (key == node.key(i)) {
+          node.set(i, key, value);
+          state = new State(root, before.size);
+          return;
+        }
+        if (key > node.key(i)) i++;
+      }
+      node = node.children[i];
+    }
+  }
+
+  private static Node copy(Node source) {
+    Node target = new Node(source.children == null);
+    target.count = source.count;
+    System.arraycopy(source.entries, 0, target.entries, 0, source.count);
+    System.arraycopy(source.entries, MAX, target.entries, MAX, source.count);
+    if (source.children != null) {
+      System.arraycopy(source.children, 0, target.children, 0, source.count + 1);
+    }
+    return target;
+  }
+
+  private static void split(Node parent, int i) {
+    Node left = parent.children[i];
+    Node right = new Node(left.children == null);
+    right.count = DEGREE - 1;
+    System.arraycopy(left.entries, DEGREE, right.entries, 0, DEGREE - 1);
+    System.arraycopy(left.entries, MAX + DEGREE, right.entries, MAX, DEGREE - 1);
+    if (left.children != null) {
+      System.arraycopy(left.children, DEGREE, right.children, 0, DEGREE);
+      java.util.Arrays.fill(left.children, DEGREE, MAX + 1, null);
+    }
+    System.arraycopy(parent.children, i + 1, parent.children, i + 2, parent.count - i);
+    System.arraycopy(parent.entries, i, parent.entries, i + 1, parent.count - i);
+    System.arraycopy(parent.entries, MAX + i, parent.entries, MAX + i + 1,
+        parent.count - i);
+    parent.set(i, left.key(DEGREE - 1), left.value(DEGREE - 1));
+    parent.children[i + 1] = right;
+    left.count = DEGREE - 1;
+    parent.count++;
+  }
+
+  /**
+   * Removes a mapping, rebalancing the tree as needed.
+   *
+   * @param key key to remove
+   * @return whether the key existed
+   */
+  public synchronized boolean remove(long key) {
+    State before = state;
+    Node root = copy(before.root);
+    boolean removed = delete(root, key);
+    if (root.count == 0 && root.children != null) root = root.children[0];
+    if (removed) state = new State(root, before.size - 1);
+    return removed;
+  }
+
+  private static boolean delete(Node node, long key) {
+    int i = node.index(key);
+    if (i < node.count && node.key(i) == key) {
+      if (node.children == null) {
+        erase(node, i);
+      } else if (node.children[i].count >= DEGREE) {
+        node.children[i] = copy(node.children[i]);
+        Node predecessor = node.children[i];
+        while (predecessor.children != null) {
+          predecessor = predecessor.children[predecessor.count];
+        }
+        node.set(i, predecessor.key(predecessor.count - 1),
+            predecessor.value(predecessor.count - 1));
+        delete(node.children[i], node.key(i));
+      } else if (node.children[i + 1].count >= DEGREE) {
+        node.children[i + 1] = copy(node.children[i + 1]);
+        Node successor = node.children[i + 1];
+        while (successor.children != null) successor = successor.children[0];
+        node.set(i, successor.key(0), successor.value(0));
+        delete(node.children[i + 1], node.key(i));
+      } else {
+        node.children[i] = copy(node.children[i]);
+        merge(node, i);
+        delete(node.children[i], key);
+      }
+      return true;
+    }
+    if (node.children == null) return false;
+    node.children[i] = copy(node.children[i]);
+    if (node.children[i].count == DEGREE - 1) {
+      if (i > 0 && node.children[i - 1].count >= DEGREE) {
+        node.children[i - 1] = copy(node.children[i - 1]);
+        borrowLeft(node, i);
+      } else if (i < node.count && node.children[i + 1].count >= DEGREE) {
+        node.children[i + 1] = copy(node.children[i + 1]);
+        borrowRight(node, i);
+      } else {
+        if (i == node.count) i--;
+        node.children[i] = copy(node.children[i]);
+        merge(node, i);
+      }
+    }
+    return delete(node.children[i], key);
+  }
+
+  private static void erase(Node node, int i) {
+    System.arraycopy(node.entries, i + 1, node.entries, i, node.count - i - 1);
+    System.arraycopy(node.entries, MAX + i + 1, node.entries, MAX + i,
+        node.count - i - 1);
+    node.count--;
+  }
+
+  private static void merge(Node parent, int i) {
+    Node left = parent.children[i];
+    Node right = parent.children[i + 1];
+    int offset = left.count;
+    left.set(offset, parent.key(i), parent.value(i));
+    System.arraycopy(right.entries, 0, left.entries, offset + 1, right.count);
+    System.arraycopy(right.entries, MAX, left.entries, MAX + offset + 1, right.count);
+    if (left.children != null) {
+      System.arraycopy(right.children, 0, left.children, offset + 1, right.count + 1);
+    }
+    left.count += right.count + 1;
+    int oldCount = parent.count;
+    erase(parent, i);
+    System.arraycopy(parent.children, i + 2, parent.children, i + 1, oldCount - i - 1);
+    parent.children[oldCount] = null;
+  }
+
+  private static void borrowLeft(Node parent, int i) {
+    Node child = parent.children[i];
+    Node sibling = parent.children[i - 1];
+    System.arraycopy(child.entries, 0, child.entries, 1, child.count);
+    System.arraycopy(child.entries, MAX, child.entries, MAX + 1, child.count);
+    if (child.children != null) {
+      System.arraycopy(child.children, 0, child.children, 1, child.count + 1);
+      child.children[0] = sibling.children[sibling.count];
+      sibling.children[sibling.count] = null;
+    }
+    child.set(0, parent.key(i - 1), parent.value(i - 1));
+    parent.set(i - 1, sibling.key(sibling.count - 1), sibling.value(sibling.count - 1));
+    sibling.count--;
+    child.count++;
+  }
+
+  private static void borrowRight(Node parent, int i) {
+    Node child = parent.children[i];
+    Node sibling = parent.children[i + 1];
+    child.set(child.count, parent.key(i), parent.value(i));
+    if (child.children != null) {
+      child.children[child.count + 1] = sibling.children[0];
+      System.arraycopy(sibling.children, 1, sibling.children, 0, sibling.count);
+      sibling.children[sibling.count] = null;
+    }
+    parent.set(i, sibling.key(0), sibling.value(0));
+    erase(sibling, 0);
+    child.count++;
+  }
+
+  /**
+   * Visits entries from one stable snapshot in ascending order in {@code [fromInclusive, toExclusive)}.
+   *
+   * <p>Equal or reversed bounds produce no visits. A half-open range cannot include
+   * {@link Long#MAX_VALUE}; use {@link #getOrDefault(long, long)} for that key.
+   * The traversal reads one stable snapshot, so callbacks may re-enter or mutate this tree.
+   *
+   * @param fromInclusive lower bound, included
+   * @param toExclusive upper bound, excluded
+   * @param visitor callback for each matching entry
+   */
+  public void forEach(long fromInclusive, long toExclusive, EntryConsumer visitor) {
+    State snapshot = state;
+    if (fromInclusive < toExclusive) visit(snapshot.root, fromInclusive, toExclusive, visitor);
+  }
+
+  private static void visit(Node node, long from, long to, EntryConsumer visitor) {
+    int i = node.index(from);
+    if (node.children != null) visit(node.children[i], from, to, visitor);
+    while (i < node.count && node.key(i) < to) {
+      visitor.accept(node.key(i), node.value(i));
+      i++;
+      if (node.children != null) visit(node.children[i], from, to, visitor);
+    }
+  }
+
+  /**
+   * Checks ordering, occupancy, child references, equal leaf depth and cardinality.
+   *
+   * <p>This diagnostic traverses the entire tree and is not intended for hot paths.
+   *
+   * @throws AssertionError if an invariant is violated
+   */
+  public void validate() {
+    int[] leafDepth = {-1};
+    State snapshot = state;
+    int actual = validate(snapshot.root, true, null, null, 0, leafDepth);
+    if (actual != snapshot.size) {
+      throw new AssertionError("Size " + actual + " != " + snapshot.size);
+    }
+  }
+
+  private static int validate(Node node, boolean isRoot, Long low, Long high,
+      int depth, int[] leafDepth) {
+    if (node.count > MAX || node.count < (isRoot ? 0 : DEGREE - 1)) {
+      throw new AssertionError("Occupancy");
+    }
+    for (int i = 0; i < node.count; i++) {
+      long key = node.key(i);
+      if ((i > 0 && node.key(i - 1) >= key)
+          || (low != null && key <= low) || (high != null && key >= high)) {
+        throw new AssertionError("Ordering");
+      }
+    }
+    int total = node.count;
+    if (node.children == null) {
+      if (leafDepth[0] == -1) leafDepth[0] = depth;
+      if (leafDepth[0] != depth) throw new AssertionError("Leaf depth");
+    } else {
+      if (isRoot && node.count == 0) throw new AssertionError("Empty internal root");
+      for (int i = 0; i <= node.count; i++) {
+        if (node.children[i] == null) throw new AssertionError("Missing child");
+        total += validate(node.children[i], false,
+            i == 0 ? low : Long.valueOf(node.key(i - 1)),
+            i == node.count ? high : Long.valueOf(node.key(i)), depth + 1, leafDepth);
+      }
+      for (int i = node.count + 1; i < node.children.length; i++) {
+        if (node.children[i] != null) throw new AssertionError("Retained child");
+      }
+    }
+    return total;
+  }
+}

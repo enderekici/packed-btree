@@ -1,0 +1,290 @@
+[
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.concurrent.ConcurrentLongSearchBenchmark.operation",
+        "mode" : "thrpt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dconcurrent.expected.baseline.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar",
+            "-Dconcurrent.expected.baseline=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0",
+            "-Dconcurrent.expected.baseline.node=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194",
+            "-Dconcurrent.expected.baseline.state=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195",
+            "-Dconcurrent.expected.candidate.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar",
+            "-Dconcurrent.expected.candidate=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be",
+            "-Dconcurrent.expected.candidate.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad",
+            "-Dconcurrent.expected.candidate.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "baseline",
+            "workload" : "read"
+        },
+        "primaryMetric" : {
+            "score" : 9844544.084809981,
+            "scoreError" : 136314.07335361937,
+            "scoreConfidence" : [
+                9708230.011456361,
+                9980858.158163602
+            ],
+            "scorePercentiles" : {
+                "0.0" : 9746902.517904209,
+                "50.0" : 9832417.044231933,
+                "90.0" : 1.002061781533586E7,
+                "95.0" : 1.0026968502888491E7,
+                "99.0" : 1.0026968502888491E7,
+                "99.9" : 1.0026968502888491E7,
+                "99.99" : 1.0026968502888491E7,
+                "99.999" : 1.0026968502888491E7,
+                "99.9999" : 1.0026968502888491E7,
+                "100.0" : 1.0026968502888491E7
+            },
+            "scoreUnit" : "ops/s",
+            "rawData" : [
+                [
+                    9771748.425728565,
+                    9795290.396450076,
+                    9863521.863766458,
+                    9963461.627362173,
+                    9853095.803875469
+                ],
+                [
+                    1.0026968502888491E7,
+                    9746902.517904209,
+                    9848937.268874763,
+                    9815896.8195891,
+                    9759617.621660512
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+            "readOps" : {
+                "score" : 0.0,
+                "scoreError" : 0.0,
+                "scoreConfidence" : [
+                    0.0,
+                    0.0
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 0.0,
+                    "50.0" : 0.0,
+                    "90.0" : 0.0,
+                    "95.0" : 0.0,
+                    "99.0" : 0.0,
+                    "99.9" : 0.0,
+                    "99.99" : 0.0,
+                    "99.999" : 0.0,
+                    "99.9999" : 0.0,
+                    "100.0" : 0.0
+                },
+                "scoreUnit" : "ops/s",
+                "rawData" : [
+                    [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                ]
+            },
+            "writeOps" : {
+                "score" : 0.0,
+                "scoreError" : 0.0,
+                "scoreConfidence" : [
+                    0.0,
+                    0.0
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 0.0,
+                    "50.0" : 0.0,
+                    "90.0" : 0.0,
+                    "95.0" : 0.0,
+                    "99.0" : 0.0,
+                    "99.9" : 0.0,
+                    "99.99" : 0.0,
+                    "99.999" : 0.0,
+                    "99.9999" : 0.0,
+                    "100.0" : 0.0
+                },
+                "scoreUnit" : "ops/s",
+                "rawData" : [
+                    [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    },
+    {
+        "jmhVersion" : "1.37",
+        "benchmark" : "bench.concurrent.ConcurrentLongSearchBenchmark.operation",
+        "mode" : "thrpt",
+        "threads" : 1,
+        "forks" : 2,
+        "jvm" : "/Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java",
+        "jvmArgs" : [
+            "-Dconcurrent.expected.baseline.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar",
+            "-Dconcurrent.expected.baseline=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0",
+            "-Dconcurrent.expected.baseline.node=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194",
+            "-Dconcurrent.expected.baseline.state=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195",
+            "-Dconcurrent.expected.candidate.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar",
+            "-Dconcurrent.expected.candidate=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be",
+            "-Dconcurrent.expected.candidate.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad",
+            "-Dconcurrent.expected.candidate.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8"
+        ],
+        "jdkVersion" : "25.0.3",
+        "vmName" : "OpenJDK 64-Bit Server VM",
+        "vmVersion" : "25.0.3+9-LTS",
+        "warmupIterations" : 3,
+        "warmupTime" : "1 s",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 5,
+        "measurementTime" : "1 s",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "implementation" : "candidate",
+            "workload" : "read"
+        },
+        "primaryMetric" : {
+            "score" : 1.3969434910720747E7,
+            "scoreError" : 143018.91851746812,
+            "scoreConfidence" : [
+                1.3826415992203278E7,
+                1.4112453829238215E7
+            ],
+            "scorePercentiles" : {
+                "0.0" : 1.3807649720843878E7,
+                "50.0" : 1.397238742299388E7,
+                "90.0" : 1.4092230290817223E7,
+                "95.0" : 1.4093591596956398E7,
+                "99.0" : 1.4093591596956398E7,
+                "99.9" : 1.4093591596956398E7,
+                "99.99" : 1.4093591596956398E7,
+                "99.999" : 1.4093591596956398E7,
+                "99.9999" : 1.4093591596956398E7,
+                "100.0" : 1.4093591596956398E7
+            },
+            "scoreUnit" : "ops/s",
+            "rawData" : [
+                [
+                    1.4043029808602398E7,
+                    1.3926736346397266E7,
+                    1.3947319596100403E7,
+                    1.407997853556464E7,
+                    1.3881552044204904E7
+                ],
+                [
+                    1.4030123718700431E7,
+                    1.3886912489949778E7,
+                    1.3997455249887357E7,
+                    1.4093591596956398E7,
+                    1.3807649720843878E7
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+            "readOps" : {
+                "score" : 0.0,
+                "scoreError" : 0.0,
+                "scoreConfidence" : [
+                    0.0,
+                    0.0
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 0.0,
+                    "50.0" : 0.0,
+                    "90.0" : 0.0,
+                    "95.0" : 0.0,
+                    "99.0" : 0.0,
+                    "99.9" : 0.0,
+                    "99.99" : 0.0,
+                    "99.999" : 0.0,
+                    "99.9999" : 0.0,
+                    "100.0" : 0.0
+                },
+                "scoreUnit" : "ops/s",
+                "rawData" : [
+                    [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                ]
+            },
+            "writeOps" : {
+                "score" : 0.0,
+                "scoreError" : 0.0,
+                "scoreConfidence" : [
+                    0.0,
+                    0.0
+                ],
+                "scorePercentiles" : {
+                    "0.0" : 0.0,
+                    "50.0" : 0.0,
+                    "90.0" : 0.0,
+                    "95.0" : 0.0,
+                    "99.0" : 0.0,
+                    "99.9" : 0.0,
+                    "99.99" : 0.0,
+                    "99.999" : 0.0,
+                    "99.9999" : 0.0,
+                    "100.0" : 0.0
+                },
+                "scoreUnit" : "ops/s",
+                "rawData" : [
+                    [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    [
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    }
+]

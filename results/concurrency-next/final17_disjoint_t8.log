@@ -1,0 +1,159 @@
+# JMH version: 1.37
+# VM version: JDK 17.0.19, OpenJDK 64-Bit Server VM, 17.0.19+10-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-17.0.19/Contents/Home/bin/java
+# VM options: -Dconcurrent.expected.baseline.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar -Dconcurrent.expected.baseline=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0 -Dconcurrent.expected.baseline.node=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194 -Dconcurrent.expected.baseline.state=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195 -Dconcurrent.expected.candidate.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar -Dconcurrent.expected.candidate=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be -Dconcurrent.expected.candidate.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad -Dconcurrent.expected.candidate.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: bench.concurrent.ConcurrentLongSearchBenchmark.operation
+# Parameters: (implementation = baseline, workload = disjoint)
+
+# Run progress: 0.00% complete, ETA 00:00:24
+# Fork: 1 of 2
+# Warmup Iteration   1: guard baseline bench/concurrent/ConcurrentLongBTreeBaseline.class sha256=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline bench/concurrent/ConcurrentLongBTreeBaseline$State.class sha256=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline bench/concurrent/ConcurrentLongBTreeBaseline$Node.class sha256=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+1972984.549 ops/s
+# Warmup Iteration   2: 2142969.311 ops/s
+# Warmup Iteration   3: 2162999.625 ops/s
+Iteration   1: 2166758.090 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+Iteration   2: 2121110.866 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+Iteration   3: 2167091.034 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+
+# Run progress: 25.00% complete, ETA 00:00:22
+# Fork: 2 of 2
+# Warmup Iteration   1: guard baseline bench/concurrent/ConcurrentLongBTreeBaseline.class sha256=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline bench/concurrent/ConcurrentLongBTreeBaseline$State.class sha256=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline bench/concurrent/ConcurrentLongBTreeBaseline$Node.class sha256=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+1946202.805 ops/s
+# Warmup Iteration   2: 2192510.099 ops/s
+# Warmup Iteration   3: 2139199.678 ops/s
+Iteration   1: 2175180.338 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+Iteration   2: 2149896.765 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+Iteration   3: 2150713.230 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+
+
+Result "bench.concurrent.ConcurrentLongSearchBenchmark.operation":
+  2155125.054 ±(99.9%) 54440.103 ops/s [Average]
+  (min, avg, max) = (2121110.866, 2155125.054, 2175180.338), stdev = 19413.865
+  CI (99.9%): [2100684.951, 2209565.157] (assumes normal distribution)
+
+Secondary result "bench.concurrent.ConcurrentLongSearchBenchmark.operation:readOps":
+  ≈ 0 ops/s
+
+Secondary result "bench.concurrent.ConcurrentLongSearchBenchmark.operation:writeOps":
+  ≈ 0 ops/s
+
+
+# JMH version: 1.37
+# VM version: JDK 17.0.19, OpenJDK 64-Bit Server VM, 17.0.19+10-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-17.0.19/Contents/Home/bin/java
+# VM options: -Dconcurrent.expected.baseline.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar -Dconcurrent.expected.baseline=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0 -Dconcurrent.expected.baseline.node=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194 -Dconcurrent.expected.baseline.state=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195 -Dconcurrent.expected.candidate.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar -Dconcurrent.expected.candidate=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be -Dconcurrent.expected.candidate.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad -Dconcurrent.expected.candidate.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: bench.concurrent.ConcurrentLongSearchBenchmark.operation
+# Parameters: (implementation = candidate, workload = disjoint)
+
+# Run progress: 50.00% complete, ETA 00:00:14
+# Fork: 1 of 2
+# Warmup Iteration   1: guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree.class sha256=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$State.class sha256=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$Node.class sha256=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+2200104.653 ops/s
+# Warmup Iteration   2: 2320530.599 ops/s
+# Warmup Iteration   3: 2334400.828 ops/s
+Iteration   1: 2314151.696 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+Iteration   2: 2347653.324 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+Iteration   3: 2299638.054 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+
+# Run progress: 75.00% complete, ETA 00:00:07
+# Fork: 2 of 2
+# Warmup Iteration   1: guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree.class sha256=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$State.class sha256=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$Node.class sha256=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+2059268.281 ops/s
+# Warmup Iteration   2: 2288258.086 ops/s
+# Warmup Iteration   3: 2323641.372 ops/s
+Iteration   1: 2281094.555 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+Iteration   2: 2342138.494 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+Iteration   3: 2354738.640 ops/s
+                 readOps:  ≈ 0 ops/s
+                 writeOps: ≈ 0 ops/s
+
+
+
+Result "bench.concurrent.ConcurrentLongSearchBenchmark.operation":
+  2323235.794 ±(99.9%) 82818.182 ops/s [Average]
+  (min, avg, max) = (2281094.555, 2323235.794, 2354738.640), stdev = 29533.762
+  CI (99.9%): [2240417.611, 2406053.976] (assumes normal distribution)
+
+Secondary result "bench.concurrent.ConcurrentLongSearchBenchmark.operation:readOps":
+  ≈ 0 ops/s
+
+Secondary result "bench.concurrent.ConcurrentLongSearchBenchmark.operation:writeOps":
+  ≈ 0 ops/s
+
+
+# Run complete. Total time: 00:00:29
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                         (implementation)  (workload)   Mode  Cnt        Score       Error  Units
+ConcurrentLongSearchBenchmark.operation                   baseline    disjoint  thrpt    6  2155125.054 ± 54440.103  ops/s
+ConcurrentLongSearchBenchmark.operation:readOps           baseline    disjoint  thrpt    6          ≈ 0              ops/s
+ConcurrentLongSearchBenchmark.operation:writeOps          baseline    disjoint  thrpt    6          ≈ 0              ops/s
+ConcurrentLongSearchBenchmark.operation                  candidate    disjoint  thrpt    6  2323235.794 ± 82818.182  ops/s
+ConcurrentLongSearchBenchmark.operation:readOps          candidate    disjoint  thrpt    6          ≈ 0              ops/s
+ConcurrentLongSearchBenchmark.operation:writeOps         candidate    disjoint  thrpt    6          ≈ 0              ops/s
+
+Benchmark result is saved to /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/results/concurrency-next/final17_disjoint_t8.json
