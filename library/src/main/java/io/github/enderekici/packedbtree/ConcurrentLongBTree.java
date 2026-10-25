@@ -42,14 +42,9 @@ public final class ConcurrentLongBTree {
     }
 
     int index(long key) {
-      int low = 0;
-      int high = count;
-      while (low < high) {
-        int middle = (low + high) >>> 1;
-        if (keys[middle] < key) low = middle + 1;
-        else high = middle;
-      }
-      return low;
+      int i = 0;
+      while (i < count && keys[i] < key) i++;
+      return i;
     }
   }
 

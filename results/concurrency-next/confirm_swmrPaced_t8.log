@@ -1,0 +1,219 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dconcurrent.expected.baseline.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar -Dconcurrent.expected.baseline=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0 -Dconcurrent.expected.baseline.node=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194 -Dconcurrent.expected.baseline.state=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195 -Dconcurrent.expected.candidate.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar -Dconcurrent.expected.candidate=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be -Dconcurrent.expected.candidate.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad -Dconcurrent.expected.candidate.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: bench.concurrent.ConcurrentLongSearchBenchmark.operation
+# Parameters: (implementation = candidate, workload = swmrPaced)
+
+# Run progress: 0.00% complete, ETA 00:00:32
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree.class sha256=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$State.class sha256=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$Node.class sha256=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+659255622.867 ops/s
+# Warmup Iteration   2: 636018763.403 ops/s
+# Warmup Iteration   3: 707282347.133 ops/s
+Iteration   1: 698834575.815 ops/s
+                 readOps:  698339223.498 ops/s
+                 writeOps: 497746.369 ops/s
+
+Iteration   2: 702669185.264 ops/s
+                 readOps:  702173145.992 ops/s
+                 writeOps: 498207.151 ops/s
+
+Iteration   3: 699601809.131 ops/s
+                 readOps:  699106393.888 ops/s
+                 writeOps: 497907.076 ops/s
+
+Iteration   4: 700625165.870 ops/s
+                 readOps:  700129429.093 ops/s
+                 writeOps: 497483.074 ops/s
+
+Iteration   5: 679762088.951 ops/s
+                 readOps:  679268567.540 ops/s
+                 writeOps: 496417.777 ops/s
+
+
+# Run progress: 25.00% complete, ETA 00:00:28
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree.class sha256=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$State.class sha256=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard candidate io/github/enderekici/packedbtree/ConcurrentLongBTree$Node.class sha256=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+660166602.572 ops/s
+# Warmup Iteration   2: 643390129.866 ops/s
+# Warmup Iteration   3: 701457252.549 ops/s
+Iteration   1: 704400681.498 ops/s
+                 readOps:  703905528.459 ops/s
+                 writeOps: 498582.503 ops/s
+
+Iteration   2: 707359914.846 ops/s
+                 readOps:  706864361.494 ops/s
+                 writeOps: 498003.268 ops/s
+
+Iteration   3: 700373823.740 ops/s
+                 readOps:  699878757.826 ops/s
+                 writeOps: 497373.685 ops/s
+
+Iteration   4: 705202915.573 ops/s
+                 readOps:  704707399.159 ops/s
+                 writeOps: 497476.722 ops/s
+
+Iteration   5: 696288034.345 ops/s
+                 readOps:  695791446.995 ops/s
+                 writeOps: 497992.133 ops/s
+
+
+
+Result "bench.concurrent.ConcurrentLongSearchBenchmark.operation":
+  699511819.503 ±(99.9%) 11610008.712 ops/s [Average]
+  (min, avg, max) = (679762088.951, 699511819.503, 707359914.846), stdev = 7679301.917
+  CI (99.9%): [687901810.791, 711121828.216] (assumes normal distribution)
+
+Secondary result "bench.concurrent.ConcurrentLongSearchBenchmark.operation:readOps":
+  699016425.394 ±(99.9%) 11609219.684 ops/s [Average]
+  (min, avg, max) = (679268567.540, 699016425.394, 706864361.494), stdev = 7678780.023
+  CI (99.9%): [687407205.710, 710625645.078] (assumes normal distribution)
+
+Secondary result "bench.concurrent.ConcurrentLongSearchBenchmark.operation:writeOps":
+  497718.976 ±(99.9%) 887.621 ops/s [Average]
+  (min, avg, max) = (496417.777, 497718.976, 498582.503), stdev = 587.106
+  CI (99.9%): [496831.355, 498606.596] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Dconcurrent.expected.baseline.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar -Dconcurrent.expected.baseline=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0 -Dconcurrent.expected.baseline.node=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194 -Dconcurrent.expected.baseline.state=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195 -Dconcurrent.expected.candidate.location=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar -Dconcurrent.expected.candidate=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be -Dconcurrent.expected.candidate.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad -Dconcurrent.expected.candidate.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 8 threads, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: bench.concurrent.ConcurrentLongSearchBenchmark.operation
+# Parameters: (implementation = baseline, workload = swmrPaced)
+
+# Run progress: 50.00% complete, ETA 00:00:18
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: guard baseline bench/concurrent/ConcurrentLongBTreeBaseline.class sha256=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline bench/concurrent/ConcurrentLongBTreeBaseline$State.class sha256=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline bench/concurrent/ConcurrentLongBTreeBaseline$Node.class sha256=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+309688926.716 ops/s
+# Warmup Iteration   2: 311290071.162 ops/s
+# Warmup Iteration   3: 316248172.427 ops/s
+Iteration   1: 293508863.019 ops/s
+                 readOps:  293014406.617 ops/s
+                 writeOps: 498423.428 ops/s
+
+Iteration   2: 305180666.950 ops/s
+                 readOps:  304685038.928 ops/s
+                 writeOps: 497877.363 ops/s
+
+Iteration   3: 316454547.593 ops/s
+                 readOps:  315959399.435 ops/s
+                 writeOps: 497251.015 ops/s
+
+Iteration   4: 320860573.348 ops/s
+                 readOps:  320364934.991 ops/s
+                 writeOps: 497261.997 ops/s
+
+Iteration   5: 321344521.486 ops/s
+                 readOps:  320848162.213 ops/s
+                 writeOps: 498307.338 ops/s
+
+
+# Run progress: 75.00% complete, ETA 00:00:09
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: guard baseline bench/concurrent/ConcurrentLongBTreeBaseline.class sha256=c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline bench/concurrent/ConcurrentLongBTreeBaseline$State.class sha256=b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+guard baseline bench/concurrent/ConcurrentLongBTreeBaseline$Node.class sha256=69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194 source=file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar
+307916134.992 ops/s
+# Warmup Iteration   2: 305467093.621 ops/s
+# Warmup Iteration   3: 295183345.857 ops/s
+Iteration   1: 293218448.009 ops/s
+                 readOps:  292722461.471 ops/s
+                 writeOps: 498444.671 ops/s
+
+Iteration   2: 312966052.989 ops/s
+                 readOps:  312470586.982 ops/s
+                 writeOps: 497887.597 ops/s
+
+Iteration   3: 314537348.124 ops/s
+                 readOps:  314042114.828 ops/s
+                 writeOps: 497769.324 ops/s
+
+Iteration   4: 313666683.507 ops/s
+                 readOps:  313170243.741 ops/s
+                 writeOps: 497712.733 ops/s
+
+Iteration   5: 312609008.698 ops/s
+                 readOps:  312111828.430 ops/s
+                 writeOps: 498691.033 ops/s
+
+
+
+Result "bench.concurrent.ConcurrentLongSearchBenchmark.operation":
+  310434671.372 ±(99.9%) 15226225.135 ops/s [Average]
+  (min, avg, max) = (293218448.009, 310434671.372, 321344521.486), stdev = 10071205.178
+  CI (99.9%): [295208446.238, 325660896.507] (assumes normal distribution)
+
+Secondary result "bench.concurrent.ConcurrentLongSearchBenchmark.operation:readOps":
+  309938917.764 ±(99.9%) 15225844.473 ops/s [Average]
+  (min, avg, max) = (292722461.471, 309938917.764, 320848162.213), stdev = 10070953.394
+  CI (99.9%): [294713073.291, 325164762.237] (assumes normal distribution)
+
+Secondary result "bench.concurrent.ConcurrentLongSearchBenchmark.operation:writeOps":
+  497962.650 ±(99.9%) 748.177 ops/s [Average]
+  (min, avg, max) = (497251.015, 497962.650, 498691.033), stdev = 494.873
+  CI (99.9%): [497214.473, 498710.827] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:37
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                         (implementation)  (workload)   Mode  Cnt          Score          Error  Units
+ConcurrentLongSearchBenchmark.operation                  candidate   swmrPaced  thrpt   10  699511819.503 ± 11610008.712  ops/s
+ConcurrentLongSearchBenchmark.operation:readOps          candidate   swmrPaced  thrpt   10  699016425.394 ± 11609219.684  ops/s
+ConcurrentLongSearchBenchmark.operation:writeOps         candidate   swmrPaced  thrpt   10     497718.976 ±      887.621  ops/s
+ConcurrentLongSearchBenchmark.operation                   baseline   swmrPaced  thrpt   10  310434671.372 ± 15226225.135  ops/s
+ConcurrentLongSearchBenchmark.operation:readOps           baseline   swmrPaced  thrpt   10  309938917.764 ± 15225844.473  ops/s
+ConcurrentLongSearchBenchmark.operation:writeOps          baseline   swmrPaced  thrpt   10     497962.650 ±      748.177  ops/s
+
+Benchmark result is saved to results/concurrency-next/confirm_swmrPaced_t8.json

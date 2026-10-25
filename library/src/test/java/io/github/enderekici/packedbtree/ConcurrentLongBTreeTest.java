@@ -53,43 +53,59 @@ final class ConcurrentLongBTreeTest {
   void concurrentHistoriesAreLinearizableAndCheckerHasNegativeControl() throws Exception {
     for (int repetition = 0; repetition < 40; repetition++) {
       ConcurrentLongBTree tree = new ConcurrentLongBTree();
+      Map<Long, Long> initial = new TreeMap<>();
+      for (long key = 0; key < 64; key++) {
+        tree.put(key, key * 10);
+        initial.put(key, key * 10);
+      }
       AtomicInteger clock = new AtomicInteger();
       List<Recorded> history = java.util.Collections.synchronizedList(new ArrayList<>());
       CountDownLatch start = new CountDownLatch(1);
       ExecutorService pool = Executors.newFixedThreadPool(3);
       List<Future<?>> futures = new ArrayList<>();
-      for (int worker = 0; worker < 3; worker++) {
-        final int id = worker;
-        futures.add(pool.submit(() -> {
-          start.await();
-          Operation first = switch (id) {
-            case 0 -> Operation.put(7, 11);
-            case 1 -> Operation.get(7);
-            default -> Operation.size();
-          };
-          Operation second = switch (id) {
-            case 0 -> Operation.range(7, 8);
-            case 1 -> Operation.remove(7);
-            default -> Operation.get(7);
-          };
-          invoke(tree, first, history, clock);
-          invoke(tree, second, history, clock);
-          return null;
-        }));
+      try {
+        for (int worker = 0; worker < 3; worker++) {
+          final int id = worker;
+          futures.add(pool.submit(() -> {
+            start.await();
+            Operation first = switch (id) {
+              case 0 -> Operation.put(31, 311);
+              case 1 -> Operation.put(31, 312);
+              default -> Operation.get(31);
+            };
+            Operation second = switch (id) {
+              case 0 -> Operation.range(28, 37);
+              case 1 -> Operation.remove(32);
+              default -> Operation.size();
+            };
+            invoke(tree, first, history, clock);
+            invoke(tree, second, history, clock);
+            return null;
+          }));
+        }
+        start.countDown();
+        for (Future<?> future : futures) future.get(10, TimeUnit.SECONDS);
+        assertTrue(isLinearizable(history, initial));
+      } finally {
+        start.countDown();
+        pool.shutdownNow();
+        assertTrue(pool.awaitTermination(10, TimeUnit.SECONDS));
       }
-      start.countDown();
-      for (Future<?> future : futures) future.get();
-      pool.shutdown();
-      assertTrue(isLinearizable(history));
     }
     List<Recorded> legal = List.of(
         new Recorded(Operation.put(1, 10), 0, 1, null),
         new Recorded(Operation.get(1), 2, 3, 10L));
-    assertTrue(isLinearizable(legal));
+    assertTrue(isLinearizable(legal, Map.of()));
     List<Recorded> impossible = List.of(
-        new Recorded(Operation.put(1, 10), 0, 1, null),
-        new Recorded(Operation.get(1), 2, 3, 20L));
-    assertFalse(isLinearizable(impossible));
+        new Recorded(Operation.remove(1), 0, 1, 1L),
+        new Recorded(Operation.remove(1), 2, 3, 1L));
+    assertFalse(isLinearizable(impossible, Map.of(1L, 10L)));
+    Map<Long, Long> twoKeys = Map.of(30L, 0L, 31L, 0L);
+    List<Recorded> mixedRange = List.of(
+        new Recorded(Operation.put(30, 1), 0, 1, null),
+        new Recorded(Operation.put(31, 1), 2, 3, null),
+        new Recorded(Operation.range(30, 32), 4, 5, "30:0,31:1"));
+    assertFalse(isLinearizable(mixedRange, twoKeys));
   }
 
   @Test
@@ -99,36 +115,46 @@ final class ConcurrentLongBTreeTest {
     CountDownLatch start = new CountDownLatch(1);
     ExecutorService pool = Executors.newFixedThreadPool(6);
     List<Future<?>> futures = new ArrayList<>();
-    for (int writer = 0; writer < 3; writer++) {
-      final int lane = writer;
-      futures.add(pool.submit(() -> {
-        start.await();
-        for (int i = 0; i < 12_000; i++) {
-          long key = 8_000L + lane * 12_000L + i;
-          tree.put(key, ~key);
-          if ((i & 1) == 0) tree.remove(key);
-          tree.put(i % 8_000, key);
-        }
-        return null;
-      }));
+    try {
+      for (int writer = 0; writer < 3; writer++) {
+        final int lane = writer;
+        futures.add(pool.submit(() -> {
+          start.await();
+          for (int i = 0; i < 12_000; i++) {
+            long key = 8_000L + lane * 12_000L + i;
+            tree.put(key, ~key);
+            if ((i & 1) == 0) tree.remove(key);
+            tree.put(i % 8_000, key);
+          }
+          return null;
+        }));
+      }
+      for (int reader = 0; reader < 3; reader++) {
+        final int lane = reader;
+        futures.add(pool.submit(() -> {
+          start.await();
+          for (int i = 0; i < 6_000; i++) {
+            long key = (i * 97L + lane) % (8_000 - 128);
+            assertKnownValue(key, tree.getOrDefault(key, -1));
+            List<LongEntry> entries = new ArrayList<>();
+            tree.forEach(key, key + 128, (found, value) -> entries.add(new LongEntry(found, value)));
+            assertEquals(128, entries.size());
+            for (int j = 0; j < entries.size(); j++) {
+              LongEntry entry = entries.get(j);
+              assertEquals(key + j, entry.key);
+              assertKnownValue(entry.key, entry.value);
+            }
+          }
+          return null;
+        }));
+      }
+      start.countDown();
+      for (Future<?> future : futures) future.get(60, TimeUnit.SECONDS);
+    } finally {
+      start.countDown();
+      pool.shutdownNow();
+      assertTrue(pool.awaitTermination(10, TimeUnit.SECONDS));
     }
-    for (int reader = 0; reader < 3; reader++) {
-      final int lane = reader;
-      futures.add(pool.submit(() -> {
-        start.await();
-        for (int i = 0; i < 6_000; i++) {
-          long key = (i * 97L + lane) % 8_000;
-          tree.getOrDefault(key, -1);
-          List<Long> keys = new ArrayList<>();
-          tree.forEach(key, key + 128, (found, value) -> keys.add(found));
-          for (int j = 1; j < keys.size(); j++) assertTrue(keys.get(j - 1) < keys.get(j));
-        }
-        return null;
-      }));
-    }
-    start.countDown();
-    for (Future<?> future : futures) future.get();
-    pool.shutdown();
     tree.validate();
     assertEquals(8_000 + 3 * 6_000, tree.size());
 
@@ -212,8 +238,8 @@ final class ConcurrentLongBTreeTest {
     history.add(new Recorded(operation, start, end, result));
   }
 
-  private static boolean isLinearizable(List<Recorded> history) {
-    return search(history, new boolean[history.size()], new TreeMap<>());
+  private static boolean isLinearizable(List<Recorded> history, Map<Long, Long> initial) {
+    return search(history, new boolean[history.size()], new TreeMap<>(initial));
   }
 
   private static boolean search(List<Recorded> history, boolean[] used, Map<Long, Long> model) {
@@ -248,8 +274,27 @@ final class ConcurrentLongBTreeTest {
       case GET -> item.result.equals(old == null ? -99L : old);
       case REMOVE -> item.result.equals(old == null ? 0L : 1L);
       case SIZE -> item.result.equals(model.size());
-      case RANGE -> item.result.equals(old == null ? "" : item.operation.key + ":" + old);
+      case RANGE -> item.result.equals(rangeResult(model, item.operation.key, item.operation.to));
     };
+  }
+
+  private static String rangeResult(Map<Long, Long> model, long from, long to) {
+    StringBuilder result = new StringBuilder();
+    if (from >= to) return "";
+    new TreeMap<>(model).subMap(from, true, to, false).forEach((key, value) -> {
+      if (result.length() > 0) result.append(',');
+      result.append(key).append(':').append(value);
+    });
+    return result.toString();
+  }
+
+  private static void assertKnownValue(long key, long observed) {
+    if (observed == key * 3) return;
+    for (int lane = 0; lane < 3; lane++) {
+      if (observed == 8_000L + lane * 12_000L + key) return;
+      if (key < 4_000 && observed == 16_000L + lane * 12_000L + key) return;
+    }
+    throw new AssertionError("Unexpected value " + observed + " for key " + key);
   }
 
   private static void apply(Operation operation, Map<Long, Long> model) {
@@ -266,4 +311,5 @@ final class ConcurrentLongBTreeTest {
     static Operation range(long from, long to) { return new Operation(Kind.RANGE, from, 0, to); }
   }
   private record Recorded(Operation operation, int start, int end, Object result) {}
+  private record LongEntry(long key, long value) {}
 }
