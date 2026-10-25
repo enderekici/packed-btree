@@ -47,6 +47,19 @@ measurements, are in `results/compressed/memory.csv`. The JOL attach warning did
 not prevent graph measurement. These results quantify retained memory only;
 they do not establish lookup performance.
 
-Timed lookup measurements are pending the exclusive JMH window. The fixture is
-`bench.RoutingBenchmark`; run `hit` for both search modes and all three
-distributions. No speedup is assumed.
+The JMH point-hit run measured scalar versus compressed routing for 1,048,576
+mappings, with two forks, three 1-second warmups and five 1-second measurements
+per fork on the same JDK 25.0.3 / Apple M4 Pro host:
+
+| Keys | Scalar | Compressed | Change |
+| --- | ---: | ---: | ---: |
+| Sequential | 140.5 ± 4.1 ns/op | 145.0 ± 3.9 ns/op | 3.2% slower |
+| Full-width random | 140.0 ± 2.8 ns/op | 145.6 ± 3.8 ns/op | 4.0% slower |
+| Common prefix | 152.4 ± 32.8 ns/op | 147.9 ± 8.6 ns/op | 3.0% faster, inconclusive |
+
+JMH's reported errors are 99.9% confidence intervals. The common-prefix
+intervals overlap substantially, so this run does not establish a speedup.
+Compressed routing was slower for the other two distributions and used about
+17% more retained memory in all three. Treat this as an experimental tradeoff,
+not a general optimization. The exact run settings, machine details, source
+hashes, console log, and raw JSON are in `results/compressed/`.

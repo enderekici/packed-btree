@@ -1,15 +1,13 @@
 # Compressed routing measurements
 
-`memory.csv` preserves historical track measurements and adds an integrated
-comparison at 1,048,576 mappings. The integrated rows compare the exact pre-hook
-scalar control, current default scalar tree, and compressed tree, each in a fresh
-JDK 25 JVM using the same `RoutingKeys` fixture and `GraphLayout` probe. The
-current default retained the same measured bytes as the pre-hook control in all
-three tested distributions; compressed routing retained more because it adds
-per-node suffix arrays and metadata. See `docs/compressed-routing.md` for the
-values and environment.
+This directory holds raw JMH JSON, the console log, the environment record, and
+retained-memory CSV for the scalar versus compressed routing comparison. The
+JMH run uses 1,048,576 mappings and all three routing distributions; the JOL
+comparison includes the pre-hook control, integrated scalar, and integrated
+compressed trees at the same size. See [the report](../../docs/compressed-routing.md)
+for results and limitations.
 
-Timed lookup results are pending the exclusive JMH slot. Use
-`bench.RoutingBenchmark` with both search modes and all three distributions.
-Measure `btree` and `btreeCompressed` separately with `bench.MemoryFootprint`
-for each distribution, and record exact commands and host details.
+The timing run found no compelling general lookup improvement: compressed
+routing was 3–4% slower on sequential and full-width random keys, while the
+common-prefix result was inconclusive. It retained about 17% more memory. Keep
+this API optional and experimental.
