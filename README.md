@@ -150,7 +150,7 @@ The point-operation comparison also shows that all tested hash maps beat
 `LongBTree` on its tested hit, miss, overwrite and churn workloads at both
 fixture sizes. Those measurements use positive dense keys and above-maximum
 misses; they do not cover full-width or collision-heavy hash distributions. See
-[the hash-map report](results/hashmaps/report.md) and [workload notes](docs/hashmap-comparison.md).
+[the hash-map report](results/hashmaps/report.md) and [workload notes](docs/hashmap-comparison.md). String-key benchmark scope and results are in [the string-key report](results/string-benchmarks/REPORT.md).
 
 ## Run the benchmarks
 
