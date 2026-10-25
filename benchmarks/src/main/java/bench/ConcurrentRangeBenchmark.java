@@ -15,13 +15,14 @@ import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 
 /** Ordered point range comparison; hash maps are intentionally excluded. */
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Warmup(iterations = 3, time = 1)
-@Measurement(iterations = 5, time = 1)
+@Warmup(iterations = 2, time = 1)
+@Measurement(iterations = 3, time = 1)
 @Fork(value = 2, jvmArgsAppend = {"-Xms1g", "-Xmx1g", "-XX:+UseG1GC"})
 @State(Scope.Benchmark)
 public class ConcurrentRangeBenchmark {
@@ -45,11 +46,25 @@ public class ConcurrentRangeBenchmark {
       if (btree == null) skiplist.put(key, key * 3);
       else btree.put(key, key * 3);
     }
+    long expected = 0;
+    for (int i = 0; i < 64; i++) expected += (1024L + 2L * i) * 3;
+    long observed;
+    if (btree != null) {
+      Sum sum = new Sum();
+      btree.forEach(1024, 1152, sum);
+      observed = sum.value;
+    } else {
+      observed = 0;
+      for (Map.Entry<Long, Long> entry : skiplist.subMap(1024L, true, 1152L, false).entrySet()) {
+        observed += entry.getValue();
+      }
+    }
+    if (observed != expected) throw new AssertionError("Concurrent range fixture");
   }
 
   @Benchmark
   public long range64(ThreadState thread) {
-    long from = keys[thread.cursor++ & (size - 1)];
+    long from = keys[thread.next(size - 1)];
     long to = from + 128;
     if (btree != null) {
       thread.sum.value = 0;
@@ -63,12 +78,28 @@ public class ConcurrentRangeBenchmark {
     return sum;
   }
 
+  @TearDown(Level.Trial)
+  public void check() {
+    int actualSize = btree == null ? skiplist.size() : btree.size();
+    if (actualSize != size) throw new AssertionError("Concurrent range cardinality changed");
+    if (btree != null) btree.validate();
+  }
+
   @State(Scope.Thread)
   public static class ThreadState {
-    int cursor;
+    int random;
     final Sum sum = new Sum();
     @Setup(Level.Iteration)
-    public void setup() { cursor = java.util.concurrent.ThreadLocalRandom.current().nextInt(); }
+    public void setup() {
+      random = java.util.concurrent.ThreadLocalRandom.current().nextInt();
+      if (random == 0) random = 1;
+    }
+    int next(int mask) {
+      random ^= random << 13;
+      random ^= random >>> 17;
+      random ^= random << 5;
+      return random & mask;
+    }
   }
 
   private static final class Sum implements ConcurrentLongBTree.EntryConsumer {

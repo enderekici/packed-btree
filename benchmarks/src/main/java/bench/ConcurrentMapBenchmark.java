@@ -16,14 +16,16 @@ import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.TearDown;
+import org.openjdk.jmh.infra.ThreadParams;
 import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.annotations.Measurement;
 
 /** Shared-map point workloads. Set thread count to 1, 2, 4 or 8 on the JMH command line. */
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Warmup(iterations = 3, time = 1)
-@Measurement(iterations = 5, time = 1)
+@Warmup(iterations = 2, time = 1)
+@Measurement(iterations = 3, time = 1)
 @Fork(value = 2, jvmArgsAppend = {"-Xms1g", "-Xmx1g", "-XX:+UseG1GC"})
 @State(Scope.Benchmark)
 public class ConcurrentMapBenchmark {
@@ -54,7 +56,17 @@ public class ConcurrentMapBenchmark {
   }
 
   private long nextKey(ThreadCursor cursor) {
-    return keys[cursor.cursor++ & (size - 1)];
+    return keys[cursor.next(size - 1)];
+  }
+
+  private long ownedKey(ThreadCursor cursor, ThreadParams threads) {
+    int threadCount = threads.getThreadCount();
+    int partitionSize = size / threadCount;
+    if (partitionSize * threadCount != size || Integer.bitCount(partitionSize) != 1) {
+      throw new IllegalStateException("Size must divide into power-of-two thread partitions");
+    }
+    int index = threads.getThreadIndex() + cursor.next(partitionSize - 1) * threadCount;
+    return keys[index];
   }
 
   private long get(long key) {
@@ -70,22 +82,70 @@ public class ConcurrentMapBenchmark {
 
   @Benchmark
   public long pointReadOnly(ThreadCursor cursor) {
-    return get(nextKey(cursor));
+    long key = nextKey(cursor);
+    long value = get(key);
+    cursor.readOnly = true;
+    cursor.lastKey = key;
+    cursor.lastRead = value;
+    return value;
   }
 
-  /** One benchmark invocation performs one read and one overwrite at the same key. */
+  /** One benchmark invocation reads and increments one thread-owned key. */
   @Benchmark
-  public long pointMixed(ThreadCursor cursor) {
-    long key = nextKey(cursor);
-    long value = get(key) + 1;
-    put(key, value);
-    return value;
+  public long pointMixed(ThreadCursor cursor, ThreadParams threads) {
+    long key = ownedKey(cursor, threads);
+    long oldValue = get(key);
+    long newValue = oldValue + 1;
+    put(key, newValue);
+    cursor.mixed = true;
+    cursor.writes++;
+    cursor.lastKey = key;
+    cursor.lastRead = oldValue;
+    cursor.lastWrite = newValue;
+    return newValue;
+  }
+
+  @TearDown(Level.Trial)
+  public void check() {
+    if (size() != size) throw new AssertionError("Concurrent benchmark cardinality changed");
+    for (long key : keys) {
+      long value = get(key);
+      if (value < key * 3) throw new AssertionError("Lost/invalid benchmark key " + key);
+    }
+    if (btree != null) btree.validate();
   }
 
   @State(Scope.Thread)
   public static class ThreadCursor {
-    int cursor;
+    int random;
+    boolean readOnly;
+    boolean mixed;
+    long writes;
+    long lastKey;
+    long lastRead;
+    long lastWrite;
     @Setup(Level.Iteration)
-    public void setup() { cursor = ThreadLocalRandom.current().nextInt(); }
+    public void setup() {
+      random = ThreadLocalRandom.current().nextInt();
+      if (random == 0) random = 1;
+      readOnly = false;
+      mixed = false;
+      writes = 0;
+    }
+    @TearDown(Level.Trial)
+    public void check() {
+      if (readOnly && lastRead != lastKey * 3) {
+        throw new AssertionError("Read-only point result mismatch");
+      }
+      if (mixed && (writes == 0 || lastWrite != lastRead + 1)) {
+        throw new AssertionError("Mixed point result mismatch");
+      }
+    }
+    int next(int mask) {
+      random ^= random << 13;
+      random ^= random >>> 17;
+      random ^= random << 5;
+      return random & mask;
+    }
   }
 }

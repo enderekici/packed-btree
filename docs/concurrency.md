@@ -46,7 +46,18 @@ and `ConcurrentRangeBenchmark.java`. Point workloads compare read-only and one
 read plus one overwrite using `ConcurrentLongBTree`, `ConcurrentSkipListMap`, and
 `ConcurrentHashMap`. Ordered 64-entry range workloads compare only the B-tree and
 skip list. Run at 1, 2, 4, and 8 threads, using the same shuffled 1,048,576-key
-fixture and two forks. Raw JSON goes in `results/concurrent/`.
+fixture and two forks, with two 1-second warmups and three 1-second measurements.
+That is 24 point combinations and 8 ordered-range combinations (32 total), or
+320 seconds of measured iterations before fixture setup and validation. Read-only
+point operations sample the full key set. In the
+mixed case, each JMH thread writes only its own striped subset of that same set;
+this avoids key-level write races while measuring serialized-writer contention.
+Each mixed invocation reads one thread-owned key and increments its value, so the
+write always changes the stored value without cross-thread same-key races. JMH
+thread state uses private xorshift cursors; no global atomic cursor is in the
+measured path. Results verify sampled point reads, range sums, full key presence,
+stable cardinality and B-tree structure outside measured iterations. Raw JSON
+goes in `results/concurrent/`.
 
 Timing results will be appended after the scheduled exclusive run. The setup
 builds and tests the benchmark source but does not substitute for measured

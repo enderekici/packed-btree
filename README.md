@@ -138,23 +138,28 @@ third-party benchmark dependencies; none enters the library's runtime graph.
 ## Run the benchmarks
 
 After `./mvnw clean verify`, compare the concurrent API at one, two, four and
-eight threads. The point benchmark covers read-only and one-read/one-overwrite
+eight threads. The point benchmark covers read-only and one-read/one-increment
 mixed operations for the concurrent B-tree, `ConcurrentSkipListMap` and
-`ConcurrentHashMap`. Ordered ranges compare only the B-tree and skip list.
-The hash map is excluded from range measurements because it has no ordered range operation.
+`ConcurrentHashMap`. Read-only probes sample the full shuffled key set; each
+mixed-workload thread increments only its own striped partition. Ordered ranges
+compare only the B-tree and skip list. The hash map has no ordered range.
 
 ```bash
-java -jar benchmarks/target/benchmarks.jar bench.ConcurrentMapBenchmark \
-  -p size=1048576 -t 1 -wi 3 -i 5 -w 1s -r 1s -f 2 \
-  -rf json -rff results/concurrent/point-1t.json
-java -jar benchmarks/target/benchmarks.jar bench.ConcurrentRangeBenchmark \
-  -p size=1048576 -t 1 -wi 3 -i 5 -w 1s -r 1s -f 2 \
-  -rf json -rff results/concurrent/range-1t.json
+for threads in 1 2 4 8; do
+  java -jar benchmarks/target/benchmarks.jar bench.ConcurrentMapBenchmark \
+    -p size=1048576 -t "$threads" -wi 2 -i 3 -w 1s -r 1s -f 2 \
+    -rf json -rff "results/concurrent/point-${threads}t.json"
+  java -jar benchmarks/target/benchmarks.jar bench.ConcurrentRangeBenchmark \
+    -p size=1048576 -t "$threads" -wi 2 -i 3 -w 1s -r 1s -f 2 \
+    -rf json -rff "results/concurrent/range-${threads}t.json"
+done
 ```
 
-Repeat with `-t 2`, `-t 4` and `-t 8`, changing output names. Run each timed
-slot only when other machine benchmarks are idle. See the concurrency report for
-the recorded machine/JDK and complete result set.
+Each run validates point/range observations, full key presence and stable size
+outside measured iterations. The point workload writes are real overwrites that
+increment values; JMH thread state assigns disjoint key partitions without a
+shared cursor. Run each timed matrix when other machine benchmarks are idle. See
+the concurrency report for the recorded machine/JDK and complete result set.
 
 After `./mvnw clean verify` for the original single-threaded suite:
 
