@@ -37,5 +37,11 @@ Every corrected timing run must use `-foe true`, provide expected fingerprint va
 - Candidate ran first, baseline second. Both arms used the corrected classpath, one fork, 1x250ms warmup/2x250ms measurement and `-foe true`.
 - Each arm produced 20 finite rows and 40 matching fingerprint lines. Candidate log `/tmp/hillclimb-c3-degree8-candidate.log` completed 15:43:49 UTC; baseline log `/tmp/hillclimb-c3-degree8-baseline.log` completed 15:44:18 UTC.
 - Candidate source SHA-256: `36bb5e688f92a93754bd8bd01af03e2838888138de08d2f65f89b4491874f960`; tree fingerprint `f2b91268716491a03d67b747a2f4da42d5e82e11a25c5fbea92747874ddf5724`; Node `824ddb5017dbe75850016a2740323e50f50c98fcb6700d704f785782f19b7459`.
-- Raw JSON: `c3-degree8-candidate.json`, `c3-degree8-baseline.json`; summary `c3-degree8-summary.md`. JOL node/occupancy comparison pending.
+- Raw JSON: `c3-degree8-candidate.json`, `c3-degree8-baseline.json`; summary `c3-degree8-summary.md`.
 - JOL comparison used identical key fixtures and produced `c3-degree8-footprint.csv` / `.md`. Instrumentation attach was unavailable; JOL used HotspotUnsafe estimates.
+
+## Corrected C4 degree-32 screen receipt
+
+- Baseline first (completed 15:46:48 UTC), candidate second (15:47:16 UTC). JDK 25, one fork, 1x250ms warmup/2x250ms measurement, corrected classpath, `-foe true`. Each arm yielded 20 finite rows and 40 matching tree/Node fingerprint lines.
+- Candidate source SHA-256: `4155dceeaba5cf77589b2bdd4d0cf98b0d1bc92327530d6bbdea5fc5d0b9ef60`; candidate tree `a8cf23f383bd521955f4a683bab4548c27e28f3405293029034c5917f45da620`, Node `a21e38fedd72711c447266d9d35c2559e554e5498a338f0ae0c2d28d27108a9e`.
+- Logs: `/tmp/hillclimb-c4-degree32-baseline.log`, `/tmp/hillclimb-c4-degree32-candidate.log`; raw JSON and footprint files are tracked as `c4-degree32-*`.

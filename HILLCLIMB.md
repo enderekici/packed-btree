@@ -25,7 +25,7 @@
 | C1 | Default `getOrDefault` scalar/custom traversal split. | `936ca4653e43dd08d012a1a4be7618360a0c8bcd535138273b443d62df30d3ba` (temporary candidate; reverted) | JDK 25 `-Psimd`, LongBTreeTest 6 + VectorSearchTest 2 passed. | Corrected guarded 40-row screen: `results/hillclimb/c1-corrected-summary.md` and two raw JSONs. | Rejected without confirmation: large cases neutral/mixed; dense 4,096 miss +24.5% and overwrite +32.4%. No coherent gain. |
 | C2 | Search algorithm only, fixed degree 16: linear scan vs binary lower-bound. | `86a7e108eeccbe515a8e79249c2e82607720ea7c2d40d83a3b07b381d8dbf10e` (candidate; temporary) | JDK 25 `-Psimd`, LongBTreeTest 6 + VectorSearchTest 2 passed. Runtime tree/Node fingerprints verified in both arms. | Corrected guarded screen: `results/hillclimb/c2-corrected-summary.md` plus two raw JSONs. | Coherent large gains and a very large small-tree screen signal; one-fork data only. Compare degree candidates before confirmation; no gain claim yet. |
 | C3 | Node degree 8 (15 keys), binary search unchanged. | `36bb5e688f92a93754bd8bd01af03e2838888138de08d2f65f89b4491874f960` (candidate; reverted) | JDK 25 `-Psimd`, LongBTreeTest 6 + VectorSearchTest 2 passed; runtime fingerprints verified. | Guarded screen + JOL: `results/hillclimb/c3-degree8-summary.md`, `c3-degree8-footprint.md`, raw JSONs/CSV. | Rejected: slower nearly everywhere; range +62–72%, retained bytes +13–15%, height +1–2 levels. |
-| C4 | Node degree 32 (63 keys), binary search unchanged. | pending | pending | pending | pending |
+| C4 | Node degree 32 (63 keys), binary search unchanged. | `4155dceeaba5cf77589b2bdd4d0cf98b0d1bc92327530d6bbdea5fc5d0b9ef60` (candidate; reverted) | JDK 25 `-Psimd`, LongBTreeTest 6 + VectorSearchTest 2 passed; runtime fingerprints verified. | Guarded screen + JOL: `results/hillclimb/c4-degree32-summary.md`, `c4-degree32-footprint.md`, raw JSONs/CSV. | Rejected for default: range/overwrite and footprint improved, but churn +59–67% and small fullWidth point reads regressed. Mixed workload tradeoff. |
 
 Limit: four meaningful candidates total, then final paired confirmation or reject all. Stop a line after two rejected changes. Keep source simple; no public tuning knobs without demonstrated need.
 
@@ -38,9 +38,13 @@ Limit: four meaningful candidates total, then final paired confirmation or rejec
 - Deltas candidate vs baseline (dense/fullWidth): at 262,144 hits +11.4/+15.0%, misses +13.1/+12.5%, range64 +71.9/+62.3%, overwrite +13.5/+12.1%, churn +6.8/+12.2%. At 4,096 hits +16.4/+15.5%, misses +10.8/-5.1%, range +27.7/+37.6%, overwrite +16.1/-1.0%, churn +5.4/+8.1%. Reject degree 8; these are screening estimates only.
 - JOL retained footprint and node geometry: `c3-degree8-footprint.md` / `.csv`, same fixture keys, 4,096 and 262,144, dense/fullWidth. Degree 8 used 13.1–13.5% more bytes at 4K and 14.9–15.2% more at 262K. Nodes roughly doubled, active keys/node halved, height grew 3→4 and 4→6. JOL used HotspotUnsafe estimates because attach instrumentation was unavailable. Rejected patch is preserved as `c3-degree8-rejected.patch`.
 
-### C4 planned — degree 32
+### C4 — degree 32
 
 - Isolated variable: `LongBTree.DEGREE=32`, binary search unchanged. Compare against the same frozen degree-16 binary source; measure retained bytes and node/occupancy counts. Screen after C3 is recorded, with baseline-first/candidate-second order.
+- Source SHA256: `4155dceeaba5cf77589b2bdd4d0cf98b0d1bc92327530d6bbdea5fc5d0b9ef60`; targeted JDK 25 `-Psimd` correctness passed (6 LongBTree tests, 2 Vector tests, 0 failures).
+- Guarded screen: baseline first (completed 15:46:48 UTC), candidate second (15:47:16 UTC), JDK 25 one-fork 1x250ms warmup/2x250ms measure, `-foe true`; 20/20 finite rows and 40 matching tree/Node fingerprint lines per arm. Raw `c4-degree32-baseline.json`/`candidate.json`, paired summary `c4-degree32-summary.md`, logs `/tmp/hillclimb-c4-degree32-baseline.log` and `/tmp/hillclimb-c4-degree32-candidate.log`.
+- Deltas (dense/fullWidth): at 262,144 hit +0.9/-1.8%, miss -1.8/-0.9%, range -12.0/-8.0%, overwrite -1.7/-1.9%, churn +67.3/+59.1%. At 4,096 hit +3.1/+13.3%, miss +5.4/+18.8%, range -5.5/-10.4%, overwrite -11.2/-20.1%, churn +7.6/+10.1%. Mixed workload tradeoff; reject as default. No confirmation run.
+- JOL retained footprint: `c4-degree32-footprint.md`/`.csv`; same key fixtures. Retained bytes fell 6.6–13.9% at 4K and 7.0–7.3% at 262K; nodes halved and height unchanged. JOL used HotspotUnsafe estimates without Instrumentation. Rejected source is preserved in `c4-degree32-rejected.patch`.
 
 ### C2 — linear lower-bound at fixed degree 16
 
