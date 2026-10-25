@@ -22,7 +22,7 @@
 
 | ID | Candidate / hypothesis | Source hash | Correctness gate | Benchmark / evidence | Decision and reason |
 | --- | --- | --- | --- | --- | --- |
-| C1 | Default scalar dispatch: remove avoidable nullable strategy dispatch from the default hot path if JFR shows cost; preserve custom/compressed dispatch. | pending | pending | pending | pending |
+| C1 | Default `getOrDefault` traversal branches once on nullable strategy and calls virtual `Node.index(key)` in the default case; custom search still uses the strategy overload. | `936ca4653e43dd08d012a1a4be7618360a0c8bcd535138273b443d62df30d3ba` (temporary candidate; reverted) | JDK 25 `-Psimd`, `LongBTreeTest` 6 + `VectorSearchTest` 2 passed, 0 failures. | `results/hillclimb/c1-screen.md`, 40-row JSON `results/hillclimb/c1-screen.json`; command/settings match baseline screen; log `/tmp/hillclimb-c1-screen.log`. | Rejected at screening: large hit/miss changes were within about ±1%; ranges and writes were mixed, and small-tree results noisy. No confirmation run. Reverted before C2. |
 | C2 | Node degree/search thresholds: evaluate degree 8/16/32 (15/31/63 keys) and binary/linear/hybrid search only if baseline profile supports it. | pending | pending | pending | pending |
 | C3 | One evidence-led follow-up within scope (for example String compare duplication) only if remaining profile justifies it. | pending | pending | pending | pending |
 
@@ -31,3 +31,11 @@ Limit: four meaningful candidates total, then final paired confirmation or rejec
 ## Experiment records
 
 Append one section per baseline or candidate: source commit/hash; exact correctness command/result; exact JMH/JFR command, JDK/host/start time and raw/log paths; per-workload measurements and confidence intervals; memory/write/range effects; accept/reject/revert decision and rationale. Logs/JFR stay in `/tmp`; summarized JSON/CSV and this ledger stay tracked under `results/hillclimb/`.
+
+### C1 — one-time scalar/custom search split in `getOrDefault`
+
+- Candidate source SHA256: `936ca4653e43dd08d012a1a4be7618360a0c8bcd535138273b443d62df30d3ba`; temporary edit to `LongBTree.getOrDefault`, subsequently reverted. It branches once before traversal and calls `node.index(key)` for the default path, retaining the strategy overload for custom searches.
+- Correctness: `JAVA_HOME=.../azul-25/Contents/Home ./mvnw --settings /tmp/packed-btree-maven-settings.xml -Psimd -pl simd -am -Dtest=LongBTreeTest,VectorSearchTest -Dsurefire.failIfNoSpecifiedTests=false test`; exit 0, 8 tests, no failures. This was targeted test coverage, not full verification.
+- Screen: JDK 25, 2026-10-25 15:18 UTC, same one-fork/1x250ms warmup/2x250ms measure selected-map screen used for the fresh baseline. Exit 0, 40 configurations. Exact command: `java -cp simd/target/test-classes:benchmarks/target/benchmarks.jar org.openjdk.jmh.Main 'bench.(BaselineSearchScreen|CandidateSearchScreen).(hit|miss|range64|overwrite|churn)' -p size=4096,262144 -p distribution=dense,fullWidth -f 1 -wi 1 -w 250ms -i 2 -r 250ms -rf json -rff results/hillclimb/c1-screen.json`.
+- Raw output: `results/hillclimb/c1-screen.json`; summary `results/hillclimb/c1-screen.md`; log `/tmp/hillclimb-c1-screen.log`. Baseline and candidate scores in ns/op and candidate percent delta are captured in the summary. Large-tree hit deltas: dense -0.0%, fullWidth +0.7%; miss: dense -0.7%, fullWidth -1.0%; range64: dense +2.1%, fullWidth -7.9%; overwrite: dense -1.6%, fullWidth +1.6%; churn: dense +1.2%, fullWidth -0.3%. Small-tree results were mixed, including hit +16.2%/+9.2% and overwrite -8.2%/-14.8%.
+- Decision: reject without confirmation. Large point reads showed no meaningful signal; range/write results had opposite signs across key shapes. The short single-fork screen cannot establish a regression or gain. Restore the source and proceed to the profile-backed degree/search experiment. Memory was not measured for this traversal-only edit.
