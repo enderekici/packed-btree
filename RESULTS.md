@@ -1,4 +1,7 @@
-# Measured Java packed-tree results
+# Historical Java packed-tree results
+
+This report records the original pre-Maven prototype only. For current
+implementation comparisons, see the [benchmark index](results/README.md).
 
 Historical prototype source: commit `dcb51764891551745b1efd9825a9b55e031a5248`.
 These measurements precede the Maven module/package reorganization. The source
@@ -174,7 +177,7 @@ for complete measurements, runtime fingerprints and raw JSON.
 
 The final integrated JDK 17 and JDK 25 verification receipts and fresh packaged
 consumer probes are recorded in
-[`results/final-integration-verification.md`](results/final-integration-verification.md).
+[`results/final-integration/README.md`](results/final-integration/README.md).
 
 The long-map round-two campaign accepted no additional change: unrolled
 degree-16 search, degree 8, and degree 32 were screened against the current

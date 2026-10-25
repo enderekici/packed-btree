@@ -94,5 +94,6 @@ from `/tmp/string-covered-jdk17-candidate`, baseline classes from `/tmp/string-c
 The final JDK17 focused test passed 9/9 with:
 `./mvnw --settings /tmp/packed-btree-maven-settings.xml -pl library test -Dtest=StringBTreeTest`.
 This isolated String branch did not run full clean verify or a packaged consumer probe. The
-combined Long/String integration run did both JDK 17 and JDK 25 full verifies and fresh packaged
-consumer probes; see [`results/final-integration-verification.md`](../../final-integration-verification.md).
+PR2 Long/String-only integration receipt is [`results/final-integration-verification.md`](../../final-integration-verification.md).
+The later combined PR2 + PR3 run passed JDK 17 and JDK 25 full verifies and fresh packaged
+consumer probes; see the [current integration receipt](../../final-integration/README.md).
