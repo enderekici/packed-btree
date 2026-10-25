@@ -33,6 +33,7 @@ Commands/results so far:
 | --- | --- |
 | JDK 25 `-Psimd -pl simd -am clean test-compile` | BUILD SUCCESS; all 13 SIMD test sources and benchmark compiled |
 | JDK 17 `-pl library test -Dtest=StringBTreeTest` | BUILD SUCCESS; 5 tests, 0 failures/errors/skips |
+| JDK 17 `-pl library package` | BUILD SUCCESS; 15 tests, 0 failures/errors/skips; library and source/Javadoc jars built |
 | JDK 25 baseline random 262144 String/String `hit`, JFR, 1 fork; warmup 2x500ms, measure 3x1s | 322.592 +/- 32.047 ns/op; 3 measurement iterations |
 
 The baseline JFR profile's 227 execution samples were 50.22% in
@@ -71,3 +72,15 @@ passed StringBTreeTest 5/5; all five operations passed guarded candidate/baselin
 one-fork/two-iteration evidence; raw results and command are in
 `results/hillclimb-round2/strings/candidate2-screen.md` and the adjacent JSON. The current
 worktree contains C2 without C1, while C1 source remains preserved in commit `9ad847d`.
+
+### Candidate 3: combine point search and range bound changes
+
+C3 combines C1's early equality return with C2's per-node upper bound. Both `from` and `to`
+indices decode negative exact-match positions; decoding the exclusive upper bound keeps a matching
+separator excluded. Existing root checks preserve empty/reversed ranges. Targeted StringBTreeTest
+passed 5/5, and guarded smoke passed all five operations for candidate and baseline. The full
+confirmation, matched TreeMap control, JDK17 subset, and JOL estimate are recorded in
+`results/hillclimb-round2/strings/candidate3-confirmation.md`. C3 reduced all 16 JDK25 confirmation
+point estimates versus the frozen baseline; 15 comparisons had non-overlapping 99.9% intervals,
+with only the 262K prefix miss overlapping. The JDK17 hit intervals were disjoint; range and churn
+intervals overlapped. Retain the scope limits in the evidence report.
