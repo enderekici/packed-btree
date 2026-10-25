@@ -49,7 +49,13 @@ above.
 
 ## Candidate ledger
 
-No optimization candidate has been edited or timed yet. The profile supports testing whether
-folding the lower-bound equality check into `Node.index` reduces duplicated String comparisons.
-Every candidate must first pass targeted correctness tests, then a guarded all-operation smoke
-on both arms before timing. A flat, mixed, or non-repeatable screening result is a rejection.
+### Candidate 1: terminate node search on equality
+
+`Node.index` now returns `~position` immediately when a binary-search comparison equals the query;
+otherwise it returns the usual nonnegative lower bound. Lookup, overwrite and deletion decode
+negative hits, and inclusive range traversal decodes a matching lower-bound key. The child-split
+path retains its explicit promoted-key comparison. This is a point-search hypothesis motivated
+by the hot-comparison profile; it has not yet been compiled, tested, or timed. Do not infer a
+performance gain until runtime-guarded results exist. Before candidate timing, run the targeted
+String tree tests, then guarded fixture smoke for all five operations against both candidate and
+frozen baseline.
