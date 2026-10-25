@@ -1,0 +1,13 @@
+# String-key B-tree
+
+`StringBTree<V>` is a mutable, non-thread-safe B-tree for String keys and generic values. Keys use Java's natural `String.compareTo` ordering (lexicographic UTF-16 code units). Empty strings are valid. Null keys are rejected; null values are allowed. Values are stored by reference.
+
+```java
+StringBTree<String> names = new StringBTree<>();
+names.put("alice", "Alice A.");
+String name = names.getOrDefault("alice", "unknown");
+names.forEach("a", "m", (key, value) -> System.out.println(key + ": " + value));
+names.remove("alice");
+```
+
+`forEach(fromInclusive, toExclusive, visitor)` visits the half-open range in ascending order. Equal or reversed bounds produce no visits. Do not mutate the tree from the visitor. `validate()` performs a full diagnostic traversal and is intended for tests and diagnostics rather than hot paths.
