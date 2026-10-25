@@ -9,6 +9,20 @@
   <name>Packed B-tree</name>
   <description>A compact primitive-key B-tree library for Java.</description>
   <url>https://github.com/enderekici/packed-btree</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>enderekici</id>
+      <name>ender</name>
+      <url>https://github.com/enderekici</url>
+    </developer>
+  </developers>
   <scm>
     <connection>scm:git:https://github.com/enderekici/packed-btree.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/enderekici/packed-btree.git</developerConnection>
@@ -32,6 +46,43 @@
       <modules>
         <module>simd</module>
       </modules>
+    </profile>
+    <profile>
+      <id>central-release</id>
+      <properties>
+        <central.skipUpload>false</central.skipUpload>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>3.2.8</version>
+            <configuration>
+              <bestPractices>true</bestPractices>
+              <passphraseEnvName>GPG_PASSPHRASE</passphraseEnvName>
+            </configuration>
+            <executions>
+              <execution>
+                <id>sign-release-artifacts</id>
+                <phase>verify</phase>
+                <goals><goal>sign</goal></goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.12.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central</publishingServerId>
+              <autoPublish>false</autoPublish>
+              <skipUpload>${central.skipUpload}</skipUpload>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
     </profile>
   </profiles>
   <dependencyManagement>
