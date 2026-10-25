@@ -11,8 +11,9 @@ dependencies**.
 **Experimental.** `LongBTree` is single-threaded and inspired by
 [BBTree](https://github.com/XiangpengHao/bbtree), but is not a port of its
 concurrent implementation. `ConcurrentLongBTree` is a separate primitive API
-with serialized writers and immutable root snapshots. `StringBTree<V>` provides
-string keys and generic, nullable values. `CompressedLongBTree` is an opt-in
+with serialized writers and immutable root snapshots. `ConcurrentStringBTree<V>`
+provides the same concurrency contract for String keys and generic, nullable values;
+`StringBTree<V>` remains single-threaded. `CompressedLongBTree` is an opt-in
 variant with 16-bit routing suffixes and higher memory use. Optional SIMD search
 is a separate JDK 25 artifact; the default library remains dependency-free and
 usable on JDK 17. Long-key trees accept a custom lower-bound strategy, and the
@@ -115,11 +116,26 @@ bounds yield no visits. Because a half-open range cannot include
 `LongBTree` requires external synchronization across every access.
 `ConcurrentLongBTree` is a separate primitive API: its writers serialize, while
 point reads and snapshot range traversals do not take the writer lock. It path-copies
-packed B-tree nodes and publishes root plus size in one volatile state.
+B-tree nodes and publishes root plus size in one volatile state.
 Each call is linearizable; separate calls do not share an atomic snapshot. A range keeps the root it
 captured when traversal began, so its callback may re-enter or mutate the tree. A long-running callback
 retains the old root and reachable nodes until traversal ends. This design does not use BBTree-style
 per-node version validation. See [the concurrency report](docs/concurrency.md).
+
+`ConcurrentStringBTree<V>` orders non-null keys with `String.compareTo`. Values may be null;
+`getOrDefault` returns the fallback only for an absent key, and `remove` reports key presence even
+when the stored value is null. Replacing a key that compares equal retains the original key object.
+Its range callback sees one stable snapshot and may re-enter or mutate the live tree. Values are
+stored by reference; snapshots do not deep-copy values, and callers must synchronize mutations to
+mutable value objects themselves.
+
+The concurrent Long C1 confirmation measured 41% more single-thread and 41% more eight-thread
+read throughput than the frozen original in its guarded fixture, with 13–19% higher range throughput
+and no material disjoint-write penalty. The unpaced 7-reader/1-writer result had 49% lower aggregate
+throughput, while the paced writer test matched the 500k puts/s target and read faster. These are
+separate outcomes from one Apple M4 Pro/JDK 25 fixture. A packed key/value-node experiment showed
+about 3.5% fewer allocated bytes per put but no coherent throughput gain; its unpaced writer comparison
+was inconclusive, so the packed layout was not adopted. See the [raw concurrent report](results/concurrency-next/report.md).
 
 `validate()` is an optional full structural diagnostic. It checks ordering,
 occupancy, child references, equal leaf depth and cardinality; keep it out of
@@ -224,6 +240,9 @@ outside measured iterations. The point workload writes are real overwrites that
 increment values; JMH thread state assigns disjoint key partitions without a
 shared cursor. Run each timed matrix when other machine benchmarks are idle. See
 the concurrency report for the recorded machine/JDK and complete result set.
+The one-thread comparison against the corresponding mutable Long and String
+implementations, including runtime-dependent results and raw evidence, is in
+[the mutable-versus-concurrent report](results/single-vs-concurrent/README.md).
 
 After `./mvnw clean verify` for the original single-threaded suite:
 

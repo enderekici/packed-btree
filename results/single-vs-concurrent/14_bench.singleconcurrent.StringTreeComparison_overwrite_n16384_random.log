@@ -1,0 +1,137 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseG1GC -Dtree.guard.mutable.location=/tmp/svc-mutable-classes -Dtree.guard.concurrent.location=/tmp/svc-concurrent-classes -Dtree.guard.mutable.long.outer=6849766a3c2d7aca27d256a7b372ff0df88f05cb623ab09d78ca06a47779295e -Dtree.guard.mutable.long.node=d631e8eff38b377cf6f9ffbc1035bb51df9cd5b61b27285cff78ab44d46140b2 -Dtree.guard.concurrent.long.outer=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be -Dtree.guard.concurrent.long.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad -Dtree.guard.concurrent.long.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8 -Dtree.guard.mutable.string.outer=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dtree.guard.mutable.string.node=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dtree.guard.concurrent.string.outer=e5061e793d31ee8109e2dd5c94cb2d4d84d639a7db5d59ad5045eceaace1a8f1 -Dtree.guard.concurrent.string.node=30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0 -Dtree.guard.concurrent.string.state=88818f76c09a8cf87bd415588b567812520c42d29d2896fb41b5546004247c10
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: bench.singleconcurrent.StringTreeComparison.overwrite
+# Parameters: (arm = mutable, shape = random, size = 16384)
+
+# Run progress: 0.00% complete, ETA 00:00:32
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: CLASS-GUARD io.github.enderekici.packedbtree.StringBTree codeSource=file:/private/tmp/svc-mutable-classes/ sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+CLASS-GUARD io.github.enderekici.packedbtree.StringBTree$Node codeSource=file:/private/tmp/svc-mutable-classes/ sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+GUARD type=string arm=mutable shape=random size=16384 keysSeed=7319 querySeed=99173 equalQueryDistinctBacking=true
+8073113.717 ops/s
+# Warmup Iteration   2: 8282034.423 ops/s
+# Warmup Iteration   3: 8256799.869 ops/s
+Iteration   1: 8323977.500 ops/s
+Iteration   2: 8294728.265 ops/s
+Iteration   3: 8205962.250 ops/s
+Iteration   4: 8243679.719 ops/s
+Iteration   5: 8195096.564 ops/s
+
+# Run progress: 25.00% complete, ETA 00:00:24
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: CLASS-GUARD io.github.enderekici.packedbtree.StringBTree codeSource=file:/private/tmp/svc-mutable-classes/ sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+CLASS-GUARD io.github.enderekici.packedbtree.StringBTree$Node codeSource=file:/private/tmp/svc-mutable-classes/ sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+GUARD type=string arm=mutable shape=random size=16384 keysSeed=7319 querySeed=99173 equalQueryDistinctBacking=true
+8058371.057 ops/s
+# Warmup Iteration   2: 8210536.732 ops/s
+# Warmup Iteration   3: 8225550.838 ops/s
+Iteration   1: 8298282.954 ops/s
+Iteration   2: 8296856.612 ops/s
+Iteration   3: 8307278.624 ops/s
+Iteration   4: 8267722.833 ops/s
+Iteration   5: 8149219.691 ops/s
+
+
+Result "bench.singleconcurrent.StringTreeComparison.overwrite":
+  8258280.501 ±(99.9%) 87373.892 ops/s [Average]
+  (min, avg, max) = (8149219.691, 8258280.501, 8323977.500), stdev = 57792.420
+  CI (99.9%): [8170906.609, 8345654.393] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-LTS
+# VM invoker: /Users/ender/Library/Java/JavaVirtualMachines/azul-25/Contents/Home/bin/java
+# VM options: -Xms1g -Xmx1g -XX:+UseG1GC -Dtree.guard.mutable.location=/tmp/svc-mutable-classes -Dtree.guard.concurrent.location=/tmp/svc-concurrent-classes -Dtree.guard.mutable.long.outer=6849766a3c2d7aca27d256a7b372ff0df88f05cb623ab09d78ca06a47779295e -Dtree.guard.mutable.long.node=d631e8eff38b377cf6f9ffbc1035bb51df9cd5b61b27285cff78ab44d46140b2 -Dtree.guard.concurrent.long.outer=1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be -Dtree.guard.concurrent.long.node=24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad -Dtree.guard.concurrent.long.state=7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8 -Dtree.guard.mutable.string.outer=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320 -Dtree.guard.mutable.string.node=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b -Dtree.guard.concurrent.string.outer=e5061e793d31ee8109e2dd5c94cb2d4d84d639a7db5d59ad5045eceaace1a8f1 -Dtree.guard.concurrent.string.node=30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0 -Dtree.guard.concurrent.string.state=88818f76c09a8cf87bd415588b567812520c42d29d2896fb41b5546004247c10
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 3 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: bench.singleconcurrent.StringTreeComparison.overwrite
+# Parameters: (arm = concurrent, shape = random, size = 16384)
+
+# Run progress: 50.00% complete, ETA 00:00:16
+# Fork: 1 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree codeSource=file:/private/tmp/svc-concurrent-classes/ sha256=e5061e793d31ee8109e2dd5c94cb2d4d84d639a7db5d59ad5045eceaace1a8f1
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree$Node codeSource=file:/private/tmp/svc-concurrent-classes/ sha256=30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree$State codeSource=file:/private/tmp/svc-concurrent-classes/ sha256=88818f76c09a8cf87bd415588b567812520c42d29d2896fb41b5546004247c10
+GUARD type=string arm=concurrent shape=random size=16384 keysSeed=7319 querySeed=99173 equalQueryDistinctBacking=true
+4258899.712 ops/s
+# Warmup Iteration   2: 4525248.805 ops/s
+# Warmup Iteration   3: 4561580.698 ops/s
+Iteration   1: 4558683.217 ops/s
+Iteration   2: 4565857.272 ops/s
+Iteration   3: 4520236.645 ops/s
+Iteration   4: 4493662.910 ops/s
+Iteration   5: 4519907.913 ops/s
+
+# Run progress: 75.00% complete, ETA 00:00:08
+# Fork: 2 of 2
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree codeSource=file:/private/tmp/svc-concurrent-classes/ sha256=e5061e793d31ee8109e2dd5c94cb2d4d84d639a7db5d59ad5045eceaace1a8f1
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree$Node codeSource=file:/private/tmp/svc-concurrent-classes/ sha256=30f13e8012ee60bbacb9277e5e766995c8c9d24e81a23e19508aeafcd847ddd0
+CLASS-GUARD io.github.enderekici.packedbtree.ConcurrentStringBTree$State codeSource=file:/private/tmp/svc-concurrent-classes/ sha256=88818f76c09a8cf87bd415588b567812520c42d29d2896fb41b5546004247c10
+GUARD type=string arm=concurrent shape=random size=16384 keysSeed=7319 querySeed=99173 equalQueryDistinctBacking=true
+4212525.402 ops/s
+# Warmup Iteration   2: 4504866.862 ops/s
+# Warmup Iteration   3: 4566783.662 ops/s
+Iteration   1: 4571112.086 ops/s
+Iteration   2: 4586593.297 ops/s
+Iteration   3: 4575758.618 ops/s
+Iteration   4: 4569251.423 ops/s
+Iteration   5: 4578897.106 ops/s
+
+
+Result "bench.singleconcurrent.StringTreeComparison.overwrite":
+  4553996.049 ±(99.9%) 47238.336 ops/s [Average]
+  (min, avg, max) = (4493662.910, 4553996.049, 4586593.297), stdev = 31245.234
+  CI (99.9%): [4506757.713, 4601234.385] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:32
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                            (arm)  (shape)  (size)   Mode  Cnt        Score       Error  Units
+StringTreeComparison.overwrite     mutable   random   16384  thrpt   10  8258280.501 ± 87373.892  ops/s
+StringTreeComparison.overwrite  concurrent   random   16384  thrpt   10  4553996.049 ± 47238.336  ops/s
+
+Benchmark result is saved to /Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/results/single-vs-concurrent/14_bench.singleconcurrent.StringTreeComparison_overwrite_n16384_random.json

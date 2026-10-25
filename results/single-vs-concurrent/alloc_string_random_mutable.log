@@ -1,0 +1,7 @@
+CLASS-GUARD io.github.enderekici.packedbtree.StringBTree source=file:/private/tmp/svc-mutable-classes/ sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+CLASS-GUARD io.github.enderekici.packedbtree.StringBTree$Node source=file:/private/tmp/svc-mutable-classes/ sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+ALLOC arm=mutable type=string_random operation=hit operations=100000 bytes=0 bytesPerOp=0.0000 sink=1357723
+ALLOC arm=mutable type=string_random operation=miss_suffix operations=100000 bytes=0 bytesPerOp=0.0000 sink=0
+ALLOC arm=mutable type=string_random operation=range64 operations=100000 bytes=0 bytesPerOp=0.0000 sink=86895939
+ALLOC arm=mutable type=string_random operation=overwrite operations=100000 bytes=0 bytesPerOp=0.0000 sink=100000
+ALLOC arm=mutable type=string_random operation=churn operations=100000 bytes=81707936 bytesPerOp=817.0794 sink=100000

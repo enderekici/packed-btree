@@ -1,0 +1,25 @@
+Build the JMH shaded jar on JDK17:
+  JAVA_HOME=<Azul-17.0.19-Contents-Home> PATH="$JAVA_HOME/bin:$PATH" ./mvnw --settings /tmp/packed-btree-maven-settings.xml -pl benchmarks -am clean package -DskipTests
+
+Compile the isolated sources with Java 17 (all four exact sources are copied into the temp source paths shown in README.md):
+  javac --release 17 -g -d /tmp/svc-mutable-classes /tmp/svc-pr2-src/io/github/enderekici/packedbtree/LongBTree.java /tmp/svc-pr2-src/io/github/enderekici/packedbtree/StringBTree.java
+  javac --release 17 -g -d /tmp/svc-concurrent-classes /tmp/svc-pr3-src/io/github/enderekici/packedbtree/ConcurrentLongBTree.java /tmp/svc-pr3-src/io/github/enderekici/packedbtree/ConcurrentStringBTree.java
+
+JMH fork args used for each row:
+  -bm thrpt -t 1 -f 2 -wi 3 -i 5 -w 1s -r 1s -foe true -rf json
+  -jvmArgsAppend "-Xms1g -Xmx1g -XX:+UseG1GC [all tree.guard.* properties]"
+  Runtime classpath: /tmp/svc-mutable-classes:/tmp/svc-concurrent-classes:benchmarks/target/benchmarks.jar
+  Runtime: Azul Zulu 25.0.3. Each pair reversed arm parameter order from the previous pair.
+  JMH rows, commands, and per-fork class guard output are in the matching .json/.log files.
+
+JDK 17 runtime subset (Azul Zulu 17.0.19; the same isolated classpath and all class guards):
+  java -cp "$CP" org.openjdk.jmh.Main bench.singleconcurrent.LongTreeComparison.{hit,overwrite,range64} -bm thrpt -t 1 -f 2 -wi 3 -i 3 -w 1s -r 1s -foe true -p arm=<mutable|concurrent> -p size=262144 -rf json -rff <row>.json
+  java -cp "$CP" org.openjdk.jmh.Main bench.singleconcurrent.StringTreeComparison.{hit,overwrite,range64} -bm thrpt -t 1 -f 2 -wi 3 -i 3 -w 1s -r 1s -foe true -p arm=<mutable|concurrent> -p size=262144 -rf json -rff <row>.json
+
+Bounded allocation probes (one selected arm per process; Azul JDK 25):
+  java [all tree.guard.* properties] -cp "$CP" bench.singleconcurrent.TreeAllocationProbe <mutable|concurrent> <long|string> <na|random>
+  100,000 warmup operations then 100,000 measured operations for hit, miss, range64, overwrite and churn. This is a bounded prefix probe, not a steady-state JMH allocation profile.
+
+Retained object graph probes (one selected map per process; Azul JDK 25):
+  java -Djol.magicFieldOffset=true [all tree.guard.* properties] -cp "$CP" bench.singleconcurrent.TreeGraphFootprint <mutable|concurrent> <long|string> <na|random|prefix> 262144
+  JOL could not attach Instrumentation and used HotSpot Unsafe with guessed compressed-reference layout; output is an estimate. The graph starts at the map object and has no active snapshots.

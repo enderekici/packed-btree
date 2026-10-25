@@ -1,0 +1,9 @@
+javac command: javac --release 17 -cp library/target/packed-btree-0.1.0-SNAPSHOT.jar
+javac 25.0.3
+java command: java -cp consumer-classes:library/target/packed-btree-0.1.0-SNAPSHOT.jar ConcurrentConsumerCheck
+openjdk version "25.0.3" 2026-04-21 LTS
+OpenJDK Runtime Environment Zulu25.34+17-CRaC-CA (build 25.0.3+9-LTS)
+OpenJDK 64-Bit Server VM Zulu25.34+17-CRaC-CA (build 25.0.3+9-LTS, mixed mode, sharing)
+packaged consumer checks passed: Long snapshot/reentry; String null/fallback, identity, UTF-16 ordering, snapshot mutation
+library jar SHA256:
+bc00dda114f76c1ba208a94f359c4f7da3fa88ee7f493e414c4d5c7956d777f1  library/target/packed-btree-0.1.0-SNAPSHOT.jar

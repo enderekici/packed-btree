@@ -1,0 +1,11 @@
+{
+  "jar": "benchmarks/target/benchmarks.jar",
+  "classes": {
+    "bench/concurrent/ConcurrentLongBTreeBaseline.class": "c0cb3400f46a55a886d649b9ebb1510752a590824d57e4b588f490921571f5e0",
+    "bench/concurrent/ConcurrentLongBTreeBaseline$State.class": "b03f3bbf598d1cb3dc771184d3c22c71bb46ef67faba2162ab8e0568fabf0195",
+    "bench/concurrent/ConcurrentLongBTreeBaseline$Node.class": "69cd3ae71e06093fed6f314cd8494c25c3b35e3f583b39e6c06c77a7fa98e194",
+    "io/github/enderekici/packedbtree/ConcurrentLongBTree.class": "1008c949dd48e97d44ec918afc06cb48bf62bc0e66f7e7d6f5f6d8b74188a7be",
+    "io/github/enderekici/packedbtree/ConcurrentLongBTree$State.class": "7e81cffa84cb7b3795e79d1b1fb003d42726d96f183d5082c56d0f94b0a5fcd8",
+    "io/github/enderekici/packedbtree/ConcurrentLongBTree$Node.class": "24bf1d83f84168e4e7a2515323455c5874638469bb295fa29084ae512c3a42ad"
+  }
+}

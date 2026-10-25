@@ -1,0 +1,31 @@
+CLASS-GUARD io.github.enderekici.packedbtree.StringBTree codeSource=file:/private/tmp/svc-mutable-classes/ sha256=b3d28205cd35c91519d1f55757e47a2754209363f52ac3ea29aa02dba65ea320
+CLASS-GUARD io.github.enderekici.packedbtree.StringBTree$Node codeSource=file:/private/tmp/svc-mutable-classes/ sha256=da2cb1f658cf4e590dc70be859aa76c4ad37c1b6934a86a6585ff73bd79cd14b
+# WARNING: Unable to get Instrumentation. Dynamic Attach failed. You may add this JAR as -javaagent manually, or supply -Djdk.attach.allowAttachSelf
+# WARNING: Unable to attach Serviceability Agent. You can try again with escalated privileges. Two options: a) use -Djol.tryWithSudo=true to try with sudo; b) echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by org.openjdk.jol.vm.HotspotUnsafe (file:/Users/ender/code/evamcep/.packed-btree-worktrees/concurrency-next/benchmarks/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jol.vm.HotspotUnsafe
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+VM # VM mode: 64 bits
+# Compressed references (oops): 3-bit shift
+# Compressed class pointers: 3-bit shift
+# WARNING | Compressed references base/shifts are guessed by the experiment!
+# WARNING | Therefore, computed addresses are just guesses, and ARE NOT RELIABLE.
+# WARNING | Make sure to attach Serviceability Agent to get the reliable addresses.
+# Object alignment: 8 bytes
+#                       ref, bool, byte, char, shrt,  int,  flt,  lng,  dbl
+# Field sizes:            4,    1,    1,    2,    2,    4,    4,    8,    8
+# Array element sizes:    4,    1,    1,    2,    2,    4,    4,    8,    8
+# Array base offsets:    16,   16,   16,   16,   16,   16,   16,   16,   16
+
+GRAPH arm=mutable type=string shape=random size=262144 bytes=31270840 objects=1085958 bytesPerMapping=119.28878784179688 activeSnapshots=0
+io.github.enderekici.packedbtree.StringBTree@6193b845d footprint:
+     COUNT       AVG       SUM   DESCRIPTION
+    524288        28  14680064   [B
+       550       144     79200   [Lio.github.enderekici.packedbtree.StringBTree$Node;
+     12277       144   1767888   [Ljava.lang.Object;
+     12277       144   1767888   [Ljava.lang.String;
+         1        24        24   io.github.enderekici.packedbtree.StringBTree
+     12277        32    392864   io.github.enderekici.packedbtree.StringBTree$Node
+    524288        24  12582912   java.lang.String
+   1085958            31270840   (total)
