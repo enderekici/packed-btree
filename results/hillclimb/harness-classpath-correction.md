@@ -38,3 +38,4 @@ Every corrected timing run must use `-foe true`, provide expected fingerprint va
 - Each arm produced 20 finite rows and 40 matching fingerprint lines. Candidate log `/tmp/hillclimb-c3-degree8-candidate.log` completed 15:43:49 UTC; baseline log `/tmp/hillclimb-c3-degree8-baseline.log` completed 15:44:18 UTC.
 - Candidate source SHA-256: `36bb5e688f92a93754bd8bd01af03e2838888138de08d2f65f89b4491874f960`; tree fingerprint `f2b91268716491a03d67b747a2f4da42d5e82e11a25c5fbea92747874ddf5724`; Node `824ddb5017dbe75850016a2740323e50f50c98fcb6700d704f785782f19b7459`.
 - Raw JSON: `c3-degree8-candidate.json`, `c3-degree8-baseline.json`; summary `c3-degree8-summary.md`. JOL node/occupancy comparison pending.
+- JOL comparison used identical key fixtures and produced `c3-degree8-footprint.csv` / `.md`. Instrumentation attach was unavailable; JOL used HotspotUnsafe estimates.
