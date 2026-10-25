@@ -156,7 +156,7 @@ public class LongBTree {
 
     @Override
     int index(SearchStrategy strategy, long key) {
-      if (compact) return index(key);
+      if (count == 0 || compact) return index(key);
       return strategy == null ? index(key) : checkedIndex(strategy, key);
     }
   }

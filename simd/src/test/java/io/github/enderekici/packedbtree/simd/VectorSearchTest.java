@@ -2,10 +2,13 @@ package io.github.enderekici.packedbtree.simd;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import io.github.enderekici.packedbtree.LongBTree;
+import io.github.enderekici.packedbtree.CompressedLongBTree;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.Test;
 
 class VectorSearchTest {
@@ -47,5 +50,39 @@ class VectorSearchTest {
     assertEquals(expected.get(Long.MIN_VALUE), vector.getOrDefault(Long.MIN_VALUE, 0));
     assertEquals(expected.get(Long.MAX_VALUE), vector.getOrDefault(Long.MAX_VALUE, 0));
     assertFalse(vector.remove(42));
+  }
+
+  @Test
+  void compressedRoutingUsesVectorFallbackForWideNodes() {
+    VectorSearch vector = new VectorSearch();
+    AtomicInteger fallbackCalls = new AtomicInteger();
+    CompressedLongBTree tree = new CompressedLongBTree((keys, count, key) -> {
+      fallbackCalls.incrementAndGet();
+      return vector.lowerBound(keys, count, key);
+    });
+    TreeMap<Long, Long> expected = new TreeMap<>();
+    for (int i = 0; i < 2_000; i++) {
+      long key = 0x1234000000000000L + i;
+      tree.put(key, ~key);
+      expected.put(key, ~key);
+    }
+    tree.validate();
+    for (long key : expected.keySet()) assertEquals(expected.get(key), tree.getOrDefault(key, 0));
+    assertEquals(0, fallbackCalls.get(), "same-prefix nodes should use compact suffix routing");
+
+    tree.put(Long.MIN_VALUE, 17);
+    tree.put(Long.MAX_VALUE, 19);
+    expected.put(Long.MIN_VALUE, 17L);
+    expected.put(Long.MAX_VALUE, 19L);
+    for (long key : expected.keySet()) assertEquals(expected.get(key), tree.getOrDefault(key, 0));
+    assertTrue(fallbackCalls.get() > 0, "wide routing nodes should use the supplied vector search");
+    tree.validate();
+    for (int i = 0; i < 2_000; i += 3) {
+      long key = 0x1234000000000000L + i;
+      assertEquals(expected.containsKey(key), tree.remove(key));
+      expected.remove(key);
+    }
+    tree.validate();
+    assertEquals(expected.size(), tree.size());
   }
 }

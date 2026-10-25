@@ -12,6 +12,16 @@ public final class CompressedLongBTree extends LongBTree {
     super();
   }
 
+  /**
+   * Creates a compressed tree with a custom fallback search for nodes that cannot use compact
+   * routing.
+   *
+   * @param fallbackSearch lower-bound implementation for noncompact nodes
+   */
+  public CompressedLongBTree(SearchStrategy fallbackSearch) {
+    super(fallbackSearch);
+  }
+
   @Override
   boolean usesCompressedRouting() {
     return true;

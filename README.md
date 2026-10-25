@@ -7,18 +7,17 @@ lookup, insert, overwrite, deletion with rebalancing, and ascending range
 traversal, without boxing keys or values. The library has **no runtime
 dependencies**.
 
-**Experimental and single-threaded.** It is inspired by
+**Experimental.** `LongBTree` is single-threaded and inspired by
 [BBTree](https://github.com/XiangpengHao/bbtree), but is not a port of its
-concurrent implementation. `ConcurrentLongBTree` adds concurrent access through
-immutable root snapshots. `StringBTree` provides generic values with string keys.
-Optional SIMD node search is available as a separate JDK 25 artifact; the default
-`CompressedLongBTree` is an opt-in variant with 16-bit routing suffixes. The
-default library remains a dependency-free JDK 17 artifact; SIMD node search is
-available as a separate JDK 25 artifact. `LongBTree` also accepts a custom
-lower-bound strategy. `CompressedLongBTree` can use that strategy as a fallback
-for nodes whose keys do not share the same signed high 48 bits; matching nodes
-use the 16-bit suffixes. These classes do not implement `Map` or `NavigableMap`, and the
-concurrent API does not use BBTree-style versioned nodes.
+concurrent implementation. `ConcurrentLongBTree` is a separate primitive API
+with serialized writers and immutable root snapshots. `StringBTree<V>` provides
+string keys and generic, nullable values. `CompressedLongBTree` is an opt-in
+variant with 16-bit routing suffixes and higher memory use. Optional SIMD search
+is a separate JDK 25 artifact; the default library remains dependency-free and
+usable on JDK 17. Long-key trees accept a custom lower-bound strategy, and the
+compressed variant uses it on nodes whose keys do not share the same signed high
+48 bits. These APIs do not implement `Map` or `NavigableMap`; concurrency does
+not use BBTree-style versioned nodes.
 
 ## Build
 
@@ -47,8 +46,8 @@ To build and test the optional Vector API module on JDK 25:
 The resulting `packed-btree-simd` artifact provides `VectorSearch`; opt in with
 `new LongBTree(new VectorSearch())`. Applications using it must run with
 `--add-modules jdk.incubator.vector`. It uses signed comparisons and masks the
-partial final vector. The module also contains `SearchBenchmark`, which compares
-the default scalar path, a scalar strategy through the extension hook, and SIMD.
+partial final vector. `CompressedLongBTree` also accepts `VectorSearch` as its
+fallback for noncompact nodes; compact nodes use suffix routing.
 
 ## Use
 
@@ -82,6 +81,18 @@ map.forEach(10L, 20L, (key, entryValue) -> {
 });
 boolean removed = map.remove(20L); // true
 int size = map.size(); // 1
+```
+
+`StringBTree` orders keys by `String.compareTo`; keys cannot be null, but values
+can:
+
+```java
+import io.github.enderekici.packedbtree.StringBTree;
+
+StringBTree<Long> byName = new StringBTree<>();
+byName.put("alice", null);
+Long value = byName.getOrDefault("alice", 42L); // null
+byName.forEach("a", "z", (key, entryValue) -> System.out.println(key));
 ```
 
 For opt-in compact routing suffixes, use `CompressedLongBTree` with the same API.
@@ -134,6 +145,12 @@ separate run with timer overhead.
 See [the full report](RESULTS.md) for confidence intervals, allocation-profiler
 handling, limitations and raw evidence. The benchmark module contains all
 third-party benchmark dependencies; none enters the library's runtime graph.
+
+The point-operation comparison also shows that all tested hash maps beat
+`LongBTree` on its tested hit, miss, overwrite and churn workloads at both
+fixture sizes. Those measurements use positive dense keys and above-maximum
+misses; they do not cover full-width or collision-heavy hash distributions. See
+[the hash-map report](results/hashmaps/report.md) and [workload notes](docs/hashmap-comparison.md).
 
 ## Run the benchmarks
 
