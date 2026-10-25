@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.TreeMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.Test;
 
 /** Contract and differential tests against the JDK ordered map. */
@@ -29,6 +30,64 @@ public final class LongBTreeTest {
   @Test
   void randomizedFullWidthKeys() {
     wideKeys();
+  }
+
+  @Test
+  void packedStoragePreservesCustomStrategyAndFullWidthMutations() {
+    AtomicInteger strategyCalls = new AtomicInteger();
+    LongBTree actual = new LongBTree((keys, count, key) -> {
+      if (keys.length < count) throw new AssertionError("Active key prefix exceeds array");
+      for (int i = 1; i < count; i++) {
+        if (keys[i - 1] >= keys[i]) throw new AssertionError("Unsorted active key prefix");
+      }
+      strategyCalls.incrementAndGet();
+      int low = 0;
+      int high = count;
+      while (low < high) {
+        int middle = (low + high) >>> 1;
+        if (keys[middle] < key) low = middle + 1;
+        else high = middle;
+      }
+      return low;
+    });
+    TreeMap<Long, Long> expected = new TreeMap<>();
+    long[] edges = {Long.MIN_VALUE, Long.MIN_VALUE + 1, -1, 0, 1,
+        Long.MAX_VALUE - 1, Long.MAX_VALUE};
+    Random random = new Random(0x5a17c0deL);
+    for (long key : edges) put(actual, expected, key, random.nextLong());
+    for (int i = 0; i < 6_000; i++) {
+      long key = random.nextLong();
+      put(actual, expected, key, random.nextLong());
+    }
+    compare(actual, expected);
+
+    long[] keys = expected.keySet().stream().mapToLong(Long::longValue).toArray();
+    for (int i = 0; i < keys.length; i++) {
+      long key = keys[i];
+      if ((i & 1) == 0) put(actual, expected, key, random.nextLong());
+      else if (actual.remove(key) != (expected.remove(key) != null)) {
+        throw new AssertionError("Packed deletion at " + key);
+      }
+      if (i % 127 == 0) compare(actual, expected);
+    }
+    compare(actual, expected);
+    range(actual, expected, Long.MIN_VALUE, 0);
+    range(actual, expected, -1, Long.MAX_VALUE);
+
+    for (long key : expected.keySet().stream().mapToLong(Long::longValue).toArray()) {
+      if (!actual.remove(key) || expected.remove(key) == null) {
+        throw new AssertionError("Packed root-collapse deletion at " + key);
+      }
+    }
+    compare(actual, expected);
+    for (long key : edges) put(actual, expected, key, ~key);
+    compare(actual, expected);
+    if (strategyCalls.get() == 0) throw new AssertionError("Custom strategy was not called");
+  }
+
+  private static void put(LongBTree actual, TreeMap<Long, Long> expected, long key, long value) {
+    actual.put(key, value);
+    expected.put(key, value);
   }
 
   @Test

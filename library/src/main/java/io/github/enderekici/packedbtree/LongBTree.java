@@ -22,9 +22,9 @@ public class LongBTree {
   @FunctionalInterface
   public interface SearchStrategy {
     /**
-     * Returns the lower-bound index in {@code keys[0..count)} using signed long ordering. The
-     * supplied array is internal tree state: do not modify or retain it, and do not re-enter or
-     * mutate the tree from this strategy.
+     * Returns the lower-bound index in {@code keys[0..count)} using signed long ordering. Entries
+     * at or beyond {@code count} are unspecified storage. The supplied array is internal tree
+     * state: do not modify or retain it, and do not re-enter or mutate the tree from this strategy.
      *
      * @param keys sorted key array
      * @param count number of active keys
@@ -36,6 +36,7 @@ public class LongBTree {
 
   private static final int DEGREE = 16;
   private static final int MAX = 2 * DEGREE - 1;
+  private static final int VALUE_OFFSET = MAX;
   private final SearchStrategy searchStrategy;
   private Node root;
   private int size;
@@ -65,8 +66,8 @@ public class LongBTree {
   }
 
   private static class Node {
-    final long[] keys = new long[MAX];
-    final long[] values = new long[MAX];
+    // Keys occupy [0, MAX); values occupy [VALUE_OFFSET, VALUE_OFFSET + MAX).
+    final long[] keys = new long[2 * MAX];
     final Node[] children;
     int count;
 
@@ -178,7 +179,7 @@ public class LongBTree {
     Node node = root;
     while (true) {
       int i = node.index(searchStrategy, key);
-      if (i < node.count && node.keys[i] == key) return node.values[i];
+      if (i < node.count && node.keys[i] == key) return node.keys[VALUE_OFFSET + i];
       if (node.children == null) return fallback;
       node = node.children[i];
     }
@@ -201,14 +202,15 @@ public class LongBTree {
     while (true) {
       int i = node.index(searchStrategy, key);
       if (i < node.count && node.keys[i] == key) {
-        node.values[i] = value;
+        node.keys[VALUE_OFFSET + i] = value;
         return;
       }
       if (node.children == null) {
         System.arraycopy(node.keys, i, node.keys, i + 1, node.count - i);
-        System.arraycopy(node.values, i, node.values, i + 1, node.count - i);
+        System.arraycopy(node.keys, VALUE_OFFSET + i, node.keys, VALUE_OFFSET + i + 1,
+            node.count - i);
         node.keys[i] = key;
-        node.values[i] = value;
+        node.keys[VALUE_OFFSET + i] = value;
         node.count++;
         node.refreshRoutes();
         size++;
@@ -217,7 +219,7 @@ public class LongBTree {
       if (node.children[i].count == MAX) {
         split(node, i);
         if (key == node.keys[i]) {
-          node.values[i] = value;
+          node.keys[VALUE_OFFSET + i] = value;
           return;
         }
         if (key > node.keys[i]) i++;
@@ -231,16 +233,17 @@ public class LongBTree {
     Node right = createNode(left.children == null, left instanceof CompressedNode);
     right.count = DEGREE - 1;
     System.arraycopy(left.keys, DEGREE, right.keys, 0, DEGREE - 1);
-    System.arraycopy(left.values, DEGREE, right.values, 0, DEGREE - 1);
+    System.arraycopy(left.keys, VALUE_OFFSET + DEGREE, right.keys, VALUE_OFFSET, DEGREE - 1);
     if (left.children != null) {
       System.arraycopy(left.children, DEGREE, right.children, 0, DEGREE);
       java.util.Arrays.fill(left.children, DEGREE, MAX + 1, null);
     }
     System.arraycopy(parent.children, i + 1, parent.children, i + 2, parent.count - i);
     System.arraycopy(parent.keys, i, parent.keys, i + 1, parent.count - i);
-    System.arraycopy(parent.values, i, parent.values, i + 1, parent.count - i);
+    System.arraycopy(parent.keys, VALUE_OFFSET + i, parent.keys, VALUE_OFFSET + i + 1,
+        parent.count - i);
     parent.keys[i] = left.keys[DEGREE - 1];
-    parent.values[i] = left.values[DEGREE - 1];
+    parent.keys[VALUE_OFFSET + i] = left.keys[VALUE_OFFSET + DEGREE - 1];
     parent.children[i + 1] = right;
     left.count = DEGREE - 1;
     parent.count++;
@@ -273,14 +276,14 @@ public class LongBTree {
           predecessor = predecessor.children[predecessor.count];
         }
         node.keys[i] = predecessor.keys[predecessor.count - 1];
-        node.values[i] = predecessor.values[predecessor.count - 1];
+        node.keys[VALUE_OFFSET + i] = predecessor.keys[VALUE_OFFSET + predecessor.count - 1];
         node.refreshRoutes();
         delete(node.children[i], node.keys[i]);
       } else if (node.children[i + 1].count >= DEGREE) {
         Node successor = node.children[i + 1];
         while (successor.children != null) successor = successor.children[0];
         node.keys[i] = successor.keys[0];
-        node.values[i] = successor.values[0];
+        node.keys[VALUE_OFFSET + i] = successor.keys[VALUE_OFFSET];
         node.refreshRoutes();
         delete(node.children[i + 1], node.keys[i]);
       } else {
@@ -305,7 +308,8 @@ public class LongBTree {
 
   private static void erase(Node node, int i) {
     System.arraycopy(node.keys, i + 1, node.keys, i, node.count - i - 1);
-    System.arraycopy(node.values, i + 1, node.values, i, node.count - i - 1);
+    System.arraycopy(node.keys, VALUE_OFFSET + i + 1, node.keys, VALUE_OFFSET + i,
+        node.count - i - 1);
     node.count--;
     node.refreshRoutes();
   }
@@ -315,9 +319,9 @@ public class LongBTree {
     Node right = parent.children[i + 1];
     int offset = left.count;
     left.keys[offset] = parent.keys[i];
-    left.values[offset] = parent.values[i];
+    left.keys[VALUE_OFFSET + offset] = parent.keys[VALUE_OFFSET + i];
     System.arraycopy(right.keys, 0, left.keys, offset + 1, right.count);
-    System.arraycopy(right.values, 0, left.values, offset + 1, right.count);
+    System.arraycopy(right.keys, VALUE_OFFSET, left.keys, VALUE_OFFSET + offset + 1, right.count);
     if (left.children != null) {
       System.arraycopy(right.children, 0, left.children, offset + 1, right.count + 1);
     }
@@ -334,16 +338,16 @@ public class LongBTree {
     Node child = parent.children[i];
     Node sibling = parent.children[i - 1];
     System.arraycopy(child.keys, 0, child.keys, 1, child.count);
-    System.arraycopy(child.values, 0, child.values, 1, child.count);
+    System.arraycopy(child.keys, VALUE_OFFSET, child.keys, VALUE_OFFSET + 1, child.count);
     if (child.children != null) {
       System.arraycopy(child.children, 0, child.children, 1, child.count + 1);
       child.children[0] = sibling.children[sibling.count];
       sibling.children[sibling.count] = null;
     }
     child.keys[0] = parent.keys[i - 1];
-    child.values[0] = parent.values[i - 1];
+    child.keys[VALUE_OFFSET] = parent.keys[VALUE_OFFSET + i - 1];
     parent.keys[i - 1] = sibling.keys[sibling.count - 1];
-    parent.values[i - 1] = sibling.values[sibling.count - 1];
+    parent.keys[VALUE_OFFSET + i - 1] = sibling.keys[VALUE_OFFSET + sibling.count - 1];
     sibling.count--;
     child.count++;
     child.refreshRoutes();
@@ -355,14 +359,14 @@ public class LongBTree {
     Node child = parent.children[i];
     Node sibling = parent.children[i + 1];
     child.keys[child.count] = parent.keys[i];
-    child.values[child.count] = parent.values[i];
+    child.keys[VALUE_OFFSET + child.count] = parent.keys[VALUE_OFFSET + i];
     if (child.children != null) {
       child.children[child.count + 1] = sibling.children[0];
       System.arraycopy(sibling.children, 1, sibling.children, 0, sibling.count);
       sibling.children[sibling.count] = null;
     }
     parent.keys[i] = sibling.keys[0];
-    parent.values[i] = sibling.values[0];
+    parent.keys[VALUE_OFFSET + i] = sibling.keys[VALUE_OFFSET];
     erase(sibling, 0);
     child.count++;
     child.refreshRoutes();
@@ -390,7 +394,7 @@ public class LongBTree {
     int i = node.index(searchStrategy, from);
     if (node.children != null) visit(node.children[i], from, to, visitor);
     while (i < node.count && node.keys[i] < to) {
-      visitor.accept(node.keys[i], node.values[i]);
+      visitor.accept(node.keys[i], node.keys[VALUE_OFFSET + i]);
       i++;
       if (node.children != null) visit(node.children[i], from, to, visitor);
     }
