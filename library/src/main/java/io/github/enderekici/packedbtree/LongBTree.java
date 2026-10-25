@@ -18,10 +18,40 @@ public final class LongBTree {
      */
     void accept(long key, long value);
   }
+  /** Finds the first key in a sorted node that is greater than or equal to a search key. */
+  @FunctionalInterface
+  public interface SearchStrategy {
+    /**
+     * Returns the lower-bound index in {@code keys[0..count)} using signed long ordering.
+     * The supplied array is internal tree state and must not be modified.
+     *
+     * @param keys sorted key array
+     * @param count number of active keys
+     * @param key search key
+     * @return first index whose key is greater than or equal to {@code key}, or {@code count}
+     */
+    int lowerBound(long[] keys, int count, long key);
+  }
+
   private static final int DEGREE = 16;
   private static final int MAX = 2 * DEGREE - 1;
+  private final SearchStrategy searchStrategy;
   private Node root = new Node(true);
   private int size;
+
+  /** Creates a tree using the dependency-free scalar node search. */
+  public LongBTree() {
+    this.searchStrategy = null;
+  }
+
+  /**
+   * Creates a tree using the supplied signed-long lower-bound search implementation.
+   *
+   * @param searchStrategy lower-bound implementation
+   */
+  public LongBTree(SearchStrategy searchStrategy) {
+    this.searchStrategy = java.util.Objects.requireNonNull(searchStrategy, "searchStrategy");
+  }
 
   private static final class Node {
     final long[] keys = new long[MAX];
@@ -33,15 +63,20 @@ public final class LongBTree {
       children = leaf ? null : new Node[MAX + 1];
     }
 
-    int index(long key) {
-      int low = 0;
-      int high = count;
-      while (low < high) {
-        int middle = (low + high) >>> 1;
-        if (keys[middle] < key) low = middle + 1;
-        else high = middle;
+    int index(SearchStrategy strategy, long key) {
+      if (strategy == null) {
+        int low = 0;
+        int high = count;
+        while (low < high) {
+          int middle = (low + high) >>> 1;
+          if (keys[middle] < key) low = middle + 1;
+          else high = middle;
+        }
+        return low;
       }
-      return low;
+      int index = strategy.lowerBound(keys, count, key);
+      if (index < 0 || index > count) throw new IllegalStateException("Invalid lower-bound index");
+      return index;
     }
   }
 
@@ -64,7 +99,7 @@ public final class LongBTree {
   public long getOrDefault(long key, long fallback) {
     Node node = root;
     while (true) {
-      int i = node.index(key);
+      int i = node.index(searchStrategy, key);
       if (i < node.count && node.keys[i] == key) return node.values[i];
       if (node.children == null) return fallback;
       node = node.children[i];
@@ -86,7 +121,7 @@ public final class LongBTree {
     }
     Node node = root;
     while (true) {
-      int i = node.index(key);
+      int i = node.index(searchStrategy, key);
       if (i < node.count && node.keys[i] == key) {
         node.values[i] = value;
         return;
@@ -145,8 +180,8 @@ public final class LongBTree {
     return removed;
   }
 
-  private static boolean delete(Node node, long key) {
-    int i = node.index(key);
+  private boolean delete(Node node, long key) {
+    int i = node.index(searchStrategy, key);
     if (i < node.count && node.keys[i] == key) {
       if (node.children == null) {
         erase(node, i);
@@ -257,8 +292,8 @@ public final class LongBTree {
     if (fromInclusive < toExclusive) visit(root, fromInclusive, toExclusive, visitor);
   }
 
-  private static void visit(Node node, long from, long to, EntryConsumer visitor) {
-    int i = node.index(from);
+  private void visit(Node node, long from, long to, EntryConsumer visitor) {
+    int i = node.index(searchStrategy, from);
     if (node.children != null) visit(node.children[i], from, to, visitor);
     while (i < node.count && node.keys[i] < to) {
       visitor.accept(node.keys[i], node.values[i]);

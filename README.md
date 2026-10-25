@@ -9,9 +9,10 @@ dependencies**.
 
 **Experimental and single-threaded.** It is inspired by
 [BBTree](https://github.com/XiangpengHao/bbtree), but is not a port of its
-concurrent implementation. SIMD, compressed routing keys, concurrent access and
+concurrent implementation. Compressed routing keys, concurrent access and
 generic object keys/values are not implemented. It does not implement `Map` or
-`NavigableMap`.
+`NavigableMap`. Optional SIMD node search is available as a separate JDK 25
+artifact; the default library remains a dependency-free JDK 17 artifact.
 
 ## Build
 
@@ -30,6 +31,18 @@ To build only the library:
 ```bash
 ./mvnw -pl library -am clean verify
 ```
+
+To build and test the optional Vector API module on JDK 25:
+
+```bash
+./mvnw -Psimd clean verify
+```
+
+The resulting `packed-btree-simd` artifact provides `VectorSearch`; opt in with
+`new LongBTree(new VectorSearch())`. Applications using it must run with
+`--add-modules jdk.incubator.vector`. It uses signed comparisons and masks the
+partial final vector. The module also contains `SearchBenchmark`, which compares
+the default scalar path, a scalar strategy through the extension hook, and SIMD.
 
 ## Use
 
