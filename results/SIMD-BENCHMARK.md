@@ -1,5 +1,7 @@
 # Optional SIMD node-search benchmark
 
+**Pre-C2 measurement.** This campaign used source snapshot `405db725807c005ef7b22b39121eca4477285cdf` (`LongBTree.java` SHA-256 `fe383eb9182443f8f7fd1e1ff2c614d131b79dc42237642868b090bfcb21b7bc`), before the accepted linear-search change. The “current default” column below is the binary-search implementation from that snapshot; it is not timing evidence for the final default. See the [guarded C2 confirmation](hillclimb/c2-confirm/README.md) for the final scalar search results.
+
 The corrected four-arm campaign ran on 2026-10-25 using Zulu OpenJDK
 25.0.3+9-LTS on one Apple M4 Pro / ARM64 host (macOS Darwin 27.0.0). JMH 1.37
 used one thread, two forks, two one-second warmups and three one-second

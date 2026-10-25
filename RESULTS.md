@@ -107,6 +107,17 @@ This is worth considering where profiling identifies a large, local, primitive-k
 
 Before adoption, identify the real ordered-index caller, benchmark its data and operation mix, and qualify the required concurrency/iteration semantics. The current prototype remains standalone.
 
+## Current Maven-layout search follow-up
+
+The tables above are historical prototype results and do not include later
+integration features or the default-search optimization. The current degree-16
+default uses a linear lower-bound scan; its guarded confirmation against the
+binary-search source from commit `57ea447d94078b2a0872569b09bb88986b71f886`,
+including JDK 17 and 25 results and retained-memory measurements, is documented
+in [`results/hillclimb/c2-confirm/README.md`](results/hillclimb/c2-confirm/README.md)
+and tracked in [`HILLCLIMB.md`](HILLCLIMB.md). Those fixture-specific results
+are separate from the historical prototype tables above.
+
 ## Evidence
 
 - `results/average.json`: all average-time data, confidence intervals and raw fork samples.

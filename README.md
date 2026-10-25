@@ -147,6 +147,14 @@ application. The primitive AVL control uses fastutil `Long2LongAVLTreeMap`.
 Memory is the retained map object graph, not process RSS. Sampled p99 is a
 separate run with timer overhead.
 
+A separate, guarded hill-climb of the current default search path replaced the
+binary lower-bound loop with a linear scan over the at-most-31 keys in a node.
+The confirmation covered point hits and misses, ranges, overwrites and churn at
+4,096 and 262,144 entries, plus a JDK 17 runtime subset. See the
+[search confirmation](results/hillclimb/c2-confirm/README.md) for paired
+measurements, class fingerprints and limitations, and the [hill-climb ledger](HILLCLIMB.md)
+for candidate decisions and the [final verification receipt](results/hillclimb/final-verification.md).
+
 See [the full report](RESULTS.md) for confidence intervals, allocation-profiler
 handling, limitations and raw evidence. The benchmark module contains all
 third-party benchmark dependencies; none enters the library's runtime graph.

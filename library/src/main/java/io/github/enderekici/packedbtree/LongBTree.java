@@ -79,14 +79,10 @@ public class LongBTree {
     void validateRoutes() {}
 
     int index(long key) {
-      int low = 0;
-      int high = count;
-      while (low < high) {
-        int middle = (low + high) >>> 1;
-        if (keys[middle] < key) low = middle + 1;
-        else high = middle;
-      }
-      return low;
+      // A node has at most 31 keys, so scan the small fixed-capacity array directly.
+      int index = 0;
+      while (index < count && keys[index] < key) index++;
+      return index;
     }
 
     int index(SearchStrategy strategy, long key) {

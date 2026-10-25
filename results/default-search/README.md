@@ -1,5 +1,7 @@
 # Default-search regression comparison
 
+**Pre-C2 diagnostic.** The `current default` column describes the binary-search implementation at source HEAD `dcb5130afe5d8a162acd3de465026f93bfbd6933`. It predates the accepted linear-search change and does not measure the final default. See the [final guarded confirmation](../hillclimb/c2-confirm/README.md).
+
 This isolated JMH run compares the current default `LongBTree` against the exact
 pre-hook implementation. Each benchmark trial contains only its selected tree,
 so JIT profiling does not mix custom-strategy and scalar tree types. Both use the
