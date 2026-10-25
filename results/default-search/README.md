@@ -3,7 +3,8 @@
 This isolated JMH run compares the current default `LongBTree` against the exact
 pre-hook implementation. Each benchmark trial contains only its selected tree,
 so JIT profiling does not mix custom-strategy and scalar tree types. Both use the
-same shuffled sequential key fixture and fixed-seed random hit/miss query array;
+same ascending, evenly spaced signed-key fixture and fixed-seed random hit/miss
+query array;
 trial teardown checks every expected result and validates the tree.
 
 | Size | Current default | Pre-hook control | Assessment |
