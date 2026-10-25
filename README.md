@@ -12,9 +12,13 @@ dependencies**.
 concurrent implementation. `ConcurrentLongBTree` adds concurrent access through
 immutable root snapshots. `StringBTree` provides generic values with string keys.
 Optional SIMD node search is available as a separate JDK 25 artifact; the default
-library remains a dependency-free JDK 17 artifact. Compressed routing keys and
-BBTree-style versioned nodes are not implemented. These classes do not implement
-`Map` or `NavigableMap`.
+`CompressedLongBTree` is an opt-in variant with 16-bit routing suffixes. The
+default library remains a dependency-free JDK 17 artifact; SIMD node search is
+available as a separate JDK 25 artifact. `LongBTree` also accepts a custom
+lower-bound strategy. `CompressedLongBTree` can use that strategy as a fallback
+for nodes whose keys do not share the same signed high 48 bits; matching nodes
+use the 16-bit suffixes. These classes do not implement `Map` or `NavigableMap`, and the
+concurrent API does not use BBTree-style versioned nodes.
 
 ## Build
 
@@ -79,6 +83,11 @@ map.forEach(10L, 20L, (key, entryValue) -> {
 boolean removed = map.remove(20L); // true
 int size = map.size(); // 1
 ```
+
+For opt-in compact routing suffixes, use `CompressedLongBTree` with the same API.
+It retains full keys and adds short routing arrays to its nodes, so the variant
+uses more memory; see [the routing notes](docs/compressed-routing.md) for the
+design and measured tradeoff.
 
 Every signed `long` is a valid key and value; the library reserves no sentinel.
 Keys use signed ascending order. A missing lookup returns the caller's fallback.

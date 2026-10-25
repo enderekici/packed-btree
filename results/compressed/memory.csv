@@ -1,0 +1,10 @@
+source,distribution,size,retained_bytes,bytes_per_mapping,object_count
+origin/main@91989190,sequential,1048576,27843544,26.55,149677
+current_scalar,sequential,1048576,27843544,26.55,149677
+compressed,sequential,1048576,32561176,31.05,198819
+origin/main@91989190,fullWidth,1048576,27777192,26.49,149314
+current_scalar,fullWidth,1048576,27777192,26.49,149314
+compressed,fullWidth,1048576,32484264,30.98,198346
+origin/main@91989190,commonPrefix,1048576,27843544,26.55,149677
+current_scalar,commonPrefix,1048576,27843544,26.55,149677
+compressed,commonPrefix,1048576,32561176,31.05,198819
