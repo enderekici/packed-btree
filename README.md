@@ -9,8 +9,8 @@ The core targets Java 17 and has no runtime dependencies.
 
 | Type | Key/value | Threading contract | Good fit |
 | --- | --- | --- | --- |
-| `LongBTree` | primitive `long` → `long` | Mutable; externally synchronize accesses if shared | Ordered primitive keys and ranges with compact storage. |
-| `StringBTree<V>` | non-null `String` → `V` | Mutable; externally synchronize accesses if shared | String ordering with arbitrary reference values, including null. |
+| `LongBTree` | primitive `long` → `long` | Mutable; synchronize externally if shared | Ordered primitive keys and ranges with compact storage. |
+| `StringBTree<V>` | non-null `String` → `V` | Mutable; synchronize externally if shared | String ordering with arbitrary reference values, including null. |
 | `ConcurrentLongBTree` | primitive `long` → `long` | Writers serialize; reads use immutable published roots | Concurrent readers with ordered ranges and serialized updates. |
 | `ConcurrentStringBTree<V>` | non-null `String` → `V` | Writers serialize; reads use immutable published roots | Concurrent String-key access with reference values. |
 
@@ -95,6 +95,9 @@ earlier binary-search snapshot, so it does not establish a portable benefit for
 the current scalar default. Install the optional artifact locally with
 `./mvnw -Psimd clean install`; add it to a consumer alongside the core dependency:
 
+The SIMD artifact is not published to Maven Central; this local install is its
+only documented distribution path.
+
 ```xml
 <dependency>
   <groupId>io.github.enderekici</groupId>
@@ -114,16 +117,30 @@ LongBTree vectorTree = new LongBTree(new VectorSearch());
 
 See the [SIMD report](results/SIMD-BENCHMARK.md).
 
-## Build and install locally
+## Install the released core library
 
-The library version is `0.1.0-SNAPSHOT`; it is **not published to Maven
-Central**. Install the core artifact to your local Maven repository:
+The `0.1.0` core release is available from Maven Central. Its coordinates and
+public verification details are in the [release record](docs/releases/0.1.0.md).
+
+```xml
+<dependency>
+  <groupId>io.github.enderekici</groupId>
+  <artifactId>packed-btree</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
+
+## Build and install the development snapshot locally
+
+The checked-out source remains `0.1.0-SNAPSHOT`; that development version is
+not published to Maven Central. Install the core artifact to your local Maven
+repository:
 
 ```bash
 ./mvnw -pl library -am clean install
 ```
 
-Then use the local artifact in a consumer:
+Use this coordinate only with that local installation:
 
 ```xml
 <dependency>
@@ -163,5 +180,6 @@ verification receipts, and each report's limits. See also the
 
 This project is distributed under the [Apache License 2.0](LICENSE). The
 release process and its Central Portal manual-publish step are documented in
-[docs/releasing.md](docs/releasing.md). The current `0.1.0-SNAPSHOT` version is
-not published to Maven Central.
+[docs/releasing.md](docs/releasing.md). See the
+[0.1.0 release record](docs/releases/0.1.0.md) for its publication status and
+artifact details.
