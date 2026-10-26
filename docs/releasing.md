@@ -13,10 +13,16 @@ The local packaging and build evidence is in the
 1. Verify the `io.github.enderekici` namespace in the Sonatype Central Portal.
 2. Create a Central user token and configure the repository secrets
    `CENTRAL_USERNAME` and `CENTRAL_PASSWORD` with its token name and password.
-3. Create a dedicated OpenPGP signing key, publish its public key to a key
-   server, and configure the armored private key as `GPG_SIGNING_KEY` and its
-   passphrase as `GPG_PASSPHRASE`. Do not reuse a personal key. Keep the
-   private key and passphrase only in the GitHub repository secrets.
+3. Create a dedicated OpenPGP signing key and publish its public key to
+   [Ubuntu's keyserver](https://keyserver.ubuntu.com/) and
+   [keys.openpgp.org](https://keys.openpgp.org/about/api/) before the first
+   Central deployment. Confirm fingerprint lookup returns the expected key.
+   The keys.openpgp.org API supports lookup by fingerprint; lookup by email
+   requires the address owner to verify and opt in. Check key discovery
+   directly rather than assuming a propagation interval.
+4. Configure the armored private key as `GPG_SIGNING_KEY` and its passphrase
+   as `GPG_PASSPHRASE`. Do not reuse a personal key. Keep the private key and
+   passphrase only in the GitHub repository secrets.
 
 The workflow requires all four secrets and fails before building if any are
 missing. It imports exactly one secret primary key. Normal CI and developer
