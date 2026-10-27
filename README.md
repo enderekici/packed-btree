@@ -1,5 +1,17 @@
 # packed-btree
 
+[![Build](https://github.com/enderekici/packed-btree/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/enderekici/packed-btree/actions/workflows/ci.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.enderekici/packed-btree?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.enderekici/packed-btree)
+[![Release](https://img.shields.io/github/v/release/enderekici/packed-btree)](https://github.com/enderekici/packed-btree/releases/latest)
+[![Java 17+](https://img.shields.io/badge/Java-17%2B-orange)](#build-and-install-the-development-snapshot-locally)
+[![License](https://img.shields.io/github/license/enderekici/packed-btree)](LICENSE)
+
+[![Javadoc 0.1.0](https://img.shields.io/badge/Javadoc-0.1.0-blue)](https://repo.maven.apache.org/maven2/io/github/enderekici/packed-btree/0.1.0/packed-btree-0.1.0-javadoc.jar)
+[![Core runtime dependencies: 0](https://img.shields.io/badge/core%20runtime%20dependencies-0-brightgreen)](library/pom.xml)
+[![JMH benchmarks](https://img.shields.io/badge/benchmarks-JMH-blue)](results/README.md)
+[![GitHub stars](https://img.shields.io/github/stars/enderekici/packed-btree?style=flat)](https://github.com/enderekici/packed-btree/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/enderekici/packed-btree)](https://github.com/enderekici/packed-btree/issues)
+
 A Java library for ordered maps backed by compact B-tree nodes. It is inspired
 by [BBTree](https://bbtree.xiangpeng.systems/post/), but is an independent
 implementation, not a port of BBTree's version-validated concurrent protocol.
